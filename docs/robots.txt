@@ -1,1 +1,1 @@
-Sitemap: https://R-analisis-datos.netlify.app/sitemap.xml
+Sitemap: https://estadisticaIV.netlify.app/sitemap.xml

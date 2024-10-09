@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="R para Análisis estadístico">
+<meta name="description" content="Estadística IV">
 
-<title>R para Análisis estadístico - Práctico 1. Aproximación inicial a R</title>
+<title>Estadística IV - Asociación con categóricas y Chi-cuadrado</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,16 +103,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<link href="../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="../site_libs/tabwid-1.1.3/tabwid.js"></script>
 
 
-<meta property="og:title" content="R para Análisis estadístico - Práctico 1. Aproximación inicial a R">
-<meta property="og:description" content="R para análisis estadístico">
-<meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
-<meta property="og:site_name" content="R para Análisis estadístico">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Estadística IV - Asociación con categóricas y Chi-cuadrado">
+<meta property="og:description" content="Departamento de Sociología de la Universidad Alberto Hurtado">
+<meta property="og:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
+<meta property="og:site_name" content="Estadística IV">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="R para Análisis estadístico - Práctico 1. Aproximación inicial a R">
-<meta name="twitter:description" content="R para análisis estadístico">
-<meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta name="twitter:title" content="Estadística IV - Asociación con categóricas y Chi-cuadrado">
+<meta name="twitter:description" content="Departamento de Sociología de la Universidad Alberto Hurtado">
+<meta name="twitter:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -125,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">R para Análisis estadístico</span>
+    <span class="navbar-title">Estadística IV</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
@@ -162,6 +195,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="https://rstudio.cloud"> <i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
 <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../ayudantias/index.html"> 
+<span class="menu-text">Ayudantías</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -230,54 +267,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">03: Práctico 3</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/04-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04: Práctico 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/05-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05: Práctico 5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/06-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06: Práctico 6</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/07-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07: Práctico 7</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/resumen-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08: Resumen</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/08-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09: Práctico 8</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/09-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10: Práctico 9</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/10-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11: Práctico 10</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -290,22 +279,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
-  <ul>
-  <li><a href="#objetivos-de-la-práctica" id="toc-objetivos-de-la-práctica" class="nav-link" data-scroll-target="#objetivos-de-la-práctica">Objetivos de la práctica</a></li>
-  <li><a href="#recomendaciones-generales" id="toc-recomendaciones-generales" class="nav-link" data-scroll-target="#recomendaciones-generales">Recomendaciones generales:</a></li>
-  <li><a href="#primeros-pasos" id="toc-primeros-pasos" class="nav-link" data-scroll-target="#primeros-pasos">Primeros pasos</a>
-  <ul class="collapse">
-  <li><a href="#ejemplos" id="toc-ejemplos" class="nav-link" data-scroll-target="#ejemplos">0. Ejemplos</a></li>
-  <li><a href="#librerías-principales-de-r-a-utilizar" id="toc-librerías-principales-de-r-a-utilizar" class="nav-link" data-scroll-target="#librerías-principales-de-r-a-utilizar">1. Librerías principales (de R) a utilizar</a></li>
-  <li><a href="#cargar-base-de-datos" id="toc-cargar-base-de-datos" class="nav-link" data-scroll-target="#cargar-base-de-datos">2. Cargar base de datos</a></li>
-  </ul></li>
-  <li><a href="#otro-ejemplo" id="toc-otro-ejemplo" class="nav-link" data-scroll-target="#otro-ejemplo">Otro ejemplo</a></li>
-  </ul></li>
-  <li><a href="#parte-2" id="toc-parte-2" class="nav-link" data-scroll-target="#parte-2">Parte 2</a>
+  <li><a href="#flujo-de-trabajo-en-r" id="toc-flujo-de-trabajo-en-r" class="nav-link active" data-scroll-target="#flujo-de-trabajo-en-r">Flujo de trabajo en R</a>
   <ul>
   <li><a href="#rproject" id="toc-rproject" class="nav-link" data-scroll-target="#rproject">Rproject</a></li>
   </ul></li>
+  <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a>
+  <ul>
+  <li><a href="#recursos-de-la-práctica" id="toc-recursos-de-la-práctica" class="nav-link" data-scroll-target="#recursos-de-la-práctica">Recursos de la práctica</a></li>
+  </ul></li>
+  <li><a href="#preparación-datos" id="toc-preparación-datos" class="nav-link" data-scroll-target="#preparación-datos">Preparación datos</a></li>
+  <li><a href="#tablas-de-contingencia" id="toc-tablas-de-contingencia" class="nav-link" data-scroll-target="#tablas-de-contingencia">Tablas de contingencia</a></li>
+  <li><a href="#prueba-de-hipótesis-con-chi-cuadrado" id="toc-prueba-de-hipótesis-con-chi-cuadrado" class="nav-link" data-scroll-target="#prueba-de-hipótesis-con-chi-cuadrado">Prueba de hipótesis con Chi-cuadrado</a></li>
   </ul>
 </nav>
     </div>
@@ -314,8 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/01-content.html">01: Práctico 1</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Práctico 1. Aproximación inicial a R</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
-<p class="subtitle lead">R para análisis estadístico</p>
+<div class="quarto-title-block"><div><h1 class="title">Asociación con categóricas y Chi-cuadrado</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
 </div>
 
 
@@ -326,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">17 de marzo de 2023</p>
+      <p class="date">21 de agosto de 2024</p>
     </div>
   </div>
   
@@ -338,264 +321,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="presentación" class="level1">
-<h1>Presentación</h1>
-<section id="objetivos-de-la-práctica" class="level2">
-<h2 class="anchored" data-anchor-id="objetivos-de-la-práctica">Objetivos de la práctica</h2>
-<p>Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.</p>
-</section>
-<section id="recomendaciones-generales" class="level2">
-<h2 class="anchored" data-anchor-id="recomendaciones-generales">Recomendaciones generales:</h2>
-<ul>
-<li><p>evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables</p></li>
-<li><p>al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:</p></li>
-</ul>
-<ol type="1">
-<li><p>Código completo hasta que se produce el problema</p></li>
-<li><p>Indicar línea del código donde se produce el problema</p></li>
-<li><p>Adjuntar el resultado del output de la información de la sesión (sessionInfo())</p></li>
-</ol>
-</section>
-<section id="primeros-pasos" class="level2">
-<h2 class="anchored" data-anchor-id="primeros-pasos">Primeros pasos</h2>
-<p>En primer lugar vamos a abrir un archivo de R (<em>script</em>). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N</p>
-<p>Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.</p>
-<section id="ejemplos" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplos">0. Ejemplos</h3>
-<p>R puede ser una calculadora</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">5</span> <span class="co"># ¿cuánto es 10 + 5?</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 15</code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">*</span> <span class="dv">5</span> <span class="co"># ¿cuánto es 10 * 5?</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 50</code></pre>
-</div>
-</div>
-<p>Se pueden crear objetos y asignarles valores</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">28</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">8</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 36</code></pre>
-</div>
-</div>
-<p>O asignar operaciones a un objeto</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Sin embargo, la mayor parte del tiempo usamos funciones que ya existen en R</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">28</span>,<span class="dv">8</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 36</code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">10.14536</span>) <span class="co">#aproximar</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
-</div>
-</div>
-<p>Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)</p>
-</section>
-<section id="librerías-principales-de-r-a-utilizar" class="level3">
-<h3 class="anchored" data-anchor-id="librerías-principales-de-r-a-utilizar">1. Librerías principales (de R) a utilizar</h3>
-<p>La lógica de R es instalar librerías (solo 1 vez, con <code>install.packages("librería")</code>), y luego cargarlas cada vez que es necesario usarlas (con <code>library(librería)</code>). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama <code>pacman</code> (package manager). Lo que hace <code>pacman</code> es cargar la librería, y si no está instalada, la instala y la carga:</p>
-<p>Para utilizar la primera vez (si es que no está instalada):</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, guaguas, ggplot2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Para esta sesión las librerías que vamos a utilizar son:</p>
-<ul>
-<li><p><code>dplyr</code>: ajuste general de datos</p></li>
-<li><p><code>guaguas</code>: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación</p></li>
-<li><p><code>ggplot2</code>: Visualización de datos</p></li>
-</ul>
-</section>
-<section id="cargar-base-de-datos" class="level3">
-<h3 class="anchored" data-anchor-id="cargar-base-de-datos">2. Cargar base de datos</h3>
-<p><strong>Ajustar espacio de trabajo</strong></p>
-<p>Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       <span class="co"># borrar todos los objetos en el espacio de trabajo</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># valores sin notación científica</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>La función <code>rm(list=ls())</code> permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función <code>options(scipen=999)</code> desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.</p>
-<p><strong>Datos</strong></p>
-<p>Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> guaguas</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Conocemos las dimensiones de la base de datos</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(base)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 858782      5</code></pre>
-</div>
-</div>
-<p>Son 858782 casos y 5 variables. Los nombres de estas variables son:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(base)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "anio"       "nombre"     "sexo"       "n"          "proporcion"</code></pre>
-</div>
-</div>
-<p>Y la base se ve así:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-   anio nombre sexo      n proporcion
-  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-1  1920 María  F      2130     0.104 
-2  1920 José   M       984     0.0483
-3  1920 Juan   M       636     0.0312
-4  1920 Luis   M       631     0.0310
-5  1920 Rosa   F       426     0.0209
-6  1920 Ana    F       340     0.0167</code></pre>
-</div>
-</div>
-<p>Ahora probemos algunas funciones para seguir explorando la base</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(base<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-     F      I      M 
-531038    318 327426 </code></pre>
-</div>
-</div>
-<p>Podemos ver la cantidad de nombres “F” (femenino), “M” (masculino) e “I” (indefinido) inscritos entre 1920 y 2021.</p>
-<p>Pueden buscar sus nombres y probar, utilizamos la funcion <em>filter</em> del paquete <em>dplyr</em></p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 63 × 5
-    anio nombre sexo      n proporcion
-   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
- 1  1931 Kevin  M         1 0.0000120 
- 2  1963 Kevin  M         1 0.0000035 
- 3  1964 Kevin  M         1 0.00000344
- 4  1967 Kevin  M         4 0.0000131 
- 5  1970 Kevin  M         6 0.0000210 
- 6  1971 Kevin  M         3 0.00000936
- 7  1972 Kevin  M         3 0.00000945
- 8  1973 Kevin  M         2 0.00000633
- 9  1974 Kevin  M         5 0.0000163 
-10  1976 Kevin  M         2 0.00000724
-# ℹ 53 more rows</code></pre>
-</div>
-</div>
-<p>E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span> <span class="sc">&amp;</span> anio<span class="sc">==</span><span class="dv">1996</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(d<span class="sc">$</span>n)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1312</code></pre>
-</div>
-</div>
-<p>Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> anio, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"Número de personas"</span>, <span class="at">title =</span> <span class="st">"Número de personas llamadas Kevin por año"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="flujo-de-trabajo-en-r" class="level1">
+<h1>Flujo de trabajo en R</h1>
+<p>Tal vez una de las dificultades más comunes o cotidianas del uso de R es el orden de trabajo, en donde tenemos cientos de archivos, scripts, gráficos, bases de datos u otros repartidos desordenadamente en nuestro computador. También se da mucho el caso en que, cuando queremos trabajar con alguien, tenemos que cambiar las rutas de los archivos, por ejemplo en dónde están las bases de datos, ya que nuestros ordenadores y usuarios se llaman y son escencialmente distintos.</p>
+<p>¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. <strong>En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema <a href="https://lisa-coes.com/ipo-data/">IPO</a></strong>. El protocolor IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.</p>
+<p>Lleva este nombre por el sistema de carpetas que se implementan: <strong>I</strong>nput, <strong>P</strong>rocesamiento y <strong>O</strong>utput. En la carpeta <strong>Input</strong> guardaremos todos aquellso recursos iniciales que usaremos, como las bases de datos, el libro de códigos, entre otros. En la carpeta de <strong>Procesamiento</strong>, como dice el nombre, guardaremos todos los archivos que procesen y analicen datos. En la carpeta <strong>Output</strong> guardaremos todo aquello que hayamos producido en los archivos de procesamiento, como las bases de datos procesadas listas para compartir o publicas, los documentos de reporte, informes o analísis, gráficos o tablas.</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="01-content_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="images/image (2).png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>¿Qué puede explicar el peak de “Kevins” previo a los 2000?</p>
-<p>spoiler: <a href="https://es.wikipedia.org/wiki/Backstreet_Boys">link</a></p>
-</section>
-</section>
-<section id="otro-ejemplo" class="level2">
-<h2 class="anchored" data-anchor-id="otro-ejemplo">Otro ejemplo</h2>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>guaguas <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(nombre <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Salvador"</span>, <span class="st">"Augusto"</span>), anio <span class="sc">&gt;=</span> <span class="dv">1960</span> <span class="sc">&amp;</span> anio <span class="sc">&lt;=</span> <span class="dv">1979</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(anio, n, <span class="at">color =</span> nombre)) <span class="sc">+</span> </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"año"</span>, <span class="at">y =</span> <span class="st">"total inscripciones"</span>, <span class="at">color =</span> <span class="st">"nombre"</span>, </span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<p>La implementación de la reproducibilidad en este tipo de protocolos se basa en generar un conjunto de archivos auto-contenidos organizado en una estructura de proyecto que cualquier persona pueda compartir y ejecutar. En otras palabras, debe tener todo lo que necesita para ejecutar y volver a ejecutar el análisis. Para conocer más, visita el <a href="https://lisa-coes.com/03componentes/">Laboratorio de Ciencia Abierta</a>.</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="01-content_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="images/image.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="parte-2" class="level1">
-<h1>Parte 2</h1>
 <section id="rproject" class="level2">
 <h2 class="anchored" data-anchor-id="rproject">Rproject</h2>
 <p>Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la <strong>reproducibilidad</strong>. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el <a href="https://lisa-coes.com/ipo-repro/">protocolo IPO</a>.</p>
@@ -610,11 +359,414 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior</p></li>
 <li><p>Apretamos el botón de crear proyecto</p></li>
 </ol>
+</section>
+</section>
+<section id="objetivo-de-la-práctica" class="level1">
+<h1>Objetivo de la práctica</h1>
+<p>El objetivo de esta guía práctica es introducirnos en técnicas de asociación entre variables categóricas, aplicando lo apredendido hasta ahora sobre inferencia estadística.</p>
+<p>En detalle, aprenderemos:</p>
+<ol type="1">
+<li>Generar y analizar tablas de contingencia (o cruzadas)</li>
+<li>Estimar e interpretar la prueba de Chi-cuadrado</li>
+<li>Aplicar coeficientes de correlación entre variables categóricas</li>
+</ol>
+<section id="recursos-de-la-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="recursos-de-la-práctica">Recursos de la práctica</h2>
+<p>En esta práctica trabajaremos con un subconjunto de datos previamente procesados de la Encuesta de Caracterización Socioeconómica (CASEN) del año 2022, elaborada por el <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/">Ministerio de Desarrollo Social y Familia</a>. Para este ejercicio, obtendremos directamente esta base desde internet. No obstante, también tienes la opción de acceder a la misma información a través del siguiente enlace: <a href="https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/proc_casen.RData"><i class="fa-solid fa-table" aria-label="table"></i> <code>CASEN 20222</code></a>. Desde allí, podrás descargar el archivo que contiene el subconjunto procesado de la base de datos CASEN 2022.</p>
+</section>
+</section>
+<section id="preparación-datos" class="level1">
+<h1>Preparación datos</h1>
+<p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               sjPlot, <span class="co"># Tablas</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               psych, <span class="co"># Correlaciones</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               DescTools, <span class="co"># Tablas</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               gginference, <span class="co"># Visualizacion </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               rempsyc, <span class="co"># Reporte</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               broom) <span class="co"># Varios</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Cargamos los datos directamente desde internet.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/casen_proc.RData"</span>)) <span class="co">#Cargar base de datos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_casen)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3000   29</code></pre>
+</div>
+</div>
+<p>Contamos con 29 variables (columnas) y 3000 observaciones (filas).</p>
+</section>
+<section id="tablas-de-contingencia" class="level1">
+<h1>Tablas de contingencia</h1>
+<p>Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.</p>
+<p>Con ella, podemos obtener en las celdas las frecuencias <strong>conjuntas</strong> entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X.</p>
+<p>Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias <strong>marginales</strong>.</p>
+<p>Veamos un ejemplo con <code>ss_salud</code> y <code>universitaria</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_casen<span class="sc">$</span>ss_salud, <span class="at">var.col =</span> proc_casen<span class="sc">$</span>universitaria, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, <span class="at">emph.total =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">s13. ¿A qué sistema<br>
+previsional de salud<br>
+pertenece?</td>
+<td colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Educación superior<br>
+alcanzada (si/no)</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">No</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Sí</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">1. Sistema Público<br>
+FONASA</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2027</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">524</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2551</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">2. Isapre</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">111</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">167</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">278</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">3. FF.AA. y del<br>
+Orden</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">37</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">22</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">59</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">4. Ninguno<br>
+(particular)</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">61</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">15</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">76</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2236</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">728</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2964</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Sumado a esto, tenemos:</p>
+<ul>
+<li><p><em>Frecuencias absolutas</em>: números que aparencen en la tabla (ya sean conjuntas o marginales)</p></li>
+<li><p><em>Frecuencias porcentuales</em>:</p>
+<ul>
+<li>porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila</li>
+<li>porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna</li>
+<li>porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla</li>
+</ul></li>
+</ul>
+<p>Veamos cómo incorporar el porcentaje fila y columna en la tabla.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_casen<span class="sc">$</span>ss_salud, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var.col =</span> proc_casen<span class="sc">$</span>universitaria, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">emph.total =</span> T, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.row.prc =</span> T, <span class="co"># porcentaje fila</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.col.prc =</span> T <span class="co"># porcentaje columna</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">s13. ¿A qué sistema<br>
+previsional de salud<br>
+pertenece?</td>
+<td colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Educación superior<br>
+alcanzada (si/no)</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">No</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Sí</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">1. Sistema Público<br>
+FONASA</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">2027</span><br>
+<span style="color:#333399;">79.5&nbsp;%</span><br>
+<span style="color:#339933;">90.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">524</span><br>
+<span style="color:#333399;">20.5&nbsp;%</span><br>
+<span style="color:#339933;">72&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">2551</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">86.1&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">2. Isapre</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">111</span><br>
+<span style="color:#333399;">39.9&nbsp;%</span><br>
+<span style="color:#339933;">5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">167</span><br>
+<span style="color:#333399;">60.1&nbsp;%</span><br>
+<span style="color:#339933;">22.9&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">278</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">9.4&nbsp;%</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">3. FF.AA. y del<br>
+Orden</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">37</span><br>
+<span style="color:#333399;">62.7&nbsp;%</span><br>
+<span style="color:#339933;">1.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">22</span><br>
+<span style="color:#333399;">37.3&nbsp;%</span><br>
+<span style="color:#339933;">3&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">59</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">2&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">4. Ninguno<br>
+(particular)</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">61</span><br>
+<span style="color:#333399;">80.3&nbsp;%</span><br>
+<span style="color:#339933;">2.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">15</span><br>
+<span style="color:#333399;">19.7&nbsp;%</span><br>
+<span style="color:#339933;">2.1&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">76</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">2.6&nbsp;%</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2236</span><br>
+<span style="color:#333399;">75.4&nbsp;%</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">728</span><br>
+<span style="color:#333399;">24.6&nbsp;%</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2964</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde.</p>
+</section>
+<section id="prueba-de-hipótesis-con-chi-cuadrado" class="level1">
+<h1>Prueba de hipótesis con Chi-cuadrado</h1>
+<p>La prueba de Chi-cudrado (<span class="math inline">\(\chi^2\)</span>) es una herramienta estadística utilizada para evaluar si existe una asociación significativa entre dos variables categóricas.</p>
+<p>Testeamos la <strong>hipótesis de independencia</strong> en una tabla de contigencia. Por ejemplo, si decimos que existe una relación entre tener educación superior y la preferencia por algún sistema de salud, esperamos encontrar que un porcentaje más alto de quienes tienen educación superior se inclinen por un sistema de salud determinado.</p>
+<p>Se basa en la comparación de las <strong>frecuencias observadas</strong> en una tabla de contingencia con las <strong>frecuencias esperadas</strong> si las variables fueran independientes. Si existe una gran diferencia entre las esperadas y las observadas, podemos suponer que hay una relación entre variables.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prueba de Chi-cuadrado
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Contrastamos la <em>hipótesis nula</em> (o de trabajo) de que las variables son idenpendientes entre ellas: <span class="math display">\[  H_{0}: \pi_{fc} =  \pi_{f}\pi_{c} \]</span></p>
+<p>En relación a una <em>hipótesis alternativa</em> sobre que las variables están relacionadas: <span class="math display">\[  H_{A}:  \pi_{fc} \neq  \pi_{f}\pi_{c} \]</span></p>
+</div>
+</div>
+<p>Veamos un ejemplo con nuestros datos. Evaluemos si el nivel educacional se relaciona con el tipo de sistema de salud al que pertenecen las personas en Chile durante el 2022.</p>
+<p>Apliquemos nuestros <a href="https://correlacional.netlify.app/assignment/08-practico#cinco-pasos-para-la-inferencia-estad%C3%ADstica">cinco pasos para inferencia</a>.</p>
+<ol type="1">
+<li>Formulamos nuestras hipótesis:</li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(H_{0}\)</span>: No hay asociación entre el nivel educacional y la preferencia por un sistema de salud.</p></li>
+<li><p><span class="math inline">\(H_{A}\)</span>: El nivel educacional se asocia con la preferencia por un sistema de salud.</p></li>
+</ul>
+<ol start="2" type="1">
+<li>Generar tabla de contingencia con frecuencias observadas y esperadas:</li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>conti_table <span class="ot">&lt;-</span> <span class="fu">table</span>(proc_casen<span class="sc">$</span>ss_salud, proc_casen<span class="sc">$</span>universitaria)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>conti_table</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   
+       0    1
+  1 2027  524
+  2  111  167
+  3   37   22
+  4   61   15</code></pre>
+</div>
+</div>
+<p>Además, podemos añadir las frecuencias marginales.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>row_sum <span class="ot">&lt;-</span> <span class="fu">margin.table</span>(conti_table, <span class="dv">1</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>col_sum <span class="ot">&lt;-</span> <span class="fu">margin.table</span>(conti_table, <span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>conti_added <span class="ot">&lt;-</span> <span class="fu">cbind</span>(conti_table, <span class="fu">as.vector</span>(row_sum))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>conti_added <span class="ot">&lt;-</span> <span class="fu">rbind</span>(conti_added, <span class="fu">c</span>(<span class="fu">as.vector</span>(col_sum), <span class="fu">sum</span>(conti_table)))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>conti_added</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     0   1     
+1 2027 524 2551
+2  111 167  278
+3   37  22   59
+4   61  15   76
+  2236 728 2964</code></pre>
+</div>
+</div>
+<p>Ahora, generamos una tabla de contingencia con frecuencias esperadas.</p>
+<p>Las <em>frecuencias observadas</em> corresponden a:</p>
+<p><span class="math display">\[ f_{e_c} = \frac{{\text{(Total marginal de fila para la celda)} \times \text{(Total marginal de columna para la celda)}}}{{N}} \]</span></p>
+<p>Usando nuestros datos la frecuencia esperada para la primera celda sería:</p>
+<p><span class="math display">\[ f_{e_c} = \frac{(2551)*(2236)}{{2964}} = 1924.4\]</span></p>
+<p>Esto debemos repetirlo para cada celda… pero podemos hacerlo más rápido con <code>DescTools</code>.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>exp_table <span class="ot">&lt;-</span> DescTools<span class="sc">::</span><span class="fu">ExpFreq</span>(conti_added, <span class="at">freq =</span> <span class="st">"abs"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(exp_table, <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       0     1     
+1 1924.4 626.6 2551
+2  209.7  68.3  278
+3   44.5  14.5   59
+4   57.3  18.7   76
+  2236.0 728.0 2964</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Calcular el valor estimado de la prueba:</li>
+</ol>
+<p>Establecemos la diferencia entre lo observado y lo esperado, siendo:</p>
+<p><span class="math display">\[\chi^2=\sum\frac{(f_o-f_e)^2}{f_e}\]</span></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>chi_stat <span class="ot">&lt;-</span> <span class="fu">sum</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">2027</span><span class="fl">-1924.4</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">1924.4</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">524</span><span class="fl">-626.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">626.6</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">111</span><span class="fl">-209.7</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">209.7</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">167</span><span class="fl">-68.3</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">68.3</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">37</span><span class="fl">-44.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">44.5</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">22</span><span class="fl">-14.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">14.5</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">61</span><span class="fl">-57.3</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">57.3</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">15</span><span class="fl">-18.7</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">18.7</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>chi_stat</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 217.4706</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Especifica el valor crítico de la prueba:</li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (<span class="dv">4-1</span>)<span class="sc">*</span>(<span class="dv">2-1</span>) <span class="co">#definimos grados de libertad</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>chi_critico <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="at">p =</span> <span class="fl">0.05</span>, df, <span class="at">lower.tail =</span> F)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>chi_critico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.814728</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Contrasta el valor estimado con el crítico e interpreta los resultados:</li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>chi_stat <span class="sc">&gt;</span> chi_critico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>En el análisis utilizando la prueba de <span class="math inline">\(\chi^2\)</span> de Pearson para la asociación entre el tipo de sistema de salud y el nivel educativo, se encontró una relación significativa (χ2 = 217.56 , df = 3, p&lt; .001). Por tanto, rechazamos la <span class="math inline">\(H_{0}\)</span> sobre no asociación con un 95% de confianza, existiendo evidencia a favor de nuestra <span class="math inline">\(H_{A}\)</span> ya que hay evidencia de una relación entre el sistema de salud y el nivel educativo.</p>
+</blockquote>
+<ol start="6" type="1">
+<li>Y el cálculo directo en R:</li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>chi_results <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(proc_casen<span class="sc">$</span>ss_salud, proc_casen<span class="sc">$</span>universitaria))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>stats.table <span class="ot">&lt;-</span> <span class="fu">tidy</span>(chi_results, <span class="at">conf_int =</span> T)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nice_table</span>(stats.table)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-7bcda944{table-layout:auto;}.cl-7bc052a8{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7bc052b2{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7bc70ed6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-7bc70ee0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-7bc72812{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7bc7281c{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7bc7281d{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-7bcda944"><thead><tr style="overflow-wrap:break-word;"><th class="cl-7bc72812"><p class="cl-7bc70ed6"><span class="cl-7bc052a8">statistic</span></p></th><th class="cl-7bc72812"><p class="cl-7bc70ed6"><span class="cl-7bc052b2">p</span></p></th><th class="cl-7bc72812"><p class="cl-7bc70ed6"><span class="cl-7bc052a8">parameter</span></p></th><th class="cl-7bc72812"><p class="cl-7bc70ed6"><span class="cl-7bc052a8">Method</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-7bc7281c"><p class="cl-7bc70ee0"><span class="cl-7bc052a8">217.56</span></p></td><td class="cl-7bc7281d"><p class="cl-7bc70ed6"><span class="cl-7bc052a8">&lt; .001***</span></p></td><td class="cl-7bc7281d"><p class="cl-7bc70ed6"><span class="cl-7bc052a8">3</span></p></td><td class="cl-7bc7281d"><p class="cl-7bc70ed6"><span class="cl-7bc052a8">Pearson's Chi-squared test</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Visualicemos la distribución de esta prueba y su zona de rechazo.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggchisqtest</span>(chi_results)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-content_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 <!-- -->
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -750,7 +902,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/R-analisis-datos\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/estadisticaIV\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1078,221 +1230,266 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb30" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico 1. Aproximación inicial a R"</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "R para análisis estadístico"</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="an">linktitle:</span><span class="co"> "Práctico 1: Aproximación R"</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-03-17"</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivos de la práctica</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recomendaciones generales:</span></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:</span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Código completo hasta que se produce el problema</span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Indicar línea del código donde se produce el problema</span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Adjuntar el resultado del output de la información de la sesión (sessionInfo())</span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Primeros pasos</span></span>
-<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>En primer lugar vamos a abrir un archivo de R (*script*). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N</span>
-<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.</span>
-<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a><span class="fu">### 0. Ejemplos</span></span>
-<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>R puede ser una calculadora</span>
-<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">5</span> <span class="co"># ¿cuánto es 10 + 5?</span></span>
-<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">*</span> <span class="dv">5</span> <span class="co"># ¿cuánto es 10 * 5?</span></span>
-<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a>Se pueden crear objetos y asignarles valores</span>
-<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">28</span></span>
-<span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">8</span></span>
-<span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span>
-<span id="cb30-59"><a href="#cb30-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-60"><a href="#cb30-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-61"><a href="#cb30-61" aria-hidden="true" tabindex="-1"></a>O asignar operaciones a un objeto</span>
-<span id="cb30-62"><a href="#cb30-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-65"><a href="#cb30-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-66"><a href="#cb30-66" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
-<span id="cb30-67"><a href="#cb30-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-68"><a href="#cb30-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-69"><a href="#cb30-69" aria-hidden="true" tabindex="-1"></a>Sin embargo, la mayor parte del tiempo usamos funciones que ya existen en R</span>
-<span id="cb30-70"><a href="#cb30-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-73"><a href="#cb30-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-74"><a href="#cb30-74" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">28</span>,<span class="dv">8</span>)</span>
-<span id="cb30-75"><a href="#cb30-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-78"><a href="#cb30-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-79"><a href="#cb30-79" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">10.14536</span>) <span class="co">#aproximar</span></span>
-<span id="cb30-80"><a href="#cb30-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-81"><a href="#cb30-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-82"><a href="#cb30-82" aria-hidden="true" tabindex="-1"></a>Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)</span>
-<span id="cb30-83"><a href="#cb30-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-84"><a href="#cb30-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Librerías principales (de R) a utilizar</span></span>
-<span id="cb30-85"><a href="#cb30-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-86"><a href="#cb30-86" aria-hidden="true" tabindex="-1"></a>La lógica de R es instalar librerías (solo 1 vez, con <span class="in">`install.packages("librería")`</span>), y luego cargarlas cada vez que es necesario usarlas (con <span class="in">`library(librería)`</span>). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama <span class="in">`pacman`</span> (package manager). Lo que hace <span class="in">`pacman`</span> es cargar la librería, y si no está instalada, la instala y la carga:</span>
-<span id="cb30-87"><a href="#cb30-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-88"><a href="#cb30-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-89"><a href="#cb30-89" aria-hidden="true" tabindex="-1"></a>Para utilizar la primera vez (si es que no está instalada):</span>
-<span id="cb30-90"><a href="#cb30-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-91"><a href="#cb30-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb30-92"><a href="#cb30-92" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("pacman")</span></span>
-<span id="cb30-93"><a href="#cb30-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-94"><a href="#cb30-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-95"><a href="#cb30-95" aria-hidden="true" tabindex="-1"></a>Y en adelante, las librerías se cargan así &lt;span class="sidenote"&gt; pacman::p_load(libreria1,libreria2,libreriaX) &lt;/span&gt;:</span>
-<span id="cb30-96"><a href="#cb30-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-97"><a href="#cb30-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-100"><a href="#cb30-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-101"><a href="#cb30-101" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, guaguas, ggplot2)</span>
-<span id="cb30-102"><a href="#cb30-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-103"><a href="#cb30-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-104"><a href="#cb30-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-105"><a href="#cb30-105" aria-hidden="true" tabindex="-1"></a>Para esta sesión las librerías que vamos a utilizar son:</span>
-<span id="cb30-106"><a href="#cb30-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-107"><a href="#cb30-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`dplyr`</span>: ajuste general de datos</span>
-<span id="cb30-108"><a href="#cb30-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-109"><a href="#cb30-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`guaguas`</span>: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación</span>
-<span id="cb30-110"><a href="#cb30-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-111"><a href="#cb30-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ggplot2`</span>: Visualización de datos</span>
-<span id="cb30-112"><a href="#cb30-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-113"><a href="#cb30-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Cargar base de datos</span></span>
-<span id="cb30-114"><a href="#cb30-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-115"><a href="#cb30-115" aria-hidden="true" tabindex="-1"></a>**Ajustar espacio de trabajo**</span>
-<span id="cb30-116"><a href="#cb30-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-117"><a href="#cb30-117" aria-hidden="true" tabindex="-1"></a>Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:</span>
-<span id="cb30-118"><a href="#cb30-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-121"><a href="#cb30-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-122"><a href="#cb30-122" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       <span class="co"># borrar todos los objetos en el espacio de trabajo</span></span>
-<span id="cb30-123"><a href="#cb30-123" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># valores sin notación científica</span></span>
-<span id="cb30-124"><a href="#cb30-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-125"><a href="#cb30-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-126"><a href="#cb30-126" aria-hidden="true" tabindex="-1"></a>La función <span class="in">`rm(list=ls())`</span> permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función <span class="in">`options(scipen=999)`</span> desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.</span>
-<span id="cb30-127"><a href="#cb30-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-128"><a href="#cb30-128" aria-hidden="true" tabindex="-1"></a>**Datos**</span>
-<span id="cb30-129"><a href="#cb30-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-130"><a href="#cb30-130" aria-hidden="true" tabindex="-1"></a>Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)</span>
-<span id="cb30-131"><a href="#cb30-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-134"><a href="#cb30-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-135"><a href="#cb30-135" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> guaguas</span>
-<span id="cb30-136"><a href="#cb30-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-137"><a href="#cb30-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-138"><a href="#cb30-138" aria-hidden="true" tabindex="-1"></a>Conocemos las dimensiones de la base de datos</span>
-<span id="cb30-139"><a href="#cb30-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-142"><a href="#cb30-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-143"><a href="#cb30-143" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(base)</span>
-<span id="cb30-144"><a href="#cb30-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-145"><a href="#cb30-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-146"><a href="#cb30-146" aria-hidden="true" tabindex="-1"></a>Son 858782 casos y 5 variables. Los nombres de estas variables son:</span>
-<span id="cb30-147"><a href="#cb30-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-150"><a href="#cb30-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-151"><a href="#cb30-151" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(base)</span>
-<span id="cb30-152"><a href="#cb30-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-153"><a href="#cb30-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-154"><a href="#cb30-154" aria-hidden="true" tabindex="-1"></a>Y la base se ve así:</span>
-<span id="cb30-155"><a href="#cb30-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-158"><a href="#cb30-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-159"><a href="#cb30-159" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base)</span>
-<span id="cb30-160"><a href="#cb30-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-161"><a href="#cb30-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-162"><a href="#cb30-162" aria-hidden="true" tabindex="-1"></a>Ahora probemos algunas funciones para seguir explorando la base</span>
-<span id="cb30-163"><a href="#cb30-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-166"><a href="#cb30-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-167"><a href="#cb30-167" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(base<span class="sc">$</span>sexo)</span>
-<span id="cb30-168"><a href="#cb30-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-169"><a href="#cb30-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-170"><a href="#cb30-170" aria-hidden="true" tabindex="-1"></a>Podemos ver la cantidad de nombres "F" (femenino), "M" (masculino) e "I" (indefinido) inscritos entre 1920 y 2021.</span>
-<span id="cb30-171"><a href="#cb30-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-172"><a href="#cb30-172" aria-hidden="true" tabindex="-1"></a>Pueden buscar sus nombres y probar, utilizamos la funcion *filter* del paquete *dplyr*</span>
-<span id="cb30-173"><a href="#cb30-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-176"><a href="#cb30-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-177"><a href="#cb30-177" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span>)</span>
-<span id="cb30-178"><a href="#cb30-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-179"><a href="#cb30-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-180"><a href="#cb30-180" aria-hidden="true" tabindex="-1"></a>E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron</span>
-<span id="cb30-181"><a href="#cb30-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-184"><a href="#cb30-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-185"><a href="#cb30-185" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span> <span class="sc">&amp;</span> anio<span class="sc">==</span><span class="dv">1996</span>)</span>
-<span id="cb30-186"><a href="#cb30-186" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(d<span class="sc">$</span>n)</span>
-<span id="cb30-187"><a href="#cb30-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-188"><a href="#cb30-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-189"><a href="#cb30-189" aria-hidden="true" tabindex="-1"></a>Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo</span>
-<span id="cb30-190"><a href="#cb30-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-193"><a href="#cb30-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-194"><a href="#cb30-194" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span>)</span>
-<span id="cb30-195"><a href="#cb30-195" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> anio, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb30-196"><a href="#cb30-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb30-197"><a href="#cb30-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"Número de personas"</span>, <span class="at">title =</span> <span class="st">"Número de personas llamadas Kevin por año"</span>)</span>
-<span id="cb30-198"><a href="#cb30-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-199"><a href="#cb30-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-200"><a href="#cb30-200" aria-hidden="true" tabindex="-1"></a>¿Qué puede explicar el peak de "Kevins" previo a los 2000?</span>
-<span id="cb30-201"><a href="#cb30-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-202"><a href="#cb30-202" aria-hidden="true" tabindex="-1"></a>spoiler: <span class="co">[</span><span class="ot">link</span><span class="co">](https://es.wikipedia.org/wiki/Backstreet_Boys)</span></span>
-<span id="cb30-203"><a href="#cb30-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-204"><a href="#cb30-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## Otro ejemplo</span></span>
-<span id="cb30-205"><a href="#cb30-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-208"><a href="#cb30-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-209"><a href="#cb30-209" aria-hidden="true" tabindex="-1"></a>guaguas <span class="sc">%&gt;%</span> </span>
-<span id="cb30-210"><a href="#cb30-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(nombre <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Salvador"</span>, <span class="st">"Augusto"</span>), anio <span class="sc">&gt;=</span> <span class="dv">1960</span> <span class="sc">&amp;</span> anio <span class="sc">&lt;=</span> <span class="dv">1979</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-211"><a href="#cb30-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(anio, n, <span class="at">color =</span> nombre)) <span class="sc">+</span> </span>
-<span id="cb30-212"><a href="#cb30-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb30-213"><a href="#cb30-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"año"</span>, <span class="at">y =</span> <span class="st">"total inscripciones"</span>, <span class="at">color =</span> <span class="st">"nombre"</span>, </span>
-<span id="cb30-214"><a href="#cb30-214" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979"</span>)</span>
-<span id="cb30-215"><a href="#cb30-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-216"><a href="#cb30-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-217"><a href="#cb30-217" aria-hidden="true" tabindex="-1"></a><span class="fu"># Parte 2</span></span>
-<span id="cb30-218"><a href="#cb30-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-219"><a href="#cb30-219" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rproject</span></span>
-<span id="cb30-220"><a href="#cb30-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-221"><a href="#cb30-221" aria-hidden="true" tabindex="-1"></a>Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la **reproducibilidad**. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el <span class="co">[</span><span class="ot">protocolo IPO</span><span class="co">](https://lisa-coes.com/ipo-repro/)</span>.</span>
-<span id="cb30-222"><a href="#cb30-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-223"><a href="#cb30-223" aria-hidden="true" tabindex="-1"></a>Para crear un Rproject:</span>
-<span id="cb30-224"><a href="#cb30-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-225"><a href="#cb30-225" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Abrir Rstudio</span>
-<span id="cb30-226"><a href="#cb30-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-227"><a href="#cb30-227" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Seleccionar Archivo -&gt; Nuevo proyecto</span>
-<span id="cb30-228"><a href="#cb30-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-229"><a href="#cb30-229" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/project.png)</span></span>
-<span id="cb30-230"><a href="#cb30-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-231"><a href="#cb30-231" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Seleccionamos la opción de directorio existente</span>
-<span id="cb30-232"><a href="#cb30-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-233"><a href="#cb30-233" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior</span>
-<span id="cb30-234"><a href="#cb30-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-235"><a href="#cb30-235" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Apretamos el botón de crear proyecto</span>
-<span id="cb30-236"><a href="#cb30-236" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Asociación con categóricas y Chi-cuadrado"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-08-21"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">  number_sections: true</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(echo = TRUE, </span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="in">                      message = FALSE,</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="in">                      warning = FALSE)</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Flujo de trabajo en R</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>Tal vez una de las dificultades más comunes o cotidianas del uso de R es el orden de trabajo, en donde tenemos cientos de archivos, scripts, gráficos, bases de datos u otros repartidos desordenadamente en nuestro computador. También se da mucho el caso en que, cuando queremos trabajar con alguien, tenemos que cambiar las rutas de los archivos, por ejemplo en dónde están las bases de datos, ya que nuestros ordenadores y usuarios se llaman y son escencialmente distintos. </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. **En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema [IPO](https://lisa-coes.com/ipo-data/)**. El protocolor IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>Lleva este nombre por el sistema de carpetas que se implementan: **I**nput, **P**rocesamiento y **O**utput. En la carpeta **Input** guardaremos todos aquellso recursos iniciales que usaremos, como las bases de datos, el libro de códigos, entre otros. En la carpeta de **Procesamiento**, como dice el nombre, guardaremos todos los archivos que procesen y analicen datos. En la carpeta **Output** guardaremos todo aquello que hayamos producido en los archivos de procesamiento, como las bases de datos procesadas listas para compartir o publicas, los documentos de reporte, informes o analísis, gráficos o tablas. </span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("images/image (2).png", error = FALSE)</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>La implementación de la reproducibilidad en este tipo de protocolos se basa en generar un conjunto de archivos auto-contenidos organizado en una estructura de proyecto que cualquier persona pueda compartir y ejecutar. En otras palabras, debe tener todo lo que necesita para ejecutar y volver a ejecutar el análisis. Para conocer más, visita el <span class="co">[</span><span class="ot">Laboratorio de Ciencia Abierta</span><span class="co">](https://lisa-coes.com/03componentes/)</span>. </span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("images/image.png", error = FALSE)</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rproject</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la **reproducibilidad**. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el <span class="co">[</span><span class="ot">protocolo IPO</span><span class="co">](https://lisa-coes.com/ipo-repro/)</span>.</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>Para crear un Rproject:</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Abrir Rstudio</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Seleccionar Archivo -&gt; Nuevo proyecto</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/project.png)</span></span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Seleccionamos la opción de directorio existente</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior</span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Apretamos el botón de crear proyecto</span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo de la práctica</span></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>El objetivo de esta guía práctica es introducirnos en técnicas de asociación entre variables categóricas, aplicando lo apredendido hasta ahora sobre inferencia estadística. </span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>En detalle, aprenderemos:</span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Generar y analizar tablas de contingencia (o cruzadas)</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Estimar e interpretar la prueba de Chi-cuadrado</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Aplicar coeficientes de correlación entre variables categóricas</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recursos de la práctica</span></span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>En esta práctica trabajaremos con un subconjunto de datos previamente procesados de la Encuesta de Caracterización Socioeconómica (CASEN) del año 2022, elaborada por el <span class="co">[</span><span class="ot">Ministerio de Desarrollo Social y Familia</span><span class="co">](https://observatorio.ministeriodesarrollosocial.gob.cl/)</span>. Para este ejercicio, obtendremos directamente esta base desde internet. No obstante, también tienes la opción de acceder a la misma información a través del siguiente enlace: <span class="co">[</span><span class="ot">{{&lt; fa table &gt;}} `CASEN 20222`</span><span class="co">](https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/proc_casen.RData)</span>. Desde allí, podrás descargar el archivo que contiene el subconjunto procesado de la base de datos CASEN 2022.</span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación datos</span></span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r librerias, collapse=TRUE}</span></span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a><span class="in">pacman::p_load(tidyverse, # Manipulacion datos</span></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a><span class="in">               sjPlot, # Tablas</span></span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a><span class="in">               psych, # Correlaciones</span></span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a><span class="in">               DescTools, # Tablas</span></span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a><span class="in">               gginference, # Visualizacion </span></span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a><span class="in">               rempsyc, # Reporte</span></span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a><span class="in">               broom) # Varios</span></span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a><span class="in">options(scipen = 999) # para desactivar notacion cientifica</span></span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a><span class="in">rm(list = ls()) # para limpiar el entorno de trabajo</span></span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a>Cargamos los datos directamente desde internet.</span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r datos}</span></span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a><span class="in">load(url("https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/casen_proc.RData")) #Cargar base de datos</span></span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a><span class="in">dim(proc_casen)</span></span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a>Contamos con 29 variables (columnas) y 3000 observaciones (filas).</span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a><span class="fu"># Tablas de contingencia</span></span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a>Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.</span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a>Con ella, podemos obtener en las celdas las frecuencias **conjuntas** entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X. </span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a>Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias **marginales**.</span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a>Veamos un ejemplo con <span class="in">`ss_salud`</span> y <span class="in">`universitaria`</span>:</span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_casen<span class="sc">$</span>ss_salud, <span class="at">var.col =</span> proc_casen<span class="sc">$</span>universitaria, </span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, <span class="at">emph.total =</span> T)</span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a>Sumado a esto, tenemos:</span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>_Frecuencias absolutas_: números que aparencen en la tabla (ya sean conjuntas o marginales)</span>
+<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>_Frecuencias porcentuales_: </span>
+<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila</span>
+<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna</span>
+<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla</span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a>Veamos cómo incorporar el porcentaje fila y columna en la tabla.</span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_casen<span class="sc">$</span>ss_salud, </span>
+<span id="cb20-129"><a href="#cb20-129" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var.col =</span> proc_casen<span class="sc">$</span>universitaria, </span>
+<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, </span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a>                 <span class="at">emph.total =</span> T, </span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.row.prc =</span> T, <span class="co"># porcentaje fila</span></span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.col.prc =</span> T <span class="co"># porcentaje columna</span></span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a>Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde. </span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prueba de hipótesis con Chi-cuadrado</span></span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a>La prueba de Chi-cudrado ($\chi^2$) es una herramienta estadística utilizada para evaluar si existe una asociación significativa entre dos variables categóricas. </span>
+<span id="cb20-142"><a href="#cb20-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a>Testeamos la **hipótesis de independencia** en una tabla de contigencia. Por ejemplo, si decimos que existe una relación entre tener educación superior y la preferencia por algún sistema de salud, esperamos encontrar que un porcentaje más alto de quienes tienen educación superior se inclinen por un sistema de salud determinado. </span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a>Se basa en la comparación de las **frecuencias observadas** en una tabla de contingencia con las **frecuencias esperadas** si las variables fueran independientes. Si existe una gran diferencia entre las esperadas y las observadas, podemos suponer que hay una relación entre variables. </span>
+<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Prueba de Chi-cuadrado</span></span>
+<span id="cb20-149"><a href="#cb20-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-150"><a href="#cb20-150" aria-hidden="true" tabindex="-1"></a>Contrastamos la _hipótesis nula_ (o de trabajo) de que las variables son idenpendientes entre ellas:</span>
+<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a>$$  H_{0}: \pi_{fc} =  \pi_{f}\pi_{c} $$</span>
+<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a>En relación a una _hipótesis alternativa_ sobre que las variables están relacionadas:</span>
+<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a>$$  H_{A}:  \pi_{fc} \neq  \pi_{f}\pi_{c} $$</span>
+<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a>Veamos un ejemplo con nuestros datos. Evaluemos si el nivel educacional se relaciona con el tipo de sistema de salud al que pertenecen las personas en Chile durante el 2022.</span>
+<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a>Apliquemos nuestros <span class="co">[</span><span class="ot">cinco pasos para inferencia</span><span class="co">](https://correlacional.netlify.app/assignment/08-practico#cinco-pasos-para-la-inferencia-estad%C3%ADstica)</span>.</span>
+<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Formulamos nuestras hipótesis:</span>
+<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-163"><a href="#cb20-163" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$H_{0}$: No hay asociación entre el nivel educacional y la preferencia por un sistema de salud.</span>
+<span id="cb20-164"><a href="#cb20-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-165"><a href="#cb20-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$H_{A}$: El nivel educacional se asocia con la preferencia por un sistema de salud.</span>
+<span id="cb20-166"><a href="#cb20-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-167"><a href="#cb20-167" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Generar tabla de contingencia con frecuencias observadas y esperadas:</span>
+<span id="cb20-168"><a href="#cb20-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a>conti_table <span class="ot">&lt;-</span> <span class="fu">table</span>(proc_casen<span class="sc">$</span>ss_salud, proc_casen<span class="sc">$</span>universitaria)</span>
+<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a>conti_table</span>
+<span id="cb20-174"><a href="#cb20-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-175"><a href="#cb20-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-176"><a href="#cb20-176" aria-hidden="true" tabindex="-1"></a>Además, podemos añadir las frecuencias marginales.</span>
+<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-181"><a href="#cb20-181" aria-hidden="true" tabindex="-1"></a>row_sum <span class="ot">&lt;-</span> <span class="fu">margin.table</span>(conti_table, <span class="dv">1</span>)</span>
+<span id="cb20-182"><a href="#cb20-182" aria-hidden="true" tabindex="-1"></a>col_sum <span class="ot">&lt;-</span> <span class="fu">margin.table</span>(conti_table, <span class="dv">2</span>)</span>
+<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a>conti_added <span class="ot">&lt;-</span> <span class="fu">cbind</span>(conti_table, <span class="fu">as.vector</span>(row_sum))</span>
+<span id="cb20-185"><a href="#cb20-185" aria-hidden="true" tabindex="-1"></a>conti_added <span class="ot">&lt;-</span> <span class="fu">rbind</span>(conti_added, <span class="fu">c</span>(<span class="fu">as.vector</span>(col_sum), <span class="fu">sum</span>(conti_table)))</span>
+<span id="cb20-186"><a href="#cb20-186" aria-hidden="true" tabindex="-1"></a>conti_added</span>
+<span id="cb20-187"><a href="#cb20-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-188"><a href="#cb20-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-189"><a href="#cb20-189" aria-hidden="true" tabindex="-1"></a>Ahora, generamos una tabla de contingencia con frecuencias esperadas.</span>
+<span id="cb20-190"><a href="#cb20-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-191"><a href="#cb20-191" aria-hidden="true" tabindex="-1"></a>Las _frecuencias observadas_ corresponden a:</span>
+<span id="cb20-192"><a href="#cb20-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-193"><a href="#cb20-193" aria-hidden="true" tabindex="-1"></a>$$ f_{e_c} = \frac{{\text{(Total marginal de fila para la celda)} \times \text{(Total marginal de columna para la celda)}}}{{N}} $$</span>
+<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a>Usando nuestros datos la frecuencia esperada para la primera celda sería:</span>
+<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-197"><a href="#cb20-197" aria-hidden="true" tabindex="-1"></a>$$ f_{e_c} = \frac{(2551)*(2236)}{{2964}} = 1924.4$$</span>
+<span id="cb20-198"><a href="#cb20-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-199"><a href="#cb20-199" aria-hidden="true" tabindex="-1"></a>Esto debemos repetirlo para cada celda... pero podemos hacerlo más rápido con <span class="in">`DescTools`</span>.</span>
+<span id="cb20-200"><a href="#cb20-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-203"><a href="#cb20-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-204"><a href="#cb20-204" aria-hidden="true" tabindex="-1"></a>exp_table <span class="ot">&lt;-</span> DescTools<span class="sc">::</span><span class="fu">ExpFreq</span>(conti_added, <span class="at">freq =</span> <span class="st">"abs"</span>)</span>
+<span id="cb20-205"><a href="#cb20-205" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(exp_table, <span class="dv">1</span>)</span>
+<span id="cb20-206"><a href="#cb20-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-207"><a href="#cb20-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Calcular el valor estimado de la prueba:</span>
+<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a>Establecemos la diferencia entre lo observado y lo esperado, siendo:</span>
+<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-212"><a href="#cb20-212" aria-hidden="true" tabindex="-1"></a>$$\chi^2=\sum\frac{(f_o-f_e)^2}{f_e}$$</span>
+<span id="cb20-215"><a href="#cb20-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-216"><a href="#cb20-216" aria-hidden="true" tabindex="-1"></a>chi_stat <span class="ot">&lt;-</span> <span class="fu">sum</span>(</span>
+<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">2027</span><span class="fl">-1924.4</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">1924.4</span>,</span>
+<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">524</span><span class="fl">-626.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">626.6</span>,</span>
+<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">111</span><span class="fl">-209.7</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">209.7</span>,</span>
+<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">167</span><span class="fl">-68.3</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">68.3</span>,</span>
+<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">37</span><span class="fl">-44.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">44.5</span>,</span>
+<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">22</span><span class="fl">-14.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">14.5</span>,</span>
+<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">61</span><span class="fl">-57.3</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">57.3</span>,</span>
+<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">15</span><span class="fl">-18.7</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">18.7</span></span>
+<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a>chi_stat</span>
+<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-229"><a href="#cb20-229" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Especifica el valor crítico de la prueba:</span>
+<span id="cb20-230"><a href="#cb20-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (<span class="dv">4-1</span>)<span class="sc">*</span>(<span class="dv">2-1</span>) <span class="co">#definimos grados de libertad</span></span>
+<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a>chi_critico <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="at">p =</span> <span class="fl">0.05</span>, df, <span class="at">lower.tail =</span> F)</span>
+<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a>chi_critico</span>
+<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Contrasta el valor estimado con el crítico e interpreta los resultados:</span>
+<span id="cb20-241"><a href="#cb20-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a>chi_stat <span class="sc">&gt;</span> chi_critico</span>
+<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-247"><a href="#cb20-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; En el análisis utilizando la prueba de $\chi^2$ de Pearson para la asociación entre el tipo de sistema de salud y el nivel educativo, se encontró una relación significativa (χ2 = 217.56 , df = 3, p&lt; .001). Por tanto, rechazamos la $H_{0}$ sobre no asociación con un 95% de confianza, existiendo evidencia a favor de nuestra $H_{A}$ ya que hay evidencia de una relación entre el sistema de salud y el nivel educativo.</span></span>
+<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Y el cálculo directo en R:</span>
+<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, collapse=TRUE}</span></span>
+<span id="cb20-253"><a href="#cb20-253" aria-hidden="true" tabindex="-1"></a><span class="in">chi_results &lt;- chisq.test(table(proc_casen$ss_salud, proc_casen$universitaria))</span></span>
+<span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a><span class="in">stats.table &lt;- tidy(chi_results, conf_int = T)</span></span>
+<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a><span class="in">nice_table(stats.table)</span></span>
+<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a>Visualicemos la distribución de esta prueba y su zona de rechazo.</span>
+<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-264"><a href="#cb20-264" aria-hidden="true" tabindex="-1"></a><span class="fu">ggchisqtest</span>(chi_results)</span>
+<span id="cb20-265"><a href="#cb20-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco &amp; Daniela Olivares<br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/R-data-analisis">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/cursos-metodos-uah/estadisticaIV">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
 </div>
   </div>
 </footer>

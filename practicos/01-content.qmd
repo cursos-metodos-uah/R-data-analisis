@@ -1,187 +1,36 @@
 ---
-title: "Práctico 1. Aproximación inicial a R"
-subtitle: "R para análisis estadístico"
-linktitle: "Práctico 1: Aproximación R"
-date: "2023-03-17"
+title: "Asociación con categóricas y Chi-cuadrado"
+date: "2024-08-21"
 lang: es
+output:
+  number_sections: true
 ---
 
-# Presentación
-
-## Objetivos de la práctica
-
-Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
-
-
-## Recomendaciones generales:
-
-- evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables
-
-- al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:
-
-1. Código completo hasta que se produce el problema
-
-2. Indicar línea del código donde se produce el problema
-
-3. Adjuntar el resultado del output de la información de la sesión (sessionInfo())
-
-## Primeros pasos
-
-En primer lugar vamos a abrir un archivo de R (*script*). Esto se puede hacer manualmente con File -> new file -> R script o directamente con ctrl + shift + N
-
-Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.
-
-### 0. Ejemplos
-
-R puede ser una calculadora
-
-```{r}
-10 + 5 # ¿cuánto es 10 + 5?
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE)
 ```
 
-```{r}
-10 * 5 # ¿cuánto es 10 * 5?
+# Flujo de trabajo en R
+
+Tal vez una de las dificultades más comunes o cotidianas del uso de R es el orden de trabajo, en donde tenemos cientos de archivos, scripts, gráficos, bases de datos u otros repartidos desordenadamente en nuestro computador. También se da mucho el caso en que, cuando queremos trabajar con alguien, tenemos que cambiar las rutas de los archivos, por ejemplo en dónde están las bases de datos, ya que nuestros ordenadores y usuarios se llaman y son escencialmente distintos. 
+
+¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. **En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema [IPO](https://lisa-coes.com/ipo-data/)**. El protocolor IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.
+
+Lleva este nombre por el sistema de carpetas que se implementan: **I**nput, **P**rocesamiento y **O**utput. En la carpeta **Input** guardaremos todos aquellso recursos iniciales que usaremos, como las bases de datos, el libro de códigos, entre otros. En la carpeta de **Procesamiento**, como dice el nombre, guardaremos todos los archivos que procesen y analicen datos. En la carpeta **Output** guardaremos todo aquello que hayamos producido en los archivos de procesamiento, como las bases de datos procesadas listas para compartir o publicas, los documentos de reporte, informes o analísis, gráficos o tablas. 
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("images/image (2).png", error = FALSE)
 ```
 
-Se pueden crear objetos y asignarles valores
+La implementación de la reproducibilidad en este tipo de protocolos se basa en generar un conjunto de archivos auto-contenidos organizado en una estructura de proyecto que cualquier persona pueda compartir y ejecutar. En otras palabras, debe tener todo lo que necesita para ejecutar y volver a ejecutar el análisis. Para conocer más, visita el [Laboratorio de Ciencia Abierta](https://lisa-coes.com/03componentes/). 
 
-```{r}
-a <- 28
-b <- 8
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
 
-a + b
+knitr::include_graphics("images/image.png", error = FALSE)
 ```
-
-O asignar operaciones a un objeto
-
-```{r}
-c <- a + b
-```
-
-Sin embargo, la mayor parte del tiempo usamos funciones que ya existen en R
-
-```{r}
-sum(28,8)
-```
-```{r}
-round(10.14536) #aproximar
-```
-
-Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)
-
-### 1. Librerías principales (de R) a utilizar
-
-La lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
-
-
-Para utilizar la primera vez (si es que no está instalada):
-
-```{r eval=FALSE}
-install.packages("pacman")
-```
-
-Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:
-
-
-```{r}
-pacman::p_load(dplyr, guaguas, ggplot2)
-```
-
-
-Para esta sesión las librerías que vamos a utilizar son:
-
-- `dplyr`: ajuste general de datos
-
-- `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
-
-- `ggplot2`: Visualización de datos
-
-### 2. Cargar base de datos
-
-**Ajustar espacio de trabajo**
-
-Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:
-
-```{r}
-rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
-options(scipen=999) # valores sin notación científica
-```
-
-La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
-
-**Datos**
-
-Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)
-
-```{r}
-base <- guaguas
-```
-
-Conocemos las dimensiones de la base de datos
-
-```{r}
-dim(base)
-```
-
-Son 858782 casos y 5 variables. Los nombres de estas variables son:
-
-```{r}
-names(base)
-```
-
-Y la base se ve así:
-
-```{r}
-head(base)
-```
-
-Ahora probemos algunas funciones para seguir explorando la base
-
-```{r}
-table(base$sexo)
-```
-
-Podemos ver la cantidad de nombres "F" (femenino), "M" (masculino) e "I" (indefinido) inscritos entre 1920 y 2021.
-
-Pueden buscar sus nombres y probar, utilizamos la funcion *filter* del paquete *dplyr*
-
-```{r}
-filter(base, nombre=="Kevin")
-```
-
-E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron
-
-```{r}
-d <- filter(base, nombre=="Kevin" & anio==1996)
-sum(d$n)
-```
-
-Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo
-
-```{r}
-datos <- filter(base, nombre=="Kevin")
-ggplot(datos, aes(x = anio, y = n)) +
-  geom_line() + 
-  labs(x = "Año", y = "Número de personas", title = "Número de personas llamadas Kevin por año")
-```
-
-¿Qué puede explicar el peak de "Kevins" previo a los 2000?
-
-spoiler: [link](https://es.wikipedia.org/wiki/Backstreet_Boys)
-
-## Otro ejemplo
-
-```{r}
-
-guaguas %>% 
-  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1960 & anio <= 1979) %>% 
-  ggplot(aes(anio, n, color = nombre)) + 
-  geom_line() +
-  labs(x = "año", y = "total inscripciones", color = "nombre", 
-       title = "Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979")
-```
-
-# Parte 2
 
 ## Rproject
 
@@ -201,4 +50,199 @@ Para crear un Rproject:
 
 5. Apretamos el botón de crear proyecto
 
+# Objetivo de la práctica
+
+El objetivo de esta guía práctica es introducirnos en técnicas de asociación entre variables categóricas, aplicando lo apredendido hasta ahora sobre inferencia estadística. 
+
+En detalle, aprenderemos:
+
+1.  Generar y analizar tablas de contingencia (o cruzadas)
+2.  Estimar e interpretar la prueba de Chi-cuadrado
+3.  Aplicar coeficientes de correlación entre variables categóricas
+
+
+## Recursos de la práctica
+
+En esta práctica trabajaremos con un subconjunto de datos previamente procesados de la Encuesta de Caracterización Socioeconómica (CASEN) del año 2022, elaborada por el [Ministerio de Desarrollo Social y Familia](https://observatorio.ministeriodesarrollosocial.gob.cl/). Para este ejercicio, obtendremos directamente esta base desde internet. No obstante, también tienes la opción de acceder a la misma información a través del siguiente enlace: [{{< fa table >}} `CASEN 20222`](https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/proc_casen.RData). Desde allí, podrás descargar el archivo que contiene el subconjunto procesado de la base de datos CASEN 2022.
+
+
+# Preparación datos
+
+Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.
+
+```{r librerias, collapse=TRUE}
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Tablas
+               psych, # Correlaciones
+               DescTools, # Tablas
+               gginference, # Visualizacion 
+               rempsyc, # Reporte
+               broom) # Varios
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+Cargamos los datos directamente desde internet.
+
+```{r datos}
+
+load(url("https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/casen_proc.RData")) #Cargar base de datos
+
+dim(proc_casen)
+```
+
+Contamos con 29 variables (columnas) y 3000 observaciones (filas).
+
+# Tablas de contingencia
+
+Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.
+
+Con ella, podemos obtener en las celdas las frecuencias **conjuntas** entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X. 
+
+Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias **marginales**.
+
+Veamos un ejemplo con `ss_salud` y `universitaria`:
+
+```{r}
+sjPlot::sjt.xtab(var.row = proc_casen$ss_salud, var.col = proc_casen$universitaria, 
+                 show.summary = F, emph.total = T)
+```
+
+Sumado a esto, tenemos:
+
+- _Frecuencias absolutas_: números que aparencen en la tabla (ya sean conjuntas o marginales)
+- _Frecuencias porcentuales_: 
+          
+  * porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
+  * porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
+  * porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
+
+Veamos cómo incorporar el porcentaje fila y columna en la tabla.
+
+```{r}
+sjPlot::sjt.xtab(var.row = proc_casen$ss_salud, 
+                 var.col = proc_casen$universitaria, 
+                 show.summary = F, 
+                 emph.total = T, 
+                 show.row.prc = T, # porcentaje fila
+                 show.col.prc = T # porcentaje columna
+                 )
+```
+
+Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde. 
+
+# Prueba de hipótesis con Chi-cuadrado
+
+La prueba de Chi-cudrado ($\chi^2$) es una herramienta estadística utilizada para evaluar si existe una asociación significativa entre dos variables categóricas. 
+
+Testeamos la **hipótesis de independencia** en una tabla de contigencia. Por ejemplo, si decimos que existe una relación entre tener educación superior y la preferencia por algún sistema de salud, esperamos encontrar que un porcentaje más alto de quienes tienen educación superior se inclinen por un sistema de salud determinado. 
+
+Se basa en la comparación de las **frecuencias observadas** en una tabla de contingencia con las **frecuencias esperadas** si las variables fueran independientes. Si existe una gran diferencia entre las esperadas y las observadas, podemos suponer que hay una relación entre variables. 
+
+::: {.callout-tip}
+#### Prueba de Chi-cuadrado
+
+Contrastamos la _hipótesis nula_ (o de trabajo) de que las variables son idenpendientes entre ellas:
+$$  H_{0}: \pi_{fc} =  \pi_{f}\pi_{c} $$
+
+En relación a una _hipótesis alternativa_ sobre que las variables están relacionadas:
+$$  H_{A}:  \pi_{fc} \neq  \pi_{f}\pi_{c} $$
+:::
+
+Veamos un ejemplo con nuestros datos. Evaluemos si el nivel educacional se relaciona con el tipo de sistema de salud al que pertenecen las personas en Chile durante el 2022.
+
+Apliquemos nuestros [cinco pasos para inferencia](https://correlacional.netlify.app/assignment/08-practico#cinco-pasos-para-la-inferencia-estad%C3%ADstica).
+
+1. Formulamos nuestras hipótesis:
+
+- $H_{0}$: No hay asociación entre el nivel educacional y la preferencia por un sistema de salud.
+
+- $H_{A}$: El nivel educacional se asocia con la preferencia por un sistema de salud.
+
+2. Generar tabla de contingencia con frecuencias observadas y esperadas:
+
+```{r}
+conti_table <- table(proc_casen$ss_salud, proc_casen$universitaria)
+conti_table
+```
+
+Además, podemos añadir las frecuencias marginales.
+
+```{r}
+row_sum <- margin.table(conti_table, 1)
+col_sum <- margin.table(conti_table, 2)
+
+conti_added <- cbind(conti_table, as.vector(row_sum))
+conti_added <- rbind(conti_added, c(as.vector(col_sum), sum(conti_table)))
+conti_added
+```
+
+Ahora, generamos una tabla de contingencia con frecuencias esperadas.
+
+Las _frecuencias observadas_ corresponden a:
+
+$$ f_{e_c} = \frac{{\text{(Total marginal de fila para la celda)} \times \text{(Total marginal de columna para la celda)}}}{{N}} $$
+
+Usando nuestros datos la frecuencia esperada para la primera celda sería:
+
+$$ f_{e_c} = \frac{(2551)*(2236)}{{2964}} = 1924.4$$
+
+Esto debemos repetirlo para cada celda... pero podemos hacerlo más rápido con `DescTools`.
+
+```{r}
+exp_table <- DescTools::ExpFreq(conti_added, freq = "abs")
+round(exp_table, 1)
+```
+
+3. Calcular el valor estimado de la prueba:
+
+Establecemos la diferencia entre lo observado y lo esperado, siendo:
+
+$$\chi^2=\sum\frac{(f_o-f_e)^2}{f_e}$$
+```{r}
+chi_stat <- sum(
+  (2027-1924.4)^2/1924.4,
+  (524-626.6)^2/626.6,
+  (111-209.7)^2/209.7,
+  (167-68.3)^2/68.3,
+  (37-44.5)^2/44.5,
+  (22-14.5)^2/14.5,
+  (61-57.3)^2/57.3,
+  (15-18.7)^2/18.7
+  )
+chi_stat
+```
+
+4. Especifica el valor crítico de la prueba:
+
+```{r}
+df <- (4-1)*(2-1) #definimos grados de libertad
+
+chi_critico <- qchisq(p = 0.05, df, lower.tail = F)
+chi_critico
+```
+
+5. Contrasta el valor estimado con el crítico e interpreta los resultados:
+
+```{r}
+chi_stat > chi_critico
+```
+
+> En el análisis utilizando la prueba de $\chi^2$ de Pearson para la asociación entre el tipo de sistema de salud y el nivel educativo, se encontró una relación significativa (χ2 = 217.56 , df = 3, p< .001). Por tanto, rechazamos la $H_{0}$ sobre no asociación con un 95% de confianza, existiendo evidencia a favor de nuestra $H_{A}$ ya que hay evidencia de una relación entre el sistema de salud y el nivel educativo.
+
+6. Y el cálculo directo en R:
+
+```{r, collapse=TRUE}
+chi_results <- chisq.test(table(proc_casen$ss_salud, proc_casen$universitaria))
+
+stats.table <- tidy(chi_results, conf_int = T)
+nice_table(stats.table)
+```
+
+Visualicemos la distribución de esta prueba y su zona de rechazo.
+
+```{r}
+ggchisqtest(chi_results)
+```
 

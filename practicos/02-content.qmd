@@ -1,213 +1,186 @@
 ---
-title: "Práctico R 2. Vinculación R y Zotero"
-date: "2023-10-19"
+title: "Análisis de correspondencia simple"
+date: "2024-08-28"
 lang: es
-website:
-  comments:
-    giscus:
-      repo: kevin-carrasco/R-data-analisis
+output:
+  number_sections: true
 ---
 
-
-```{r setup, include=FALSE, cache = TRUE}
-require("knitr")
-opts_chunk$set(warning=FALSE,
-             message=FALSE,
-             echo=TRUE,
-             cache = TRUE, fig.width=7, fig.height=5.2)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE)
 ```
 
-# Presentación
+# Objetivo de la práctica
 
+La siguiente práctica tiene el objetivo de introducir la idea central del análisis de correspondencia. Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.
 
-## Zotero
+# Preparación datos
 
-1. Acceder a la página de [zotero](https://www.zotero.org/)
+Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.
 
-Vamos a Log in
+```{r librerias, collapse=TRUE}
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Tablas
+               psych, # Correlaciones
+               DescTools, # Tablas
+               gginference, # Visualizacion 
+               rempsyc, # Reporte
+               broom) # Varios
 
-![](images/zotero1.png)
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
 
-2. Y creamos una cuenta gratis
+Cargamos los datos directamente desde internet.
 
-![](images/zotero2.png)
+```{r datos}
+#cargamos la base de datos desde internet
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) 
 
-3. Finalmente volvemos al inicio y descargamos el programa:
+dim(elsoc_long_2016_2022.2)
+```
 
-![](images/zotero3.png)
+Contamos con 750 variables (columnas) y 18035 observaciones (filas).
 
 
-### Veamos cómo se ve zotero
+```{r}
+proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="4") %>% 
+  select(c29, # Confianza generalizada
+         m01# nivel educacional
+         )
 
-![](images/zotero4.png)
+proc_data <- proc_data %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+# Comprobar
+names(proc_data)
 
-Zotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.
+proc_data$educacion <- car::recode(proc_data$m01, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
 
-- Es posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos
+proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion,
+            labels=c( "Educación básica"=1,
+                      "Educación media"=2,
+                      "Educación superior"=3))
 
-- Al visualizar una referencia bibliográfica nos muestra todos los **metadatos**: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.
+sjmisc::frq(proc_data$educacion)
+```
 
-- El dato central que nos va a servir en esta parte del proceso es el DOI
 
-::: callout-note
+# Tablas de contingencia
 
-DOI: Digital Object Identifier (Identificador de objetos digitales)
+Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.
 
-El DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.
+Con ella, podemos obtener en las celdas las frecuencias **conjuntas** entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X. 
 
-![](images/doi.png)
+Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias **marginales**.
 
-:::
+Veamos un ejemplo con `ss_salud` y `universitaria`:
 
-4. Para crear una biblioteca en zotero vamos a Archivo -> Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios
+```{r}
+sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$c29, 
+                 show.summary = F, emph.total = T, encoding = "UTF-8")
+```
 
-![](images/zotero5.png)
+Sumado a esto, tenemos:
 
-En este caso mi biblioteca se llama "percepcion-desigualdad".
+- _Frecuencias absolutas_: números que aparencen en la tabla (ya sean conjuntas o marginales)
+- _Frecuencias relativas_: 
+          
+  * porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
+  * porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
+  * porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
 
-5. Zotero tiene dos funciones para agregar referencias botón verde "Nuevo elemento" o varita mágica "añadir elemento por identificador". Esta vez vamos por la segunda opción
+Veamos cómo incorporar el porcentaje fila y columna en la tabla.
 
-6. Buscamos un paper que nos interese: en este caso busqué el paper [The paradox of inequality: income inequality and belief in meritocracy go hand in hand](https://academic.oup.com/ser/article-abstract/19/1/7/5299221?redirectedFrom=fulltext) de Jonathan Mijs (2021). Su DOI es [https://doi.org/10.1093/ser/mwy051](https://doi.org/10.1093/ser/mwy051)
+```{r}
+sjPlot::sjt.xtab(var.row = proc_data$educacion, 
+                 var.col = proc_data$c29, 
+                 show.summary = F, 
+                 emph.total = T, 
+                 show.row.prc = T, # porcentaje fila
+                 show.col.prc = T, # porcentaje columna
+                 encoding= "UTF-8")
+```
 
-7. Usamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero
+Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde. 
 
-![](images/zotero6.png)
+# Prueba de hipótesis con Chi-cuadrado
 
-¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?
+cálculo directo en R:
 
-## Researchrabbit
+```{r, collapse=TRUE}
+chi_results <- chisq.test(table(proc_data$educacion, proc_data$c29))
 
-Research Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero
-
-1. Ingresar a la página [https://researchrabbitapp.com/](https://researchrabbitapp.com/).
-
-2. Crear cuenta
-
-![](images/research.png)
-
-3. Una vez dentro apretamos "Import Zotero Collection" y seleccionamos nuestra biblioteca
-
-![](images/research2.png)
-
-4. Así se ve research rabbit
-
-![](images/research3.png)
-
-5. Podemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca
-
-![](images/research4.png)
-
-6. Después volvemos a Zotero, actualizamos y aparece nuestro nuevo paper
-
-![](images/zotero7.png)
-
-Ahora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R
-
-7. Vamos a este [link](https://github.com/retorquere/zotero-better-bibtex/releases/tag/v6.7.169) y descargamos zotero-better-bibtex-6.7.169.xpi
-
-8. Volvemos a Zotero --> Herramientas --> Complementos --> La tuerca en la esquina superior derecha --> Instalar Add-on desde archivo --> Seleccionamos el archivo que acabamos de descargar
-
-![](images/zotero9.png)
-
-9. Paso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca --> Exportar colección
-
-![](images/zotero8.png)
-
-10. Seleccionamos formato: Better BibTeX y marcamos la casilla "Keep updated". Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía
-
-![](images/zotero10.png)
-
-11. Guardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo
-
-
-## Quarto
-
-La escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:
-
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-|Código                                                                         | Así se ve                                                                     |
-+===============================================================================+===============================================================================+
-|     Algo de texto en el párrafo.                                              | Algo de texto.                                                                |
-|                                                                               |                                                                               |
-|     Más texto                                                                 | Algo de texto en el párrafo. Siempre utilizando espacios para dividir párrafos|
-|     espacio entre lineas.                                                     |                                                                               |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `` `*Cursivas*` ``                                                            | *Cursivas*                                                                    |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `` `**Negrita**` ``                                                           | **Negrita**                                                                   |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `# Título 1`                                                                  | # Título 1                                                                    |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `## Título 2`                                                                 | ## Título 2                                                                   |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `### Título 3`                                                                | ### Título 3                                                                  |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| (puedes llegar hasta un título N° 6 con `######`)                             |                                                                               |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `` `[Texto enlace](https://quarto.org/)` ``                                   | [Texto enlace](https://quarto.org/)                                           |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `` `![Texto imagen](/path/to/image.png)` ``                                   | ![Texto imagen](../../files/img/eval-hires.png){alt="Class logo"}             |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `> Citas`                                                                     | > Citas                                                                       |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-|     1. Una                                                                    | 1.   Una                                                                      |
-|     2. lista                                                                  |                                                                               |
-|     3 ordenada                                                                | 2.   lista                                                                    |
-|                                                                               |                                                                               |
-|                                                                               | 3. ordenada                                                                   |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-|     - Otro                                                                    | -  Otro                                                                       |
-|     - tipo                                                                    |                                                                               |
-|     - de lista                                                                | -  tipo                                                                       |
-|                                                                               |                                                                               |
-|                                                                               |  -  de lista                                                                  |
-+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-
-1. Abrimos nuestro Rproject y creamos un nuevo documento de Quarto file --> new file --> Quarto document
-
-2. Editamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes
-
-::: callout-note
-
-YAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.
-
-
-![](images/yaml.png)
-
-:::
-
-3. Comenzamos a escribir la introducción de nuestra investigación
-
-4. Para insertar referencias:
-
-Se pueden insertar citas usando el comando Insert -> Citation o usando la sintaxis directamente (por ejemplo, [@cita] o @cita).
-
-Las citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por '@' + el identificador de la cita en zotero. 
-
-![](images/zotero11.png)
-
-En este caso, `[@mijsParadoxInequalityIncome2021a]`
-
-Aquí hay otros ejemplos:
-
-La investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años `[ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013]`.
-
-Específicamente, se ha encontrado evidencia sobre que... `[@mijsParadoxInequalityIncome2021a]`. De todas formas, `@crucesBiasedPerceptionsIncome2013` plantea que...
-
-Así mismo, Mijs señala que... `[-@mijsParadoxInequalityIncome2021a]`
-
-Aunque ambos concluyen que... `[@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]`
-
-![](images/quarto4.png)
-
-5. Luego renderizamos y se debería ver así:
-
-![](images/quarto5.png)
-
-
-Con referencias automáticas!
-
-6. Ahora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop.
-
-
+stats.table <- tidy(chi_results, conf_int = T)
+nice_table(stats.table)
+```
+
+Visualicemos la distribución de esta prueba y su zona de rechazo.
+
+```{r}
+ggchisqtest(chi_results)
+```
+
+# Análisis de correspondencias simple
+
+```{r}
+pacman::p_load(ade4, FactoMineR, factoextra)
+```
+
+```{r}
+proc_data <- proc_data %>% select(-m01)
+tabla <- prop.table(table(proc_data$educacion, proc_data$c29))
+dimnames(tabla) <- list(educacion=c("Básica", "Media", "Universitaria"),
+                        constitucion=c("Expertos", "Parlamento", "Asamblea")
+                        )
+tabla
+chisq.test(tabla)
+ACS <- CA(tabla, ncp=2, graph = FALSE)
+```
+
+```{r}
+#Perfiles fila
+variables_fila=get_ca_row(ACS)
+variables_fila$inertia
+
+#Nube de individuos fila
+fviz_ca_row(ACS, repel = TRUE)+ggtitle("") + ylab("Eje 2(11.55%)")+xlab("Eje 1(88.45%)")+ylim(-0.5,.5)+xlim(-.5,.5)
+```
+
+```{r}
+#Perfiles columna
+variables_columna=get_ca_col(ACS)
+variables_columna$inertia
+#Nube de individuos columna
+fviz_ca_col(ACS)+ggtitle("")+ylab("Eje 2(11.55%)")+xlab("Eje 1(88.45%)")+ylim(-0.5,.5)+xlim(-0.5,.5)
+```
+
+```{r fig.width=10, fig.height=10}
+#Representación simultánea
+plot.CA(ACS)
+```
+
+```{r eval=FALSE, echo=FALSE}
+coords_filas <- ACS$row$coord
+coords_triangulo <- coords_filas[c("Básica", "Media", "Universitaria"), ]
+
+triangulo_df <- data.frame(
+  x = coords_triangulo[, 1], # Coordenadas de la Dimensión 1
+  y = coords_triangulo[, 2], # Coordenadas de la Dimensión 2
+  Categoria = rownames(coords_triangulo)
+)
+
+# Añadir el primer punto al final para cerrar el triángulo
+triangulo_df <- rbind(triangulo_df, triangulo_df[1, ])
+
+# Crear el gráfico del triángulo
+ggplot(triangulo_df, aes(x = x, y = y, label = Categoria)) +
+  geom_polygon(aes(group = 1), fill = "lightblue", color = "blue", alpha = 0.5) +
+  geom_point(color = "red", size = 3) +
+  geom_text(vjust = -1, hjust = 0.5, size = 5) +
+  geom_segment(aes(x = 0, y = 0, xend = x, yend = y), linetype = "dashed", color = "gray") +
+  coord_fixed(ratio = 1) +
+  labs(x = "Dimensión 1", y = "Dimensión 2", title = "Triángulo basado en el Análisis de Correspondencia") +
+  theme_minimal()
+```
 

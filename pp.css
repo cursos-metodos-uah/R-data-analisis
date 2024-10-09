@@ -1,0 +1,211 @@
+/* Include theme-specific fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Apex+New+Medium&display=swap');
+
+/* Background of the presentation */
+body {
+  background-color: #ffffff;
+}
+
+/* Primary/body text */
+body {
+  font-family: 'Palatino Linotype', sans-serif;
+  font-size: 30px;
+  color: black;
+}
+
+/* Vertical spacing between blocks of text */
+p {
+  margin-bottom: 20px;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+  text-shadow: none;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 3.00em;
+}
+
+h2 {
+  font-size: 2.20em;
+}
+
+h3 {
+  font-size: 1.55em;
+}
+
+h4 {
+  font-size: 1.20em;
+}
+
+code {
+  font-family: monospace;
+}
+
+/* Specific styles for h1 to make it red */
+h1 {
+  color: #ff0000 !important;
+}
+
+h2 {
+  color: #ff0000 !important;
+}
+
+/* Ensure other headings use the default $headingColor */
+h3, h4, h5, h6 {
+  color: black;
+}
+
+/* Links and actions */
+a {
+  color: darkblue;
+}
+
+a:hover {
+  color: darken(darkblue, 20%);
+}
+
+/* Text selection */
+::selection {
+  background-color: #ff3057;
+  color: #fff;
+}
+
+/* Title slide styles */
+#title-slide > h1 {
+  color: #ffffff;
+}
+
+#title-slide .author {
+  color: #ffffff;
+}
+
+#title-slide {
+  top: 0 !important;
+}
+
+#title-slide > .author:first-of-type {
+  margin-top: 320px;
+}
+
+/* Alignment */
+#vcenter {
+  vertical-align: middle;
+}
+
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.v-right-container {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  height: 90%;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  height: 20%;
+}
+
+.center-xy {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+/* Custom styles */
+.rojo {
+  font-family: 'Palatino Linotype', sans-serif;
+  font-size: 65px;
+  color: #ff0000;
+}
+
+/* Font colours */
+.black { color: black; }
+.red { color: red; }
+.blue { color: blue; }
+.dark-blue { color: rgb(29, 29, 103); }
+.green { color: green; }
+.yellow { color: yellow; }
+.orange { color: orange; }
+.purple { color: purple; }
+.gray { color: gray; }
+.grey { color: gray; }
+.white{ color: white; }
+
+.bold { font-weight: bold; }
+.bolder { font-weight: bolder; }
+
+/* Coloured content boxes */
+.content-box {
+  box-sizing: content-box;
+  background-color: #e2e2e2;
+}
+
+.content-box-blue,
+.content-box-gray,
+.content-box-grey,
+.content-box-army,
+.content-box-green,
+.content-box-purple,
+.content-box-red,
+.content-box-yellow {
+  border-radius: 10px;
+  margin: 0 0 15px;
+  overflow: hidden;
+  padding: 10px;
+  width: 100%;
+}
+
+.content-box-blue {
+  background-color: #F0F8FF;
+}
+
+.content-box-gray {
+  background-color: #e2e2e2;
+}
+
+.content-box-grey {
+  background-color: #F5F5F5;
+}
+
+.content-box-army {
+  background-color: #737a36;
+}
+
+.content-box-green {
+  background-color: #d9edc2;
+}
+
+.content-box-purple {
+  background-color: #e2e2f9;
+}
+
+.content-box-red {
+  background-color: #f9dbdb;
+}
+
+.content-box-yellow {
+  background-color: #fef5c4;
+}
+
+.full-width {
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+}
