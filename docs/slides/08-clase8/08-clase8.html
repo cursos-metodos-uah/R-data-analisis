@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>R para análisis de datos</title>
+    <title>Estadística IV</title>
     <meta charset="utf-8" />
-    <meta name="author" content=".small[Kevin Carrasco    Departamento de Sociología - UCH / COES   ]" />
+    <meta name="author" content=".small[Kevin Carrasco &amp; Daniela Olivares ]" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
@@ -27,7 +27,6 @@ class: front
 
 
 
-
 &lt;!---
 Para correr en ATOM
 - open terminal, abrir R (simplemente, R y enter)
@@ -38,589 +37,965 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 
 .pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
+# Estadística IV
+## **Kevin Carrasco &amp; Daniela Olivares**
+## **María Fernanda Nuñez**
 ## Sociología - UAH
-## 1er Sem 2024 
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+## 2do Sem 2024 
+## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
 ] 
 
 
 .pull-right[
 .right[
 &lt;br&gt;
-## .yellow[Sesión 8: Regresión lineal y valores predichos]
+## .yellow[Sesión 8: AFE y puntajes factoriales]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 ]
 
 ]
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 8]
-&lt;br&gt;
-
-.yellow[Repaso sesión anterior]
-
-Valores predichos
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
 ---
 
 layout: true
 class: animated, fadeIn
 
 ---
-# Asociación: covarianza / correlación
+class: inverse, bottom, right, animated, slideInRight
 
-.pull-left[
-  _¿Se relaciona la variación de una variable, con la variación de otra variable?_
+# Resumen hasta ahora
+
+---
+class: middle center
+
+# ¿Por qué usar baterías de variables?
+
+---
+class: middle center
+
+.center[
+![:scale 100%](../../files/img/slides/bateria-atrib-pob.png)
 ]
-.pull-right[
-.center[![:scale 100%](../../files/img/ingresoeduc.png)]
+
+
+---
+class: middle
+
+.pull-left-narrow[
+# Preguntas y error de medición
+]
+.pull-right-wide[
+.content-box-yellow[
+-   Para medir hechos observables simples usualmente se utiliza **una
+    pregunta** (ej: edad)
+
+-   Fenómenos complejos se miden en general con más de una pregunta, con
+    el objetivo de dar mejor cuenta del atributo (i.e. minimizar error
+    de medición)
+]]
+
+---
+
+
+
+
+
+# Análisis de indicadores en baterías
+
+.pull-left-narrow[
+1. .red[Univariado]: se sugiere presentar análisis descriptivos que contengan todos los indicadores para poder comparar frecuencias
+]
+
+.pull-right-wide[
+.center[
+![](08-clase8_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+
+.small[(likert plot, `sjPlot`)]
+]
 ]
 
 ---
-.pull-left[* Pero ojo, 
-**correlación no implica causalidad**]
 
+# Análisis de indicadores en baterías
 
-.pull-right[![:scale 100%](../../files/img/causalidad.png)]
+.tiny[
+
+&lt;table style="border-collapse:collapse; border:none;"&gt;
+&lt;tr&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres son mas&lt;br&gt;refinadas&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres deberian ser&lt;br&gt;protegidas&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres consiguen&lt;br&gt;privilegios en nombre de igualdad&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres derrotadas se&lt;br&gt;quejan de discriminacion&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres son mas&lt;br&gt;refinadas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres deberian ser&lt;br&gt;protegidas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.364&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres consiguen&lt;br&gt;privilegios en nombre de igualdad&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.224&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.199&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres derrotadas se&lt;br&gt;quejan de discriminacion&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.183&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.163&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.453&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="5" style="border-bottom:double black; border-top:1px solid black; font-style:italic; font-size:0.9em; text-align:right;"&gt;Computed correlation used pearson-method with listwise-deletion.&lt;/td&gt;
+&lt;/tr&gt;
+ 
+&lt;/table&gt;
+
+]
 
 ---
+# Análisis de indicadores en baterías
 
-## ¿Qué es la regresión lineal?
+- Se podría asumir un concepto o .red[dimensión subyacente] a la batería de items
+
+- Para facilitar el avance en el análisis (por ejemplo, relacionar ese concepto subyacente con otras variables), muchas veces se reduce la batería a algún .red[tipo de índice (sumativo/promedio)]
+
+- ¿Podemos asegurar que los items están realmente .red[midiendo lo mismo]?
+
+---
+class: bottom right
+
+## .red[Correlaciones, baterías y dimensiones subyacentes]
+
+---
+class: inverse
+
+## .yellow[Entonces:]
+
+### 1. analizar la .red[matriz de correlaciones] antes de generar cualquiér técnica de reducción de información (ej: crear índice)
+
+### 2. evaluar la posibilidad de generar algún tipo de .red[índice] que resuma la información
+---
+
+## Matriz de correlaciones
+
+Entonces:
+
+.tiny[
+&lt;table style="border-collapse:collapse; border:none;"&gt;
+&lt;tr&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres son mas&lt;br&gt;refinadas&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres deberian ser&lt;br&gt;protegidas&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres consiguen&lt;br&gt;privilegios en nombre de igualdad&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres derrotadas se&lt;br&gt;quejan de discriminacion&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres son mas&lt;br&gt;refinadas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres deberian ser&lt;br&gt;protegidas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.364&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres consiguen&lt;br&gt;privilegios en nombre de igualdad&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.224&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.199&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres derrotadas se&lt;br&gt;quejan de discriminacion&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.183&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.163&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.453&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="5" style="border-bottom:double black; border-top:1px solid black; font-style:italic; font-size:0.9em; text-align:right;"&gt;Computed correlation used pearson-method with listwise-deletion.&lt;/td&gt;
+&lt;/tr&gt;
+ 
+&lt;/table&gt;
+]
+
+---
+# Alpha de Cronbach
 
 --
 
-* Es un modelo estadístico que se usa para:
+- índice de consistencia interna de una batería
 
-  - **Conocer**: La relación de una variable dependiente de acuerdo a una/otras independiente(s)
-  - **Predecir**: Estimar el valor de una variable dependiente de acuerdo al valor de otras
-  - **Inferir**: si estas relaciones son estadísticamente significativas
+- usualmente se reporta previo a a construcción de un índice
 
----
-## ¿Qué es la regresión lineal?
+- varía entre 0 y 1; valores más cercanos a 1 indican mayor consistencia
 
-* Dos tipos de regresión:
-  - Regresión lineal simple (una variable independiente)
-  - Regresión lineal múltiple (más de una variable independiente)
+- en general valores sobre 0.6 se consideran aceptables
+
+- más información [aquí](https://rpubs.com/jboscomendoza/alfa_cronbach_r#:~:text=El%20Alfa%20de%20Cronbach%20nos,apuntando%E2%80%9D%20en%20la%20misma%20direcci%C3%B3n.)
 
 ---
 
+# Alpha de Cronbach
 
+.pull-left[
+- funcion alpha de la librería `psych`
 
-.pull-left-narrow[
-### Ejemplo ]
+- se genera un objeto (lo llamaremos alpha). Contiene bastante información, por ahora nos enfocaremos solo en el valor de alpha (`raw_alpha`)
+]
+.pull-right[
+.small[
 
-.pull-right-wide[
-
-```
-##   Educacion Ingreso
-## 1         1     250
-## 2         2     200
-## 3         3     250
-## 4         4     300
-## 5         5     400
-## 6         6     350
-## 7         7     400
-## 8         8     350
+```r
+alpha &lt;-psych::alpha(data)
+alpha$total$raw_alpha
 ```
 
+```
+## [1] 0.5859888
+```
+]
+]
+---
+# Alpha de Cronbach
+
+- puntaje 0.58, por lo tanto bajo los valores aceptables de consistencia interna
+
+---
+# Opciones
+
+- construcción de índices basados en la información de la matriz de correlaciones
+
+- análisis factorial
+
+
+---
+class: inverse bottom right
+# .red[Construcción de índices]
+
+---
+# Índice promedio
+
+- vamos a generar 2 índices a partir de esta batería: uno para sexismo benevolente y otro para sexismo hostil.
+
+
+---
+# Índice de sexismo (Promedio)
+
+
+```r
+data &lt;- cbind(data, 
+              "benevolente_prom"=rowMeans(data %&gt;%
+              dplyr::select(son_refinadas,ser_protegidas), 
+              na.rm=TRUE))
+
+data &lt;- cbind(data, 
+              "hostil_prom"=rowMeans(data %&gt;% 
+              dplyr::select(consiguen_privilegios,quejan_discriminacion), 
+              na.rm=TRUE))
+```
+
+---
+
+# Sin embargo...
+
+.pull-left[
+.small[
+
+```r
+alpha &lt;-
+  psych::alpha(dplyr::select(data,
+                      son_refinadas,
+                      ser_protegidas))
+alpha$total$raw_alpha
+```
+
+```
+## [1] 0.5204052
+```
+]
+]
+
+.pull-right[
+.small[
+
+```r
+alpha &lt;-
+  psych::alpha(dplyr::select(data, 
+                      consiguen_privilegios,
+                      quejan_discriminacion))
+
+alpha$total$raw_alpha
+```
+
+```
+## [1] 0.6206947
+```
+]
 ]
 
 ---
-.pull-left-narrow[
-### Ejemplo ]
+class: inverse
 
-.pull-right-wide[
-![](08-clase8_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
-]
+## Resumen índices
+
+- baterías y dimensiones subyacentes (latentes)
+
+- evaluación de consistencia interna (previo a construcción de índices)
+
+- índices y .red[factores]
+
+---
+class: inverse,right
+
+# **.red[Contenidos]**
+
+&lt;br&gt;
+&lt;br&gt;
+
+### 1. .yellow[Análisis factorial exploratorio]
 
 ---
 
-.pull-left-narrow[
-### Ejemplo ]
+class: middle
 
-.pull-right-wide[
-![](08-clase8_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+.pull-left-narrow[
+#  Variables latentes (1)
 ]
 
----
-.pull-left-narrow[
-### La recta de regresión]
-
 .pull-right-wide[
 
-`$$\widehat{Y}=b_{0} +b_{1}X$$`
+.content-box-red[
+-   La mayor parte de las variables en el mundo social no son
+    directamente observables. Esto las hace constructos hipotéticos **latentes**
+    
+-   La medición de variables latentes se realiza a partir de indicadores observables, tales como los .red[ítems de una batería/ cuestionario]
+]
+]
+---
+
+class: middle
+
+.pull-left-narrow[
+#  Variables latentes (2)
+]
+.pull-right-wide[
+.content-box-yellow[
+-   Lo latente puede ser entendido como la .red[varianza compartida] por
+    diferentes indicadores observados
+
+-   La medición de variables latentes se encuentra asociada al .red[modelo de factor común] (Thurstone) y al análisis factorial
+]
+]
+---
+--- 
+
+# Factor común
+
+.pull-left[
+-   Cada indicador en un set de medidas observadas es una .red[función lineal] de uno o más factores comunes y un factor único
+
+-   Como referencia podemos usar la .red[teoría clásica de test] (CTT), que
+    divide el puntaje de los indicadores entre puntaje verdadero y error
+    ]
+
+--
+
+.pull-right[
+&lt;br&gt;
+`$$X=T+E$$`
 
 Donde
+- X= puntaje observado,
+- T= puntaje verdadero, y
+- E= error
 
-- `\(\widehat{Y}\)` es el valor estimado de `\(Y\)`
-
-- `\(b_{0}\)` es el intercepto de la recta (el valor de Y cuando X es 0)
-
-- `\(b_{1}\)` es el coeficiente de regresión, que nos dice cuánto aumenta Y por cada punto que aumenta X
 ]
 
 ---
-# Estimación de los coeficientes de la ecuación:
 
-`$$b_{1}=\frac{Cov(XY)}{VarX}$$`
+# Modelo de factor común
 
-`$$b_{1}=\frac{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}}{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})} {n-1}}$$`
+.pull-left[
+-   La existencia de un solo ítem por constructo no permite aislar puntaje verdadero del error
 
-Y simplificando
+-   Si existen más ítems, podemos estimar un **análisis factorial** y
+    distinguir entre **varianza común** (compartida con otros indicadores) y **varianza única** (o error)
+]
 
-`$$b_{1}=\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})}$$`
+.pull-right[
+.center[
+  ![](../../files/img/slides/figure1efa.jpg)
+]
+]
 
 ---
+class: middle
 
-### Pero este es un curso de R, así que:
+.pull-left-narrow[
+# Análisis factorial
+
+Es un método que permite:
+]
+
+.pull-right-wide[
+.content-box-gray[
+- identificar la varianza común a una serie de indicadores
+
+- establecer la contribución de cada indicador a la varianza común
+
+- estimar posteriormente un índice (puntaje factorial) para cada factor, con mayor precisión que un promedio bruto
+]]
+---
+# Análisis factorial
+
+-   Un factor es una variable no observada o **latente** que da cuenta de las correlaciones entre indicadores 
+    
+- los indicadores están correlacionados porque comparten una causa común - concepto de **independencia condicional**
+
+-   El o los factores darían cuenta (i.e. causarían) de la **covariación** entre una serie de medidas observadas (indicadores)
+
+---
+class: middle
+
+.pull-left-narrow[
+.content-box-red[
+&lt;br&gt;
+# Objetivos del análisis factorial
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+]]
+
+.pull-right-wide[
+&lt;br&gt;
+-   .red[Teórico]: relacionar datos con dimensiones latentes basadas en conceptos (validez de constructo)
+
+-   .blue[Pragmático]: hacer sentido de un conjunto de datos, reducción de
+    dimensiones y obtención de puntajes
+
+-   .green[Metodológico]: aislar el error (varianza única) de la varianza común
+]
+
+---
+# Alternativas en análisis factorial
+
+-   .red[exploratorio (EFA)]: Permite explorar las dimensiones que subyacen a una escala
+
+-   .red[confirmatorio (CFA)]: Permite confirmar las dimensiones que subyacen a una escala, aislando el error de medición en la estimación
+
+---
+# Análisis factorial exploratorio (EFA)
+
+-   Forma de análisis factorial donde se estiman la o las variables
+    latentes a un conjunto de indicadores, **sin una especificación previa** de la estructura factorial.
+
+--
+
+-   Preguntas a responder:
+
+    -   ¿Cuántos factores subyacen a un conjunto de indicadores?
+
+    -   ¿Cómo se relacionan los indicadores con los factores?
+
+    -   ¿Cómo es la calidad del modelo estimado?
+
+
+
+---
+.content-box-green[
+# Características EFA
+]
+
+.pull-left-narrow[
+
+.center[
+&lt;br&gt;
+  ![](../../files/img/slides/figure1efa.jpg)
+]]
+.pull-right-wide[
+-   Basado en la matriz de correlaciones
+
+- Modelo estandarizado (varianza factores=1)
+
+-   Diferentes métodos de extracción de factores
+
+-   Determinación del número y "calidad" de las dimensiones (continuas) subyacentes a una escala
+
+]
+
+---
+# Ejemplo
+
+.small[
 
 
 ```
+## Parallel analysis suggests that the number of factors =  2  and the number of components =  NA
+```
+
+&lt;table style="border-collapse:collapse; border:none;"&gt;
+&lt;caption style="font-weight: bold; text-align:left;"&gt;Análisis factorial atribuciones de pobreza&lt;/caption&gt;
+&lt;tr&gt;
+&lt;th style="border-top:double black; padding:0.2cm;"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th style="border-top:double black; padding:0.2cm;"&gt;Factor 1&lt;/th&gt;
+&lt;th style="border-top:double black; padding:0.2cm;"&gt;Factor 2&lt;/th&gt;
+&lt;th style="border-top:double black; padding:0.2cm; font-style:italic; color:#666666;"&gt;Communality&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=" border-top:1px solid black;"&gt;Grado de acuerdo: Mujeres son mas&lt;br&gt;refinadas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; color:#cccccc; border-top:1px solid black;"&gt;0.14&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; border-top:1px solid black;"&gt;0.60&lt;/td&gt;
+&lt;td style="padding:0.2cm; font-style:italic; color:#666666; text-align:center; border-top:1px solid black;"&gt;0.38&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=""&gt;Grado de acuerdo: Mujeres deberian ser&lt;br&gt;protegidas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; color:#cccccc;"&gt;0.12&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.57&lt;/td&gt;
+&lt;td style="padding:0.2cm; font-style:italic; color:#666666; text-align:center;"&gt;0.34&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=""&gt;Grado de acuerdo: Mujeres consiguen&lt;br&gt;privilegios en nombre de igualdad&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.65&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; color:#cccccc;"&gt;0.21&lt;/td&gt;
+&lt;td style="padding:0.2cm; font-style:italic; color:#666666; text-align:center;"&gt;0.47&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=""&gt;Grado de acuerdo: Mujeres derrotadas se&lt;br&gt;quejan de discriminacion&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.65&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; color:#cccccc;"&gt;0.15&lt;/td&gt;
+&lt;td style="padding:0.2cm; font-style:italic; color:#666666; text-align:center;"&gt;0.44&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; font-style:italic;"&gt;Total Communalities&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; font-style:italic;" colspan="2"&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; font-style:italic;"&gt;1.63&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; font-style:italic; border-bottom:double;"&gt;Cronbach's &amp;alpha;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; font-style:italic; border-bottom:double;"&gt;0.62&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; font-style:italic; border-bottom:double;"&gt;0.52&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center; font-style:italic; border-bottom:double;"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+ 
+&lt;/table&gt;
+
+]
+
+---
+
+.pull-left-narrow[
+.content-box-purple[
+&lt;br&gt;
+# Conceptos y parámetros
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+]
+]
+
+.pull-right-wide[
+-   **Factores**: variables latentes que están a la base de las
+    correlaciones entre los indicadores
+
+-   **Cargas factoriales**: medida estandarizada de asociación (correlación) entre el indicador y la variable latente
+
+-   **Comunalidad**: proporción del indicador que se asocia a factor(es) comun(es)
+]
+---
+class: middle
+
+.pull-left-narrow[
+.content-box-yellow[
+&lt;br&gt;
+# Conceptos y parámetros (2)
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+]
+]
+
+.pull-right-wide[
+-   **Varianza única** (uniqueness): 1-comunalidad
+
+-   **Eigenvalues**: medida de proporción de la varianza total
+    correspondiente a cada uno de los factor (SS loadings)
+
+-   **Proporción de varianza** explicada por el factor = eigenvalue /
+    número de indicadores
+    ]
+    
+---
+class: middle
+
+.pull-left-narrow[
+.content-box-blue[
+&lt;br&gt;
+# Pasos en el análisis
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+]]
+
+.pull-right-wide[
+-   Estimación de matriz de correlaciones
+
+-   Extraccion de factores
+
+-   Decisión sobre número de factores
+
+-   Rotación
+
+-   Interpretación y reporte
+
+-   Obtención de puntajes factoriales
+]
+---
+class: middle
+
+.pull-left-narrow[
+.content-box-blue[
+&lt;br&gt;
+# Pasos en el análisis
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+]]
+
+.pull-right-wide[
+-   Estimación de matriz de correlaciones
+
+-   Extraccion de factores
+
+-   Decisión sobre número de factores
+
+-   Rotación
+
+-   Interpretación y reporte
+
+-   .red[Obtención de puntajes factoriales]
+]
+
+
+---
+# Supuestos a evaluar
+
+-   Nivel de medición de variables, normalidad (eventualmente test de normalidad multivariado, ej: Shapiro Wilk multivariado)
+
+-   Test de adecuación muestal (KMO)
+.medium[
+      - varía entre 0 y 1, contrasta si las correlaciones parciales entre las variables son pequeñas.
+
+- valores pequeños (menores a 0.5) indican que los datos no serían adecuados para EFA, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables
+]
+
+---
+# Supuestos a evaluar (2)
+
+-   Nivel de correlaciones de la matriz: test de esfericidad de Bartlett
+
+    -   se utiliza para evaluar la hipótesis que la matriz de
+        correlaciones es una matriz identidad (en la diagonal=1 y bajo la
+        diagonal=0)
+
+    -   se busca significación (p `\(&lt;\)` 0.05), ya que se espera que las
+        variables estén correlacionadas
+
+---
+# Supuestos a evaluar (2)
+
+.tiny[
+&lt;table style="border-collapse:collapse; border:none;"&gt;
+&lt;tr&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres son mas&lt;br&gt;refinadas&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres deberian ser&lt;br&gt;protegidas&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres consiguen&lt;br&gt;privilegios en nombre de igualdad&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;Grado de acuerdo: Mujeres derrotadas se&lt;br&gt;quejan de discriminacion&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;benevolente_prom&lt;/th&gt;
+&lt;th style="font-style:italic; font-weight:normal; border-top:double black; border-bottom:1px solid black; padding:0.2cm;"&gt;hostil_prom&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres son mas&lt;br&gt;refinadas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.364&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.224&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.183&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.863&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.238&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres deberian ser&lt;br&gt;protegidas&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.364&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.199&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.163&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.784&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.212&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres consiguen&lt;br&gt;privilegios en nombre de igualdad&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.224&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.199&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.453&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.257&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.842&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;Grado de acuerdo: Mujeres derrotadas se&lt;br&gt;quejan de discriminacion&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.183&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.163&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.453&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.210&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.863&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;benevolente_prom&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.863&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.784&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.257&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.210&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.273&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="font-style:italic;"&gt;hostil_prom&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.238&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.212&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.842&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.863&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;0.273&lt;span style="vertical-align:super;font-size:0.8em;"&gt;***&lt;/span&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:center;"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="7" style="border-bottom:double black; border-top:1px solid black; font-style:italic; font-size:0.9em; text-align:right;"&gt;Computed correlation used pearson-method with listwise-deletion.&lt;/td&gt;
+&lt;/tr&gt;
+ 
+&lt;/table&gt;
+]
+
+---
+# Métodos de extracción
+
+
+En el análisis factorial exploratorio (AFE), los **métodos de extracción** se refieren a las técnicas que se utilizan para determinar los factores/ variables latentes a las variables observadas. Los tres métodos principales son:
+
+-   **Factores principales**
+
+-   **Factores principales iterados**
+
+-   **Maximum likelihood**
+
+---
+# Métodos de extracción
+
+-   **Factores principales**
+
+Este es uno de los métodos más comunes para la extracción de factores. Se basa en la descomposición de la matriz de correlaciones para identificar los factores que explican la mayor cantidad de varianza compartida por las variables. Es útil cuando el objetivo es reducir la dimensionalidad manteniendo el máximo de información posible.
+
+---
+# Métodos de extracción
+
+-   **Factores principales iterados**: 
+
+Este método es una variante del anterior. Estima las **comunalidades** (la cantidad de varianza de cada variable explicada por los factores) iterativamente. Reemplaza los valores iniciales de las comunalidades en la matriz de correlaciones con las comunalidades estimadas a partir de los **factor loadings** (cargas factoriales) y repite el proceso hasta que se alcance una solución estable. Este método mejora la precisión de la estimación de los factores.
+
+---
+# Métodos de extracción
+
+-   **Maximum likelihood**: 
+
+Este método busca encontrar los parámetros del modelo que maximicen la probabilidad de que los datos observados sean replicados por el modelo factorial. Es útil cuando se quiere hacer inferencia estadística sobre los factores, ya que permite realizar pruebas de hipótesis y obtener intervalos de confianza para los factores y sus cargas. Es más robusto, pero requiere que los datos cumplan ciertos supuestos como normalidad multivariada.
+
+---
+# Instrumentos y criterios de selección del número de factores
+
+-   Criterio de Kaiser: eigenvalues (cantidad de varianza explicada por cada factor) mayores a 1
+
+-   Scree plot (gráfico de sedimentación)
+
+-   **Análisis paralelo**: comparación de eigenvalues de la muestra con eigenvalues de datos aleatorios. Nº apropiado de factores: numero de eigenvalues de los datos reales que son mayores que sus correspondientes eigenvalues de datos aleatorios
+
+---
+# Screeplot y análisis paralelo
+
+.center[
+  ![:scale 60%](../../files/img/slides/parallel.PNG)
+]
+
+---
+
+.pull-left-narrow[
+# Tipos de rotación
+
+-   **Ortogonal**: asume que los factores no se encuentran correlacionados
+
+-   **Oblicua**: permite correlación entre factores
+]
+
+.pull-right-wide[
+.center[
+  ![:scale 80%](../../files/img/slides/rotate.PNG)
+]
+]
+
+---
+# Puntajes factoriales
+
+Los puntajes factoriales son “estimaciones” (predicciones) de puntajes en los factores para cada observación en los datos.
+
+* Estos puntajes pueden utilizarse en análisis posteriores
+
+* Se pueden calcular puntajes para cada observación en cada factor utilizando un método de regresión
+
+* Estas nuevas variables se estandarizan con media 0 y desviación estándar 1
+
+---
+
+
+```
+## Factor Analysis using method =  ml
+## Call: fa(r = fa, nfactors = 2, scores = "regression", fm = "ml")
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##                         ML1   ML2   h2   u2 com
+## son_refinadas          0.01  0.62 0.38 0.62   1
+## ser_protegidas        -0.01  0.58 0.34 0.66   1
+## consiguen_privilegios  0.67  0.03 0.47 0.53   1
+## quejan_discriminacion  0.68 -0.03 0.44 0.56   1
 ## 
-## Call:
-## lm(formula = Ingreso ~ Educacion, data = data)
+##                        ML1  ML2
+## SS loadings           0.90 0.72
+## Proportion Var        0.23 0.18
+## Cumulative Var        0.23 0.41
+## Proportion Explained  0.56 0.44
+## Cumulative Proportion 0.56 1.00
 ## 
-## Coefficients:
-## (Intercept)    Educacion  
-##         200           25
+##  With factor correlations of 
+##      ML1  ML2
+## ML1 1.00 0.47
+## ML2 0.47 1.00
+## 
+## Mean item complexity =  1
+## Test of the hypothesis that 2 factors are sufficient.
+## 
+## df null model =  6  with the objective function =  0.45 with Chi Square =  1522.89
+## df of  the model are -1  and the objective function was  0 
+## 
+## The root mean square of the residuals (RMSR) is  0 
+## The df corrected root mean square of the residuals is  NA 
+## 
+## The harmonic n.obs is  3354 with the empirical chi square  0  with prob &lt;  NA 
+## The total n.obs was  3417  with Likelihood Chi Square =  0  with prob &lt;  NA 
+## 
+## Tucker Lewis Index of factoring reliability =  1.004
+## Fit based upon off diagonal values = 1
+## Measures of factor score adequacy             
+##                                                    ML1  ML2
+## Correlation of (regression) scores with factors   0.80 0.75
+## Multiple R square of scores with factors          0.64 0.56
+## Minimum correlation of possible factor scores     0.28 0.13
+```
+
+---
+
+
+
+
+```
+##    benevolente_prom hostil_prom         ML1         ML2
+## 1               4.5         4.0  0.62586434  0.65986183
+## 2               4.5         3.5  0.25445615  0.67328242
+## 3               4.5         4.0  0.62498033  0.69225511
+## 4               3.5         3.5 -0.05380749 -0.36360884
+## 5               4.0         4.0  0.53314791  0.22298473
+## 6               4.0         4.0  0.53314791  0.22298473
+## 7               4.0         3.0 -0.33161523  0.05429558
+## 8               4.0         3.0 -0.33161523  0.05429558
+## 9               4.0         4.0  0.53314791  0.22298473
+## 10              4.0         3.0 -0.39347262 -0.01107631
+```
+
+---
+## Factor 1
+
+```
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+## -2.80036 -0.45533  0.19260  0.00396  0.53315  1.64432      120
+```
+
+## Factor 2
+
+```
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+## -3.19764 -0.36361  0.13979  0.00049  0.45705  1.36319      120
 ```
 
 
+---
+class: roja
+# Resumen
+
+- dimensiones subyacentes = factores
+
+- análisis factorial
+  - relación entre indicadores y dimensiones
+  - estimación de número de dimensiones probables subyacentes a batería
+  - rotación
+  - obtención de puntajes factoriales (índices ponderados)
 
 ---
-### Estimación de los coeficientes de la ecuación:
+class: inverse middle
 
-`$$\bar{Y}=b_{0}+b_{1}\bar{X}$$`
-Reemplazando:
-
-`$$\bar{Y}=b_{0}+25\bar{X}$$`
-
-Despejando el valor de `\(b_{0}\)`
-
-`$$b_{0}=200-0\bar{X}$$`
----
-
-.pull-left-narrow[
-### Ejemplo 
-
-
-*Por cada unidad que aumenta educación, ingreso aumenta en 25 unidades*
-]
-
-.pull-right-wide[
-![](08-clase8_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
-]
-
----
-## Varianza explicada
-
-- ¿Qué porcentaje de la varianza de Y logramos explicar con X?
-
---
-
-* .red[R2] = Porcentaje de la variación de Y puede ser asociado a la variación de X
-
----
-
-.pull-left-narrow[
-### Ejemplo 
-
-
-El ajuste del modelo a los datos se relaciona con la proporción de residuos generados por el modelo respecto de la varianza total de Y (R2)
-]
-
-.pull-right-wide[
-![](08-clase8_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
-]
-
----
-
-## Inferencia estadística
-
-* ¿Cómo sabemos si `\(b_{1}\)` es estadísticamente significativo?
-
---
-
-* ¿Nuestros datos se pueden extrapolar a la población?
-
----
-
-## Inferencia estadística
-
-- Según criterios muestrales:
-  * Distribución normal
-  * Desviación estándar
-  
-- Error estándar
-
----
-
-&lt;table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/th&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;Model 1&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(Intercept)&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;200.00&lt;sup&gt;&amp;#42;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(35.57)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Educacion&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;25.00&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(7.04)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.68&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Adj. R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.62&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-bottom: 2px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Num. obs.&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td style="font-size: 0.8em;" colspan="2"&gt;&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.001; &lt;sup&gt;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.01; &lt;sup&gt;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.05&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
-
----
-
-
-
-
-&lt;table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/th&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;Model 1&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(Intercept)&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;106.12&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(33.92)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Educacion&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;7.07&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(6.57)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;edad&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;5.48&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(1.56)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.91&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Adj. R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.87&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-bottom: 2px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Num. obs.&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td style="font-size: 0.8em;" colspan="2"&gt;&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.001; &lt;sup&gt;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.01; &lt;sup&gt;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.05&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
-
----
-
-## Parcialización
-
-.center[![:scale 50%](../../files/img/ingresoeducexp.png)]
-
----
-
-
-¿y la interpretación para variables categóricas?
-
-.pull-left[
-.small[
-&lt;table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/th&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;Model 1&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Intercepto&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;233.33&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(23.57)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Educación media&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;116.67&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(37.27)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Educación superior&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;133.33&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(33.33)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.78&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Adj. R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.70&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-bottom: 2px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Num. obs.&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td style="font-size: 0.8em;" colspan="2"&gt;&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.001; &lt;sup&gt;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.01; &lt;sup&gt;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.05&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
-]
-]
---
-.pull-right[
-*Las personas que tienen educación media ganan $116mil más en comparación con quienes tienen educación básica, efecto que es estadísticamente significativo (p&lt;0.01)*
-
-]
-
----
-class: inverse, bottom, right
-
-# .red[Sesión 7]
-&lt;br&gt;
-
-Repaso sesión anterior
-
-.yellow[Valores predichos]
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-
----
-¿Cómo podemos predecir el valor esperado de una variable para una persona en particular?
-
-.pull-left-narrow[
-.small[
-&lt;table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/th&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;Model 1&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Intercepto&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;233.33&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(23.57)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Educación media&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;116.67&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(37.27)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Educación superior&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;133.33&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(33.33)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.78&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Adj. R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.70&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-bottom: 2px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Num. obs.&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td style="font-size: 0.8em;" colspan="2"&gt;&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.001; &lt;sup&gt;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.01; &lt;sup&gt;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.05&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
-]
-]
-
-.pull-right-wide[
-`$$\bar{Y}=b_{0}+b_{1}\bar{X}$$`
-
-Reemplazando:
-
-`$$\bar{Y}=233+b_{1}\bar{X}$$`
-
-¿Si una persona tuviera un nivel de educación superior?
-
-`$$\bar{Y}=233+133$$`
-`$$\bar{Y}=366$$`
-]
-
----
-## Graficando
-
-![](08-clase8_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
-
-
----
-## Variables numéricas
-
-&lt;table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/th&gt;
-&lt;th style="padding-left: 5px;padding-right: 5px;"&gt;Model 1&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(Intercept)&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;96.44&lt;sup&gt;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(33.14)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;edad&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;6.78&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;&amp;nbsp;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;(0.99)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-top: 1px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.89&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Adj. R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;0.87&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="border-bottom: 2px solid #000000;"&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;Num. obs.&lt;/td&gt;
-&lt;td style="padding-left: 5px;padding-right: 5px;"&gt;8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td style="font-size: 0.8em;" colspan="2"&gt;&lt;sup&gt;&amp;#42;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.001; &lt;sup&gt;&amp;#42;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.01; &lt;sup&gt;&amp;#42;&lt;/sup&gt;p &amp;lt; 0.05&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
-
----
-.pull-left[
-![](08-clase8_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
-]
-
-
-.pull-right[
-`$$\bar{Y}=b_{0}+b_{1}\bar{X}$$`
-
-Reemplazando:
-
-`$$\bar{Y}=96.44+b_{1}*6,78$$`
-
-¿Una persona de edad 40?
-
-`$$\bar{Y}=96,44+40*6,78$$`
-`$$\bar{Y}=367.64$$`
-]
-
+## .red[Práctica análisis factorial exploratorio]
+[.yellow[https://estadisticaiv.netlify.app/practicos/07-content]](https://estadisticaiv.netlify.app/practicos/07-content)
 
 ---
 class: front
 
+
+
 .pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
+# Estadística IV
+## **Kevin Carrasco &amp; Daniela Olivares**
+## **María Fernanda Nuñez**
 ## Sociología - UAH
-## 1er Sem 2024 
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+## 2do Sem 2024 
+## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
 ] 
 
 
 .pull-right[
 .right[
 &lt;br&gt;
-## .yellow[Sesión 6: Índices y escalas]
+## .yellow[Sesión 7: Análisis factorial exploratorio]
 ![:scale 70%](../../files/img/eval-hires.png)
 
-
-
 ]
 
 ]
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

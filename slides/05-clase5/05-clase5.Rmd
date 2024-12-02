@@ -1,7 +1,7 @@
 ---
-title: "R para análisis de datos"
-author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2024"
+title: "Estadística IV"
+author: ".small[Kevin Carrasco & Daniela Olivares<br>]"
+date: "2do Sem 2024"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -58,18 +58,19 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 
 .pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
+# Estadística IV
+## **Kevin Carrasco & Daniela Olivares**
+## **María Fernanda Nuñez**
 ## Sociología - UAH
-## 1er Sem 2024 
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+## 2do Sem 2024 
+## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
 ] 
 
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 5: Asociación de variables]
+## .yellow[Sesión 5: Correlación y regresión]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 ]
@@ -82,10 +83,9 @@ class: inverse, bottom, right
 # .red[Sesión 5]
 <br>
 
-.yellow[Repaso sesión anterior]
+Correlación
 
-Asociación entre variables
-
+Regresión
 <br>
 <br>
 <br>
@@ -96,137 +96,26 @@ layout: true
 class: animated, fadeIn
 
 ---
-## Datos
-
-* Los datos miden al menos una *característica* de a los menos una *unidad*  en a lo menos *un punto en el tiempo*
-
---
- + Ejemplo: La esperanza de vida en Chile el 2017 fue de 79,9 años
-
-   - Característica (variable) : esperanza de vida
-
-   - Unidad: Años
-
-   - Punto en el tiempo: 2017
-
----
-## Base de Datos
-
-* Forma "rectangular" de almacenamiento de datos:
-
-.center[![:scale 60%](../../files/img/ObservacionesyVariables.png)]
-
----
-## Base de Datos
-
-  - cada .blue[fila] representa una unidad o caso (ej: un entrevistad_)
-
-  - cada .orange[columna] una variable (ej: edad)
-
-  - cada .purple[variable] posee valores numéricos
-
-  - los valores numéricos pueden estar asociados a una etiqueta (ej: 1=Mujer)
-
-
----
-## Ejemplos de estudios / bases de datos
-
-1. [Encuesta Centro de Estudios Públicos](https://www.cepchile.cl/cep/site/edic/base/port/encuestacep.html)
-
-2. [Encuesta CASEN](http://observatorio.ministeriodesarrollosocial.gob.cl/casen-multidimensional/casen/casen_2017.php)
-
-3. [Encuesta Lapop](https://www.vanderbilt.edu/lapop-espanol/)
-
-4. [ELSOC](https://coes.cl/encuesta-panel/)
-
----
-## Variables
-
-- Una variable representa cualquier cosa o propiedad que varia y a la cuál se le asigna un valor. Es decir:
-
-- $Variable \neq Constante$
-
-- Pueden ser visibles o no visibles/latentes. (Ej: peso / inteligencia)
-
----
-## Variables
-
-- discretas (Rango finito de valores):
-
-      - Dicotómicas
-      - Politómicas
-
-- continuas:
-
-      - Rango (teóricamente) infinito de valores.
-
----
-## Escalas de medición de variables
-
-- NOIR: Nominal, Ordinal, Intervalar, Razón
-
-.small[
-| Tipo       	| Características                     	        | Propiedad de números 	| Ejemplo|
-|------------	|----------------------------------------------|---------------	|-----------	|
-| *Nominal*    	| Uso de números en lugar de palabras 	| Identidad            	| Nacionalidad      	|
-| *Ordinal*    	| Números se usan para ordenar series 	| + ranking            	| Nivel educacional 	|
-| *Intervalar* 	| Intervalos iguales entre números    	| + igualdad           	| Temperatura       	|
-| *Razón*      	| Cero real                           	| + aditividad         	| Distancia         	|
-]
-
----
-## Tipos de datos en relación a escalas de medición.
-
-* **Datos categóricos**:
-
-    - pueden ser medidos sólo mediante escalas nominales, u ordinales en caso de orden de rango
-
-* **Datos continuos**:
-    - Medidos en escalas intervalares o de razón
-    - Pueden ser transformados a datos categóricos
-
----
-## Descriptivos según tipo de variable
-
-<br>
-.small[
-|             	| Categórica                      	| Continua                      	| Categ.(y)/Categ.(x)                    	| Cont.(y)/Categ.(x)                	|
-|-------------	|---------------------------------	|-------------------------	|------------------------------------------------	|------------------------------------------	|
-| **Ejemplo**     	| **Estatus Ocupacional**             	| **Ingreso**                       	| **Estatus Ocupacional (Y) / Género (X)**           	| **Ingreso (Y) / Género (X)**                 	|
-| Tabla       	| Frecuencias / porcentajes                  	| $\bar{X}$/sd ... o recodificar en categorías      	| Tabla de Contingencia                          	| Clasificar Y                             	|
-| Gráfico     	| Barras                          	| Histograma / boxplot          	| Gráfico de barras condicionado                 	| Histograma, box plot condicionado        	|
-]
-
----
-## Tipos de análisis estadístico bivariado
-
-- Variable dependiente (y) : lo que quiero explicar
-
-- Variable independiente (x): lo que me permite explicar la dependiente
-
-.small[
-| Variable independiente x 	| Variable dependiente Categórica   	| Variable dependiente Continua        	|
-|--------------------------	|-----------------------------------	|--------------------------------------	|
-| Categórica               	| Análisis de tabla de Contigencia, Chi2	| Análisis de Varianza ANOVA, Prueba T 	|
-| Continua                 	| Regresión Logística 	| Correlación / Regresión Lineal                     	|
-]
-
----
 class: inverse, bottom, right
 
 
 # .red[Sesión 5]
 <br>
 
-Repaso sesión anterior
+.yellow[Correlación]
 
-.yellow[Asociación entre variables]
-
+Regresión
 <br>
 <br>
 <br>
 <br>
 ---
+
+layout: true
+class: animated, fadeIn
+
+---
+
 class: inverse, center
 
 <br>
@@ -289,39 +178,290 @@ class: inverse, center
 
 ## Adivina la correlación - [http://guessthecorrelation.com/](guessthecorrelation.com)
 
+---
+.pull-left[* Pero ojo, 
+**correlación no implica causalidad**]
+
+
+.pull-right[![:scale 100%](../../files/img/causalidad.png)]
+
+---
+class: inverse, bottom, right
+
+
+# .red[Sesión 5]
+<br>
+
+Correlación
+
+.yellow[Regresión]
+<br>
+<br>
+<br>
+<br>
+
+
+---
+
+## ¿Qué es la regresión lineal?
+
+--
+
+* Es un modelo estadístico
+
+--
+
+- Se usa para:
+
+  - **Conocer**: La relación de una variable dependiente de acuerdo a una/otras independiente(s)
+  - **Predecir**: Estimar el valor de una variable dependiente de acuerdo al valor de otras
+  - **Inferir**: si estas relaciones son estadísticamente significativas
+
+---
+## ¿Qué es la regresión lineal?
+
+* Dos tipos de regresión:
+  - Regresión lineal simple (una variable independiente)
+  - Regresión lineal múltimple (más de una variable independiente)
+
+---
+## ¿Qué es la regresión lineal
+
+.pull-left-narrow[
+### Terminología:
+]
+
+.pull-right-wide[![:scale 100%](../../files/img/terminologia.png)]
+
+---
+```{r echo=FALSE}
+data <- cbind(Educacion=c(1,2,3,4,5,6,7,8),
+              Ingreso=c(250,200,250,300,400,350,400,350))
+data <- as.data.frame(data)
+```
+
+
+.pull-left-narrow[
+### Ejemplo ]
+
+.pull-right-wide[
+```{r}
+data
+```
+
+]
+
+---
+```{r echo=FALSE}
+graph1<-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point()+
+  ylim(100,400)+
+  xlim(0,8)
+```
+
+.pull-left-narrow[
+### Ejemplo ]
+
+.pull-right-wide[
+```{r}
+graph1
+```
+
+]
+
+---
+```{r echo=FALSE}
+graph2<-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point(size=3)+
+  geom_smooth(method = "lm", se=FALSE)+
+  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 400, by = 100))+
+  ylim(100,400)+
+  xlim(0,8)
+```
+
+.pull-left-narrow[
+### Ejemplo ]
+
+.pull-right-wide[
+```{r}
+graph2
+```
+
+]
+
+---
+.pull-left-narrow[
+### La recta de regresión]
+
+.pull-right-wide[
+
+$$\widehat{Y}=b_{0} +b_{1}X$$
+
+Donde
+
+- $\widehat{Y}$ es el valor estimado de $Y$
+
+- $b_{0}$ es el intercepto de la recta (el valor de Y cuando X es 0)
+
+- $b_{1}$ es el coeficiente de regresión, que nos dice cuánto aumenta Y por cada punto que aumenta X
+]
+
+---
+# Estimación de los coeficientes de la ecuación:
+
+$$b_{1}=\frac{Cov(XY)}{VarX}$$
+
+$$b_{1}=\frac{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}}{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})} {n-1}}$$
+
+Y simplificando
+
+$$b_{1}=\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})}$$
+
+---
+
+### En R es más simple:
+
+reg1<-lm(Ingreso~Educacion, data=data)
+
+reg1
+
+```{r}
+reg1<-lm(Ingreso~Educacion, data=data)
+reg1
+```
 
 
 
 ---
-class: inverse
+### Estimación de los coeficientes de la ecuación:
 
-# RESUMEN
+$$\bar{Y}=b_{0}+b_{1}\bar{X}$$
+Reemplazando:
 
-- Datos y variables
+$$\bar{Y}=b_{0}+25\bar{X}$$
+
+Despejando el valor de $b_{0}$
+
+$$b_{0}=200-0\bar{X}$$
+---
+
+.pull-left-narrow[
+### Ejemplo 
 
 
-- Introducción correlación
+*Por cada unidad que aumenta educación, ingreso aumenta en 25 unidades*
+]
+
+.pull-right-wide[
+```{r}
+ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point(size=3)+
+  geom_smooth(method = "lm", se=FALSE)+
+  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 400, by = 100))+
+  ylim(100,400)+
+  xlim(0,8)
+```
+]
 
 ---
 
+## Varianza explicada
+
+- ¿Qué porcentaje de la varianza de Y logramos explicar con X?
+
+--
+
+* .red[R2] = Porcentaje de la variación de Y puede ser asociado a la variación de X
+
+---
+
+.pull-left-narrow[
+### Ejemplo 
+
+
+El ajuste del modelo a los datos se relaciona con la proporción de residuos generados por el modelo respecto de la varianza total de Y (R2)
+]
+
+.pull-right-wide[
+```{r}
+ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point(size=3)+
+  geom_smooth(method = "lm", se=FALSE)+
+  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 400, by = 100))+
+  ylim(100,400)+
+  xlim(0,8)
+```
+]
+
+---
+
+## Inferencia estadística
+
+* ¿Cómo sabemos si $b_{1}$ es estadísticamente significativo?
+
+--
+
+* ¿Nuestros datos se pueden extrapolar a la población?
+
+---
+
+## Inferencia estadística
+
+- Según criterios muestrales:
+  * Distribución normal
+  * Desviación estándar
+  
+- Error estándar
+
+---
+
+```{r results='asis'}
+texreg::htmlreg(reg1, caption="")
+```
+
+---
+
+```{r echo=FALSE}
+data <- as.data.frame(cbind(data,
+              edad=c(25,20,20,30,45,30,45,40)))
+```
+
+
+```{r results='asis'}
+reg2 <- lm(Ingreso~Educacion+edad, data = data)
+texreg::htmlreg(reg2, caption="")
+```
+
+---
+
+## Parcialización
+
+.center[![:scale 50%](../../files/img/ingresoeducexp.png)]
+
+
+
+
+---
 class: front
 
 .pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
+# Estadística IV
+## **Kevin Carrasco & Daniela Olivares**
+## **María Fernanda Nuñez**
 ## Sociología - UAH
-## 1er Sem 2024 
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+## 2do Sem 2024 
+## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
 ] 
 
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 5: Asociación de variables]
+## .yellow[Sesión 5: Correlación y regresión]
 ![:scale 70%](../../files/img/eval-hires.png)
-
-
 
 ]
 

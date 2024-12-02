@@ -1,0 +1,14 @@
+---
+title: "Presentación"
+date: "2024-10-02"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/ayudantia1/presentacion_clase_repaso.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+

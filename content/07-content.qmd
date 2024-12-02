@@ -1,6 +1,6 @@
 ---
-title: "Clase 7"
-date: "2024-05-14"
+title: "Presentación"
+date: "2024-10-09"
 lang: es
 ---
 
@@ -8,3 +8,7 @@ lang: es
  
 <iframe src=/slides/07-clase7/07-clase7.html height="550" width=100% allowfullscreen="true">
 </iframe> 
+
+
+
+

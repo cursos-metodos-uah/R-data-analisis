@@ -1,16 +1,16 @@
 ---
-title: "Clase 3"
-date: "2024-03-26"
+title: "Presentación"
+date: "2024-08-28"
 lang: es
 ---
 
 ## Documento de presentación
  
-<iframe src=/slides/03-clase3/03-clase3.html height="550" width=100% allowfullscreen="true">
+<iframe src=/slides/03-clase3/sesion_02_correspondencia_simple.pdf height="550" width=100% allowfullscreen="true">
 </iframe> 
 
 
 
 ## Lecturas
 
-##  [Moore: 1.Comprensión de los datos (1-54)](https://multivariada.netlify.app/docs/lecturas/moore_comprensiondelosdatos.pdf)
+[R for Data Science](https://es.r4ds.hadley.nz/introducci%C3%B3n.html)

@@ -1,8 +1,8 @@
 ---
-title: "R para análisis estadístico"
+title: "Estadística IV"
 subtitle: "Departamento de Sociología - Facultad de Ciencias Sociales de la Universidad Alberto Hurtado"
 details: |
-  CSSOCIAL 6607-SOC1(1052) • Primer semestre 2024<br>Departamento de Sociología<br>Universidad Alberto Hurtado
+  CSSOCIAL 6601-SOC1 (1357) • Segundo semestre 2024<br>Departamento de Sociología<br>Universidad Alberto Hurtado
 sidebar: false
 toc: false
 page-layout: full
@@ -29,18 +29,23 @@ withr::with_dir(here::here(), {
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
 ### Equipo docente
 
-**Profesor**
+**Profesores**
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
-- {{< fa university >}} &nbsp; {{< var instructor.office >}}
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">
+- {{< fa envelope >}} <a href="mailto:danielaolivarescollio@gmail.com">danielaolivarescollio@gmail.com</a>
 
+---------------------------------------------------------------------------------------------------------------
+
+- {{< fa user >}} &nbsp; [{{< var instructor2.name >}}]({{< var instructor2.url >}})
+- {{< fa envelope >}} <a href="mailto:kevin.carrasco@ug.uchile.cl">kevin.carrasco@ug.uchile.cl</a>
+
+---------------------------------------------------------------------------------------------------------------
 
 **Ayudante**
 
 
-- {{< fa user >}} &nbsp; Javiera Wompner
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other.email >}}">{{< var other.email >}}</a>
+- {{< fa user >}} &nbsp; María Fernanda Núñez
+- {{< fa envelope >}} <a href="mailto:maria.nunez.2@ug.uchile.cl">maria.nunez.2@ug.uchile.cl</a>
 
 :::
 

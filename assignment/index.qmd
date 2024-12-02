@@ -6,32 +6,8 @@ En esta sección se encuentran las instrucciones de los Trabajos a realizar dura
 
 # Evaluaciones
 
-El curso tendrá cinco instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):
+El curso tendrá tres instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):
 
-4 trabajos individuales acumulativos (15% c/u).
+3 trabajos en pares (25% c/u).
 
-1 presentación de resultados (10%).
-
-La nota ponderada de las evaluaciones equivaldrá al 70% de la nota del curso y el examen final al 30% restante.
-
-# Sobre temas y datos
-
-El tema de trabajo es libre. Sin embargo, de modo de lograr una mayor colaboración desde el equipo docente a sus trabajos, sugerimos desarrollar los siguientes temas:
-
-* Desigualdad social, Estratificación social, justicia distributiva, percepción de desigualdad
-
-* Educación cívica, política educativa
-
-* Cohesión social, sociología política, economía gig
-
-La base de datos a utilizar también es libre, pero recomendamos las siguientes:
-
-* [Estudio Longitudinal Social de Chile](https://coes.cl/encuesta-panel/) (Ola 1 2016)
-
-* [CASEN 2022](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022)
-
-* [SIMCE](https://informacionestadistica.agenciaeducacion.cl/#/bases)
-
-* [LAPOP](https://www.vanderbilt.edu/lapop/index.php/)
-
-* [LATINOBARÓMETRO](https://www.latinobarometro.org/latContents.jsp)
+1 examen (25%).

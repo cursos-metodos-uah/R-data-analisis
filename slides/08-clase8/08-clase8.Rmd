@@ -1,7 +1,7 @@
 ---
-title: "R para análisis de datos"
-author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2024"
+title: "Estadística IV"
+author: ".small[Kevin Carrasco & Daniela Olivares<br>]"
+date: "2do Sem 2024"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -17,7 +17,6 @@ output:
     seal: false # esto omite title slide automática
 ---
 class: front
-
 
 ```{r eval=FALSE, include=FALSE}
 # Correr esto para que funcione el infinite moonreader, el root folder debe ser static para si dirigir solo "bajndo" en directorios hacia el bib y otros
@@ -59,409 +58,752 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 
 .pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
+# Estadística IV
+## **Kevin Carrasco & Daniela Olivares**
+## **María Fernanda Nuñez**
 ## Sociología - UAH
-## 1er Sem 2024 
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+## 2do Sem 2024 
+## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
 ] 
 
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 8: Regresión lineal y valores predichos]
+## .yellow[Sesión 8: AFE y puntajes factoriales]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 ]
 
 ]
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 8]
-<br>
-
-.yellow[Repaso sesión anterior]
-
-Valores predichos
-
-<br>
-<br>
-<br>
-<br>
 ---
 
 layout: true
 class: animated, fadeIn
 
 ---
-# Asociación: covarianza / correlación
+class: inverse, bottom, right, animated, slideInRight
 
-.pull-left[
-  _¿Se relaciona la variación de una variable, con la variación de otra variable?_
+# Resumen hasta ahora
+
+---
+class: middle center
+
+# ¿Por qué usar baterías de variables?
+
+---
+class: middle center
+
+.center[
+![:scale 100%](../../files/img/slides/bateria-atrib-pob.png)
 ]
-.pull-right[
-.center[![:scale 100%](../../files/img/ingresoeduc.png)]
+
+
+---
+class: middle
+
+.pull-left-narrow[
+# Preguntas y error de medición
+]
+.pull-right-wide[
+.content-box-yellow[
+-   Para medir hechos observables simples usualmente se utiliza **una
+    pregunta** (ej: edad)
+
+-   Fenómenos complejos se miden en general con más de una pregunta, con
+    el objetivo de dar mejor cuenta del atributo (i.e. minimizar error
+    de medición)
+]]
+
+---
+
+```{r echo=FALSE}
+pacman::p_load(sjmisc,lavaan,haven,dplyr,sjPlot, sjlabelled, summarytools, psych)
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+data <- elsoc_long_2016_2022.2 %>% filter(ola==4) %>%  # seleccionamos solo los casos de la ola 1
+  select(son_refinadas=g01_01,
+         ser_protegidas=g01_02,
+         consiguen_privilegios=g01_03,
+         quejan_discriminacion=g01_04
+         )
+
+data$son_refinadas <- car::recode(data$son_refinadas, "c(-999,-888)=NA")
+data$ser_protegidas <- car::recode(data$ser_protegidas, "c(-999,-888)=NA")
+data$consiguen_privilegios <- car::recode(data$consiguen_privilegios, "c(-999,-888)=NA")
+data$quejan_discriminacion <- car::recode(data$quejan_discriminacion, "c(-999,-888)=NA")
+
+data$son_refinadas <- set_labels(data$son_refinadas,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+
+data$ser_protegidas <- set_labels(data$ser_protegidas,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+
+data$consiguen_privilegios <- set_labels(data$consiguen_privilegios,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+
+data$quejan_discriminacion <- set_labels(data$quejan_discriminacion,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+```
+
+
+
+# Análisis de indicadores en baterías
+
+.pull-left-narrow[
+1. .red[Univariado]: se sugiere presentar análisis descriptivos que contengan todos los indicadores para poder comparar frecuencias
+]
+
+.pull-right-wide[
+.center[
+```{r}
+data %>% 
+  plot_stackfrq() + theme(legend.position="bottom")
+```
+
+.small[(likert plot, `sjPlot`)]
+]
 ]
 
 ---
-.pull-left[* Pero ojo, 
-**correlación no implica causalidad**]
 
+# Análisis de indicadores en baterías
 
-.pull-right[![:scale 100%](../../files/img/causalidad.png)]
+.tiny[
+
+```{r}
+tab_corr(data, triangle = "lower")
+```
+
+]
 
 ---
+# Análisis de indicadores en baterías
 
-## ¿Qué es la regresión lineal?
+- Se podría asumir un concepto o .red[dimensión subyacente] a la batería de items
+
+- Para facilitar el avance en el análisis (por ejemplo, relacionar ese concepto subyacente con otras variables), muchas veces se reduce la batería a algún .red[tipo de índice (sumativo/promedio)]
+
+- ¿Podemos asegurar que los items están realmente .red[midiendo lo mismo]?
+
+---
+class: bottom right
+
+## .red[Correlaciones, baterías y dimensiones subyacentes]
+
+---
+class: inverse
+
+## .yellow[Entonces:]
+
+### 1. analizar la .red[matriz de correlaciones] antes de generar cualquiér técnica de reducción de información (ej: crear índice)
+
+### 2. evaluar la posibilidad de generar algún tipo de .red[índice] que resuma la información
+---
+
+## Matriz de correlaciones
+
+Entonces:
+
+.tiny[
+```{r}
+tab_corr(data, triangle = "lower")
+```
+]
+
+---
+# Alpha de Cronbach
 
 --
 
-* Es un modelo estadístico que se usa para:
+- índice de consistencia interna de una batería
 
-  - **Conocer**: La relación de una variable dependiente de acuerdo a una/otras independiente(s)
-  - **Predecir**: Estimar el valor de una variable dependiente de acuerdo al valor de otras
-  - **Inferir**: si estas relaciones son estadísticamente significativas
+- usualmente se reporta previo a a construcción de un índice
 
----
-## ¿Qué es la regresión lineal?
+- varía entre 0 y 1; valores más cercanos a 1 indican mayor consistencia
 
-* Dos tipos de regresión:
-  - Regresión lineal simple (una variable independiente)
-  - Regresión lineal múltiple (más de una variable independiente)
+- en general valores sobre 0.6 se consideran aceptables
+
+- más información [aquí](https://rpubs.com/jboscomendoza/alfa_cronbach_r#:~:text=El%20Alfa%20de%20Cronbach%20nos,apuntando%E2%80%9D%20en%20la%20misma%20direcci%C3%B3n.)
 
 ---
-```{r echo=FALSE}
-data <- cbind(Educacion=c(1,2,3,4,5,6,7,8),
-              Ingreso=c(250,200,250,300,400,350,400,350))
-data <- as.data.frame(data)
+
+# Alpha de Cronbach
+
+.pull-left[
+- funcion alpha de la librería `psych`
+
+- se genera un objeto (lo llamaremos alpha). Contiene bastante información, por ahora nos enfocaremos solo en el valor de alpha (`raw_alpha`)
+]
+.pull-right[
+.small[
+```{r warning=FALSE, echo=TRUE}
+alpha <-psych::alpha(data)
+alpha$total$raw_alpha
+```
+]
+]
+---
+# Alpha de Cronbach
+
+- puntaje 0.58, por lo tanto bajo los valores aceptables de consistencia interna
+
+---
+# Opciones
+
+- construcción de índices basados en la información de la matriz de correlaciones
+
+- análisis factorial
+
+
+---
+class: inverse bottom right
+# .red[Construcción de índices]
+
+---
+# Índice promedio
+
+- vamos a generar 2 índices a partir de esta batería: uno para sexismo benevolente y otro para sexismo hostil.
+
+
+---
+# Índice de sexismo (Promedio)
+
+```{r echo=TRUE}
+data <- cbind(data, 
+              "benevolente_prom"=rowMeans(data %>%
+              dplyr::select(son_refinadas,ser_protegidas), 
+              na.rm=TRUE))
+
+data <- cbind(data, 
+              "hostil_prom"=rowMeans(data %>% 
+              dplyr::select(consiguen_privilegios,quejan_discriminacion), 
+              na.rm=TRUE))
 ```
 
+---
 
-.pull-left-narrow[
-### Ejemplo ]
+# Sin embargo...
 
-.pull-right-wide[
-```{r}
-data
+.pull-left[
+.small[
+```{r warning=FALSE, echo=TRUE}
+alpha <-
+  psych::alpha(dplyr::select(data,
+                      son_refinadas,
+                      ser_protegidas))
+alpha$total$raw_alpha
 ```
+]
+]
 
+.pull-right[
+.small[
+```{r warning=FALSE, echo=TRUE}
+alpha <-
+  psych::alpha(dplyr::select(data, 
+                      consiguen_privilegios,
+                      quejan_discriminacion))
+
+alpha$total$raw_alpha
+```
+]
 ]
 
 ---
-.pull-left-narrow[
-### Ejemplo ]
+class: inverse
 
-.pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  xlim(0,8)+
-  ylim(100,400)
-```
-]
+## Resumen índices
+
+- baterías y dimensiones subyacentes (latentes)
+
+- evaluación de consistencia interna (previo a construcción de índices)
+
+- índices y .red[factores]
+
+---
+class: inverse,right
+
+# **.red[Contenidos]**
+
+<br>
+<br>
+
+### 1. .yellow[Análisis factorial exploratorio]
 
 ---
 
-.pull-left-narrow[
-### Ejemplo ]
+class: middle
 
-.pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  geom_smooth(method = "lm", se=FALSE)+
-  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
-  xlim(0,8)
-```
+.pull-left-narrow[
+#  Variables latentes (1)
 ]
 
----
-.pull-left-narrow[
-### La recta de regresión]
-
 .pull-right-wide[
 
-$$\widehat{Y}=b_{0} +b_{1}X$$
+.content-box-red[
+-   La mayor parte de las variables en el mundo social no son
+    directamente observables. Esto las hace constructos hipotéticos **latentes**
+    
+-   La medición de variables latentes se realiza a partir de indicadores observables, tales como los .red[ítems de una batería/ cuestionario]
+]
+]
+---
+
+class: middle
+
+.pull-left-narrow[
+#  Variables latentes (2)
+]
+.pull-right-wide[
+.content-box-yellow[
+-   Lo latente puede ser entendido como la .red[varianza compartida] por
+    diferentes indicadores observados
+
+-   La medición de variables latentes se encuentra asociada al .red[modelo de factor común] (Thurstone) y al análisis factorial
+]
+]
+---
+--- 
+
+# Factor común
+
+.pull-left[
+-   Cada indicador en un set de medidas observadas es una .red[función lineal] de uno o más factores comunes y un factor único
+
+-   Como referencia podemos usar la .red[teoría clásica de test] (CTT), que
+    divide el puntaje de los indicadores entre puntaje verdadero y error
+    ]
+
+--
+
+.pull-right[
+<br>
+$$X=T+E$$
 
 Donde
+- X= puntaje observado,
+- T= puntaje verdadero, y
+- E= error
 
-- $\widehat{Y}$ es el valor estimado de $Y$
-
-- $b_{0}$ es el intercepto de la recta (el valor de Y cuando X es 0)
-
-- $b_{1}$ es el coeficiente de regresión, que nos dice cuánto aumenta Y por cada punto que aumenta X
-]
-
----
-# Estimación de los coeficientes de la ecuación:
-
-$$b_{1}=\frac{Cov(XY)}{VarX}$$
-
-$$b_{1}=\frac{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}}{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})} {n-1}}$$
-
-Y simplificando
-
-$$b_{1}=\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})}$$
-
----
-
-### Pero este es un curso de R, así que:
-
-```{r}
-reg1<-lm(Ingreso~Educacion, data=data)
-reg1
-```
-
-
-
----
-### Estimación de los coeficientes de la ecuación:
-
-$$\bar{Y}=b_{0}+b_{1}\bar{X}$$
-Reemplazando:
-
-$$\bar{Y}=b_{0}+25\bar{X}$$
-
-Despejando el valor de $b_{0}$
-
-$$b_{0}=200-0\bar{X}$$
----
-
-.pull-left-narrow[
-### Ejemplo 
-
-
-*Por cada unidad que aumenta educación, ingreso aumenta en 25 unidades*
-]
-
-.pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  geom_smooth(method = "lm", se=FALSE)+
-  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
-  xlim(0,8)
-```
-]
-
----
-## Varianza explicada
-
-- ¿Qué porcentaje de la varianza de Y logramos explicar con X?
-
---
-
-* .red[R2] = Porcentaje de la variación de Y puede ser asociado a la variación de X
-
----
-
-.pull-left-narrow[
-### Ejemplo 
-
-
-El ajuste del modelo a los datos se relaciona con la proporción de residuos generados por el modelo respecto de la varianza total de Y (R2)
-]
-
-.pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  geom_smooth(method = "lm", se=FALSE)+
-  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
-  xlim(0,8)
-```
 ]
 
 ---
 
-## Inferencia estadística
-
-* ¿Cómo sabemos si $b_{1}$ es estadísticamente significativo?
-
---
-
-* ¿Nuestros datos se pueden extrapolar a la población?
-
----
-
-## Inferencia estadística
-
-- Según criterios muestrales:
-  * Distribución normal
-  * Desviación estándar
-  
-- Error estándar
-
----
-
-```{r results='asis'}
-texreg::htmlreg(reg1, caption="")
-```
-
----
-
-```{r echo=FALSE}
-data <- as.data.frame(cbind(data,
-              edad=c(25,20,20,30,45,30,45,40)))
-```
-
-
-```{r results='asis'}
-reg2 <- lm(Ingreso~Educacion+edad, data = data)
-texreg::htmlreg(reg2, caption="")
-```
-
----
-
-## Parcialización
-
-.center[![:scale 50%](../../files/img/ingresoeducexp.png)]
-
----
-```{r echo=FALSE}
-data <- as.data.frame(cbind(data,
-              Educacion_rec=c("Basica","Basica","Basica","Media","Media","Superior","Superior","Superior")))
-reg3 <-lm(Ingreso~Educacion_rec, data=data)
-```
-
-¿y la interpretación para variables categóricas?
+# Modelo de factor común
 
 .pull-left[
-.small[
-```{r results='asis'}
-texreg::htmlreg(reg3, caption="",
-                custom.coef.names = c("Intercepto",
-                                     "Educación media",
-                                     "Educación superior"))
-```
+-   La existencia de un solo ítem por constructo no permite aislar puntaje verdadero del error
+
+-   Si existen más ítems, podemos estimar un **análisis factorial** y
+    distinguir entre **varianza común** (compartida con otros indicadores) y **varianza única** (o error)
 ]
-]
---
+
 .pull-right[
-*Las personas que tienen educación media ganan $116mil más en comparación con quienes tienen educación básica, efecto que es estadísticamente significativo (p<0.01)*
-
+.center[
+  ![](../../files/img/slides/figure1efa.jpg)
+]
 ]
 
 ---
-class: inverse, bottom, right
-
-# .red[Sesión 7]
-<br>
-
-Repaso sesión anterior
-
-.yellow[Valores predichos]
-
-<br>
-<br>
-<br>
-<br>
-
----
-¿Cómo podemos predecir el valor esperado de una variable para una persona en particular?
+class: middle
 
 .pull-left-narrow[
+# Análisis factorial
+
+Es un método que permite:
+]
+
+.pull-right-wide[
+.content-box-gray[
+- identificar la varianza común a una serie de indicadores
+
+- establecer la contribución de cada indicador a la varianza común
+
+- estimar posteriormente un índice (puntaje factorial) para cada factor, con mayor precisión que un promedio bruto
+]]
+---
+# Análisis factorial
+
+-   Un factor es una variable no observada o **latente** que da cuenta de las correlaciones entre indicadores 
+    
+- los indicadores están correlacionados porque comparten una causa común - concepto de **independencia condicional**
+
+-   El o los factores darían cuenta (i.e. causarían) de la **covariación** entre una serie de medidas observadas (indicadores)
+
+---
+class: middle
+
+.pull-left-narrow[
+.content-box-red[
+<br>
+# Objetivos del análisis factorial
+<br>
+<br>
+<br>
+<br>
+<br><br>
+]]
+
+.pull-right-wide[
+<br>
+-   .red[Teórico]: relacionar datos con dimensiones latentes basadas en conceptos (validez de constructo)
+
+-   .blue[Pragmático]: hacer sentido de un conjunto de datos, reducción de
+    dimensiones y obtención de puntajes
+
+-   .green[Metodológico]: aislar el error (varianza única) de la varianza común
+]
+
+---
+# Alternativas en análisis factorial
+
+-   .red[exploratorio (EFA)]: Permite explorar las dimensiones que subyacen a una escala
+
+-   .red[confirmatorio (CFA)]: Permite confirmar las dimensiones que subyacen a una escala, aislando el error de medición en la estimación
+
+---
+# Análisis factorial exploratorio (EFA)
+
+-   Forma de análisis factorial donde se estiman la o las variables
+    latentes a un conjunto de indicadores, **sin una especificación previa** de la estructura factorial.
+
+--
+
+-   Preguntas a responder:
+
+    -   ¿Cuántos factores subyacen a un conjunto de indicadores?
+
+    -   ¿Cómo se relacionan los indicadores con los factores?
+
+    -   ¿Cómo es la calidad del modelo estimado?
+
+
+
+---
+.content-box-green[
+# Características EFA
+]
+
+.pull-left-narrow[
+
+.center[
+<br>
+  ![](../../files/img/slides/figure1efa.jpg)
+]]
+.pull-right-wide[
+-   Basado en la matriz de correlaciones
+
+- Modelo estandarizado (varianza factores=1)
+
+-   Diferentes métodos de extracción de factores
+
+-   Determinación del número y "calidad" de las dimensiones (continuas) subyacentes a una escala
+
+]
+
+---
+# Ejemplo
+
 .small[
-```{r results='asis'}
-texreg::htmlreg(reg3, caption="",
-                custom.coef.names = c("Intercepto",
-                                     "Educación media",
-                                     "Educación superior"))
+
+```{r}
+fa <- dplyr::select(data, son_refinadas,ser_protegidas,consiguen_privilegios,quejan_discriminacion)
+tab_fa(fa, rotation = "varimax",show.comm = TRUE, title = "Análisis factorial atribuciones de pobreza")
+
 ```
+
+]
+
+---
+
+.pull-left-narrow[
+.content-box-purple[
+<br>
+# Conceptos y parámetros
+<br>
+<br>
+<br>
+<br>
+<br>
 ]
 ]
 
 .pull-right-wide[
-$$\bar{Y}=b_{0}+b_{1}\bar{X}$$
+-   **Factores**: variables latentes que están a la base de las
+    correlaciones entre los indicadores
 
-Reemplazando:
+-   **Cargas factoriales**: medida estandarizada de asociación (correlación) entre el indicador y la variable latente
 
-$$\bar{Y}=233+b_{1}\bar{X}$$
+-   **Comunalidad**: proporción del indicador que se asocia a factor(es) comun(es)
+]
+---
+class: middle
 
-¿Si una persona tuviera un nivel de educación superior?
+.pull-left-narrow[
+.content-box-yellow[
+<br>
+# Conceptos y parámetros (2)
+<br>
+<br>
+<br>
+]
+]
 
-$$\bar{Y}=233+133$$
-$$\bar{Y}=366$$
+.pull-right-wide[
+-   **Varianza única** (uniqueness): 1-comunalidad
+
+-   **Eigenvalues**: medida de proporción de la varianza total
+    correspondiente a cada uno de los factor (SS loadings)
+
+-   **Proporción de varianza** explicada por el factor = eigenvalue /
+    número de indicadores
+    ]
+    
+---
+class: middle
+
+.pull-left-narrow[
+.content-box-blue[
+<br>
+# Pasos en el análisis
+<br>
+<br>
+<br>
+]]
+
+.pull-right-wide[
+-   Estimación de matriz de correlaciones
+
+-   Extraccion de factores
+
+-   Decisión sobre número de factores
+
+-   Rotación
+
+-   Interpretación y reporte
+
+-   Obtención de puntajes factoriales
+]
+---
+class: middle
+
+.pull-left-narrow[
+.content-box-blue[
+<br>
+# Pasos en el análisis
+<br>
+<br>
+<br>
+]]
+
+.pull-right-wide[
+-   Estimación de matriz de correlaciones
+
+-   Extraccion de factores
+
+-   Decisión sobre número de factores
+
+-   Rotación
+
+-   Interpretación y reporte
+
+-   .red[Obtención de puntajes factoriales]
+]
+
+
+---
+# Supuestos a evaluar
+
+-   Nivel de medición de variables, normalidad (eventualmente test de normalidad multivariado, ej: Shapiro Wilk multivariado)
+
+-   Test de adecuación muestal (KMO)
+.medium[
+      - varía entre 0 y 1, contrasta si las correlaciones parciales entre las variables son pequeñas.
+
+- valores pequeños (menores a 0.5) indican que los datos no serían adecuados para EFA, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables
 ]
 
 ---
-## Graficando
+# Supuestos a evaluar (2)
+
+-   Nivel de correlaciones de la matriz: test de esfericidad de Bartlett
+
+    -   se utiliza para evaluar la hipótesis que la matriz de
+        correlaciones es una matriz identidad (en la diagonal=1 y bajo la
+        diagonal=0)
+
+    -   se busca significación (p $<$ 0.05), ya que se espera que las
+        variables estén correlacionadas
+
+---
+# Supuestos a evaluar (2)
+
+.tiny[
+```{r}
+tab_corr(data)
+```
+]
+
+---
+# Métodos de extracción
+
+
+En el análisis factorial exploratorio (AFE), los **métodos de extracción** se refieren a las técnicas que se utilizan para determinar los factores/ variables latentes a las variables observadas. Los tres métodos principales son:
+
+-   **Factores principales**
+
+-   **Factores principales iterados**
+
+-   **Maximum likelihood**
+
+---
+# Métodos de extracción
+
+-   **Factores principales**
+
+Este es uno de los métodos más comunes para la extracción de factores. Se basa en la descomposición de la matriz de correlaciones para identificar los factores que explican la mayor cantidad de varianza compartida por las variables. Es útil cuando el objetivo es reducir la dimensionalidad manteniendo el máximo de información posible.
+
+---
+# Métodos de extracción
+
+-   **Factores principales iterados**: 
+
+Este método es una variante del anterior. Estima las **comunalidades** (la cantidad de varianza de cada variable explicada por los factores) iterativamente. Reemplaza los valores iniciales de las comunalidades en la matriz de correlaciones con las comunalidades estimadas a partir de los **factor loadings** (cargas factoriales) y repite el proceso hasta que se alcance una solución estable. Este método mejora la precisión de la estimación de los factores.
+
+---
+# Métodos de extracción
+
+-   **Maximum likelihood**: 
+
+Este método busca encontrar los parámetros del modelo que maximicen la probabilidad de que los datos observados sean replicados por el modelo factorial. Es útil cuando se quiere hacer inferencia estadística sobre los factores, ya que permite realizar pruebas de hipótesis y obtener intervalos de confianza para los factores y sus cargas. Es más robusto, pero requiere que los datos cumplan ciertos supuestos como normalidad multivariada.
+
+---
+# Instrumentos y criterios de selección del número de factores
+
+-   Criterio de Kaiser: eigenvalues (cantidad de varianza explicada por cada factor) mayores a 1
+
+-   Scree plot (gráfico de sedimentación)
+
+-   **Análisis paralelo**: comparación de eigenvalues de la muestra con eigenvalues de datos aleatorios. Nº apropiado de factores: numero de eigenvalues de los datos reales que son mayores que sus correspondientes eigenvalues de datos aleatorios
+
+---
+# Screeplot y análisis paralelo
+
+.center[
+  ![:scale 60%](../../files/img/slides/parallel.PNG)
+]
+
+---
+
+.pull-left-narrow[
+# Tipos de rotación
+
+-   **Ortogonal**: asume que los factores no se encuentran correlacionados
+
+-   **Oblicua**: permite correlación entre factores
+]
+
+.pull-right-wide[
+.center[
+  ![:scale 80%](../../files/img/slides/rotate.PNG)
+]
+]
+
+---
+# Puntajes factoriales
+
+Los puntajes factoriales son “estimaciones” (predicciones) de puntajes en los factores para cada observación en los datos.
+
+* Estos puntajes pueden utilizarse en análisis posteriores
+
+* Se pueden calcular puntajes para cada observación en cada factor utilizando un método de regresión
+
+* Estas nuevas variables se estandarizan con media 0 y desviación estándar 1
+
+---
 
 ```{r}
-ggeffects::ggpredict(reg3, terms = c("Educacion_rec")) %>%
-  ggplot(aes(x=x, y=predicted)) +
-  geom_bar(stat="identity", color="grey", fill="grey")+
-  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width=.1) +
-  labs(title="Educación", x = "", y = "") +
-  theme_bw()
-```
-
-
----
-## Variables numéricas
-
-```{r results='asis'}
-reg4 <- lm(Ingreso~edad, data = data)
-texreg::htmlreg(reg4, caption="")
+fac_ml <- fa(r = fa, nfactors = 2, fm= "ml", scores="regression")
+fac_ml
 ```
 
 ---
-.pull-left[
+
 ```{r}
-ggeffects::ggpredict(reg2, terms="edad") %>%
-  ggplot(mapping=aes(x = x, y=predicted)) +
-  labs(title="Edad", x = "", y = "")+
-  theme_bw() +
-  geom_smooth()+
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .2, fill = "black")
+data <- cbind(data, fac_ml$scores)
 ```
-]
+
+```{r}
+data %>% select(benevolente_prom, hostil_prom, ML1, ML2) %>% head(10)
+```
+
+---
+## Factor 1
+```{r}
+summary(data$ML1)
+```
+
+## Factor 2
+```{r}
+summary(data$ML2)
+```
 
 
-.pull-right[
-$$\bar{Y}=b_{0}+b_{1}\bar{X}$$
+---
+class: roja
+# Resumen
 
-Reemplazando:
+- dimensiones subyacentes = factores
 
-$$\bar{Y}=96.44+b_{1}*6,78$$
+- análisis factorial
+  - relación entre indicadores y dimensiones
+  - estimación de número de dimensiones probables subyacentes a batería
+  - rotación
+  - obtención de puntajes factoriales (índices ponderados)
 
-¿Una persona de edad 40?
+---
+class: inverse middle
 
-$$\bar{Y}=96,44+40*6,78$$
-$$\bar{Y}=367.64$$
-]
-
+## .red[Práctica análisis factorial exploratorio]
+[.yellow[https://estadisticaiv.netlify.app/practicos/07-content]](https://estadisticaiv.netlify.app/practicos/07-content)
 
 ---
 class: front
 
+
+
 .pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
+# Estadística IV
+## **Kevin Carrasco & Daniela Olivares**
+## **María Fernanda Nuñez**
 ## Sociología - UAH
-## 1er Sem 2024 
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+## 2do Sem 2024 
+## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
 ] 
 
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 6: Índices y escalas]
+## .yellow[Sesión 7: Análisis factorial exploratorio]
 ![:scale 70%](../../files/img/eval-hires.png)
 
-
-
 ]
 
 ]
-

@@ -9,6 +9,12 @@ lang: es
 <iframe src=/slides/01-clase1/01-clase1.html height="550" width=100% allowfullscreen="true">
 </iframe> 
 
+## Video de la sesión
+
+Esta clase fue suspendida por paro, si alguien está interesado en aprender los contenidos puede revisar este video:
+
+{{< video https://youtu.be/-pPmtz29vZ8?si=jMu95O54wcZoWchs >}}
+
 
 
 ## Lecturas

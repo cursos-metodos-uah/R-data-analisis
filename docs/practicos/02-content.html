@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="R para Análisis estadístico">
+<meta name="description" content="Estadística IV">
 
-<title>R para Análisis estadístico - Práctico R 2. Vinculación R y Zotero</title>
+<title>Análisis de correspondencia simple – Estadística IV</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,14 +103,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<link href="../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="../site_libs/tabwid-1.1.3/tabwid.js"></script>
 
 
-<meta property="og:title" content="R para Análisis estadístico - Práctico R 2. Vinculación R y Zotero">
-<meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
-<meta property="og:site_name" content="R para Análisis estadístico">
+
+<meta property="og:title" content="Análisis de correspondencia simple – Estadística IV">
+<meta property="og:description" content="Departamento de Sociología de la Universidad Alberto Hurtado">
+<meta property="og:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
+<meta property="og:site_name" content="Estadística IV">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="R para Análisis estadístico - Práctico R 2. Vinculación R y Zotero">
-<meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta name="twitter:title" content="Análisis de correspondencia simple – Estadística IV">
+<meta name="twitter:description" content="Departamento de Sociología de la Universidad Alberto Hurtado">
+<meta name="twitter:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -123,11 +129,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">R para Análisis estadístico</span>
+    <span class="navbar-title">Estadística IV</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -161,19 +167,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../ayudantias/index.html"> 
+<span class="menu-text">Ayudantías</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/02-content.html">02: Práctico 2</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -186,9 +196,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Información general</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -203,9 +213,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Talleres</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -252,30 +262,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">07: Práctico 7</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/resumen-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08: Resumen</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/08-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09: Práctico 8</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/09-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10: Práctico 9</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/10-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11: Práctico 10</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -288,15 +274,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
-  <ul>
-  <li><a href="#zotero" id="toc-zotero" class="nav-link" data-scroll-target="#zotero">Zotero</a>
-  <ul class="collapse">
-  <li><a href="#veamos-cómo-se-ve-zotero" id="toc-veamos-cómo-se-ve-zotero" class="nav-link" data-scroll-target="#veamos-cómo-se-ve-zotero">Veamos cómo se ve zotero</a></li>
-  </ul></li>
-  <li><a href="#researchrabbit" id="toc-researchrabbit" class="nav-link" data-scroll-target="#researchrabbit">Researchrabbit</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  </ul></li>
+  <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link active" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
+  <li><a href="#preparación-datos" id="toc-preparación-datos" class="nav-link" data-scroll-target="#preparación-datos">Preparación datos</a></li>
+  <li><a href="#tablas-de-contingencia" id="toc-tablas-de-contingencia" class="nav-link" data-scroll-target="#tablas-de-contingencia">Tablas de contingencia</a></li>
+  <li><a href="#prueba-de-hipótesis-con-chi-cuadrado" id="toc-prueba-de-hipótesis-con-chi-cuadrado" class="nav-link" data-scroll-target="#prueba-de-hipótesis-con-chi-cuadrado">Prueba de hipótesis con Chi-cuadrado</a></li>
+  <li><a href="#análisis-de-correspondencias-simple" id="toc-análisis-de-correspondencias-simple" class="nav-link" data-scroll-target="#análisis-de-correspondencias-simple">Análisis de correspondencias simple</a></li>
   </ul>
 </nav>
     </div>
@@ -305,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/02-content.html">02: Práctico 2</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Práctico R 2. Vinculación R y Zotero</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Código</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Análisis de correspondencia simple</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
 </div>
 
 
@@ -316,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">19 de octubre de 2023</p>
+      <p class="date">28 de agosto de 2024</p>
     </div>
   </div>
   
@@ -328,232 +310,408 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="presentación" class="level1">
-<h1>Presentación</h1>
-<section id="zotero" class="level2">
-<h2 class="anchored" data-anchor-id="zotero">Zotero</h2>
-<ol type="1">
-<li>Acceder a la página de <a href="https://www.zotero.org/">zotero</a></li>
-</ol>
-<p>Vamos a Log in</p>
-<p><img src="images/zotero1.png" class="img-fluid"></p>
-<ol start="2" type="1">
-<li>Y creamos una cuenta gratis</li>
-</ol>
-<p><img src="images/zotero2.png" class="img-fluid"></p>
-<ol start="3" type="1">
-<li>Finalmente volvemos al inicio y descargamos el programa:</li>
-</ol>
-<p><img src="images/zotero3.png" class="img-fluid"></p>
-<section id="veamos-cómo-se-ve-zotero" class="level3">
-<h3 class="anchored" data-anchor-id="veamos-cómo-se-ve-zotero">Veamos cómo se ve zotero</h3>
-<p><img src="images/zotero4.png" class="img-fluid"></p>
-<p>Zotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.</p>
-<ul>
-<li><p>Es posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos</p></li>
-<li><p>Al visualizar una referencia bibliográfica nos muestra todos los <strong>metadatos</strong>: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.</p></li>
-<li><p>El dato central que nos va a servir en esta parte del proceso es el DOI</p></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>DOI: Digital Object Identifier (Identificador de objetos digitales)</p>
-<p>El DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.</p>
-<p><img src="images/doi.png" class="img-fluid"></p>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Para crear una biblioteca en zotero vamos a Archivo -&gt; Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios</li>
-</ol>
-<p><img src="images/zotero5.png" class="img-fluid"></p>
-<p>En este caso mi biblioteca se llama “percepcion-desigualdad”.</p>
-<ol start="5" type="1">
-<li><p>Zotero tiene dos funciones para agregar referencias botón verde “Nuevo elemento” o varita mágica “añadir elemento por identificador”. Esta vez vamos por la segunda opción</p></li>
-<li><p>Buscamos un paper que nos interese: en este caso busqué el paper <a href="https://academic.oup.com/ser/article-abstract/19/1/7/5299221?redirectedFrom=fulltext">The paradox of inequality: income inequality and belief in meritocracy go hand in hand</a> de Jonathan Mijs (2021). Su DOI es <a href="https://doi.org/10.1093/ser/mwy051">https://doi.org/10.1093/ser/mwy051</a></p></li>
-<li><p>Usamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero</p></li>
-</ol>
-<p><img src="images/zotero6.png" class="img-fluid"></p>
-<p>¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?</p>
+<section id="objetivo-de-la-práctica" class="level1">
+<h1>Objetivo de la práctica</h1>
+<p>La siguiente práctica tiene el objetivo de introducir la idea central del análisis de correspondencia. Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.</p>
 </section>
+<section id="preparación-datos" class="level1">
+<h1>Preparación datos</h1>
+<p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               sjPlot, <span class="co"># Tablas</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               psych, <span class="co"># Correlaciones</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               DescTools, <span class="co"># Tablas</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               gginference, <span class="co"># Visualizacion </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               rempsyc, <span class="co"># Reporte</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               broom) <span class="co"># Varios</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Cargamos los datos directamente desde internet.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cargamos la base de datos desde internet</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://dataverse.harvard.edu/api/access/datafile/7245118"</span>)) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_long_2016_2022<span class="fl">.2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18035   750</code></pre>
+</div>
+</div>
+<p>Contamos con 750 variables (columnas) y 18035 observaciones (filas).</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="st">"4"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(c29, <span class="co"># Confianza generalizada</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         m01<span class="co"># nivel educacional</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> sjlabelled<span class="sc">::</span><span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">777</span>, <span class="sc">-</span><span class="dv">666</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprobar</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "c29" "m01"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>educacion <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_data<span class="sc">$</span>m01, <span class="st">"c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>educacion <span class="ot">&lt;-</span> sjlabelled<span class="sc">::</span><span class="fu">set_labels</span>(proc_data<span class="sc">$</span>educacion,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Educación básica"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educación media"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educación superior"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_data<span class="sc">$</span>educacion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Nivel educacional (x) &lt;numeric&gt; 
+# total N=3417 valid N=3413 mean=2.12 sd=0.75
+
+Value |              Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------------
+    1 |   Educación básica |  781 | 22.86 |   22.88 |  22.88
+    2 |    Educación media | 1432 | 41.91 |   41.96 |  64.84
+    3 | Educación superior | 1200 | 35.12 |   35.16 | 100.00
+ &lt;NA&gt; |               &lt;NA&gt; |    4 |  0.12 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
 </section>
-<section id="researchrabbit" class="level2">
-<h2 class="anchored" data-anchor-id="researchrabbit">Researchrabbit</h2>
-<p>Research Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero</p>
-<ol type="1">
-<li><p>Ingresar a la página <a href="https://researchrabbitapp.com/">https://researchrabbitapp.com/</a>.</p></li>
-<li><p>Crear cuenta</p></li>
-</ol>
-<p><img src="images/research.png" class="img-fluid"></p>
-<ol start="3" type="1">
-<li>Una vez dentro apretamos “Import Zotero Collection” y seleccionamos nuestra biblioteca</li>
-</ol>
-<p><img src="images/research2.png" class="img-fluid"></p>
-<ol start="4" type="1">
-<li>Así se ve research rabbit</li>
-</ol>
-<p><img src="images/research3.png" class="img-fluid"></p>
-<ol start="5" type="1">
-<li>Podemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca</li>
-</ol>
-<p><img src="images/research4.png" class="img-fluid"></p>
-<ol start="6" type="1">
-<li>Después volvemos a Zotero, actualizamos y aparece nuestro nuevo paper</li>
-</ol>
-<p><img src="images/zotero7.png" class="img-fluid"></p>
-<p>Ahora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R</p>
-<ol start="7" type="1">
-<li><p>Vamos a este <a href="https://github.com/retorquere/zotero-better-bibtex/releases/tag/v6.7.169">link</a> y descargamos zotero-better-bibtex-6.7.169.xpi</p></li>
-<li><p>Volvemos a Zotero –&gt; Herramientas –&gt; Complementos –&gt; La tuerca en la esquina superior derecha –&gt; Instalar Add-on desde archivo –&gt; Seleccionamos el archivo que acabamos de descargar</p></li>
-</ol>
-<p><img src="images/zotero9.png" class="img-fluid"></p>
-<ol start="9" type="1">
-<li>Paso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca –&gt; Exportar colección</li>
-</ol>
-<p><img src="images/zotero8.png" class="img-fluid"></p>
-<ol start="10" type="1">
-<li>Seleccionamos formato: Better BibTeX y marcamos la casilla “Keep updated”. Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía</li>
-</ol>
-<p><img src="images/zotero10.png" class="img-fluid"></p>
-<ol start="11" type="1">
-<li>Guardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo</li>
-</ol>
-</section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>La escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Código</th>
-<th>Así se ve</th>
-</tr>
-</thead>
+<section id="tablas-de-contingencia" class="level1">
+<h1>Tablas de contingencia</h1>
+<p>Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.</p>
+<p>Con ella, podemos obtener en las celdas las frecuencias <strong>conjuntas</strong> entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X.</p>
+<p>Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias <strong>marginales</strong>.</p>
+<p>Veamos un ejemplo con <code>ss_salud</code> y <code>universitaria</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_data<span class="sc">$</span>educacion, <span class="at">var.col =</span> proc_data<span class="sc">$</span>c29, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, <span class="at">emph.total =</span> T, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <tbody>
 <tr class="odd">
-<td><pre><code>Algo de texto en el párrafo.
-
-Más texto
-espacio entre lineas.</code></pre></td>
-<td><p>Algo de texto.</p>
-<p>Algo de texto en el párrafo. Siempre utilizando espacios para dividir párrafos</p></td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">Nivel educacional</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Mecanismo de cambio<br>
+de Constitucion</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
 </tr>
 <tr class="even">
-<td><code>`*Cursivas*`</code></td>
-<td><em>Cursivas</em></td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Que sea un grupo de<br>
+expertos los que<br>
+redacten una nueva<br>
+Constitucion</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Que el parlamento<br>
+redacte una nueva<br>
+Constitucion</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Que los ciudadanos<br>
+elijan una Asamblea<br>
+constituyente para<br>
+que redacte una<br>
+nueva Constitucion</td>
 </tr>
 <tr class="odd">
-<td><code>`**Negrita**`</code></td>
-<td><strong>Negrita</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Educación básica</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">138</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">30</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">446</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">614</span></td>
 </tr>
 <tr class="even">
-<td><code># Título 1</code></td>
-<td><h1 id="título-1">Título 1</h1></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Educación media</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">277</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">31</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">964</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1272</span></td>
 </tr>
 <tr class="odd">
-<td><code>## Título 2</code></td>
-<td><h2 id="título-2" class="anchored">Título 2</h2></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Educación superior</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">286</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">17</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">843</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1146</span></td>
 </tr>
 <tr class="even">
-<td><code>### Título 3</code></td>
-<td><h3 id="título-3" class="anchored">Título 3</h3></td>
-</tr>
-<tr class="odd">
-<td>(puedes llegar hasta un título N° 6 con <code>######</code>)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>`[Texto enlace](https://quarto.org/)`</code></td>
-<td><a href="https://quarto.org/">Texto enlace</a></td>
-</tr>
-<tr class="odd">
-<td><code>`![Texto imagen](/path/to/image.png)`</code></td>
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../files/img/eval-hires.png" class="img-fluid figure-img"></p>
-<figcaption>Texto imagen</figcaption>
-</figure>
-</div></td>
-</tr>
-<tr class="even">
-<td><code>&gt; Citas</code></td>
-<td><blockquote class="blockquote">
-<p>Citas</p>
-</blockquote></td>
-</tr>
-<tr class="odd">
-<td><pre><code>1. Una
-2. lista
-3 ordenada</code></pre></td>
-<td><ol type="1">
-<li><p>Una</p></li>
-<li><p>lista</p></li>
-<li><p>ordenada</p></li>
-</ol></td>
-</tr>
-<tr class="even">
-<td><pre><code>- Otro
-- tipo
-- de lista</code></pre></td>
-<td><ul>
-<li><p>Otro</p></li>
-<li><p>tipo</p></li>
-<li><p>de lista</p></li>
-</ul></td>
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">701</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">78</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2253</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">3032</span></td>
 </tr>
 </tbody>
 </table>
-<ol type="1">
-<li><p>Abrimos nuestro Rproject y creamos un nuevo documento de Quarto file –&gt; new file –&gt; Quarto document</p></li>
-<li><p>Editamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes</p></li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>YAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.</p>
-<p><img src="images/yaml.png" class="img-fluid"></p>
+<p>Sumado a esto, tenemos:</p>
+<ul>
+<li><p><em>Frecuencias absolutas</em>: números que aparencen en la tabla (ya sean conjuntas o marginales)</p></li>
+<li><p><em>Frecuencias relativas</em>:</p>
+<ul>
+<li>porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila</li>
+<li>porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna</li>
+<li>porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla</li>
+</ul></li>
+</ul>
+<p>Veamos cómo incorporar el porcentaje fila y columna en la tabla.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_data<span class="sc">$</span>educacion, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var.col =</span> proc_data<span class="sc">$</span>c29, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">emph.total =</span> T, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.row.prc =</span> T, <span class="co"># porcentaje fila</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.col.prc =</span> T, <span class="co"># porcentaje columna</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">encoding=</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">Nivel educacional</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Mecanismo de cambio<br>
+de Constitucion</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid; background-color: #f8f8f8;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Que sea un grupo de<br>
+expertos los que<br>
+redacten una nueva<br>
+Constitucion</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Que el parlamento<br>
+redacte una nueva<br>
+Constitucion</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Que los ciudadanos<br>
+elijan una Asamblea<br>
+constituyente para<br>
+que redacte una<br>
+nueva Constitucion</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Educación básica</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">138</span><br>
+<span style="color:#333399;">22.5&nbsp;%</span><br>
+<span style="color:#339933;">19.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">30</span><br>
+<span style="color:#333399;">4.9&nbsp;%</span><br>
+<span style="color:#339933;">38.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">446</span><br>
+<span style="color:#333399;">72.6&nbsp;%</span><br>
+<span style="color:#339933;">19.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">614</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">20.3&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Educación media</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">277</span><br>
+<span style="color:#333399;">21.8&nbsp;%</span><br>
+<span style="color:#339933;">39.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">31</span><br>
+<span style="color:#333399;">2.4&nbsp;%</span><br>
+<span style="color:#339933;">39.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">964</span><br>
+<span style="color:#333399;">75.8&nbsp;%</span><br>
+<span style="color:#339933;">42.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1272</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">42&nbsp;%</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Educación superior</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">286</span><br>
+<span style="color:#333399;">25&nbsp;%</span><br>
+<span style="color:#339933;">40.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">17</span><br>
+<span style="color:#333399;">1.5&nbsp;%</span><br>
+<span style="color:#339933;">21.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">843</span><br>
+<span style="color:#333399;">73.6&nbsp;%</span><br>
+<span style="color:#339933;">37.4&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; background-color: #f8f8f8;"><span style="color:black;">1146</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">37.8&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">701</span><br>
+<span style="color:#333399;">23.1&nbsp;%</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">78</span><br>
+<span style="color:#333399;">2.6&nbsp;%</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">2253</span><br>
+<span style="color:#333399;">74.3&nbsp;%</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double; background-color: #f8f8f8;"><span style="color:black;">3032</span><br>
+<span style="color:#333399;">100&nbsp;%</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<ol start="3" type="1">
-<li><p>Comenzamos a escribir la introducción de nuestra investigación</p></li>
-<li><p>Para insertar referencias:</p></li>
-</ol>
-<p>Se pueden insertar citas usando el comando Insert -&gt; Citation o usando la sintaxis directamente (por ejemplo, <span class="citation" data-cites="cita">(<a href="#ref-cita" role="doc-biblioref"><strong>cita?</strong></a>)</span> o <span class="citation" data-cites="cita">(<a href="#ref-cita" role="doc-biblioref"><strong>cita?</strong></a>)</span>).</p>
-<p>Las citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por ‘@’ + el identificador de la cita en zotero.</p>
-<p><img src="images/zotero11.png" class="img-fluid"></p>
-<p>En este caso, <code>[@mijsParadoxInequalityIncome2021a]</code></p>
-<p>Aquí hay otros ejemplos:</p>
-<p>La investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años <code>[ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013]</code>.</p>
-<p>Específicamente, se ha encontrado evidencia sobre que… <code>[@mijsParadoxInequalityIncome2021a]</code>. De todas formas, <code>@crucesBiasedPerceptionsIncome2013</code> plantea que…</p>
-<p>Así mismo, Mijs señala que… <code>[-@mijsParadoxInequalityIncome2021a]</code></p>
-<p>Aunque ambos concluyen que… <code>[@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]</code></p>
-<p><img src="images/quarto4.png" class="img-fluid"></p>
-<ol start="5" type="1">
-<li>Luego renderizamos y se debería ver así:</li>
-</ol>
-<p><img src="images/quarto5.png" class="img-fluid"></p>
-<p>Con referencias automáticas!</p>
-<ol start="6" type="1">
-<li>Ahora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop.</li>
-</ol>
+<p>Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde.</p>
+</section>
+<section id="prueba-de-hipótesis-con-chi-cuadrado" class="level1">
+<h1>Prueba de hipótesis con Chi-cuadrado</h1>
+<p>cálculo directo en R:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chi_results <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="fu">table</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>c29))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>stats.table <span class="ot">&lt;-</span> <span class="fu">tidy</span>(chi_results, <span class="at">conf_int =</span> T)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nice_table</span>(stats.table)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-95c349a2{table-layout:auto;}.cl-95b980ac{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-95b980b6{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-95bd2856{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-95bd2860{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-95bd414c{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-95bd4156{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-95bd4157{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-95c349a2"><thead><tr style="overflow-wrap:break-word;"><th class="cl-95bd414c"><p class="cl-95bd2856"><span class="cl-95b980ac">statistic</span></p></th><th class="cl-95bd414c"><p class="cl-95bd2856"><span class="cl-95b980b6">p</span></p></th><th class="cl-95bd414c"><p class="cl-95bd2856"><span class="cl-95b980ac">parameter</span></p></th><th class="cl-95bd414c"><p class="cl-95bd2856"><span class="cl-95b980ac">Method</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-95bd4156"><p class="cl-95bd2860"><span class="cl-95b980ac">21.61</span></p></td><td class="cl-95bd4157"><p class="cl-95bd2856"><span class="cl-95b980ac">&lt; .001***</span></p></td><td class="cl-95bd4157"><p class="cl-95bd2856"><span class="cl-95b980ac">4</span></p></td><td class="cl-95bd4157"><p class="cl-95bd2856"><span class="cl-95b980ac">Pearson's Chi-squared test</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Visualicemos la distribución de esta prueba y su zona de rechazo.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggchisqtest</span>(chi_results)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-content_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="análisis-de-correspondencias-simple" class="level1">
+<h1>Análisis de correspondencias simple</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ade4, FactoMineR, factoextra)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>m01)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>c29))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">educacion=</span><span class="fu">c</span>(<span class="st">"Básica"</span>, <span class="st">"Media"</span>, <span class="st">"Universitaria"</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">constitucion=</span><span class="fu">c</span>(<span class="st">"Expertos"</span>, <span class="st">"Parlamento"</span>, <span class="st">"Asamblea"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                        )</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>               constitucion
+educacion          Expertos  Parlamento    Asamblea
+  Básica        0.045514512 0.009894459 0.147097625
+  Media         0.091358839 0.010224274 0.317941953
+  Universitaria 0.094327177 0.005606860 0.278034301</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabla)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  tabla
+X-squared = 0.0071286, df = 4, p-value = 1</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ACS <span class="ot">&lt;-</span> <span class="fu">CA</span>(tabla, <span class="at">ncp=</span><span class="dv">2</span>, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Perfiles fila</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>variables_fila<span class="ot">=</span><span class="fu">get_ca_row</span>(ACS)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>variables_fila<span class="sc">$</span>inertia</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0043252569 0.0004808203 0.0023224997</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Nube de individuos fila</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(ACS, <span class="at">repel =</span> <span class="cn">TRUE</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Eje 2(11.55%)"</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Eje 1(88.45%)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.5</span>,.<span class="dv">5</span>)<span class="sc">+</span><span class="fu">xlim</span>(<span class="sc">-</span>.<span class="dv">5</span>,.<span class="dv">5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-content_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Perfiles columna</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>variables_columna<span class="ot">=</span><span class="fu">get_ca_col</span>(ACS)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>variables_columna<span class="sc">$</span>inertia</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0009150867 0.0059857229 0.0002277674</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Nube de individuos columna</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(ACS)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"Eje 2(11.55%)"</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Eje 1(88.45%)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.5</span>,.<span class="dv">5</span>)<span class="sc">+</span><span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>,.<span class="dv">5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-content_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Representación simultánea</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.CA</span>(ACS)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-content_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 <!-- -->
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -592,18 +750,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -635,7 +782,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -689,12 +858,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/R-analisis-datos\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/estadisticaIV\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1017,230 +1186,204 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico R 2. Vinculación R y Zotero"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-10-19"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">website:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">  comments:</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    giscus:</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">      repo: kevin-carrasco/R-data-analisis</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, cache = TRUE}</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">require("knitr")</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="in">opts_chunk$set(warning=FALSE,</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="in">             message=FALSE,</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">             echo=TRUE,</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="in">             cache = TRUE, fig.width=7, fig.height=5.2)</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zotero</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Acceder a la página de <span class="co">[</span><span class="ot">zotero</span><span class="co">](https://www.zotero.org/)</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>Vamos a Log in</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero1.png)</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Y creamos una cuenta gratis</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero2.png)</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Finalmente volvemos al inicio y descargamos el programa:</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero3.png)</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Veamos cómo se ve zotero</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero4.png)</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>Zotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Al visualizar una referencia bibliográfica nos muestra todos los **metadatos**: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El dato central que nos va a servir en esta parte del proceso es el DOI</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>DOI: Digital Object Identifier (Identificador de objetos digitales)</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>El DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/doi.png)</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Para crear una biblioteca en zotero vamos a Archivo -&gt; Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero5.png)</span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>En este caso mi biblioteca se llama "percepcion-desigualdad".</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Zotero tiene dos funciones para agregar referencias botón verde "Nuevo elemento" o varita mágica "añadir elemento por identificador". Esta vez vamos por la segunda opción</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Buscamos un paper que nos interese: en este caso busqué el paper <span class="co">[</span><span class="ot">The paradox of inequality: income inequality and belief in meritocracy go hand in hand</span><span class="co">](https://academic.oup.com/ser/article-abstract/19/1/7/5299221?redirectedFrom=fulltext)</span> de Jonathan Mijs (2021). Su DOI es <span class="co">[</span><span class="ot">https://doi.org/10.1093/ser/mwy051</span><span class="co">](https://doi.org/10.1093/ser/mwy051)</span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Usamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero6.png)</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## Researchrabbit</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>Research Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Ingresar a la página <span class="co">[</span><span class="ot">https://researchrabbitapp.com/</span><span class="co">](https://researchrabbitapp.com/)</span>.</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Crear cuenta</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/research.png)</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Una vez dentro apretamos "Import Zotero Collection" y seleccionamos nuestra biblioteca</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/research2.png)</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Así se ve research rabbit</span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/research3.png)</span></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Podemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/research4.png)</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Después volvemos a Zotero, actualizamos y aparece nuestro nuevo paper</span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero7.png)</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>Ahora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R</span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Vamos a este <span class="co">[</span><span class="ot">link</span><span class="co">](https://github.com/retorquere/zotero-better-bibtex/releases/tag/v6.7.169)</span> y descargamos zotero-better-bibtex-6.7.169.xpi</span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Volvemos a Zotero --&gt; Herramientas --&gt; Complementos --&gt; La tuerca en la esquina superior derecha --&gt; Instalar Add-on desde archivo --&gt; Seleccionamos el archivo que acabamos de descargar</span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero9.png)</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>Paso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca --&gt; Exportar colección</span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero8.png)</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Seleccionamos formato: Better BibTeX y marcamos la casilla "Keep updated". Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía</span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero10.png)</span></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="ss">11. </span>Guardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo</span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto</span></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>La escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:</span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>|Código                                                                         | Así se ve                                                                     |</span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>+===============================================================================+===============================================================================+</span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>|     Algo de texto en el párrafo.                                              | Algo de texto.                                                                |</span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>|                                                                               |                                                                               |</span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>|     Más texto                                                                 | Algo de texto en el párrafo. Siempre utilizando espacios para dividir párrafos|</span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>|     espacio entre lineas.                                                     |                                                                               |</span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>| `<span class="in">` `</span>*Cursivas*` ``                                                            | *Cursivas*                                                                    |</span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>| `<span class="in">` `</span>**Negrita**` ``                                                           | **Negrita**                                                                   |</span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>| <span class="in">`# Título 1`</span>                                                                  | # Título 1                                                                    |</span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>| <span class="in">`## Título 2`</span>                                                                 | ## Título 2                                                                   |</span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>| <span class="in">`### Título 3`</span>                                                                | ### Título 3                                                                  |</span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>| (puedes llegar hasta un título N° 6 con <span class="in">`######`</span>)                             |                                                                               |</span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>| `<span class="in">` `</span><span class="co">[</span><span class="ot">Texto enlace</span><span class="co">](https://quarto.org/)</span>` ``                                   | <span class="co">[</span><span class="ot">Texto enlace</span><span class="co">](https://quarto.org/)</span>                                           |</span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>| `<span class="in">` `</span><span class="al">![Texto imagen](/path/to/image.png)</span>` ``                                   | <span class="al">![Texto imagen](../../files/img/eval-hires.png)</span>{alt="Class logo"}             |</span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>| <span class="in">`&gt; Citas`</span>                                                                     | &gt; Citas                                                                       |</span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>|     1. Una                                                                    | 1.   Una                                                                      |</span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>|     2. lista                                                                  |                                                                               |</span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>|     3 ordenada                                                                | 2.   lista                                                                    |</span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a>|                                                                               |                                                                               |</span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>|                                                                               | 3. ordenada                                                                   |</span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>|     - Otro                                                                    | -  Otro                                                                       |</span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>|     - tipo                                                                    |                                                                               |</span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>|     - de lista                                                                | -  tipo                                                                       |</span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>|                                                                               |                                                                               |</span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>|                                                                               |  -  de lista                                                                  |</span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+</span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Abrimos nuestro Rproject y creamos un nuevo documento de Quarto file --&gt; new file --&gt; Quarto document</span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Editamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes</span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>YAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.</span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/yaml.png)</span></span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Comenzamos a escribir la introducción de nuestra investigación</span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Para insertar referencias:</span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>Se pueden insertar citas usando el comando Insert -&gt; Citation o usando la sintaxis directamente (por ejemplo, <span class="co">[</span><span class="ot">@cita</span><span class="co">]</span> o @cita).</span>
-<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>Las citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por '@' + el identificador de la cita en zotero. </span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero11.png)</span></span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>En este caso, <span class="in">`[@mijsParadoxInequalityIncome2021a]`</span></span>
-<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>Aquí hay otros ejemplos:</span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a>La investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años <span class="in">`[ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013]`</span>.</span>
-<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>Específicamente, se ha encontrado evidencia sobre que... <span class="in">`[@mijsParadoxInequalityIncome2021a]`</span>. De todas formas, <span class="in">`@crucesBiasedPerceptionsIncome2013`</span> plantea que...</span>
-<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a>Así mismo, Mijs señala que... <span class="in">`[-@mijsParadoxInequalityIncome2021a]`</span></span>
-<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>Aunque ambos concluyen que... <span class="in">`[@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]`</span></span>
-<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/quarto4.png)</span></span>
-<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Luego renderizamos y se debería ver así:</span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/quarto5.png)</span></span>
-<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a>Con referencias automáticas!</span>
-<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Ahora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop.</span>
-<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Análisis de correspondencia simple"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-08-28"</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">  number_sections: true</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(echo = TRUE, </span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="in">                      message = FALSE,</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="in">                      warning = FALSE)</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo de la práctica</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>La siguiente práctica tiene el objetivo de introducir la idea central del análisis de correspondencia. Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación datos</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r librerias, collapse=TRUE}</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="in">pacman::p_load(tidyverse, # Manipulacion datos</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="in">               sjPlot, # Tablas</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="in">               psych, # Correlaciones</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="in">               DescTools, # Tablas</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="in">               gginference, # Visualizacion </span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="in">               rempsyc, # Reporte</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="in">               broom) # Varios</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="in">options(scipen = 999) # para desactivar notacion cientifica</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="in">rm(list = ls()) # para limpiar el entorno de trabajo</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>Cargamos los datos directamente desde internet.</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r datos}</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="in">#cargamos la base de datos desde internet</span></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a><span class="in">load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) </span></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="in">dim(elsoc_long_2016_2022.2)</span></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>Contamos con 750 variables (columnas) y 18035 observaciones (filas).</span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="st">"4"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(c29, <span class="co"># Confianza generalizada</span></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>         m01<span class="co"># nivel educacional</span></span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> sjlabelled<span class="sc">::</span><span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">777</span>, <span class="sc">-</span><span class="dv">666</span>))</span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprobar</span></span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_data)</span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>educacion <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_data<span class="sc">$</span>m01, <span class="st">"c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3"</span>)</span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>educacion <span class="ot">&lt;-</span> sjlabelled<span class="sc">::</span><span class="fu">set_labels</span>(proc_data<span class="sc">$</span>educacion,</span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Educación básica"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educación media"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educación superior"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_data<span class="sc">$</span>educacion)</span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a><span class="fu"># Tablas de contingencia</span></span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a>Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.</span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a>Con ella, podemos obtener en las celdas las frecuencias **conjuntas** entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X. </span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a>Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias **marginales**.</span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a>Veamos un ejemplo con <span class="in">`ss_salud`</span> y <span class="in">`universitaria`</span>:</span>
+<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_data<span class="sc">$</span>educacion, <span class="at">var.col =</span> proc_data<span class="sc">$</span>c29, </span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, <span class="at">emph.total =</span> T, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a>Sumado a esto, tenemos:</span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>_Frecuencias absolutas_: números que aparencen en la tabla (ya sean conjuntas o marginales)</span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>_Frecuencias relativas_: </span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila</span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna</span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla</span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a>Veamos cómo incorporar el porcentaje fila y columna en la tabla.</span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(<span class="at">var.row =</span> proc_data<span class="sc">$</span>educacion, </span>
+<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var.col =</span> proc_data<span class="sc">$</span>c29, </span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.summary =</span> F, </span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a>                 <span class="at">emph.total =</span> T, </span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.row.prc =</span> T, <span class="co"># porcentaje fila</span></span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.col.prc =</span> T, <span class="co"># porcentaje columna</span></span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a>                 <span class="at">encoding=</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a>Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde. </span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prueba de hipótesis con Chi-cuadrado</span></span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a>cálculo directo en R:</span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, collapse=TRUE}</span></span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a><span class="in">chi_results &lt;- chisq.test(table(proc_data$educacion, proc_data$c29))</span></span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="in">stats.table &lt;- tidy(chi_results, conf_int = T)</span></span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a><span class="in">nice_table(stats.table)</span></span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a>Visualicemos la distribución de esta prueba y su zona de rechazo.</span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a><span class="fu">ggchisqtest</span>(chi_results)</span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis de correspondencias simple</span></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ade4, FactoMineR, factoextra)</span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>m01)</span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>c29))</span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">educacion=</span><span class="fu">c</span>(<span class="st">"Básica"</span>, <span class="st">"Media"</span>, <span class="st">"Universitaria"</span>),</span>
+<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a>                        <span class="at">constitucion=</span><span class="fu">c</span>(<span class="st">"Expertos"</span>, <span class="st">"Parlamento"</span>, <span class="st">"Asamblea"</span>)</span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a>                        )</span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a>tabla</span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabla)</span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a>ACS <span class="ot">&lt;-</span> <span class="fu">CA</span>(tabla, <span class="at">ncp=</span><span class="dv">2</span>, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a><span class="co">#Perfiles fila</span></span>
+<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a>variables_fila<span class="ot">=</span><span class="fu">get_ca_row</span>(ACS)</span>
+<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a>variables_fila<span class="sc">$</span>inertia</span>
+<span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a><span class="co">#Nube de individuos fila</span></span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(ACS, <span class="at">repel =</span> <span class="cn">TRUE</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Eje 2(11.55%)"</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Eje 1(88.45%)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.5</span>,.<span class="dv">5</span>)<span class="sc">+</span><span class="fu">xlim</span>(<span class="sc">-</span>.<span class="dv">5</span>,.<span class="dv">5</span>)</span>
+<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a><span class="co">#Perfiles columna</span></span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a>variables_columna<span class="ot">=</span><span class="fu">get_ca_col</span>(ACS)</span>
+<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a>variables_columna<span class="sc">$</span>inertia</span>
+<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a><span class="co">#Nube de individuos columna</span></span>
+<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(ACS)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"Eje 2(11.55%)"</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Eje 1(88.45%)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.5</span>,.<span class="dv">5</span>)<span class="sc">+</span><span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>,.<span class="dv">5</span>)</span>
+<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig.width=10, fig.height=10}</span></span>
+<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a><span class="in">#Representación simultánea</span></span>
+<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a><span class="in">plot.CA(ACS)</span></span>
+<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE, echo=FALSE}</span></span>
+<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a><span class="in">coords_filas &lt;- ACS$row$coord</span></span>
+<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a><span class="in">coords_triangulo &lt;- coords_filas[c("Básica", "Media", "Universitaria"), ]</span></span>
+<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a><span class="in">triangulo_df &lt;- data.frame(</span></span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a><span class="in">  x = coords_triangulo[, 1], # Coordenadas de la Dimensión 1</span></span>
+<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a><span class="in">  y = coords_triangulo[, 2], # Coordenadas de la Dimensión 2</span></span>
+<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a><span class="in">  Categoria = rownames(coords_triangulo)</span></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a><span class="in"># Añadir el primer punto al final para cerrar el triángulo</span></span>
+<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a><span class="in">triangulo_df &lt;- rbind(triangulo_df, triangulo_df[1, ])</span></span>
+<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="in"># Crear el gráfico del triángulo</span></span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(triangulo_df, aes(x = x, y = y, label = Categoria)) +</span></span>
+<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_polygon(aes(group = 1), fill = "lightblue", color = "blue", alpha = 0.5) +</span></span>
+<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(color = "red", size = 3) +</span></span>
+<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_text(vjust = -1, hjust = 0.5, size = 5) +</span></span>
+<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_segment(aes(x = 0, y = 0, xend = x, yend = y), linetype = "dashed", color = "gray") +</span></span>
+<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a><span class="in">  coord_fixed(ratio = 1) +</span></span>
+<span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(x = "Dimensión 1", y = "Dimensión 2", title = "Triángulo basado en el Análisis de Correspondencia") +</span></span>
+<span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal()</span></span>
+<span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copiar al portapapeles" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco &amp; Daniela Olivares<br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/R-data-analisis">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/cursos-metodos-uah/estadisticaIV">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
 </div>
   </div>
 </footer>

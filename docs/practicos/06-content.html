@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="R para Análisis estadístico">
+<meta name="description" content="Estadística IV">
 
-<title>R para Análisis estadístico - Práctico 6. Asociación de variables</title>
+<title>Práctico 6. Análisis factorial Exploratorio – Estadística IV</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -105,14 +105,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="R para Análisis estadístico - Práctico 6. Asociación de variables">
-<meta property="og:description" content="R data analisis">
-<meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
-<meta property="og:site_name" content="R para Análisis estadístico">
+<meta property="og:title" content="Práctico 6. Análisis factorial Exploratorio – Estadística IV">
+<meta property="og:description" content="Estadística IV">
+<meta property="og:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
+<meta property="og:site_name" content="Estadística IV">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="R para Análisis estadístico - Práctico 6. Asociación de variables">
-<meta name="twitter:description" content="R data analisis">
-<meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta name="twitter:title" content="Práctico 6. Análisis factorial Exploratorio – Estadística IV">
+<meta name="twitter:description" content="Estadística IV">
+<meta name="twitter:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -125,11 +125,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">R para Análisis estadístico</span>
+    <span class="navbar-title">Estadística IV</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -163,19 +163,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../ayudantias/index.html"> 
+<span class="menu-text">Ayudantías</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/06-content.html">06: Práctico 6</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -188,9 +192,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Información general</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -205,9 +209,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Talleres</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -254,30 +258,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">07: Práctico 7</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/resumen-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08: Resumen</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/08-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09: Práctico 8</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/09-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10: Práctico 9</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practicos/10-content.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11: Práctico 10</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -290,21 +270,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a></li>
-  <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
-  <li><a href="#parte-1" id="toc-parte-1" class="nav-link" data-scroll-target="#parte-1">Parte 1</a>
+  <li><a href="#análisis-factorial-exploratorio-afe" id="toc-análisis-factorial-exploratorio-afe" class="nav-link active" data-scroll-target="#análisis-factorial-exploratorio-afe">Análisis factorial exploratorio (AFE)</a>
   <ul>
-  <li><a href="#recursos-de-la-práctica" id="toc-recursos-de-la-práctica" class="nav-link" data-scroll-target="#recursos-de-la-práctica">Recursos de la práctica</a></li>
-  <li><a href="#preparación-datos" id="toc-preparación-datos" class="nav-link" data-scroll-target="#preparación-datos">Preparación datos</a></li>
-  <li><a href="#tratamiento-de-casos-perdidos" id="toc-tratamiento-de-casos-perdidos" class="nav-link" data-scroll-target="#tratamiento-de-casos-perdidos">Tratamiento de casos perdidos</a>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link" data-scroll-target="#presentación">Presentación</a></li>
+  <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general">Objetivo general</a></li>
+  <li><a href="#cargar-paquetes" id="toc-cargar-paquetes" class="nav-link" data-scroll-target="#cargar-paquetes">Cargar paquetes</a>
   <ul class="collapse">
-  <li><a href="#a-analísis-con-casos-completos-listwise-deletion" id="toc-a-analísis-con-casos-completos-listwise-deletion" class="nav-link" data-scroll-target="#a-analísis-con-casos-completos-listwise-deletion">a) Analísis con casos completos: listwise deletion</a></li>
-  <li><a href="#b-retener-pero-excluir-pairwise-deletion" id="toc-b-retener-pero-excluir-pairwise-deletion" class="nav-link" data-scroll-target="#b-retener-pero-excluir-pairwise-deletion">b) Retener pero excluir: pairwise deletion</a></li>
+  <li><a href="#cargar-base-de-datos" id="toc-cargar-base-de-datos" class="nav-link" data-scroll-target="#cargar-base-de-datos">Cargar base de datos</a></li>
+  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos">Visualización de datos</a></li>
+  </ul></li>
+  <li><a href="#datos-y-variables" id="toc-datos-y-variables" class="nav-link" data-scroll-target="#datos-y-variables">Datos y variables</a></li>
+  <li><a href="#filtrar-base-de-datos" id="toc-filtrar-base-de-datos" class="nav-link" data-scroll-target="#filtrar-base-de-datos">Filtrar base de datos</a>
+  <ul class="collapse">
+  <li><a href="#recodificar" id="toc-recodificar" class="nav-link" data-scroll-target="#recodificar">Recodificar</a></li>
+  </ul></li>
+  <li><a href="#análisis" id="toc-análisis" class="nav-link" data-scroll-target="#análisis">Análisis</a>
+  <ul class="collapse">
+  <li><a href="#estimar-correlación" id="toc-estimar-correlación" class="nav-link" data-scroll-target="#estimar-correlación">Estimar correlación</a></li>
+  </ul></li>
+  <li><a href="#análisis-factorial-exploratorio" id="toc-análisis-factorial-exploratorio" class="nav-link" data-scroll-target="#análisis-factorial-exploratorio">Análisis factorial exploratorio</a>
+  <ul class="collapse">
+  <li><a href="#test-de-adecuación-de-matriz-para-afe" id="toc-test-de-adecuación-de-matriz-para-afe" class="nav-link" data-scroll-target="#test-de-adecuación-de-matriz-para-afe">Test de adecuación de matriz para AFE</a></li>
+  <li><a href="#nivel-de-correlaciones-de-la-matriz-test-de-esfericidad-de-barlett" id="toc-nivel-de-correlaciones-de-la-matriz-test-de-esfericidad-de-barlett" class="nav-link" data-scroll-target="#nivel-de-correlaciones-de-la-matriz-test-de-esfericidad-de-barlett">Nivel de correlaciones de la matriz: test de esfericidad de Barlett</a></li>
+  <li><a href="#selección-de-número-de-factores" id="toc-selección-de-número-de-factores" class="nav-link" data-scroll-target="#selección-de-número-de-factores">Selección de número de factores</a></li>
+  <li><a href="#extracción" id="toc-extracción" class="nav-link" data-scroll-target="#extracción">Extracción</a></li>
+  <li><a href="#rotación" id="toc-rotación" class="nav-link" data-scroll-target="#rotación">Rotación</a></li>
+  <li><a href="#casi-automático-con-sjplot" id="toc-casi-automático-con-sjplot" class="nav-link" data-scroll-target="#casi-automático-con-sjplot">Casi automático con sjPlot</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#parte-2" id="toc-parte-2" class="nav-link" data-scroll-target="#parte-2">Parte 2</a></li>
-  <li><a href="#matrices-de-correlación" id="toc-matrices-de-correlación" class="nav-link" data-scroll-target="#matrices-de-correlación">Matrices de correlación</a></li>
-  <li><a href="#tamaños-de-efecto" id="toc-tamaños-de-efecto" class="nav-link" data-scroll-target="#tamaños-de-efecto">Tamaños de efecto</a></li>
   </ul>
 </nav>
     </div>
@@ -313,8 +306,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/06-content.html">06: Práctico 6</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Práctico 6. Asociación de variables</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
-<p class="subtitle lead">R data analisis</p>
+<div class="quarto-title-block"><div><h1 class="title">Práctico 6. Análisis factorial Exploratorio</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+<p class="subtitle lead">Estadística IV</p>
 </div>
 
 
@@ -325,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 de abril de 2024</p>
+      <p class="date">1 de octubre de 2024</p>
     </div>
   </div>
   
@@ -337,776 +330,636 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="presentación" class="level1">
-<h1>Presentación</h1>
+<section id="análisis-factorial-exploratorio-afe" class="level1">
+<h1>Análisis factorial exploratorio (AFE)</h1>
+<section id="presentación" class="level2">
+<h2 class="anchored" data-anchor-id="presentación">Presentación</h2>
+<p>Para el taller práctico de hoy utilizaremos la base de datos del Estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social <a href="https://coes.cl/">COES</a>.</p>
+<p>El Estudio Longitudinal Social del Chile <a href="https://coes.cl/encuesta-panel/">ELSOC</a>, único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad, tiene una representación de la población nacional urbana, donde se obtuvo una muestra original de <strong>2927</strong> casos en el año 2016 y mantiene <strong>1728</strong> en 2022, además de una muestra de refresco en 2018.</p>
 </section>
-<section id="objetivo-de-la-práctica" class="level1">
-<h1>Objetivo de la práctica</h1>
-<p>El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos para la estimación de correlaciones y asociación de variables con R en general, que son necesarios para luego poder analizar e interpretar estas relaciones.</p>
-<p>Por temas de orden y reproducibilidad, en este curso hemos separado en dos momentos el trabajo con datos, y dos archivos de código correspondientes, sin embargo, este práctico en específico combina todo en dos momentos de esta misma página:</p>
-<p>Preparación: Parte 1</p>
-<p>Análisis: Parte 2</p>
+<section id="objetivo-general" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-general">Objetivo general</h2>
+<p>El objetivo de este ejercicio práctico es comprender y estimar un análisis factorial exploratorio con el fin de reducir la dimensionalidad de una batería de variables.</p>
 </section>
-<section id="parte-1" class="level1">
-<h1>Parte 1</h1>
-<section id="recursos-de-la-práctica" class="level2">
-<h2 class="anchored" data-anchor-id="recursos-de-la-práctica">Recursos de la práctica</h2>
-<p>En esta práctica trabajaremos con la ola 2021 Estudio Longitudinal Social de Chile (ELSOC), elaborado por <a href="https://coes.cl/encuesta-panel/">COES</a>. Para este ejercicio, obtendremos directamente esta base desde internet.</p>
+<section id="cargar-paquetes" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-paquetes">Cargar paquetes</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>((<span class="st">"https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData"</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co">#Conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               car, <span class="co">#Para recodificar</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               summarytools, <span class="co">#Para descriptivos</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               sjmisc,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               sjPlot,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>               psy, <span class="co"># scree plot function</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>               nFactors, <span class="co"># parallel</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               GPArotation, <span class="co"># Rotación</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>               sjlabelled)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Para <strong>importar</strong> los datos en R debemos tener en consideración tres cosas:</p>
-<ol type="1">
-<li><p>Cómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)</p></li>
-<li><p>El formato de nuestros datos (en nuestro caso .sav)</p></li>
-<li><p>El lugar de donde están alojados nuestros datos</p></li>
-</ol>
-</div>
-</div>
-</section>
-<section id="preparación-datos" class="level2">
-<h2 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h2>
-<p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
+<section id="cargar-base-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-base-de-datos">Cargar base de datos</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, <span class="co"># Manipulacion datos</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>               sjmisc, <span class="co"># Descriptivos</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               sjPlot, <span class="co"># Tablas</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               sjlabelled, <span class="co">#etiquetas</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               kableExtra, <span class="co">#Tablas</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               GGally, <span class="co"># Correlaciones</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>               corrplot) <span class="co"># Correlaciones</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://dataverse.harvard.edu/api/access/datafile/7245118"</span>)) <span class="co">#Cargar base de datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>A continuación, exploramos la base de datos <strong>elsoc_2021</strong>.</p>
+</section>
+<section id="visualización-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="visualización-de-datos">Visualización de datos</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_2021) <span class="co"># Dimensiones</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_long_2016_2022<span class="fl">.2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2740  311</code></pre>
+<pre><code>[1] 18035   750</code></pre>
 </div>
 </div>
-<p>Contamos con 311 variables (columnas) y 2740 observaciones (filas).</p>
-<p>Para este ejemplo, vamos a utilizar dos variables numéricas (ingresos y edad) y cuatro variables categóricas (Educación, percepción de desigualdad y 2 de percepción de meritocracia).</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> elsoc_2021 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">edad=</span>m0_edad, <span class="at">ingreso=</span>m13, <span class="at">educacion=</span>m01, <span class="at">desigualdad=</span>c18_11, <span class="at">esfuerzo=</span>c18_09, <span class="at">inteligencia=</span>c18_10)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Ahora, profundicemos un poco más y observemos algunos estadísticos descriptivos de resumen de nuestra base de datos. Utilizaremos la función <code>descr</code> del paquete <code>sjmisc</code>.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(proc_elsoc,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 2%">
-<col style="width: 8%">
-<col style="width: 45%">
-<col style="width: 3%">
-<col style="width: 6%">
-<col style="width: 9%">
-<col style="width: 8%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">var</th>
-<th style="text-align: left;">label</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">NA.prc</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
-<th style="text-align: left;">range</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">edad</td>
-<td style="text-align: left;">Edad del entrevistado</td>
-<td style="text-align: right;">2740</td>
-<td style="text-align: right;">0.00000</td>
-<td style="text-align: right;">49.411314</td>
-<td style="text-align: right;">15.12879</td>
-<td style="text-align: left;">66 (20-86)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">ingreso</td>
-<td style="text-align: left;">Ingreso mensual entrevistado (monto)</td>
-<td style="text-align: right;">1641</td>
-<td style="text-align: right;">40.10949</td>
-<td style="text-align: right;">579621.962827</td>
-<td style="text-align: right;">616203.06223</td>
-<td style="text-align: left;">9000999 (-999-9000000)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">educacion</td>
-<td style="text-align: left;">Nivel educacional</td>
-<td style="text-align: right;">2740</td>
-<td style="text-align: right;">0.00000</td>
-<td style="text-align: right;">5.455109</td>
-<td style="text-align: right;">2.22973</td>
-<td style="text-align: left;">9 (1-10)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">desigualdad</td>
-<td style="text-align: left;">Grado de acuerdo: Las diferencias de ingreso son demasiado grandes</td>
-<td style="text-align: right;">2740</td>
-<td style="text-align: right;">0.00000</td>
-<td style="text-align: right;">-1.036496</td>
-<td style="text-align: right;">64.56727</td>
-<td style="text-align: left;">1004 (-999-5)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">esfuerzo</td>
-<td style="text-align: left;">Grado de acuerdo: Las personas son recompensadas por sus esfuerzos</td>
-<td style="text-align: right;">2740</td>
-<td style="text-align: right;">0.00000</td>
-<td style="text-align: right;">-5.887591</td>
-<td style="text-align: right;">84.14409</td>
-<td style="text-align: left;">1004 (-999-5)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">inteligencia</td>
-<td style="text-align: left;">Grado de acuerdo: Las personas son recompensada por su inteligencia</td>
-<td style="text-align: right;">2740</td>
-<td style="text-align: right;">0.00000</td>
-<td style="text-align: right;">-5.097810</td>
-<td style="text-align: right;">80.70845</td>
-<td style="text-align: left;">1004 (-999-5)</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><strong>¡ALTO!</strong> Tenemos algunos valores o casos perdidos en ciertas variables. ¿Cómo lidiar con los casos perdidos?</p>
+<p>Debido a la naturaleza longitudinal de ELSOC, la base de datos contiene 18035 casos (las mismas personas durante 6 años) y 750 variables (las mismas variables en 6 periodos distintos). Por lo tanto, para simplificar el proceso de análisis de este práctico trabajaremos solo con los casos y variables de quienes participaron en la cuarta ola (2019)</p>
 </section>
-<section id="tratamiento-de-casos-perdidos" class="level2">
-<h2 class="anchored" data-anchor-id="tratamiento-de-casos-perdidos">Tratamiento de casos perdidos</h2>
-<p>Trabajar con datos a menudo implica enfrentar valores perdidos (<code>NA</code>), lo que puede ser un gran desafío. Estos valores <em>indican la ausencia de un valor en una base de datos</em>. Los valores perdidos pueden originarse por diversas razones, como el sesgo de no respuesta en encuestas, errores en la entrada de datos o simplemente la falta de información para ciertas variables.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>esfuerzo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Grado de acuerdo: Las personas son recompensadas por sus esfuerzos (x) &lt;numeric&gt; 
-# total N=2740 valid N=2740 mean=-5.89 sd=84.14
-
-Value |                                 Label |    N | Raw % | Valid % | Cum. %
--------------------------------------------------------------------------------
- -999 |                 No Responde (no leer) |    4 |  0.15 |    0.15 |   0.15
- -888 |                     No Sabe (no leer) |   14 |  0.51 |    0.51 |   0.66
- -777 |       Valor perdido por error tecnico |    0 |  0.00 |    0.00 |   0.66
- -666 | Valor perdido por encuesta incompleta |   10 |  0.36 |    0.36 |   1.02
-    1 |              Totalmente en desacuerdo |  237 |  8.65 |    8.65 |   9.67
-    2 |                         En desacuerdo | 1415 | 51.64 |   51.64 |  61.31
-    3 |        Ni en desacuerdo ni de acuerdo |  422 | 15.40 |   15.40 |  76.72
-    4 |                            De acuerdo |  567 | 20.69 |   20.69 |  97.41
-    5 |                 Totalmente de acuerdo |   71 |  2.59 |    2.59 | 100.00
- &lt;NA&gt; |                                  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">777</span>, <span class="sc">-</span><span class="dv">666</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>esfuerzo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Grado de acuerdo: Las personas son recompensadas por sus esfuerzos (x) &lt;numeric&gt; 
-# total N=2740 valid N=2712 mean=2.56 sd=1.00
-
-Value |                          Label |    N | Raw % | Valid % | Cum. %
-------------------------------------------------------------------------
-    1 |       Totalmente en desacuerdo |  237 |  8.65 |    8.74 |   8.74
-    2 |                  En desacuerdo | 1415 | 51.64 |   52.18 |  60.91
-    3 | Ni en desacuerdo ni de acuerdo |  422 | 15.40 |   15.56 |  76.47
-    4 |                     De acuerdo |  567 | 20.69 |   20.91 |  97.38
-    5 |          Totalmente de acuerdo |   71 |  2.59 |    2.62 | 100.00
- &lt;NA&gt; |                           &lt;NA&gt; |   28 |  1.02 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>educacion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Nivel educacional (x) &lt;numeric&gt; 
-# total N=2740 valid N=2740 mean=5.46 sd=2.23
-
-Value |                                       Label |   N | Raw % | Valid % | Cum. %
-------------------------------------------------------------------------------------
-    1 |                                Sin estudios |  18 |  0.66 |    0.66 |   0.66
-    2 |  Educacion Basica o Preparatoria incompleta | 280 | 10.22 |   10.22 |  10.88
-    3 |    Educacion Basica o Preparatoria completa | 243 |  8.87 |    8.87 |  19.74
-    4 |    Educacion Media o Humanidades incompleta | 354 | 12.92 |   12.92 |  32.66
-    5 |      Educacion Media o Humanidades completa | 819 | 29.89 |   29.89 |  62.55
-    6 |                 Tecnica Superior incompleta |  93 |  3.39 |    3.39 |  65.95
-    7 |                   Tecnica Superior completa | 355 | 12.96 |   12.96 |  78.91
-    8 |                    Universitaria incompleta | 167 |  6.09 |    6.09 |  85.00
-    9 |                      Universitaria completa | 360 | 13.14 |   13.14 |  98.14
-   10 | Estudios de posgrado (magister o doctorado) |  51 |  1.86 |    1.86 | 100.00
- &lt;NA&gt; |                                        &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
-</div>
-</div>
-<p>La presencia de valores perdidos puede tener un impacto considerable en la precisión y confiabilidad de los análisis estadísticos, lo que a su vez puede conducir a resultados sesgados y conclusiones incorrectas.</p>
-<p>Existen varias formas de tratar valores perdidos, que van desde enfoques simples hasta métodos más complejos, como la imputación. En esta ocasión, nos centraremos en las dos estrategias más comunes:</p>
+</section>
+<section id="datos-y-variables" class="level2">
+<h2 class="anchored" data-anchor-id="datos-y-variables">Datos y variables</h2>
+<p>Para estimar AFE, utilizaremos específicamente el módulo de <strong>Ciudadanía</strong>. De este módulo utilizaremos un concepto en particular llamado <em>Confianza en instituciones</em> con los ítems:</p>
 <ul>
-<li>trabajar exclusivamente con casos completos (listwise) o</li>
-<li>retener los casos con valores perdidos, pero excluyéndolos al calcular estadísticas (pairwise).</li>
+<li><p>Grado de acuerdo: Mujeres son mas refinadas</p></li>
+<li><p>Grado de acuerdo: Mujeres deberian ser protegidas</p></li>
+<li><p>Grado de acuerdo: Mujeres consiguen privilegios en nombre de igualdad</p></li>
+<li><p>Grado de acuerdo: Mujeres derrotadas se quejan de discriminacion</p></li>
 </ul>
-<section id="a-analísis-con-casos-completos-listwise-deletion" class="level3">
-<h3 class="anchored" data-anchor-id="a-analísis-con-casos-completos-listwise-deletion">a) Analísis con casos completos: listwise deletion</h3>
-<p>Este enfoque es uno de los más conocidos: implica remover completamente las observaciones que tienen valores perdidos en cualquier variable de interés. En otras palabras, si una fila/caso en un conjunto de datos tiene al menos un valor faltante en alguna de las variables que estás considerando, se eliminará por completo.</p>
-<p>En R, esto podemos hacerlo con la función <code>na.omit</code>. Para hacer esto, sigamos estos pasos:</p>
-<ul>
-<li>respaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos)-</li>
-<li>contamos el número de casos con el comando <code>dim</code>.</li>
-<li>contamos cuántos y en dónde tenemos casos perdidos.</li>
-<li>borramos los casos perdidos con <code>na.omit</code>.</li>
-<li>contamos nuevamente con <code>dim</code> para asegurarnos que se borraron.</li>
-</ul>
+<p>La idea general es ver si esque todas estas variables miden algún tipo de <em>Confianza en instituciones</em> o si esque existen dimensiones subyacentes.</p>
+</section>
+<section id="filtrar-base-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="filtrar-base-de-datos">Filtrar base de datos</h2>
+<p>Filtraremos la base de datos para quedarnos con las observaciones correspondientes solamente a la ola 4, y además seleccionaremos los ítems de interés.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc_original <span class="ot">&lt;-</span> proc_elsoc</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="dv">4</span>) <span class="sc">%&gt;%</span>  <span class="co"># seleccionamos solo los casos de la ola 1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">son_refinadas=</span>g01_01,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">ser_protegidas=</span>g01_02,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">consiguen_privilegios=</span>g01_03,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">quejan_discriminacion=</span>g01_04</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2740    6</code></pre>
+<pre><code>  son_refinadas ser_protegidas consiguen_privilegios quejan_discriminacion
+1             5              4                     4                     4
+2             4              5                     5                     2
+3             4              5                     4                     4
+4             3              4                     3                     4
+5             4              4                     4                     4
+6             4              4                     4                     4</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>son_refinadas)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   6   15  108  473  590 1731  494 </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>ser_protegidas)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   2    1   35  148  244 1784 1203 </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>consiguen_privilegios)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   4   57   79  487  611 1887  292 </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>quejan_discriminacion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   8   64  106  717  669 1641  212 </code></pre>
 </div>
 </div>
+<p>Estos ítems cuentan con las mismas categorías de respuesta: (1) totalmente desacuerdo, a (5) Totalmente de acuerdo. Además de los valores codificados como -888 y -999.</p>
+<section id="recodificar" class="level3">
+<h3 class="anchored" data-anchor-id="recodificar">Recodificar</h3>
+<p>Recodificamos los valores -888 y -999 en NA y eliminamos los NAs.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>son_refinadas <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(data<span class="sc">$</span>son_refinadas, <span class="st">"c(-999,-888)=NA"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ser_protegidas <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(data<span class="sc">$</span>ser_protegidas, <span class="st">"c(-999,-888)=NA"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>consiguen_privilegios <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(data<span class="sc">$</span>consiguen_privilegios, <span class="st">"c(-999,-888)=NA"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>quejan_discriminacion <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(data<span class="sc">$</span>quejan_discriminacion, <span class="st">"c(-999,-888)=NA"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>son_refinadas <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(data<span class="sc">$</span>son_refinadas,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Totalmente desacuerdo"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Desacuerdo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Ni de acuerdo ni desacuerdo"</span><span class="ot">=</span><span class="dv">3</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"De acuerdo"</span><span class="ot">=</span><span class="dv">4</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Totalmente de acuerdo"</span><span class="ot">=</span><span class="dv">5</span>))</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ser_protegidas <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(data<span class="sc">$</span>ser_protegidas,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Totalmente desacuerdo"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Desacuerdo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Ni de acuerdo ni desacuerdo"</span><span class="ot">=</span><span class="dv">3</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"De acuerdo"</span><span class="ot">=</span><span class="dv">4</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Totalmente de acuerdo"</span><span class="ot">=</span><span class="dv">5</span>))</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>consiguen_privilegios <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(data<span class="sc">$</span>consiguen_privilegios,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Totalmente desacuerdo"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Desacuerdo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Ni de acuerdo ni desacuerdo"</span><span class="ot">=</span><span class="dv">3</span>,</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"De acuerdo"</span><span class="ot">=</span><span class="dv">4</span>,</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Totalmente de acuerdo"</span><span class="ot">=</span><span class="dv">5</span>))</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>quejan_discriminacion <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(data<span class="sc">$</span>quejan_discriminacion,</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Totalmente desacuerdo"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Desacuerdo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Ni de acuerdo ni desacuerdo"</span><span class="ot">=</span><span class="dv">3</span>,</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"De acuerdo"</span><span class="ot">=</span><span class="dv">4</span>,</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Totalmente de acuerdo"</span><span class="ot">=</span><span class="dv">5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1251</code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>        edad      ingreso    educacion  desigualdad     esfuerzo inteligencia 
-           0         1179            0           18           28           26 </code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_elsoc)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1545    6</code></pre>
-</div>
-</div>
-<p>Ahora nos quedamos con 1545 observaciones sin casos perdidos.</p>
-<p>Aunque es simple de implementar, con este enfoque podemos perder información importante, especialmente si los valores perdidos no se distribuyen aleatoriamente.</p>
-<div class="callout-box">
-<p>Siempre hay que intentar rescatar la mayor cantidad de casos posibles. Por lo tanto, si un listwise genera más de un 10% de casos perdidos se debe detectar qué variables esta produciendo esta pérdida e intentar recuperar datos.</p>
 </div>
 </section>
-<section id="b-retener-pero-excluir-pairwise-deletion" class="level3">
-<h3 class="anchored" data-anchor-id="b-retener-pero-excluir-pairwise-deletion">b) Retener pero excluir: pairwise deletion</h3>
-<p>A diferencia del anterior, este es un enfoque en el que las observaciones se utilizan para el análisis siempre que tengan datos disponibles para las variables específicas que se están analizando. En lugar de eliminar toda una fila si falta un valor, se eliminan solo los valores faltantes en las variables que se están analizando en ese momento.</p>
-<p>Para hacer esto en R debemos siempre verificar e indicar en nuestro código si queremos (o no) remover los <code>NA</code> para realizar los análisis.</p>
+</section>
+<section id="análisis" class="level2">
+<h2 class="anchored" data-anchor-id="análisis">Análisis</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>esfuerzo); <span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>edad); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>desigualdad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 49.41131</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.180583</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>esfuerzo, <span class="at">na.rm =</span> <span class="cn">TRUE</span>); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>); <span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>desigualdad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.564897</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 45.09644</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.135562</code></pre>
-</div>
-</div>
-<p>Con ambas opciones tenemos resultados diferentes, ya que cambia la cantidad de casos analizados. La decisión final de qué método usar dependerá siempre del equipo de investigación.</p>
-</section>
-</section>
-</section>
-<section id="parte-2" class="level1">
-<h1>Parte 2</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>¿Qué era la correlación?</strong></p>
-<p>La correlación es una medida de asociación entre variables, que describe el sentido (dirección) y fuerza de la asociación.</p>
-<p>En otras palabras, nos permite conocer cómo y cuánto se relaciona la variación de una variable, con la variación de otra variable.</p>
-</div>
-</div>
-</section>
-<section id="matrices-de-correlación" class="level1">
-<h1>Matrices de correlación</h1>
-<p>La correlación es una estimación de asociación de dos variables. Sin embargo, en los análisis de bases de datos usualmente se exploran asociaciones entre múltiples pares de variables, lo que genera una matriz de correlación. En una matriz, las variables se presentan en las filas y las columnas, y en las celdas donde se cruzan los pares de variables se muestra su coeficiente de correlación.</p>
-<p>En su forma simple en R se aplica la función <code>cor</code> a la base de datos, y la guardamos en un objeto que le damos el nombre M para futuras operaciones:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">cor</span>(proc_elsoc_original, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                      edad       ingreso   educacion desigualdad    esfuerzo
-edad          1.0000000000 -0.0004878506 -0.33414228  -0.0663105  0.09190282
-ingreso      -0.0004878506  1.0000000000  0.42342341   0.1078421  0.02624513
-educacion    -0.3341422793  0.4234234068  1.00000000   0.2334262 -0.06165636
-desigualdad  -0.0663105003  0.1078420502  0.23342621   1.0000000 -0.14897824
-esfuerzo      0.0919028176  0.0262451260 -0.06165636  -0.1489782  1.00000000
-inteligencia  0.0623189853  0.0324819654 -0.05894296  -0.1090589  0.62173928
-             inteligencia
-edad           0.06231899
-ingreso        0.03248197
-educacion     -0.05894296
-desigualdad   -0.10905885
-esfuerzo       0.62173928
-inteligencia   1.00000000</code></pre>
-</div>
-</div>
-<p>Este es el reporte simple, pero no muy amigable a la vista. Para una versión más reportable, utilizamos la funcion <code>tab_corr</code>.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_stackfrq</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
-<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<figure class="figure">
+<p><img src="06-content_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="estimar-correlación" class="level3">
+<h3 class="anchored" data-anchor-id="estimar-correlación">Estimar correlación</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_corr</span>(data, <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Edad del entrevistado</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Ingreso mensual entrevistado (monto)</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Nivel educacional</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Las diferencias de<br>
-ingreso son demasiado grandes</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Las personas son<br>
-recompensadas por sus esfuerzos</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Las personas son<br>
-recompensada por su inteligencia</td>
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Mujeres son mas<br>
+refinadas</td>
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Mujeres deberian ser<br>
+protegidas</td>
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Mujeres consiguen<br>
+privilegios en nombre de igualdad</td>
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Mujeres derrotadas se<br>
+quejan de discriminacion</td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">Edad del entrevistado</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="font-style: italic">Grado de acuerdo: Mujeres son mas<br>
+refinadas</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 </tr>
 <tr class="odd">
-<td style="font-style: italic">Ingreso mensual entrevistado (monto)</td>
-<td style="text-align: center; padding: 0.2cm; color: #999999;">-0.000<span style="vertical-align:super;font-size:0.8em;"></span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="font-style: italic">Grado de acuerdo: Mujeres deberian ser<br>
+protegidas</td>
+<td style="text-align: center; padding: 0.2cm;">0.364<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">Nivel educacional</td>
-<td style="text-align: center; padding: 0.2cm;">-0.334<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.423<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="font-style: italic">Grado de acuerdo: Mujeres consiguen<br>
+privilegios en nombre de igualdad</td>
+<td style="text-align: center; padding: 0.2cm;">0.224<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.199<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 </tr>
 <tr class="odd">
-<td style="font-style: italic">Grado de acuerdo: Las diferencias de<br>
-ingreso son demasiado grandes</td>
-<td style="text-align: center; padding: 0.2cm;">-0.066<span style="vertical-align:super;font-size:0.8em;">**</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.108<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.233<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="font-style: italic">Grado de acuerdo: Mujeres derrotadas se<br>
+quejan de discriminacion</td>
+<td style="text-align: center; padding: 0.2cm;">0.183<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.163<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.453<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">Grado de acuerdo: Las personas son<br>
-recompensadas por sus esfuerzos</td>
-<td style="text-align: center; padding: 0.2cm;">0.092<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm; color: #999999;">0.026<span style="vertical-align:super;font-size:0.8em;"></span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.062<span style="vertical-align:super;font-size:0.8em;">*</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.149<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-</tr>
-<tr class="odd">
-<td style="font-style: italic">Grado de acuerdo: Las personas son<br>
-recompensada por su inteligencia</td>
-<td style="text-align: center; padding: 0.2cm;">0.062<span style="vertical-align:super;font-size:0.8em;">*</span></td>
-<td style="text-align: center; padding: 0.2cm; color: #999999;">0.032<span style="vertical-align:super;font-size:0.8em;"></span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.059<span style="vertical-align:super;font-size:0.8em;">*</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.109<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.622<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-</tr>
-<tr class="even">
-<td colspan="7" style="text-align: right; border-bottom: double black; border-top: 1px solid black; font-style: italic; font-size: 0.9em;">Computed correlation used pearson-method with listwise-deletion.</td>
+<td colspan="5" style="text-align: right; border-bottom: double black; border-top: 1px solid black; font-style: italic; font-size: 0.9em;">Computed correlation used pearson-method with listwise-deletion.</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div>
-<p>La <strong>distinción</strong> entre <strong>listwise y pairwise es relevante al momento de estimar matricies de correlación</strong>, donde esta decisión debe estar claramente explicitada y fundamentada. En ejemplo de tabla anterior usamos <em>listwise</em> que es el argumento por defecto (y nos lo indica al final de la tabla).</p>
-<p>Veamos como hacerlo con <em>pairwise</em>:</p>
+<p>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</p>
+</section>
+</section>
+<section id="análisis-factorial-exploratorio" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-factorial-exploratorio">Análisis factorial exploratorio</h2>
+<p>¿Qué se puede deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes? No hay claridad de grupos de indicadores asociados entre sí.</p>
+<section id="test-de-adecuación-de-matriz-para-afe" class="level3">
+<h3 class="anchored" data-anchor-id="test-de-adecuación-de-matriz-para-afe">Test de adecuación de matriz para AFE</h3>
+<p>KMO (Kaiser, Meyer, Olkin Measure of Sampling Adequacy):</p>
+<ul>
+<li><p>Varía entre 0 y 1. Contrasta si las correlaciones parciales entre las variables son pequeñas</p></li>
+<li><p>Valores pequeños (menores a 0.5) indican que los datos no serían adecuados para AFE, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables.</p></li>
+</ul>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.deletion =</span> <span class="st">"pairwise"</span>, <span class="co"># espeficicamos tratamiento NA</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>corMat  <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"complete.obs"</span>)  <span class="co"># estimar matriz pearson</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">KMO</span>(corMat)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Kaiser-Meyer-Olkin factor adequacy
+Call: KMO(r = corMat)
+Overall MSA =  0.61
+MSA for each item = 
+        son_refinadas        ser_protegidas consiguen_privilegios 
+                 0.63                  0.62                  0.59 
+quejan_discriminacion 
+                 0.59 </code></pre>
+</div>
+</div>
+<p>En este caso las correlaciones son altas, por lo que los datos sí son adecuados para AFE.</p>
+</section>
+<section id="nivel-de-correlaciones-de-la-matriz-test-de-esfericidad-de-barlett" class="level3">
+<h3 class="anchored" data-anchor-id="nivel-de-correlaciones-de-la-matriz-test-de-esfericidad-de-barlett">Nivel de correlaciones de la matriz: test de esfericidad de Barlett</h3>
+<p>Se utiliza para evluar la hipótesis que la matriz de correlaciones es una matriz identidad (diagonal=1 y bajo la diagonal=0)</p>
+<ul>
+<li>Se busca significación (p &lt; 0.05) ya que se espera que las variables estén correlacionadas</li>
+</ul>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(corMat, <span class="at">n =</span> <span class="dv">3417</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$chisq
+[1] 1542.697
+
+$p.value
+[1] 0
+
+$df
+[1] 6</code></pre>
+</div>
+</div>
+<p>En este caso el valor p es 0, así que hay significación estadística</p>
+</section>
+<section id="selección-de-número-de-factores" class="level3">
+<h3 class="anchored" data-anchor-id="selección-de-número-de-factores">Selección de número de factores</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scree.plot</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
-<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<figure class="figure">
+<p><img src="06-content_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(corMat, <span class="at">n.obs=</span><span class="dv">3417</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-content_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parallel analysis suggests that the number of factors =  2  and the number of components =  2 </code></pre>
+</div>
+</div>
+</section>
+<section id="extracción" class="level3">
+<h3 class="anchored" data-anchor-id="extracción">Extracción</h3>
+<ul>
+<li>ejes principales</li>
+</ul>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fac_pa <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"pa"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(fac_pa)</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>fac_pa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  pa
+Call: fa(r = data, nfactors = 2, fm = "pa")
+Standardized loadings (pattern matrix) based upon correlation matrix
+                        PA1   PA2   h2   u2 com
+son_refinadas          0.02  0.60 0.37 0.63   1
+ser_protegidas        -0.01  0.60 0.35 0.65   1
+consiguen_privilegios  0.67  0.03 0.47 0.53   1
+quejan_discriminacion  0.68 -0.03 0.44 0.56   1
+
+                       PA1  PA2
+SS loadings           0.90 0.72
+Proportion Var        0.23 0.18
+Cumulative Var        0.23 0.41
+Proportion Explained  0.56 0.44
+Cumulative Proportion 0.56 1.00
+
+ With factor correlations of 
+     PA1  PA2
+PA1 1.00 0.47
+PA2 0.47 1.00
+
+Mean item complexity =  1
+Test of the hypothesis that 2 factors are sufficient.
+
+df null model =  6  with the objective function =  0.45 with Chi Square =  1522.89
+df of  the model are -1  and the objective function was  0 
+
+The root mean square of the residuals (RMSR) is  0 
+The df corrected root mean square of the residuals is  NA 
+
+The harmonic n.obs is  3354 with the empirical chi square  0.01  with prob &lt;  NA 
+The total n.obs was  3417  with Likelihood Chi Square =  0.01  with prob &lt;  NA 
+
+Tucker Lewis Index of factoring reliability =  1.004
+Fit based upon off diagonal values = 1
+Measures of factor score adequacy             
+                                                   PA1  PA2
+Correlation of (regression) scores with factors   0.80 0.75
+Multiple R square of scores with factors          0.64 0.56
+Minimum correlation of possible factor scores     0.28 0.13</code></pre>
+</div>
+</div>
+<ul>
+<li>Maximum likelihood</li>
+</ul>
+<p>Maximiza la posibilidad de que los parámetros reproduzcan los datos observados</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fac_ml</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = data, nfactors = 2, fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+                        ML1   ML2   h2   u2 com
+son_refinadas          0.01  0.62 0.38 0.62   1
+ser_protegidas        -0.01  0.58 0.34 0.66   1
+consiguen_privilegios  0.67  0.03 0.47 0.53   1
+quejan_discriminacion  0.68 -0.03 0.44 0.56   1
+
+                       ML1  ML2
+SS loadings           0.90 0.72
+Proportion Var        0.23 0.18
+Cumulative Var        0.23 0.41
+Proportion Explained  0.56 0.44
+Cumulative Proportion 0.56 1.00
+
+ With factor correlations of 
+     ML1  ML2
+ML1 1.00 0.47
+ML2 0.47 1.00
+
+Mean item complexity =  1
+Test of the hypothesis that 2 factors are sufficient.
+
+df null model =  6  with the objective function =  0.45 with Chi Square =  1522.89
+df of  the model are -1  and the objective function was  0 
+
+The root mean square of the residuals (RMSR) is  0 
+The df corrected root mean square of the residuals is  NA 
+
+The harmonic n.obs is  3354 with the empirical chi square  0  with prob &lt;  NA 
+The total n.obs was  3417  with Likelihood Chi Square =  0  with prob &lt;  NA 
+
+Tucker Lewis Index of factoring reliability =  1.004
+Fit based upon off diagonal values = 1
+Measures of factor score adequacy             
+                                                   ML1  ML2
+Correlation of (regression) scores with factors   0.80 0.75
+Multiple R square of scores with factors          0.64 0.56
+Minimum correlation of possible factor scores     0.28 0.13</code></pre>
+</div>
+</div>
+</section>
+<section id="rotación" class="level3">
+<h3 class="anchored" data-anchor-id="rotación">Rotación</h3>
+<ul>
+<li>Varimax (ortogonal)</li>
+</ul>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fac_ml_var <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"varimax"</span>) <span class="co"># ortogonal</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>fac_ml_var</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = data, nfactors = 2, rotate = "varimax", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+                       ML1  ML2   h2   u2 com
+son_refinadas         0.14 0.60 0.38 0.62 1.1
+ser_protegidas        0.12 0.57 0.34 0.66 1.1
+consiguen_privilegios 0.65 0.21 0.47 0.53 1.2
+quejan_discriminacion 0.65 0.15 0.44 0.56 1.1
+
+                       ML1  ML2
+SS loadings           0.88 0.75
+Proportion Var        0.22 0.19
+Cumulative Var        0.22 0.41
+Proportion Explained  0.54 0.46
+Cumulative Proportion 0.54 1.00
+
+Mean item complexity =  1.1
+Test of the hypothesis that 2 factors are sufficient.
+
+df null model =  6  with the objective function =  0.45 with Chi Square =  1522.89
+df of  the model are -1  and the objective function was  0 
+
+The root mean square of the residuals (RMSR) is  0 
+The df corrected root mean square of the residuals is  NA 
+
+The harmonic n.obs is  3354 with the empirical chi square  0  with prob &lt;  NA 
+The total n.obs was  3417  with Likelihood Chi Square =  0  with prob &lt;  NA 
+
+Tucker Lewis Index of factoring reliability =  1.004
+Fit based upon off diagonal values = 1
+Measures of factor score adequacy             
+                                                   ML1  ML2
+Correlation of (regression) scores with factors   0.76 0.71
+Multiple R square of scores with factors          0.58 0.51
+Minimum correlation of possible factor scores     0.17 0.01</code></pre>
+</div>
+</div>
+<ul>
+<li>Promax (oblicua)</li>
+</ul>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fac_ml_pro <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"promax"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>fac_ml_pro</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = data, nfactors = 2, rotate = "promax", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+                        ML1   ML2   h2   u2 com
+son_refinadas          0.01  0.62 0.38 0.62   1
+ser_protegidas        -0.01  0.58 0.34 0.66   1
+consiguen_privilegios  0.67  0.04 0.47 0.53   1
+quejan_discriminacion  0.67 -0.03 0.44 0.56   1
+
+                       ML1  ML2
+SS loadings           0.90 0.73
+Proportion Var        0.23 0.18
+Cumulative Var        0.23 0.41
+Proportion Explained  0.55 0.45
+Cumulative Proportion 0.55 1.00
+
+ With factor correlations of 
+     ML1  ML2
+ML1 1.00 0.47
+ML2 0.47 1.00
+
+Mean item complexity =  1
+Test of the hypothesis that 2 factors are sufficient.
+
+df null model =  6  with the objective function =  0.45 with Chi Square =  1522.89
+df of  the model are -1  and the objective function was  0 
+
+The root mean square of the residuals (RMSR) is  0 
+The df corrected root mean square of the residuals is  NA 
+
+The harmonic n.obs is  3354 with the empirical chi square  0  with prob &lt;  NA 
+The total n.obs was  3417  with Likelihood Chi Square =  0  with prob &lt;  NA 
+
+Tucker Lewis Index of factoring reliability =  1.004
+Fit based upon off diagonal values = 1
+Measures of factor score adequacy             
+                                                   ML1  ML2
+Correlation of (regression) scores with factors   0.80 0.75
+Multiple R square of scores with factors          0.64 0.56
+Minimum correlation of possible factor scores     0.28 0.13</code></pre>
+</div>
+</div>
+</section>
+<section id="casi-automático-con-sjplot" class="level3">
+<h3 class="anchored" data-anchor-id="casi-automático-con-sjplot">Casi automático con sjPlot</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_fa</span>(data, <span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">rotation =</span> <span class="st">"promax"</span>, <span class="at">show.comm =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"Análisis factorial de sexismo"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parallel analysis suggests that the number of factors =  2  and the number of components =  NA </code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Análisis factorial de sexismo</caption>
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Edad del entrevistado</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Ingreso mensual entrevistado (monto)</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Nivel educacional</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Las diferencias de<br>
-ingreso son demasiado grandes</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Las personas son<br>
-recompensadas por sus esfuerzos</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Grado de acuerdo: Las personas son<br>
-recompensada por su inteligencia</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">&nbsp;</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">Factor 1</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm">Factor 2</td>
+<td data-quarto-table-cell-role="th" style="border-top: double black; padding: 0.2cm; font-style: italic; color: #666666">Communality</td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">Edad del entrevistado</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="border-top: 1px solid black">Grado de acuerdo: Mujeres son mas<br>
+refinadas</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc; border-top: 1px solid black;">0.01</td>
+<td style="text-align: center; padding: 0.2cm; border-top: 1px solid black;">0.62</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666; border-top: 1px solid black;">0.38</td>
 </tr>
 <tr class="odd">
-<td style="font-style: italic">Ingreso mensual entrevistado (monto)</td>
-<td style="text-align: center; padding: 0.2cm; color: #999999;">-0.005<span style="vertical-align:super;font-size:0.8em;"></span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td>Grado de acuerdo: Mujeres deberian ser<br>
+protegidas</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">-0.01</td>
+<td style="text-align: center; padding: 0.2cm;">0.58</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.34</td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">Nivel educacional</td>
-<td style="text-align: center; padding: 0.2cm;">-0.387<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.415<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td>Grado de acuerdo: Mujeres consiguen<br>
+privilegios en nombre de igualdad</td>
+<td style="text-align: center; padding: 0.2cm;">0.67</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">0.04</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.47</td>
 </tr>
 <tr class="odd">
-<td style="font-style: italic">Grado de acuerdo: Las diferencias de<br>
-ingreso son demasiado grandes</td>
-<td style="text-align: center; padding: 0.2cm;">-0.090<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.106<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.215<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td>Grado de acuerdo: Mujeres derrotadas se<br>
+quejan de discriminacion</td>
+<td style="text-align: center; padding: 0.2cm;">0.67</td>
+<td style="text-align: center; padding: 0.2cm; color: #cccccc;">-0.03</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; color: #666666;">0.44</td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">Grado de acuerdo: Las personas son<br>
-recompensadas por sus esfuerzos</td>
-<td style="text-align: center; padding: 0.2cm;">0.105<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm; color: #999999;">0.025<span style="vertical-align:super;font-size:0.8em;"></span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.103<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.139<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="padding: 0.2cm; font-style: italic">Total Communalities</td>
+<td colspan="2" style="text-align: center; padding: 0.2cm; font-style: italic;"></td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic;">1.63</td>
 </tr>
 <tr class="odd">
-<td style="font-style: italic">Grado de acuerdo: Las personas son<br>
-recompensada por su inteligencia</td>
-<td style="text-align: center; padding: 0.2cm;">0.088<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm; color: #999999;">0.032<span style="vertical-align:super;font-size:0.8em;"></span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.120<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.104<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.611<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-</tr>
-<tr class="even">
-<td colspan="7" style="text-align: right; border-bottom: double black; border-top: 1px solid black; font-style: italic; font-size: 0.9em;">Computed correlation used pearson-method with pairwise-deletion.</td>
+<td style="padding: 0.2cm; font-style: italic; border-bottom: double">Cronbach's α</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;">0.62</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;">0.52</td>
+<td style="text-align: center; padding: 0.2cm; font-style: italic; border-bottom: double;"></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div>
-<p>Con esta mejor visualización, algunas observaciones sobre la matriz de correlaciones:</p>
-<ul>
-<li>En esta matriz las variables están representadas en las filas y en las columnas.</li>
-<li>Cada coeficiente expresa la correlación de una variable con otra. Por ejemplo, la correlación entre la variable de <code>educación</code> e <code>ingreso</code> es 0.415.</li>
-<li>La información de cada coeficiente se repite sobre y bajo la diagonal, ya que es el mismo par de variables pero en el orden alterno. Por convención en general se omiten las correlaciones redundantes sobre la diagonal, por eso aparece en blanco.</li>
-<li>En la diagonal corresponde que todos los coeficientes sean 1, ya que la correlación de una variable consigo misma es perfectamente positiva.</li>
-</ul>
-<p>Otra manera de presentar matrices de correlación es mediante gráficos. Veamos un ejemplo con la función <code>corrplot.mixed</code> de la librería <code>corrplot</code> sobre nuestra matriz <code>M</code> ya creada.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-content_files/figure-html/cor3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Este gráfico/matriz representa el grado de asociación entre variables mediante el tamaño de los círculos e intensidad de colores, y el signo de la asociación se representa con una gradiente de colores que va del azul (positivo) al rojo (negativo).</p>
-<p>Otra manera de graficar la matriz es con la función <code>ggpairs</code> del paquete <code>GGally</code>, que nos entrega no solo el valor del coeficiente y su significancia (***), si no que también un <em>scatter</em> del cruce entre variables.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">merito =</span> <span class="fu">sum</span>(<span class="fu">c</span>(esfuerzo, inteligencia), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-content_files/figure-html/cor5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Finalmente, también se puede representar la correlación entre dos variables en un gráfico de nube de puntos o <em>scatterplot</em>.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_scatter</span>(proc_elsoc, edad, ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-content_files/figure-html/cor6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_scatter</span>(proc_elsoc, merito, ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-content_files/figure-html/cor7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_scatter</span>(proc_elsoc, educacion, ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-content_files/figure-html/cor8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_scatter</span>(proc_elsoc, esfuerzo, inteligencia)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-content_files/figure-html/cor9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Donde:</p>
-<ul>
-<li>cada punto representa un caso</li>
-<li>la forma de la nube indica si la asociación es positiva, negativa o neutra:</li>
-</ul>
-<p><img src="images/scatterplot6.png" class="img-fluid"></p>
-<p>En el caso de nuestra nube de puntos entre edad y estatus social subjetivo, observamos que no hay asociación (lo que ya era indicado por su correlación de -0.07 observada en la matriz de correlaciones).</p>
-</section>
-<section id="tamaños-de-efecto" class="level1">
-<h1>Tamaños de efecto</h1>
-<p>¿Y cómo puedo saber si el valor de la correlación es alto, medio o bajo? Si bien la correlación no nos indica causalidad, si nos permite conocer la dirección y fuerza de asociación entre dos variables. Un estándar para determinar qué tan fuerte es dicha asociación en las ciencias sociales es el propuesto por Cohen (1998).</p>
-<style>
-  table {
-    margin-left: auto; /* Ajustamos el margen izquierdo a automático */
-    margin-right: auto; /* Ajustamos el margen derecho a automático */
-    border-collapse: collapse;
-    width: 60%;
-    border: 2px solid black;
-  }
-  
-  th, td {
-    border: 1px solid #D3D3D3;
-    padding: 8px;
-    text-align: center;
-  }
-</style>
-<table>
-<tbody><tr>
-<th class="cell-left">
-r
-</th>
-<th class="cell-left">
-Significado aproximado (Cohen 1988)
-</th>
-</tr>
-<tr>
-<td class="cell-left">
-&lt; ±0.1 
-</td>
-<td class="cell-left">
-Muy pequeño
-</td>
-</tr>
-<tr>
-<td class="cell-left">
-±0.1–0.3
-</td>
-<td class="cell-left">
-Pequeño
-</td>
-</tr>
-<tr>
-<td class="cell-left">
-±0.3–0.5
-</td>
-<td class="cell-left">
-Moderado
-</td>
-</tr>
-<tr>
-<td class="cell-left">
-&gt;±0.5
-</td>
-<td class="cell-left">
-Grande
-</td>
-</tr>
-</tbody></table>
-<p>Con estos criterios podemos interpretar de mejor manera nuestros resultados de correlación. Como se observa, mientras más alto (sea en + o -) el coeficiente, más juntos estarán los datos (puntos), mostrando un patrón.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="06-content_files/figure-html/correlation-grid-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="row d-flex justify-content-center">
-<div class="col-md-6">
-<div class="card bg-danger text-white">
-<div class="card-body">
-<p><strong>Interpretación</strong></p>
-<p>Recordemos nuestra matriz del comienzo:</p>
-<p>Tenemos que la correlación entre la variable de ingresos y nivel educacional es 0,42. ¿Cómo interpreto esto?</p>
-<p>Una manera recomendable es la siguiente:</p>
-<p><em>El coeficiente de correlación de Pearson entre ingresos y nivel educacional es positivo y moderado (r = 0.3) según Cohen (1988).</em></p>
-</div>
-</div>
-</div>
-</div>
+<p>Luego de realizar el Análisis factorial exploratorio existen varias alternativas sobre los pasos a seguir. Por ejemplo, es posible estimar un promedio simple entre cada una de las variables de los factores. Otra opción es estimar <strong>puntajes factoriales</strong>.</p>
 
 
 <!-- -->
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1145,18 +998,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1188,7 +1030,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -1242,12 +1106,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/R-analisis-datos\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/estadisticaIV\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1570,372 +1434,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb39" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico 6. Asociación de variables"</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "R data analisis"</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="an">linktitle:</span><span class="co"> "Práctico 6: Asociación"</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-04-23"</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo de la práctica</span></span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos para la estimación de correlaciones y asociación de variables con R en general, que son necesarios para luego poder analizar e interpretar estas relaciones.</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>Por temas de orden y reproducibilidad, en este curso hemos separado en dos momentos el trabajo con datos, y dos archivos de código correspondientes, sin embargo, este práctico en específico combina todo en dos momentos de esta misma página:</span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>Preparación: Parte 1</span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>Análisis: Parte 2</span>
-<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># Parte 1</span></span>
-<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recursos de la práctica</span></span>
-<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>En esta práctica trabajaremos con la ola 2021 Estudio Longitudinal Social de Chile (ELSOC), elaborado por <span class="co">[</span><span class="ot">COES</span><span class="co">](https://coes.cl/encuesta-panel/)</span>. Para este ejercicio, obtendremos directamente esta base desde internet. </span>
-<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE, eval=TRUE}</span></span>
-<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="in">load("files/ELSOC_W05_v1.0_R.RData")</span></span>
-<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE, include=TRUE}</span></span>
-<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a><span class="in">load(url(("https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData")))</span></span>
-<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>Para **importar** los datos en R debemos tener en consideración tres cosas:</span>
-<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Cómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)</span>
-<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>El formato de nuestros datos (en nuestro caso .sav)</span>
-<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>El lugar de donde están alojados nuestros datos</span>
-<span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-47"><a href="#cb39-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-48"><a href="#cb39-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preparación datos</span></span>
-<span id="cb39-49"><a href="#cb39-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-50"><a href="#cb39-50" aria-hidden="true" tabindex="-1"></a>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</span>
-<span id="cb39-51"><a href="#cb39-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-52"><a href="#cb39-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r librerias, echo=TRUE, message=FALSE, warning=FALSE, collapse=TRUE}</span></span>
-<span id="cb39-53"><a href="#cb39-53" aria-hidden="true" tabindex="-1"></a><span class="in">pacman::p_load(dplyr, # Manipulacion datos</span></span>
-<span id="cb39-54"><a href="#cb39-54" aria-hidden="true" tabindex="-1"></a><span class="in">               sjmisc, # Descriptivos</span></span>
-<span id="cb39-55"><a href="#cb39-55" aria-hidden="true" tabindex="-1"></a><span class="in">               sjPlot, # Tablas</span></span>
-<span id="cb39-56"><a href="#cb39-56" aria-hidden="true" tabindex="-1"></a><span class="in">               sjlabelled, #etiquetas</span></span>
-<span id="cb39-57"><a href="#cb39-57" aria-hidden="true" tabindex="-1"></a><span class="in">               kableExtra, #Tablas</span></span>
-<span id="cb39-58"><a href="#cb39-58" aria-hidden="true" tabindex="-1"></a><span class="in">               GGally, # Correlaciones</span></span>
-<span id="cb39-59"><a href="#cb39-59" aria-hidden="true" tabindex="-1"></a><span class="in">               corrplot) # Correlaciones</span></span>
-<span id="cb39-60"><a href="#cb39-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-61"><a href="#cb39-61" aria-hidden="true" tabindex="-1"></a><span class="in">options(scipen = 999) # para desactivar notacion cientifica</span></span>
-<span id="cb39-62"><a href="#cb39-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-64"><a href="#cb39-64" aria-hidden="true" tabindex="-1"></a>A continuación, exploramos la base de datos **elsoc_2021**.</span>
-<span id="cb39-65"><a href="#cb39-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r exploracion, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-67"><a href="#cb39-67" aria-hidden="true" tabindex="-1"></a><span class="in">dim(elsoc_2021) # Dimensiones</span></span>
-<span id="cb39-68"><a href="#cb39-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-69"><a href="#cb39-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-70"><a href="#cb39-70" aria-hidden="true" tabindex="-1"></a>Contamos con 311 variables (columnas) y 2740 observaciones (filas).</span>
-<span id="cb39-71"><a href="#cb39-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-72"><a href="#cb39-72" aria-hidden="true" tabindex="-1"></a>Para este ejemplo, vamos a utilizar dos variables numéricas (ingresos y edad) y cuatro variables categóricas (Educación, percepción de desigualdad y 2 de percepción de meritocracia).</span>
-<span id="cb39-73"><a href="#cb39-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-76"><a href="#cb39-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-77"><a href="#cb39-77" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> elsoc_2021 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">edad=</span>m0_edad, <span class="at">ingreso=</span>m13, <span class="at">educacion=</span>m01, <span class="at">desigualdad=</span>c18_11, <span class="at">esfuerzo=</span>c18_09, <span class="at">inteligencia=</span>c18_10)</span>
-<span id="cb39-78"><a href="#cb39-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-79"><a href="#cb39-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-80"><a href="#cb39-80" aria-hidden="true" tabindex="-1"></a>Ahora, profundicemos un poco más y observemos algunos estadísticos descriptivos de resumen de nuestra base de datos. Utilizaremos la función <span class="in">`descr`</span> del paquete <span class="in">`sjmisc`</span>.</span>
-<span id="cb39-81"><a href="#cb39-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-82"><a href="#cb39-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r descripcion, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-83"><a href="#cb39-83" aria-hidden="true" tabindex="-1"></a><span class="in">sjmisc::descr(proc_elsoc,</span></span>
-<span id="cb39-84"><a href="#cb39-84" aria-hidden="true" tabindex="-1"></a><span class="in">      show = c("label","range", "mean", "sd", "NA.prc", "n")) %&gt;%</span></span>
-<span id="cb39-85"><a href="#cb39-85" aria-hidden="true" tabindex="-1"></a><span class="in">      kable(.,"markdown")</span></span>
-<span id="cb39-86"><a href="#cb39-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-87"><a href="#cb39-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-88"><a href="#cb39-88" aria-hidden="true" tabindex="-1"></a>**¡ALTO!** Tenemos algunos valores o casos perdidos en ciertas variables. ¿Cómo lidiar con los casos perdidos?</span>
-<span id="cb39-89"><a href="#cb39-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-90"><a href="#cb39-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tratamiento de casos perdidos </span></span>
-<span id="cb39-91"><a href="#cb39-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-92"><a href="#cb39-92" aria-hidden="true" tabindex="-1"></a>Trabajar con datos a menudo implica enfrentar valores perdidos (<span class="in">`NA`</span>), lo que puede ser un gran desafío. Estos valores _indican la ausencia de un valor en una base de datos_. Los valores perdidos pueden originarse por diversas razones, como el sesgo de no respuesta en encuestas, errores en la entrada de datos o simplemente la falta de información para ciertas variables.</span>
-<span id="cb39-93"><a href="#cb39-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-96"><a href="#cb39-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-97"><a href="#cb39-97" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>esfuerzo)</span>
-<span id="cb39-98"><a href="#cb39-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-99"><a href="#cb39-99" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">777</span>, <span class="sc">-</span><span class="dv">666</span>))</span>
-<span id="cb39-100"><a href="#cb39-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-101"><a href="#cb39-101" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>esfuerzo)</span>
-<span id="cb39-102"><a href="#cb39-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-103"><a href="#cb39-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-106"><a href="#cb39-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-107"><a href="#cb39-107" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>educacion)</span>
-<span id="cb39-108"><a href="#cb39-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-109"><a href="#cb39-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-110"><a href="#cb39-110" aria-hidden="true" tabindex="-1"></a>La presencia de valores perdidos puede tener un impacto considerable en la precisión y confiabilidad de los análisis estadísticos, lo que a su vez puede conducir a resultados sesgados y conclusiones incorrectas. </span>
-<span id="cb39-111"><a href="#cb39-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-112"><a href="#cb39-112" aria-hidden="true" tabindex="-1"></a>Existen varias formas de tratar valores perdidos, que van desde enfoques simples hasta métodos más complejos, como la imputación. En esta ocasión, nos centraremos en las dos estrategias más comunes: </span>
-<span id="cb39-113"><a href="#cb39-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-114"><a href="#cb39-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>trabajar exclusivamente con casos completos (listwise) o </span>
-<span id="cb39-115"><a href="#cb39-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>retener los casos con valores perdidos, pero excluyéndolos al calcular estadísticas (pairwise).</span>
-<span id="cb39-116"><a href="#cb39-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-117"><a href="#cb39-117" aria-hidden="true" tabindex="-1"></a><span class="fu">### a) Analísis con casos completos: listwise deletion</span></span>
-<span id="cb39-118"><a href="#cb39-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-119"><a href="#cb39-119" aria-hidden="true" tabindex="-1"></a>Este enfoque es uno de los más conocidos: implica remover completamente las observaciones que tienen valores perdidos en cualquier variable de interés. En otras palabras, si una fila/caso en un conjunto de datos tiene al menos un valor faltante en alguna de las variables que estás considerando, se eliminará por completo. </span>
-<span id="cb39-120"><a href="#cb39-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-121"><a href="#cb39-121" aria-hidden="true" tabindex="-1"></a>En R, esto podemos hacerlo con la función <span class="in">`na.omit`</span>. Para hacer esto, sigamos estos pasos:</span>
-<span id="cb39-122"><a href="#cb39-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-123"><a href="#cb39-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>respaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos)-</span>
-<span id="cb39-124"><a href="#cb39-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>contamos el número de casos con el comando <span class="in">`dim`</span>.</span>
-<span id="cb39-125"><a href="#cb39-125" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>contamos cuántos y en dónde tenemos casos perdidos.</span>
-<span id="cb39-126"><a href="#cb39-126" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>borramos los casos perdidos con <span class="in">`na.omit`</span>.</span>
-<span id="cb39-127"><a href="#cb39-127" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>contamos nuevamente con <span class="in">`dim`</span> para asegurarnos que se borraron.</span>
-<span id="cb39-128"><a href="#cb39-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-129"><a href="#cb39-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=TRUE, warning=FALSE, message=FALSE}</span></span>
-<span id="cb39-130"><a href="#cb39-130" aria-hidden="true" tabindex="-1"></a><span class="in">proc_elsoc_original &lt;- proc_elsoc</span></span>
-<span id="cb39-131"><a href="#cb39-131" aria-hidden="true" tabindex="-1"></a><span class="in">dim(proc_elsoc)</span></span>
-<span id="cb39-132"><a href="#cb39-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-133"><a href="#cb39-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-134"><a href="#cb39-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=TRUE, warning=FALSE, message=FALSE}</span></span>
-<span id="cb39-135"><a href="#cb39-135" aria-hidden="true" tabindex="-1"></a><span class="in">sum(is.na(proc_elsoc))</span></span>
-<span id="cb39-136"><a href="#cb39-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-137"><a href="#cb39-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-138"><a href="#cb39-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=TRUE, warning=FALSE, message=FALSE}</span></span>
-<span id="cb39-139"><a href="#cb39-139" aria-hidden="true" tabindex="-1"></a><span class="in">colSums(is.na(proc_elsoc))</span></span>
-<span id="cb39-140"><a href="#cb39-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-141"><a href="#cb39-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-142"><a href="#cb39-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-143"><a href="#cb39-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=TRUE, warning=FALSE, message=FALSE}</span></span>
-<span id="cb39-144"><a href="#cb39-144" aria-hidden="true" tabindex="-1"></a><span class="in">proc_elsoc &lt;- na.omit(proc_elsoc)</span></span>
-<span id="cb39-145"><a href="#cb39-145" aria-hidden="true" tabindex="-1"></a><span class="in">dim(proc_elsoc)</span></span>
-<span id="cb39-146"><a href="#cb39-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-147"><a href="#cb39-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-148"><a href="#cb39-148" aria-hidden="true" tabindex="-1"></a>Ahora nos quedamos con 1545 observaciones sin casos perdidos.</span>
-<span id="cb39-149"><a href="#cb39-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-150"><a href="#cb39-150" aria-hidden="true" tabindex="-1"></a>Aunque es simple de implementar, con este enfoque podemos perder información importante, especialmente si los valores perdidos no se distribuyen aleatoriamente.</span>
-<span id="cb39-151"><a href="#cb39-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-152"><a href="#cb39-152" aria-hidden="true" tabindex="-1"></a>::: callout-box</span>
-<span id="cb39-153"><a href="#cb39-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-154"><a href="#cb39-154" aria-hidden="true" tabindex="-1"></a>Siempre hay que intentar rescatar la mayor cantidad de casos posibles. Por lo tanto, si un listwise genera más de un 10% de casos perdidos se debe detectar qué variables esta produciendo esta pérdida e intentar recuperar datos.</span>
-<span id="cb39-155"><a href="#cb39-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-156"><a href="#cb39-156" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb39-157"><a href="#cb39-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-158"><a href="#cb39-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### b) Retener pero excluir: pairwise deletion</span></span>
-<span id="cb39-159"><a href="#cb39-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-160"><a href="#cb39-160" aria-hidden="true" tabindex="-1"></a>A diferencia del anterior, este es un enfoque en el que las observaciones se utilizan para el análisis siempre que tengan datos disponibles para las variables específicas que se están analizando. En lugar de eliminar toda una fila si falta un valor, se eliminan solo los valores faltantes en las variables que se están analizando en ese momento. </span>
-<span id="cb39-161"><a href="#cb39-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-162"><a href="#cb39-162" aria-hidden="true" tabindex="-1"></a>Para hacer esto en R debemos siempre verificar e indicar en nuestro código si queremos (o no) remover los <span class="in">`NA`</span> para realizar los análisis.</span>
-<span id="cb39-163"><a href="#cb39-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-164"><a href="#cb39-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=TRUE, message=FALSE, warning=FALSE, collapse=FALSE}</span></span>
-<span id="cb39-165"><a href="#cb39-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-166"><a href="#cb39-166" aria-hidden="true" tabindex="-1"></a><span class="in">mean(proc_elsoc_original$esfuerzo); mean(proc_elsoc_original$edad); mean(proc_elsoc$desigualdad)</span></span>
-<span id="cb39-167"><a href="#cb39-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-168"><a href="#cb39-168" aria-hidden="true" tabindex="-1"></a><span class="in">mean(proc_elsoc_original$esfuerzo, na.rm = TRUE); mean(proc_elsoc$edad, na.rm = TRUE); mean(proc_elsoc_original$desigualdad, na.rm = TRUE)</span></span>
-<span id="cb39-169"><a href="#cb39-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-170"><a href="#cb39-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-171"><a href="#cb39-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-172"><a href="#cb39-172" aria-hidden="true" tabindex="-1"></a>Con ambas opciones tenemos resultados diferentes, ya que cambia la cantidad de casos analizados. La decisión final de qué método usar dependerá siempre del equipo de investigación.</span>
-<span id="cb39-173"><a href="#cb39-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-174"><a href="#cb39-174" aria-hidden="true" tabindex="-1"></a><span class="fu"># Parte 2</span></span>
-<span id="cb39-175"><a href="#cb39-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-176"><a href="#cb39-176" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb39-177"><a href="#cb39-177" aria-hidden="true" tabindex="-1"></a>**¿Qué era la correlación?**</span>
-<span id="cb39-178"><a href="#cb39-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-179"><a href="#cb39-179" aria-hidden="true" tabindex="-1"></a>La correlación es una medida de asociación entre variables, que describe el sentido (dirección) y fuerza de la asociación.</span>
-<span id="cb39-180"><a href="#cb39-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-181"><a href="#cb39-181" aria-hidden="true" tabindex="-1"></a>En otras palabras, nos permite conocer cómo y cuánto se relaciona la variación de una variable, con la variación de otra variable.</span>
-<span id="cb39-182"><a href="#cb39-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-183"><a href="#cb39-183" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb39-184"><a href="#cb39-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-185"><a href="#cb39-185" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matrices de correlación</span></span>
-<span id="cb39-186"><a href="#cb39-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-187"><a href="#cb39-187" aria-hidden="true" tabindex="-1"></a>La correlación es una estimación de asociación de dos variables. Sin embargo, en los análisis de bases de datos usualmente se exploran asociaciones entre múltiples pares de variables, lo que genera una matriz de correlación. En una matriz, las variables se presentan en las filas y las columnas, y en las celdas donde se cruzan los pares de variables se muestra su coeficiente de correlación.</span>
-<span id="cb39-188"><a href="#cb39-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-189"><a href="#cb39-189" aria-hidden="true" tabindex="-1"></a>En su forma simple en R se aplica la función <span class="in">`cor`</span> a la base de datos, y la guardamos en un objeto que le damos el nombre M para futuras operaciones:</span>
-<span id="cb39-190"><a href="#cb39-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-191"><a href="#cb39-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-192"><a href="#cb39-192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor1, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-193"><a href="#cb39-193" aria-hidden="true" tabindex="-1"></a><span class="in">M &lt;- cor(proc_elsoc_original, use = "complete.obs")</span></span>
-<span id="cb39-194"><a href="#cb39-194" aria-hidden="true" tabindex="-1"></a><span class="in">M</span></span>
-<span id="cb39-195"><a href="#cb39-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-196"><a href="#cb39-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-197"><a href="#cb39-197" aria-hidden="true" tabindex="-1"></a>Este es el reporte simple, pero no muy amigable a la vista. Para una versión más reportable, utilizamos la funcion <span class="in">`tab_corr`</span>. </span>
-<span id="cb39-198"><a href="#cb39-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-199"><a href="#cb39-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor2, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-200"><a href="#cb39-200" aria-hidden="true" tabindex="-1"></a><span class="in">sjPlot::tab_corr(proc_elsoc_original, </span></span>
-<span id="cb39-201"><a href="#cb39-201" aria-hidden="true" tabindex="-1"></a><span class="in">                 triangle = "lower")</span></span>
-<span id="cb39-202"><a href="#cb39-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-203"><a href="#cb39-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-204"><a href="#cb39-204" aria-hidden="true" tabindex="-1"></a>La **distinción** entre **listwise y pairwise es relevante al momento de estimar matricies de correlación**, donde esta decisión debe estar claramente explicitada y fundamentada. En ejemplo de tabla anterior usamos _listwise_ que es el argumento por defecto (y nos lo indica al final de la tabla). </span>
-<span id="cb39-205"><a href="#cb39-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-206"><a href="#cb39-206" aria-hidden="true" tabindex="-1"></a>Veamos como hacerlo con _pairwise_:</span>
-<span id="cb39-207"><a href="#cb39-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-208"><a href="#cb39-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor2_1, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-209"><a href="#cb39-209" aria-hidden="true" tabindex="-1"></a><span class="in">sjPlot::tab_corr(proc_elsoc_original, </span></span>
-<span id="cb39-210"><a href="#cb39-210" aria-hidden="true" tabindex="-1"></a><span class="in">                 na.deletion = "pairwise", # espeficicamos tratamiento NA</span></span>
-<span id="cb39-211"><a href="#cb39-211" aria-hidden="true" tabindex="-1"></a><span class="in">                 triangle = "lower")</span></span>
-<span id="cb39-212"><a href="#cb39-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-213"><a href="#cb39-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-214"><a href="#cb39-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-215"><a href="#cb39-215" aria-hidden="true" tabindex="-1"></a>Con esta mejor visualización, algunas observaciones sobre la matriz de correlaciones:</span>
-<span id="cb39-216"><a href="#cb39-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-217"><a href="#cb39-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>En esta matriz las variables están representadas en las filas y en las columnas.</span>
-<span id="cb39-218"><a href="#cb39-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cada coeficiente expresa la correlación de una variable con otra. Por ejemplo, la correlación entre la variable de <span class="in">`educación`</span> e <span class="in">`ingreso`</span> es 0.415.</span>
-<span id="cb39-219"><a href="#cb39-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La información de cada coeficiente se repite sobre y bajo la diagonal, ya que es el mismo par de variables pero en el orden alterno. Por convención en general se omiten las correlaciones redundantes sobre la diagonal, por eso aparece en blanco.</span>
-<span id="cb39-220"><a href="#cb39-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>En la diagonal corresponde que todos los coeficientes sean 1, ya que la correlación de una variable consigo misma es perfectamente positiva.</span>
-<span id="cb39-221"><a href="#cb39-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-222"><a href="#cb39-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-223"><a href="#cb39-223" aria-hidden="true" tabindex="-1"></a>Otra manera de presentar matrices de correlación es mediante gráficos. Veamos un ejemplo con la función <span class="in">`corrplot.mixed`</span> de la librería <span class="in">`corrplot`</span> sobre nuestra matriz <span class="in">`M`</span> ya creada.</span>
-<span id="cb39-224"><a href="#cb39-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-225"><a href="#cb39-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor3, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-226"><a href="#cb39-226" aria-hidden="true" tabindex="-1"></a><span class="in">corrplot.mixed(M)</span></span>
-<span id="cb39-227"><a href="#cb39-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-228"><a href="#cb39-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-229"><a href="#cb39-229" aria-hidden="true" tabindex="-1"></a>Este gráfico/matriz representa el grado de asociación entre variables mediante el tamaño de los círculos e intensidad de colores, y el signo de la asociación se representa con una gradiente de colores que va del azul (positivo) al rojo (negativo).</span>
-<span id="cb39-230"><a href="#cb39-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-231"><a href="#cb39-231" aria-hidden="true" tabindex="-1"></a>Otra manera de graficar la matriz es con la función <span class="in">`ggpairs`</span> del paquete <span class="in">`GGally`</span>, que nos entrega no solo el valor del coeficiente y su significancia (***), si no que también un _scatter_ del cruce entre variables.</span>
-<span id="cb39-232"><a href="#cb39-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-233"><a href="#cb39-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor5, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-234"><a href="#cb39-234" aria-hidden="true" tabindex="-1"></a><span class="in">proc_elsoc &lt;- proc_elsoc %&gt;%</span></span>
-<span id="cb39-235"><a href="#cb39-235" aria-hidden="true" tabindex="-1"></a><span class="in">  rowwise() %&gt;%</span></span>
-<span id="cb39-236"><a href="#cb39-236" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(merito = sum(c(esfuerzo, inteligencia), na.rm = TRUE))</span></span>
-<span id="cb39-237"><a href="#cb39-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-238"><a href="#cb39-238" aria-hidden="true" tabindex="-1"></a><span class="in">ggpairs(proc_elsoc)</span></span>
-<span id="cb39-239"><a href="#cb39-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-240"><a href="#cb39-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-241"><a href="#cb39-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-242"><a href="#cb39-242" aria-hidden="true" tabindex="-1"></a>Finalmente, también se puede representar la correlación entre dos variables en un gráfico de nube de puntos o _scatterplot_.</span>
-<span id="cb39-243"><a href="#cb39-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-244"><a href="#cb39-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor6, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-245"><a href="#cb39-245" aria-hidden="true" tabindex="-1"></a><span class="in">sjPlot::plot_scatter(proc_elsoc, edad, ingreso)</span></span>
-<span id="cb39-246"><a href="#cb39-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-247"><a href="#cb39-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-248"><a href="#cb39-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor7, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-249"><a href="#cb39-249" aria-hidden="true" tabindex="-1"></a><span class="in">sjPlot::plot_scatter(proc_elsoc, merito, ingreso)</span></span>
-<span id="cb39-250"><a href="#cb39-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-251"><a href="#cb39-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-252"><a href="#cb39-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor8, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-253"><a href="#cb39-253" aria-hidden="true" tabindex="-1"></a><span class="in">sjPlot::plot_scatter(proc_elsoc, educacion, ingreso)</span></span>
-<span id="cb39-254"><a href="#cb39-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-255"><a href="#cb39-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-256"><a href="#cb39-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cor9, echo=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb39-257"><a href="#cb39-257" aria-hidden="true" tabindex="-1"></a><span class="in">sjPlot::plot_scatter(proc_elsoc, esfuerzo, inteligencia)</span></span>
-<span id="cb39-258"><a href="#cb39-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-259"><a href="#cb39-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-260"><a href="#cb39-260" aria-hidden="true" tabindex="-1"></a>Donde:</span>
-<span id="cb39-261"><a href="#cb39-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-262"><a href="#cb39-262" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>cada punto representa un caso</span>
-<span id="cb39-263"><a href="#cb39-263" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la forma de la nube indica si la asociación es positiva, negativa o neutra:</span>
-<span id="cb39-264"><a href="#cb39-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-265"><a href="#cb39-265" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/scatterplot6.png)</span></span>
-<span id="cb39-266"><a href="#cb39-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-267"><a href="#cb39-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-268"><a href="#cb39-268" aria-hidden="true" tabindex="-1"></a>En el caso de nuestra nube de puntos entre edad y estatus social subjetivo, observamos que no hay asociación (lo que ya era indicado por su correlación de -0.07 observada en la matriz de correlaciones).</span>
-<span id="cb39-269"><a href="#cb39-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-270"><a href="#cb39-270" aria-hidden="true" tabindex="-1"></a><span class="fu"># Tamaños de efecto</span></span>
-<span id="cb39-271"><a href="#cb39-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-272"><a href="#cb39-272" aria-hidden="true" tabindex="-1"></a>¿Y cómo puedo saber si el valor de la correlación es alto, medio o bajo? Si bien la correlación no nos indica causalidad, si nos permite conocer la dirección y fuerza de asociación entre dos variables. Un estándar para determinar qué tan fuerte es dicha asociación en las ciencias sociales es el propuesto por Cohen (1998).</span>
-<span id="cb39-273"><a href="#cb39-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-274"><a href="#cb39-274" aria-hidden="true" tabindex="-1"></a>&lt;style&gt;</span>
-<span id="cb39-275"><a href="#cb39-275" aria-hidden="true" tabindex="-1"></a>  table {</span>
-<span id="cb39-276"><a href="#cb39-276" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span><span class="ch">:</span> <span class="bu">auto</span><span class="op">;</span> <span class="co">/* Ajustamos el margen izquierdo a automático */</span></span>
-<span id="cb39-277"><a href="#cb39-277" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-right</span><span class="ch">:</span> <span class="bu">auto</span><span class="op">;</span> <span class="co">/* Ajustamos el margen derecho a automático */</span></span>
-<span id="cb39-278"><a href="#cb39-278" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-collapse</span><span class="ch">:</span> <span class="dv">collapse</span><span class="op">;</span></span>
-<span id="cb39-279"><a href="#cb39-279" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span><span class="ch">:</span> <span class="dv">60</span><span class="dt">%</span><span class="op">;</span></span>
-<span id="cb39-280"><a href="#cb39-280" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">black</span><span class="op">;</span></span>
-<span id="cb39-281"><a href="#cb39-281" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb39-282"><a href="#cb39-282" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb39-283"><a href="#cb39-283" aria-hidden="true" tabindex="-1"></a>  th<span class="op">,</span> td {</span>
-<span id="cb39-284"><a href="#cb39-284" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#D3D3D3</span><span class="op">;</span></span>
-<span id="cb39-285"><a href="#cb39-285" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">8</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb39-286"><a href="#cb39-286" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span></span>
-<span id="cb39-287"><a href="#cb39-287" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb39-288"><a href="#cb39-288" aria-hidden="true" tabindex="-1"></a>&lt;/style&gt;</span>
-<span id="cb39-289"><a href="#cb39-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-290"><a href="#cb39-290" aria-hidden="true" tabindex="-1"></a>&lt;table&gt;</span>
-<span id="cb39-291"><a href="#cb39-291" aria-hidden="true" tabindex="-1"></a>  &lt;tr&gt;</span>
-<span id="cb39-292"><a href="#cb39-292" aria-hidden="true" tabindex="-1"></a>    &lt;th class="cell-left"&gt;r&lt;/th&gt;</span>
-<span id="cb39-293"><a href="#cb39-293" aria-hidden="true" tabindex="-1"></a>    &lt;th class="cell-left"&gt;Significado aproximado (Cohen 1988)&lt;/th&gt;</span>
-<span id="cb39-294"><a href="#cb39-294" aria-hidden="true" tabindex="-1"></a>  &lt;/tr&gt;</span>
-<span id="cb39-295"><a href="#cb39-295" aria-hidden="true" tabindex="-1"></a>  &lt;tr&gt;</span>
-<span id="cb39-296"><a href="#cb39-296" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;<span class="dv">&amp;lt;</span> ±0.1<span class="dv">&amp;emsp;</span>&lt;/td&gt;</span>
-<span id="cb39-297"><a href="#cb39-297" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;Muy pequeño&lt;/td&gt;</span>
-<span id="cb39-298"><a href="#cb39-298" aria-hidden="true" tabindex="-1"></a>  &lt;/tr&gt;</span>
-<span id="cb39-299"><a href="#cb39-299" aria-hidden="true" tabindex="-1"></a>  &lt;tr&gt;</span>
-<span id="cb39-300"><a href="#cb39-300" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;±0.1–0.3&lt;/td&gt;</span>
-<span id="cb39-301"><a href="#cb39-301" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;Pequeño&lt;/td&gt;</span>
-<span id="cb39-302"><a href="#cb39-302" aria-hidden="true" tabindex="-1"></a>  &lt;/tr&gt;</span>
-<span id="cb39-303"><a href="#cb39-303" aria-hidden="true" tabindex="-1"></a>  &lt;tr&gt;</span>
-<span id="cb39-304"><a href="#cb39-304" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;±0.3–0.5&lt;/td&gt;</span>
-<span id="cb39-305"><a href="#cb39-305" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;Moderado&lt;/td&gt;</span>
-<span id="cb39-306"><a href="#cb39-306" aria-hidden="true" tabindex="-1"></a>  &lt;/tr&gt;</span>
-<span id="cb39-307"><a href="#cb39-307" aria-hidden="true" tabindex="-1"></a>  &lt;tr&gt;</span>
-<span id="cb39-308"><a href="#cb39-308" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;<span class="dv">&amp;gt;</span>±0.5&lt;/td&gt;</span>
-<span id="cb39-309"><a href="#cb39-309" aria-hidden="true" tabindex="-1"></a>    &lt;td class="cell-left"&gt;Grande&lt;/td&gt;</span>
-<span id="cb39-310"><a href="#cb39-310" aria-hidden="true" tabindex="-1"></a>  &lt;/tr&gt;</span>
-<span id="cb39-311"><a href="#cb39-311" aria-hidden="true" tabindex="-1"></a>&lt;/table&gt;</span>
-<span id="cb39-312"><a href="#cb39-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-313"><a href="#cb39-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-314"><a href="#cb39-314" aria-hidden="true" tabindex="-1"></a>Con estos criterios podemos interpretar de mejor manera nuestros resultados de correlación. Como se observa, mientras más alto (sea en + o -) el coeficiente, más juntos estarán los datos (puntos), mostrando un patrón. </span>
-<span id="cb39-315"><a href="#cb39-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-316"><a href="#cb39-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-317"><a href="#cb39-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-318"><a href="#cb39-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{r correlation-grid, echo=FALSE, out.width="80%", fig.align='center'}</span></span>
-<span id="cb39-319"><a href="#cb39-319" aria-hidden="true" tabindex="-1"></a><span class="in">make_correlated_data &lt;- function(r, n = 200) {</span></span>
-<span id="cb39-320"><a href="#cb39-320" aria-hidden="true" tabindex="-1"></a><span class="in">  MASS::mvrnorm(n = n, </span></span>
-<span id="cb39-321"><a href="#cb39-321" aria-hidden="true" tabindex="-1"></a><span class="in">                mu = c(0, 0), </span></span>
-<span id="cb39-322"><a href="#cb39-322" aria-hidden="true" tabindex="-1"></a><span class="in">                Sigma = matrix(c(1, r, r, 1), nrow = 2), </span></span>
-<span id="cb39-323"><a href="#cb39-323" aria-hidden="true" tabindex="-1"></a><span class="in">                empirical = TRUE) %&gt;% </span></span>
-<span id="cb39-324"><a href="#cb39-324" aria-hidden="true" tabindex="-1"></a><span class="in">    magrittr::set_colnames(c("x", "y")) %&gt;% </span></span>
-<span id="cb39-325"><a href="#cb39-325" aria-hidden="true" tabindex="-1"></a><span class="in">    as_tibble()</span></span>
-<span id="cb39-326"><a href="#cb39-326" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb39-327"><a href="#cb39-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-328"><a href="#cb39-328" aria-hidden="true" tabindex="-1"></a><span class="in">cor_grid &lt;- tibble(r = c(0.2, 0.4, 0.7, 0.9)) %&gt;% </span></span>
-<span id="cb39-329"><a href="#cb39-329" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(data = purrr::map(r, make_correlated_data)) %&gt;% </span></span>
-<span id="cb39-330"><a href="#cb39-330" aria-hidden="true" tabindex="-1"></a><span class="in">  tidyr::unnest(data)</span></span>
-<span id="cb39-331"><a href="#cb39-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-332"><a href="#cb39-332" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(cor_grid, aes(x = x, y = y)) +</span></span>
-<span id="cb39-333"><a href="#cb39-333" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(size = 2, color = "white", fill = "black", pch = 21) +</span></span>
-<span id="cb39-334"><a href="#cb39-334" aria-hidden="true" tabindex="-1"></a><span class="in">  facet_wrap(vars(r), labeller = label_both) +</span></span>
-<span id="cb39-335"><a href="#cb39-335" aria-hidden="true" tabindex="-1"></a><span class="in">  # theme_minimal() +</span></span>
-<span id="cb39-336"><a href="#cb39-336" aria-hidden="true" tabindex="-1"></a><span class="in">  theme(strip.text = element_text(face = "bold", size = rel(1.3), hjust = 0))</span></span>
-<span id="cb39-337"><a href="#cb39-337" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb39-338"><a href="#cb39-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-339"><a href="#cb39-339" aria-hidden="true" tabindex="-1"></a>:::::: {.row .d-flex .justify-content-center}</span>
-<span id="cb39-340"><a href="#cb39-340" aria-hidden="true" tabindex="-1"></a>::::: {.col-md-6} </span>
-<span id="cb39-341"><a href="#cb39-341" aria-hidden="true" tabindex="-1"></a>:::: {.card .bg-danger .text-white}</span>
-<span id="cb39-342"><a href="#cb39-342" aria-hidden="true" tabindex="-1"></a>::: {.card-body}</span>
-<span id="cb39-343"><a href="#cb39-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-344"><a href="#cb39-344" aria-hidden="true" tabindex="-1"></a>**Interpretación**</span>
-<span id="cb39-345"><a href="#cb39-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-346"><a href="#cb39-346" aria-hidden="true" tabindex="-1"></a>Recordemos nuestra matriz del comienzo:</span>
-<span id="cb39-347"><a href="#cb39-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-348"><a href="#cb39-348" aria-hidden="true" tabindex="-1"></a>Tenemos que la correlación entre la variable de ingresos y nivel educacional es 0,42. ¿Cómo interpreto esto?</span>
-<span id="cb39-349"><a href="#cb39-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-350"><a href="#cb39-350" aria-hidden="true" tabindex="-1"></a>Una manera recomendable es la siguiente:</span>
-<span id="cb39-351"><a href="#cb39-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-352"><a href="#cb39-352" aria-hidden="true" tabindex="-1"></a>_El coeficiente de correlación de Pearson entre ingresos y nivel educacional es positivo y moderado (r = 0.3) según Cohen (1988)._ </span>
-<span id="cb39-353"><a href="#cb39-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-354"><a href="#cb39-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-355"><a href="#cb39-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-356"><a href="#cb39-356" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb39-357"><a href="#cb39-357" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb39-358"><a href="#cb39-358" aria-hidden="true" tabindex="-1"></a>:::::</span>
-<span id="cb39-359"><a href="#cb39-359" aria-hidden="true" tabindex="-1"></a>::::::</span>
-</code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico 6. Análisis factorial Exploratorio"</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Estadística IV"</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="an">linktitle:</span><span class="co"> "Práctico 6: AFE"</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-10-01"</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis factorial exploratorio (AFE)</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Presentación</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>Para el taller práctico de hoy utilizaremos la base de datos del Estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social <span class="co">[</span><span class="ot">COES</span><span class="co">](https://coes.cl/)</span>.</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>El Estudio Longitudinal Social del Chile <span class="co">[</span><span class="ot">ELSOC</span><span class="co">](https://coes.cl/encuesta-panel/)</span>, único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad, tiene una representación de la población nacional urbana, donde se obtuvo una muestra original de **2927** casos en el año 2016 y mantiene **1728** en 2022, además de una muestra de refresco en 2018.</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo general</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>El objetivo de este ejercicio práctico es comprender y estimar un análisis factorial exploratorio con el fin de reducir la dimensionalidad de una batería de variables.</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar paquetes</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co">#Conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>               car, <span class="co">#Para recodificar</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>               summarytools, <span class="co">#Para descriptivos</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>               sjmisc,</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>               sjPlot,</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>               psy, <span class="co"># scree plot function</span></span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>               nFactors, <span class="co"># parallel</span></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>               GPArotation, <span class="co"># Rotación</span></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>               sjlabelled)</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cargar base de datos</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a><span class="in">load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) #Cargar base de datos</span></span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualización de datos</span></span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_long_2016_2022<span class="fl">.2</span>)</span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a>Debido a la naturaleza longitudinal de ELSOC, la base de datos contiene 18035 casos (las mismas personas durante 6 años) y 750 variables (las mismas variables en 6 periodos distintos). Por lo tanto, para simplificar el proceso de análisis de este práctico trabajaremos solo con los casos y variables de quienes participaron en la cuarta ola (2019)</span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datos y variables</span></span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>Para estimar AFE, utilizaremos específicamente el módulo de **Ciudadanía**. De este módulo utilizaremos un concepto en particular llamado *Confianza en instituciones* con los ítems:</span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grado de acuerdo: Mujeres son mas refinadas</span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grado de acuerdo: Mujeres deberian ser protegidas</span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grado de acuerdo: Mujeres consiguen privilegios en nombre de igualdad</span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grado de acuerdo: Mujeres derrotadas se quejan de discriminacion</span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>La idea general es ver si esque todas estas variables miden algún tipo de *Confianza en instituciones* o si esque existen dimensiones subyacentes.</span>
+<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filtrar base de datos</span></span>
+<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a>Filtraremos la base de datos para quedarnos con las observaciones correspondientes solamente a la ola 4, y además seleccionaremos los ítems de interés.</span>
+<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="dv">4</span>) <span class="sc">%&gt;%</span>  <span class="co"># seleccionamos solo los casos de la ola 1</span></span>
+<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">son_refinadas=</span>g01_01,</span>
+<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a>         <span class="at">ser_protegidas=</span>g01_02,</span>
+<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a>         <span class="at">consiguen_privilegios=</span>g01_03,</span>
+<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a>         <span class="at">quejan_discriminacion=</span>g01_04</span>
+<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
+<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>son_refinadas)</span>
+<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>ser_protegidas)</span>
+<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>consiguen_privilegios)</span>
+<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>quejan_discriminacion)</span>
+<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-93"><a href="#cb35-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-94"><a href="#cb35-94" aria-hidden="true" tabindex="-1"></a>Estos ítems cuentan con las mismas categorías de respuesta: (1) totalmente desacuerdo, a (5) Totalmente de acuerdo. Además de los valores codificados como -888 y -999.</span>
+<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### Recodificar</span></span>
+<span id="cb35-97"><a href="#cb35-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-98"><a href="#cb35-98" aria-hidden="true" tabindex="-1"></a>Recodificamos los valores -888 y -999 en NA y eliminamos los NAs.</span>
+<span id="cb35-99"><a href="#cb35-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-100"><a href="#cb35-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb35-101"><a href="#cb35-101" aria-hidden="true" tabindex="-1"></a><span class="in">data$son_refinadas &lt;- car::recode(data$son_refinadas, "c(-999,-888)=NA")</span></span>
+<span id="cb35-102"><a href="#cb35-102" aria-hidden="true" tabindex="-1"></a><span class="in">data$ser_protegidas &lt;- car::recode(data$ser_protegidas, "c(-999,-888)=NA")</span></span>
+<span id="cb35-103"><a href="#cb35-103" aria-hidden="true" tabindex="-1"></a><span class="in">data$consiguen_privilegios &lt;- car::recode(data$consiguen_privilegios, "c(-999,-888)=NA")</span></span>
+<span id="cb35-104"><a href="#cb35-104" aria-hidden="true" tabindex="-1"></a><span class="in">data$quejan_discriminacion &lt;- car::recode(data$quejan_discriminacion, "c(-999,-888)=NA")</span></span>
+<span id="cb35-105"><a href="#cb35-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-106"><a href="#cb35-106" aria-hidden="true" tabindex="-1"></a><span class="in">data$son_refinadas &lt;- set_labels(data$son_refinadas,</span></span>
+<span id="cb35-107"><a href="#cb35-107" aria-hidden="true" tabindex="-1"></a><span class="in">            labels=c( "Totalmente desacuerdo"=1,</span></span>
+<span id="cb35-108"><a href="#cb35-108" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Desacuerdo"=2,</span></span>
+<span id="cb35-109"><a href="#cb35-109" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Ni de acuerdo ni desacuerdo"=3,</span></span>
+<span id="cb35-110"><a href="#cb35-110" aria-hidden="true" tabindex="-1"></a><span class="in">                      "De acuerdo"=4,</span></span>
+<span id="cb35-111"><a href="#cb35-111" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Totalmente de acuerdo"=5))</span></span>
+<span id="cb35-112"><a href="#cb35-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-113"><a href="#cb35-113" aria-hidden="true" tabindex="-1"></a><span class="in">data$ser_protegidas &lt;- set_labels(data$ser_protegidas,</span></span>
+<span id="cb35-114"><a href="#cb35-114" aria-hidden="true" tabindex="-1"></a><span class="in">            labels=c( "Totalmente desacuerdo"=1,</span></span>
+<span id="cb35-115"><a href="#cb35-115" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Desacuerdo"=2,</span></span>
+<span id="cb35-116"><a href="#cb35-116" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Ni de acuerdo ni desacuerdo"=3,</span></span>
+<span id="cb35-117"><a href="#cb35-117" aria-hidden="true" tabindex="-1"></a><span class="in">                      "De acuerdo"=4,</span></span>
+<span id="cb35-118"><a href="#cb35-118" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Totalmente de acuerdo"=5))</span></span>
+<span id="cb35-119"><a href="#cb35-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-120"><a href="#cb35-120" aria-hidden="true" tabindex="-1"></a><span class="in">data$consiguen_privilegios &lt;- set_labels(data$consiguen_privilegios,</span></span>
+<span id="cb35-121"><a href="#cb35-121" aria-hidden="true" tabindex="-1"></a><span class="in">            labels=c( "Totalmente desacuerdo"=1,</span></span>
+<span id="cb35-122"><a href="#cb35-122" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Desacuerdo"=2,</span></span>
+<span id="cb35-123"><a href="#cb35-123" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Ni de acuerdo ni desacuerdo"=3,</span></span>
+<span id="cb35-124"><a href="#cb35-124" aria-hidden="true" tabindex="-1"></a><span class="in">                      "De acuerdo"=4,</span></span>
+<span id="cb35-125"><a href="#cb35-125" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Totalmente de acuerdo"=5))</span></span>
+<span id="cb35-126"><a href="#cb35-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-127"><a href="#cb35-127" aria-hidden="true" tabindex="-1"></a><span class="in">data$quejan_discriminacion &lt;- set_labels(data$quejan_discriminacion,</span></span>
+<span id="cb35-128"><a href="#cb35-128" aria-hidden="true" tabindex="-1"></a><span class="in">            labels=c( "Totalmente desacuerdo"=1,</span></span>
+<span id="cb35-129"><a href="#cb35-129" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Desacuerdo"=2,</span></span>
+<span id="cb35-130"><a href="#cb35-130" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Ni de acuerdo ni desacuerdo"=3,</span></span>
+<span id="cb35-131"><a href="#cb35-131" aria-hidden="true" tabindex="-1"></a><span class="in">                      "De acuerdo"=4,</span></span>
+<span id="cb35-132"><a href="#cb35-132" aria-hidden="true" tabindex="-1"></a><span class="in">                      "Totalmente de acuerdo"=5))</span></span>
+<span id="cb35-133"><a href="#cb35-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-134"><a href="#cb35-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-135"><a href="#cb35-135" aria-hidden="true" tabindex="-1"></a><span class="fu">## Análisis</span></span>
+<span id="cb35-136"><a href="#cb35-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-139"><a href="#cb35-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-140"><a href="#cb35-140" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb35-141"><a href="#cb35-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_stackfrq</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span>
+<span id="cb35-142"><a href="#cb35-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-143"><a href="#cb35-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-144"><a href="#cb35-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-145"><a href="#cb35-145" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar correlación</span></span>
+<span id="cb35-146"><a href="#cb35-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-149"><a href="#cb35-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-150"><a href="#cb35-150" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_corr</span>(data, <span class="at">triangle =</span> <span class="st">"lower"</span>)</span>
+<span id="cb35-151"><a href="#cb35-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-152"><a href="#cb35-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-153"><a href="#cb35-153" aria-hidden="true" tabindex="-1"></a>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</span>
+<span id="cb35-154"><a href="#cb35-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-155"><a href="#cb35-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Análisis factorial exploratorio</span></span>
+<span id="cb35-156"><a href="#cb35-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-157"><a href="#cb35-157" aria-hidden="true" tabindex="-1"></a>¿Qué se puede deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes? No hay claridad de grupos de indicadores asociados entre sí.</span>
+<span id="cb35-158"><a href="#cb35-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-159"><a href="#cb35-159" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test de adecuación de matriz para AFE</span></span>
+<span id="cb35-160"><a href="#cb35-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-161"><a href="#cb35-161" aria-hidden="true" tabindex="-1"></a>KMO (Kaiser, Meyer, Olkin Measure of Sampling Adequacy):</span>
+<span id="cb35-162"><a href="#cb35-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-163"><a href="#cb35-163" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Varía entre 0 y 1. Contrasta si las correlaciones parciales entre las variables son pequeñas</span>
+<span id="cb35-164"><a href="#cb35-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-165"><a href="#cb35-165" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Valores pequeños (menores a 0.5) indican que los datos no serían adecuados para AFE, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables.</span>
+<span id="cb35-166"><a href="#cb35-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-169"><a href="#cb35-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-170"><a href="#cb35-170" aria-hidden="true" tabindex="-1"></a>corMat  <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb35-171"><a href="#cb35-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"complete.obs"</span>)  <span class="co"># estimar matriz pearson</span></span>
+<span id="cb35-172"><a href="#cb35-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-173"><a href="#cb35-173" aria-hidden="true" tabindex="-1"></a><span class="fu">KMO</span>(corMat)</span>
+<span id="cb35-174"><a href="#cb35-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-175"><a href="#cb35-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-176"><a href="#cb35-176" aria-hidden="true" tabindex="-1"></a>En este caso las correlaciones son altas, por lo que los datos sí son adecuados para AFE.</span>
+<span id="cb35-177"><a href="#cb35-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-178"><a href="#cb35-178" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nivel de correlaciones de la matriz: test de esfericidad de Barlett</span></span>
+<span id="cb35-179"><a href="#cb35-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-180"><a href="#cb35-180" aria-hidden="true" tabindex="-1"></a>Se utiliza para evluar la hipótesis que la matriz de correlaciones es una matriz identidad (diagonal=1 y bajo la diagonal=0)</span>
+<span id="cb35-181"><a href="#cb35-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-182"><a href="#cb35-182" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Se busca significación (p &lt; 0.05) ya que se espera que las variables estén correlacionadas</span>
+<span id="cb35-183"><a href="#cb35-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-186"><a href="#cb35-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-187"><a href="#cb35-187" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(corMat, <span class="at">n =</span> <span class="dv">3417</span>)</span>
+<span id="cb35-188"><a href="#cb35-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-189"><a href="#cb35-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-190"><a href="#cb35-190" aria-hidden="true" tabindex="-1"></a>En este caso el valor p es 0, así que hay significación estadística</span>
+<span id="cb35-191"><a href="#cb35-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-192"><a href="#cb35-192" aria-hidden="true" tabindex="-1"></a><span class="fu">### Selección de número de factores</span></span>
+<span id="cb35-195"><a href="#cb35-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-196"><a href="#cb35-196" aria-hidden="true" tabindex="-1"></a><span class="fu">scree.plot</span>(data)</span>
+<span id="cb35-197"><a href="#cb35-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-198"><a href="#cb35-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-201"><a href="#cb35-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-202"><a href="#cb35-202" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(corMat, <span class="at">n.obs=</span><span class="dv">3417</span>)</span>
+<span id="cb35-203"><a href="#cb35-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-204"><a href="#cb35-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-205"><a href="#cb35-205" aria-hidden="true" tabindex="-1"></a><span class="fu">### Extracción</span></span>
+<span id="cb35-206"><a href="#cb35-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-207"><a href="#cb35-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ejes principales</span>
+<span id="cb35-210"><a href="#cb35-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-211"><a href="#cb35-211" aria-hidden="true" tabindex="-1"></a>fac_pa <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"pa"</span>)</span>
+<span id="cb35-212"><a href="#cb35-212" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(fac_pa)</span></span>
+<span id="cb35-213"><a href="#cb35-213" aria-hidden="true" tabindex="-1"></a>fac_pa</span>
+<span id="cb35-214"><a href="#cb35-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-215"><a href="#cb35-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-216"><a href="#cb35-216" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Maximum likelihood</span>
+<span id="cb35-217"><a href="#cb35-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-218"><a href="#cb35-218" aria-hidden="true" tabindex="-1"></a>Maximiza la posibilidad de que los parámetros reproduzcan los datos observados</span>
+<span id="cb35-219"><a href="#cb35-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-222"><a href="#cb35-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-223"><a href="#cb35-223" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>)</span>
+<span id="cb35-224"><a href="#cb35-224" aria-hidden="true" tabindex="-1"></a>fac_ml</span>
+<span id="cb35-225"><a href="#cb35-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-226"><a href="#cb35-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-227"><a href="#cb35-227" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rotación</span></span>
+<span id="cb35-228"><a href="#cb35-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-229"><a href="#cb35-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Varimax (ortogonal)</span>
+<span id="cb35-232"><a href="#cb35-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-233"><a href="#cb35-233" aria-hidden="true" tabindex="-1"></a>fac_ml_var <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"varimax"</span>) <span class="co"># ortogonal</span></span>
+<span id="cb35-234"><a href="#cb35-234" aria-hidden="true" tabindex="-1"></a>fac_ml_var</span>
+<span id="cb35-235"><a href="#cb35-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-236"><a href="#cb35-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-237"><a href="#cb35-237" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Promax (oblicua)</span>
+<span id="cb35-240"><a href="#cb35-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-241"><a href="#cb35-241" aria-hidden="true" tabindex="-1"></a>fac_ml_pro <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"promax"</span>)</span>
+<span id="cb35-242"><a href="#cb35-242" aria-hidden="true" tabindex="-1"></a>fac_ml_pro</span>
+<span id="cb35-243"><a href="#cb35-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-244"><a href="#cb35-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-245"><a href="#cb35-245" aria-hidden="true" tabindex="-1"></a><span class="fu">### Casi automático con sjPlot</span></span>
+<span id="cb35-246"><a href="#cb35-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-249"><a href="#cb35-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-250"><a href="#cb35-250" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_fa</span>(data, <span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">rotation =</span> <span class="st">"promax"</span>, <span class="at">show.comm =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"Análisis factorial de sexismo"</span>)</span>
+<span id="cb35-251"><a href="#cb35-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-252"><a href="#cb35-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-253"><a href="#cb35-253" aria-hidden="true" tabindex="-1"></a>Luego de realizar el Análisis factorial exploratorio existen varias alternativas sobre los pasos a seguir. Por ejemplo, es posible estimar un promedio simple entre cada una de las variables de los factores. Otra opción es estimar **puntajes factoriales**.</span>
+<span id="cb35-254"><a href="#cb35-254" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copiar al portapapeles" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco &amp; Daniela Olivares<br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/R-data-analisis">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/cursos-metodos-uah/estadisticaIV">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
 </div>
   </div>
 </footer>

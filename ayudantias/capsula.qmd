@@ -1,0 +1,12 @@
+---
+title: "Cápsula: R Script"
+editor: visual
+date: "2024-10-16"
+lang: es
+---
+
+## Video de la sesión de ayudantía
+
+La presente cápsula tiene como objetivo guiarles en el orden de su Script e introducirl_s en la lógica del lenguaje de R.
+
+{{< video https://youtu.be/ZDugXWxEH7c >}}

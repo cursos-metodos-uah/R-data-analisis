@@ -3,7 +3,7 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-    - "!slides/"
+#    - "!slides/"
   resources:
     - "files/"
     - "projects/"
@@ -20,12 +20,12 @@ execute:
 
 bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
-description-meta: "R para Análisis estadístico"
+description-meta: "Estadística IV"
 
 website:
-  title: "R para Análisis estadístico"
-  site-url: "https://R-analisis-datos.netlify.app"
-  description: "Departamento de Sociología de la Universidad Alberto"
+  title: "Estadística IV"
+  site-url: "https://estadisticaIV.netlify.app"
+  description: "Departamento de Sociología de la Universidad Alberto Hurtado"
   favicon: "/files/icon-512.png"
 
   twitter-card:
@@ -40,7 +40,7 @@ website:
 
   navbar:
     pinned: true
-    background: "#093b69"
+    background: "#ed6758"
     right:
       - syllabus.qmd
       - schedule.qmd
@@ -60,6 +60,8 @@ website:
       - icon: cloud-fill
         href: "https://rstudio.cloud"
         aria-label: RStudio.cloud
+      - text: "Ayudantías"
+        file: ayudantias/index.qmd
 
   sidebar:
 
@@ -79,8 +81,8 @@ website:
               file: content/02-content.qmd
             - text: "03: Clase 3"
               file: content/03-content.qmd
-            - text: "04: Clase 4"
-              file: content/04-content.qmd
+#            - text: "04: Clase 4"
+#              file: content/04-content.qmd
             - text: "05: Clase 5"
               file: content/05-content.qmd
             - text: "06: Clase 6"
@@ -114,14 +116,14 @@ website:
               file: practicos/06-content.qmd
             - text: "07: Práctico 7"
               file: practicos/07-content.qmd
-            - text: "08: Resumen"
-              file: practicos/resumen-content.qmd
-            - text: "09: Práctico 8"
-              file: practicos/08-content.qmd
-            - text: "10: Práctico 9"
-              file: practicos/09-content.qmd
-            - text: "11: Práctico 10"
-              file: practicos/10-content.qmd
+#            - text: "08: Resumen"
+#              file: practicos/resumen-content.qmd
+#            - text: "09: Práctico 8"
+#              file: practicos/08-content.qmd
+#            - text: "10: Práctico 9"
+#             file: practicos/09-content.qmd
+#            - text: "11: Práctico 10"
+#             file: practicos/10-content.qmd
 
     - title: "Herramientas"
       style: "docked"
@@ -146,23 +148,39 @@ website:
             - assignment/index.qmd
         - section: "Trabajos"
           contents:
-            - text: "Trabajo 1"
-              file: assignment/01-trabajo.qmd
-            - text: "Trabajo 2"
-              file: assignment/02-trabajo.qmd
-            - text: "Trabajo 3"
-              file: assignment/03-trabajo.qmd
-            - text: "Trabajo 4"
-              file: assignment/04-trabajo.qmd
-            - text: "Presentaciones"
-              file: assignment/05-presentacion.qmd
-            - text: "Examen"
-              file: assignment/06-examen.qmd
+#            - text: "Trabajo 1"
+#              file: assignment/01-trabajo.qmd
+#            - text: "Trabajo 2"
+#              file: assignment/02-trabajo.qmd
+#            - text: "Trabajo 3"
+#              file: assignment/03-trabajo.qmd
+#            - text: "Trabajo 4"
+#              file: assignment/04-trabajo.qmd
+#            - text: "Presentaciones"
+#              file: assignment/05-presentacion.qmd
+#            - text: "Examen"
+#              file: assignment/06-examen.qmd
 
+    - title: "Ayudantías"
+      style: "docked"
+      search: false
+      background: dark
+      contents:
+        - section: "Información general"
+          contents:
+            - ayudantias/index.qmd
+        - section: "Recursos ayudantía"
+          contents:
+            - text: "Guía 1: R"
+              file: ayudantias/ayudantia1.qmd
+#            - text: "Guía 2: Códigos"
+#              file: recurso/02-ayudantías.qmd
+#            - text: "Guía 3: Aplicación de los contenidos del curso"
+#              file: recurso/03-ayudantías.qmd
 
   page-footer:
     left: |
-      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by Kevin Carrasco <br>
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by Kevin Carrasco & Daniela Olivares<br>
       All content licensed under a {{< fa brands creative-commons >}}
       {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
       [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)

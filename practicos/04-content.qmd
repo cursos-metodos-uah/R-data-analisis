@@ -1,632 +1,383 @@
 ---
-title: "Práctico 4. Visualización de variables"
-subtitle: "R data analisis"
-linktitle: "Práctico 4: Visualización"
-date: "2024-03-26"
+title: "Correlación y regresión"
+date: "2024-09-25"
 lang: es
+output:
+  number_sections: true
 ---
 
-# Presentación
-
-# Objetivo de la práctica
-
-Esta práctica asume como base el desarrollo de la [Práctica anterior](https://r-data-analisis.netlify.app/practicos/03-content), a la cual se hará referencia permanente. Sin embargo, en esta oportunidad la base de datos contiene los datos de los 18 países participantes en la encuesta, no solo Chile. El código específico que crea esta base está disponible [acá](https://github.com/Kevin-carrasco/R-data-analisis/blob/main/practicos/latin_proc.R)
-
-En la [Práctica anterior](https://r-data-analisis.netlify.app/practicos/03-content) se desarrolló un código de preparación de datos que generó una base de datos procesada para el análisis. En esta **Práctica** comenzamos con el segundo momento de procesamiento de datos, que es el análisis propiamente tal. El análisis se divide en descripción de variables y contraste de hipótesis. En esta práctica nos enfocaremos en la primera fase, que llega hasta el punto 3 del código de análisis:
-
-![](images/produccion2.png)
-
-Al igual que el Código de Preparación, el Código de Análisis posee una estructura definida. En este caso son 4 partes, donde las primeras son similares al código de preparación:
-
-0.  Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento
-1.  **Librerías** principales (de R) a utilizar en el análisis
-2.  **Datos** (que provienen de los preparados en la fase anterior)
-3.  **Descripción de variables**
-    -   Tabla general de variables para la sección metodológica del reporte
-    -   Exploración descriptiva de relaciones entre variables
-4.  **Contraste de hipótesis** / inferencia estadística según la técnica que corresponda
-
-Al final de esta práctica la idea es que cada un\_ pueda avanzar hasta el **punto 3** del Código de Análisis. El punto 4 (contraste de hipótesis) se desarrollará más adelante en este curso con énfasis en la técnica de regresión.
-
-# Código de análisis
-
-## 1. Librerías
-
-```{r,message=FALSE,warning=FALSE}
-pacman::p_load(sjlabelled,
-               dplyr, #Manipulacion de datos
-              stargazer, #Tablas
-              sjmisc, # Tablas
-              summarytools, # Tablas
-              kableExtra, #Tablas
-              sjPlot, #Tablas y gráficos
-              corrplot, # Correlaciones
-              sessioninfo, # Información de la sesión de trabajo
-              ggplot2) # Para la mayoría de los gráficos
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE)
 ```
 
-## 2. Cargar base de datos
+El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos para la estimación de regresiones lineales y múltiples en R.
 
-Vamos a cargar la base de datos **latinobarometro_proc.Rdata**, que generamos durante la práctica anterior. Se puede llamar desde el directorio en que se guardó anteriormente dando la ruta completa:
+Por temas de orden y reproducibilidad, en este curso hemos separado en dos momentos el trabajo con datos, y dos archivos de código correspondientes.
 
-```{r eval=FALSE, message=FALSE, warning=FALSE}
-load("ruta-hacia-carpeta-local/latinobarometro_proc.RData") #Cargar base de datos
-```
+## Antecedentes de los datos a utilizar
 
-O también para esta práctica la podemos llamar directamente desde nuestro sitio web:
+Cohesión barrial con elsoc 2016. Código de preparación disponible en: [https://r-data-analisis.netlify.app/practicos/resumen-content#preparaci%C3%B3n](https://r-data-analisis.netlify.app/practicos/resumen-content#preparaci%C3%B3n)
 
-```{r }
-load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData")) #Cargar base de datos
-```
+# Análisis
 
--   Exploración inicial general de la base de datos
+## 1. Librerías principales (de R) a utilizar en el análisis{#librerias}
 
 ```{r}
-names(proc_data) # Muestra los nombres de las variables de la base de datos
-dim(proc_data) # Dimensiones
-```
-
-En el caso de esta base, `r dim(proc_data)[1]` casos y `r dim(proc_data)[2]` variables
-
-Recordando el contenido de cada variable preparada en la práctica anterior:
-
--   [`conf_gob`] = Confianza en el gobierno.
-
--   [`conf_cong`] = Confianza en el congreso.
-
--   [`conf_jud`] = Confianza en el poder judicial.
-
--   [`conf_partpol`] = Confianza en los partidos políticos.
-
--   [`conf_inst`] = Indice sumativo de confianza en instituciones políticas.
-
--   [`educacion`] = Nivel educacional(1 = Educacion básica, 2 = Educacion media, 3 = superior)
-
--   [`sexo`] = Sexo (O = Hombre; 1 = Mujer)
-
--   [`edad`] = ¿Cuáles su edad? 
-
-## 3. Descripción de variables
-
-Los resultados referidos a descripción de variables se presentan en dos momentos del reporte de investigación:
-
--   en la sección de *metodología*, cuando se presentan las variables del estudio en una **tabla descriptiva** de variables.
-
--   en la sección de *análisis*, que en general comienza con una exploración de **asociaciones entre variables**, también conocido como análisis descriptivo.
-
-### 3.1 Tabla descriptiva de variables para sección metodológica
-
-A continuación se presentan dos opciones de generar esta tabla descriptiva de variables con distintas librerías de R.
-
-**a. Tabla descriptiva con `stargazer`**[stargazer]{.sidenote}
-
-La función `stargazer` (de la librería del mismo nombre) permitirá mostrar los principales estadísticos descriptivos univariados de las variables: medidas de tendencia central (media), de dispersión (desviación estándar) y posición (mínimo, máximo, percentiles).
-
-```{r}
-stargazer(proc_data,type = "text")
-```
-
-Algunas observaciones sobre esta tabla:
-
--   La opción `type="text"` permite que podamos ver los resultados directamente en la consola, de manera bastante rudimentaria. Con otras opciones que veremos más adelante se puede estilizar para su publicación.
-
--   Una distinción relevante a considerar cuando se describen variables es si estas son **categóricas** o **continuas**. La definición de si una variables es tratada como categórica o continua es algo que hace el/la autor/a del reporte, sin embargo hay variables nominales como sexo que claramente corresponden a categóricas, y por lo tanto no corresponde hacer un promedio entre ambas. Sin embargo, como esta variable está codificada 0 (hombre) y 1 (mujer), en este caso lo que indica el valor de la columna promedio (Mean=0.537) es la proporción de mujeres vs hombres. En otras palabras, hay un 54% de mujeres y 46% de hombres en la muestra.
-
-**b. Tablas descriptivas con `descr`, librería sjmisc**[sjmisc::descr]{.sidenote}
-
-La opción básica de `descr` es la siguiente:
-
-```{r}
-sjmisc::descr(proc_data)
-```
-
-En este caso utilizamos la forma `librería::función` (`sjmisc::descr`), ya que la función `descr` también existe en otras librerías y así nos aseguramos que la función utilizada es de esa librería específica.
-
-Seleccionamos algunas columnas específicas con información más relevante con la opción `show`. Además, agregamos la función `kable` para obtener una tabla que luego sea fácilmente publicable en distintos formatos (a profundizar en ejercicios posteriores):
-
-```{r}
-sjmisc::descr(proc_data,
-      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
-      kable(.,"markdown")
-```
-
-**c. Tabla descriptiva con `summarytools::dfSummary`**[summarytools::dfSummary]{.sidenote}
-
-Esta tercera opción nos ofrece una tabla aún más detallada, con gráficos para cada variable, las frecuencias para cada valor, y las etiquetas de las variables, por lo que es muy recomendable.
-
-Se específica de la siguiente manera:
-
-```{r}
-summarytools::dfSummary(proc_data, plain.ascii = FALSE)
-```
-
-Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva de publicación se verá así:
-
-```{r eval=FALSE }
-view(dfSummary(proc_data, headings=FALSE))
+pacman::p_load(dplyr, car, sjmisc, sjPlot, sjlabelled, stargazer, kableExtra, corrplot, texreg, ggplot2, ggpubr)
 ```
 
 ```{r echo=FALSE}
-print(dfSummary(proc_data, headings = FALSE), method = "render")
+load("files/elsoc2016_proc.RData")
 ```
 
-#### Nota sobre casos perdidos (NAs) [na.omit(data)]{.sidenote}
+o desde internet:
 
-Hasta ahora hemos mantenido los casos perdidos en la base de datos, ya que son importantes de reportar en la tabla general de variables. Sin embargo, de aquí en adelante se recomienda trabajar solo con casos completos, es decir, **sacar los casos perdidos**. El quitar los casos perdidos de una base de datos es muy simple con la función `na.omit`, pero para tomar precauciones y asegurarse que funciona se recomienda el siguiente procedimiento:
+```{r eval=FALSE}
+load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/practicos/files/elsoc2016_proc.RData"))
+```
 
--   respaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos), la dejaremos con el nombre proc_data_original.
--   contamos el número de casos con el comando `dim`
--   contamos el número de casos perdidos con `sum(is.na(proc_data))`
--   borramos los casos perdidos con `proc_data <-na.omit(proc_data)`
--   contamos nuevamente con `dim` para asegurarnos que se borraron
--   y por temas de funcionamiento de R, al realizar la operación de sacar casos perdidos, se borra toda la información de las etiquetas (labels), así que las recuperamos de la base original con el comando `copy_labels`, de la librería `sjlabelled`.
+## Análisis descriptivo
 
 ```{r}
-proc_data_original <-proc_data
-dim(proc_data)
-sum(is.na(proc_data))
-proc_data <-na.omit(proc_data)
-dim(proc_data)
-proc_data <-sjlabelled::copy_labels(proc_data,proc_data_original)
+#| label: tbl-sjmisc
+#| tbl-cap: "Descriptivos"
+
+sjmisc::descr(proc_data,
+      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>% # Selecciona estadísticos
+      kable(.,"markdown") # Esto es para que se vea bien en quarto
 ```
 
-### 3.2 Visualización de variables
+En la @tbl-sjmisc podemos observar los descriptivos generales de la base de datos procesada que utilizamos en el práctico anterior. Contiene ya creado el índice de cohesión barrial cuya **media es de 10,33**
 
-Para visualizar variables mediante gráficos, en R el paquete más comúnmente usado es ggplot2. La lógica detrás de este paquete es que funciona por capas. 
+## Asociación de variables
+
+Seleccionamos las principales variables y cambiamos su nombre. No seleccionaremos las variables originales que construyeron el índice.
 
 ```{r}
-ggplot()
+proc_data <- proc_data %>% select(cohesion_barrial, edad=m0_edad, educacion=m01, sexo=m0_sexo)
+```
+
+
+::: callout-note
+**¿Qué era la correlación?**
+
+La correlación es una medida de asociación entre variables, que describe el sentido (dirección) y fuerza de la asociación.
+
+En otras palabras, nos permite conocer cómo y cuánto se relaciona la variación de una variable, con la variación de otra variable.
+
+:::
+
+# Matrices de correlación
+
+Podemos ver la asociación de todas las variables, como lo muestra la @cor-complete
+
+```{r}
+M <- cor(proc_data, use = "complete.obs") # Usar solo casos con observaciones completas
+M
+```
+
+Este es el reporte simple, pero no muy amigable a la vista.
+
+```{r}
+diag(M) = NA # Elimina la diagonal (correlaciones absolutas de cada variable consigmo misma)
+rownames(M) <- c("A. Cohesión barrial",
+                         "B. Edad",
+                         "C. Educación",
+                         "D. Sexo")
+colnames(M) <-c("(A)", "(B)","(C)", "(D)")
 ```
 
 ```{r}
-ggplot(proc_data, aes(x = conf_inst))
+#| label: cor-complete
+#| fig-cap: "Correlación variables elsoc 2016"
+
+corrplot::corrplot(M,
+  method = "color", # Cambia los círculos por color completo de cada cuadrante
+  addCoef.col = "#000390", # Color de los coeficientes
+  type = "upper", # Deja solo las correlaciones de arriba
+  tl.col = "black", # COlor letras, rojo por defecto
+  na.label = "-")
 ```
+
+
+Con esta mejor visualización, algunas observaciones sobre la matriz de correlaciones:
+
+- En esta matriz las variables están representadas en las filas y en las columnas.
+-Este gráfico/matriz representa el grado de asociación entre variables mediante el tamaño de los círculos e intensidad de colores, y el signo de la asociación se representa con una gradiente de colores que va del azul (positivo) al rojo (negativo).
+- La información de cada coeficiente se repite sobre y bajo la diagonal, ya que es el mismo par de variables pero en el orden alterno. Por convención en general se omiten las correlaciones redundantes sobre la diagonal, por eso aparece en blanco.
+- En la diagonal corresponde que todos los coeficientes sean 1, ya que la correlación de una variable consigo misma es perfectamente positiva.
+
+Finalmente, también se puede representar la correlación entre dos variables en un gráfico de nube de puntos o _scatterplot_.
+
+```{r cor6, echo=TRUE, message=FALSE, warning=FALSE}
+sjPlot::plot_scatter(proc_data, cohesion_barrial, edad)
+```
+
+
+Donde:
+
+- cada punto representa un caso
+- la forma de la nube indica si la asociación es positiva, negativa o neutra:
+
+![](images/scatterplot6.png)
+
+
+# Tamaños de efecto
+
+¿Y cómo puedo saber si el valor de la correlación es alto, medio o bajo? Si bien la correlación no nos indica causalidad, si nos permite conocer la dirección y fuerza de asociación entre dos variables. Un estándar para determinar qué tan fuerte es dicha asociación en las ciencias sociales es el propuesto por Cohen (1998).
+
+<style>
+  table {
+    margin-left: auto; /* Ajustamos el margen izquierdo a automático */
+    margin-right: auto; /* Ajustamos el margen derecho a automático */
+    border-collapse: collapse;
+    width: 60%;
+    border: 2px solid black;
+  }
+  
+  th, td {
+    border: 1px solid #D3D3D3;
+    padding: 8px;
+    text-align: center;
+  }
+</style>
+
+<table>
+  <tr>
+    <th class="cell-left">r</th>
+    <th class="cell-left">Significado aproximado (Cohen 1988)</th>
+  </tr>
+  <tr>
+    <td class="cell-left">&lt; ±0.1&emsp;</td>
+    <td class="cell-left">Muy pequeño</td>
+  </tr>
+  <tr>
+    <td class="cell-left">±0.1–0.3</td>
+    <td class="cell-left">Pequeño</td>
+  </tr>
+  <tr>
+    <td class="cell-left">±0.3–0.5</td>
+    <td class="cell-left">Moderado</td>
+  </tr>
+  <tr>
+    <td class="cell-left">&gt;±0.5</td>
+    <td class="cell-left">Grande</td>
+  </tr>
+</table>
+
+
+Con estos criterios podemos interpretar de mejor manera nuestros resultados de correlación. Como se observa, mientras más alto (sea en + o -) el coeficiente, más juntos estarán los datos (puntos), mostrando un patrón. 
+
+
+
+```{r correlation-grid, echo=FALSE, out.width="80%", fig.align='center'}
+make_correlated_data <- function(r, n = 200) {
+  MASS::mvrnorm(n = n, 
+                mu = c(0, 0), 
+                Sigma = matrix(c(1, r, r, 1), nrow = 2), 
+                empirical = TRUE) %>% 
+    magrittr::set_colnames(c("x", "y")) %>% 
+    as_tibble()
+}
+
+cor_grid <- tibble(r = c(0.2, 0.4, 0.7, 0.9)) %>% 
+  mutate(data = purrr::map(r, make_correlated_data)) %>% 
+  tidyr::unnest(data)
+
+ggplot(cor_grid, aes(x = x, y = y)) +
+  geom_point(size = 2, color = "white", fill = "black", pch = 21) +
+  facet_wrap(vars(r), labeller = label_both) +
+  # theme_minimal() +
+  theme(strip.text = element_text(face = "bold", size = rel(1.3), hjust = 0))
+```
+
+:::::: {.row .d-flex .justify-content-center}
+::::: {.col-md-6} 
+:::: {.card .bg-danger .text-white}
+::: {.card-body}
+
+**Interpretación**
+
+Recordemos nuestra matriz del comienzo:
+
+Tenemos que la correlación entre la variable de ingresos y nivel educacional es 0,42. ¿Cómo interpreto esto?
+
+Una manera recomendable es la siguiente:
+
+_El coeficiente de correlación de Pearson entre ingresos y nivel educacional es positivo y moderado (r = 0.3) según Cohen (1988)._ 
+
+
+
+:::
+::::
+:::::
+::::::
+
+# Regresión
+
+## Medias condicionales
+
+Antes de avanzar desde la correlación al método de regresión es importante conocer el concepto de **media condicional**.
+
+Imaginemos un juego de tacataca con dos variables: cantidad de juegos previos y puntos obtenidos en un partido. En estas variables, el promedio de puntos es 4. Es decir, si conocemos a algún individuo que pertence al grupo de "datos", sabemos que su puntaje se encuentra probablemente cercano a 4. ¿Podemos mejorar nuestra estimación utilizando el puntaje de X? Si el sujeto nos dice que ha jugado antes 6 veces, probablemente vamos a estimar un puntaje superior de puntos, tal vez más cercano a 6.
+
+Lo que estamos haciendo es utilizar la información que conocemos de X para dar una estimación de Y, que sea más precisa que el promedio bruto.
+
+![](files/img/condmeans.png)
+
+Mirando el gráfico de nube de puntos, sabemos que tres personas han jugado antes una vez, pero una de ellas tuvo 2 puntos, otra 3 y otra 4. Con estos datos podemos calcular la media de Y para X=1, que sería igual a 3. En otras palabras, *la media condicional de Y cuando X=1 es 3*. Con esto, uno podría calcular la media condicional para cada punto de X y hacer una estimación más precisa de Y. Sin embargo, este proceso todavía *no nos permite generalizar más eficientemte* la relación entre X e Y.
+
+*¿Cuántos puntos (Y) se obtienen según la experiencia previa de juego (X)?* Esta pregunta nos conduce al cálculo de una **recta** que atraviese los puntos y que generalice la relación entre X e Y.
+
+## Residuos
+
+En el gráfico anterior vemos que la línea resume la relación entre X e Y, pero claramente es una simplificación que **no abarca toda la variabilidad de los datos**.
+
+Por ejemplo, para el sujeto cuya experiencia es haber jugado 1 vez y luego gana 3 puntos, esta línea predice exáctamente su puntaje basada en su experiencia. Sin embargo, el sujeto que ha jugado 3 veces y saca 6 puntos se encuentra más lejos de la línea y por lo tanto esta línea o "modelo predictivo" no representa tan bien su puntaje. A esto se refieren los *residuos*, que es la diferencia entre el valor predicho (o $\widehat{Y}$) y el observado $Y$, siendo los valores predichos de Y los que pasan por la recta a la altura de cada valor de X. Por lo tanto, la mejor recta será aquella que minimice al máximo los residuos.
+
+![](files/img/fig2-4woo.png)
+
+El sentido de la recta que resume de mejor manera la relación entre dos variables es que **minimice la suma de todos los residuos**. ¿Cómo realizar este procedimiento?
+
+- Para realizar la suma de los residuos estos se elevan al cuadrado, lo que se denomina **Suma de residuos al cuadrado** o $SS_{residual}$. Se eleva al cuadrado ya que como hay residuos positivos y negativos, unos cancelarían a otros y la suma seía 0, tal como sucede en la formula de la varianza.
+
+- De la infinita cantidad de rectas que se pueden trazar, siempre hay una que tiene un valor menor de $SS_{residual}$. Este procedimiento es el que da nombre al proceso de estimación: mínimos (residuos) cuadrados ordinarios, o *OLS* (Ordinary Least Squares).
+
+¿Cómo funciona esto con nuestro ejemplo?
+
+```{r warning=FALSE, error=FALSE, message=FALSE}
+#Grafico x1 = ACT
+graph1 <- ggplot(proc_data, aes(x = edad, y = cohesion_barrial)) +
+  geom_point(size = 1) +  # Puntos
+  geom_smooth(method = "lm", se = FALSE) +  # Recta de regresión
+  labs(x = "Edad", y = "Cohesión Barrial")  # Etiquetas de ejes
+
+# Gráfico 2
+graph2 <- ggplot(proc_data, aes(x = educacion, y = cohesion_barrial)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Educación", y = "Cohesión Barrial")
+ggarrange(graph1, graph2, nrow = 1) # Unir graficos
+```
+
+Con el gráfico anterior podemos notar que, si bien ambas variables tienen una asociación distinta con la cohesión barrial, el tamaño efecto de esta relación es distinto. Edad tiene una asociación positiva, mientras que educación tiene una asociación negativa. El tamaño de efecto de edad es 'grande', mientras que el tamaño de educación es casi nulo.
+
+## Regresiones
+
+Para facilitar la interpretación de los coeficientes de regresión vamos a recodificar la variable de educación (10 categorías) en tres categorías (básica, media y universitaria).
+
+Además, nos aseguramos que las variables categóricas estén como variables categóricas con as_factor. De esta forma nos aseguramos que la estimación de los modelos sea correcta ya que no se úede interpretar educación como si fuera una variable numérica.
 
 ```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar()
+proc_data$educacion <- car::recode(proc_data$educacion, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+
+proc_data$educacion <- set_labels(proc_data$educacion,
+            labels=c( "Educacion básica"=1,
+                      "Educación media"=2,
+                      "Educación superior"=3))
+
+frq(proc_data$educacion)
+
+proc_data$educacion <- as_factor(proc_data$educacion)
+proc_data$sexo <- as_factor(proc_data$sexo)
+
+proc_data <- na.omit(proc_data)
+
+reg1 <- lm(cohesion_barrial ~ 1, data=proc_data)
+
+stargazer(reg1, type="text")
 ```
+
+¿Qué valor toma una regresión lineal cuando no incluímos predictores en nuestro modelo?
+
+En este caso, lo que nos interesa observar es el intercepto. Un intercepto de 10.336 nos indica la media de la cohesión barrial.
+
+### Regresión lineal simple
+
+Una regresión lineal simple es aquel modelo que incluye solo un predictor. En este caso construiremos tres modelos distintos con tres variables independientes, es decir, reg2 que incluye como predictor 'edad', reg3 incluye educación y reg4 incluye sexo.
+
+```{r results='asis'}
+reg2 <- lm(cohesion_barrial ~ edad, data=proc_data)
+reg3 <- lm(cohesion_barrial ~ educacion, data=proc_data)
+reg4 <- lm(cohesion_barrial ~ sexo, data=proc_data)
+
+knitreg(list(reg2, reg3, reg4), 
+        custom.model.names = c("Modelo 1",
+                               "Modelo 2",
+                               "Modelo 3"),
+        custom.note = "*** p < 0.001; ** p < 0.01; * p < 0.05",
+        custom.coef.names = c("Intercepto", 
+                              "Edad",
+                              "Educación media <br> <i>(Ref. Ed. básica)</i>", 
+                              "Educación superior", 
+                              "Mujer <br> <i>(Ref. Hombre)</i>"),
+        caption = "Cohesión barrial",
+        caption.above = TRUE)
+```
+
+La interpretación de una tabla de regresión debe seguir el orden de presentación de los modelos y el orden de los coeficientes de regresión. En este ejemplo se dará el paso a paso de cómo interpretar las tablas:
+
+En el Modelo 1 se incluye edad como predictor, que tiene un coeficiente de regresión de 0,04. Esto indica que por cada unidad que aumenta edad, la cohesión barrial aumenta en promedio 0,04 unidades, efecto que podemos extrapolar a la población con un 99,9% de confianza (p<0,001). El intercepto es de 8,42, lo que indica que (teóricamente) una persona con edad 0 tendría un promedio de cohesión barrial de 8,42. Finalmente, el modelo 1 logra explicar el 3% de la varianza de la variable dependiente (R2=0,03).
+
+El Modelo 2 incluye la edad de los/as encuestados como variable independiente, teniendo la categoría de 'educación básica' como categoría de referencia. Este Modelo indica que las personas con educación media tienen en promedio -0,13 unidades en el índice de cohesión barrial que las personas con educación básica, sin embargo, este coeficiente no es estadísticamente significativo. En cuanto a las personas con educación superior, estas tendrían en promedio -0,35 unidades en la escala de cohesión barrial en comparación con las personas con educación básica, efecto que es estadísticamente significativo (p<0,05). Si observamos el intercepto, este nos indica que el promedio de cohesión barrial para las personas con educación básica es de 10,51, por lo que el promedio de cohesión barrial para las personas con educación media sería de 10,38 y para las personas con educación superior sería 10,16.
+
+El modelo 3 indica que las mujeres tendrían -0,26 unidades en la escala de cohesión barrial que los hombres, efecto que podemos extrapolar a la población con un 95% de confianza. El intercepto indica que el promedio de cohesión barrial de los hombres es 10,49, por lo que el promedio para las mujeres sería de 10,23.
+
+### Regresión lineal múltiple
+
+Una regresión lineal múltiple es aquel modelo que incluye más de un predictor en las estimaciones. Idealmente, la inclusión de nuevas variables independientes, así como el orden de presentación de los modelos debe seguir un sentido teórico y/o acorde a las hipótesis de investigación. En este caso, y solo como ejemplo, construiremos cuatro modelos distintos que incluyen todas las combinaciones de variables posibles para ver cómo cambian los efectos según el control estadístico (parcialización)
+
+```{r results='asis'}
+reg5 <- lm(cohesion_barrial ~ edad + educacion, data=proc_data)
+reg6 <- lm(cohesion_barrial ~ edad + sexo, data=proc_data)
+reg7 <- lm(cohesion_barrial ~ educacion + sexo, data=proc_data)
+reg8 <- lm(cohesion_barrial ~ edad + educacion + sexo, data=proc_data)
+
+knitreg(list(reg5, reg6, reg7, reg8), 
+        custom.model.names = c("Modelo 1",
+                               "Modelo 2",
+                               "Modelo 3",
+                               "Modelo 4"),
+        custom.note = "*** p < 0.001; ** p < 0.01; * p < 0.05",
+        custom.coef.names = c("Intercepto", 
+                              "Edad",
+                              "Educación media <br> <i>(Ref. Ed. básica)</i>", 
+                              "Educación superior", 
+                              "Mujer <br> <i>(Ref. Hombre)</i>"),
+        caption = "Cohesión barrial",
+        caption.above = TRUE)
+```
+
+
+El Modelo 1 incluye edad y educación como variables independientes. Este modelo indica que por cada unidad que aumenta la edad, la cohesión barrial aumenta en 0,04 unidades, manteniendo la educación constante, efecto que es estadísticamente significativo (p<0,001). En cuanto a la educación, tener educación media (b=0,35) y tener educación superior (b=0,36) tienen un efecto positivo sobre la cohesión barrial en comparación con quienes tienen educación básica, menteniendo la edad constante, efecto que es estadísticamente significativo (p<0,05). 
+
+En el Modelo 2 el efecto de edad se mantiene igual que en el modelo 1. Al incluir edad (y no educación) este modelo indica que las mujeres tendrían -0,34 unidades en la escala de cohesión barrial que los hombres, manteniendo la edad constante, efecto que podemos extrapolar a la población con un 99% de confianza.
+
+El Modelo 3 incluye las variables educación y sexo, por lo que es interesante notar que al no controlar por edad, el efecto de la educación cambia de positivo a negativo y solo encontramos diferencias estadísticamente significativas al tener educación superior. El efecto del sexo disminuye, pero mantiene su sentido y significancia.
+
+El Modelo 4 incluye todas las variables independientes. Este modelo indica que por cada unidad que aumenta la edad, la cohesión barrial aumenta en 0,05 unidades, manteniendo el resto de las variables constantes, efecto que es estadísticamente significativo (p<0,001). En cuanto a la educación, tener educación media (b=0,33) y tener educación superior (b=0,33) tienen un efecto positivo sobre la cohesión barrial en comparación con quienes tienen educación básica, menteniendo el resto de las variables constantes, sin embargo, estas diferencias no son estadísticamente significativas. Finalmente, las mujeres tendrían -0,33 unidades en la escala de cohesión barrial que los hombres, manteniendo el resto de variables constantes, efecto que podemos extrapolar a la población con un 99% de confianza.
+
+Los modelos 1, 2 y 4 logran explicar el 4% de la varianza de la variable dependiente (R2=0,04).
+
+### Graficar
 
 ```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar(fill = "coral")
-```
-
-```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar(fill = "coral")+
-  labs(title = "Confianza en instituciones",
-       x = "Confianza en instituciones",
-       y = "Frecuencia")
-```
-
-
-```{r}
-# Crear el gráfico usando ggplot2
-graph1 <- proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar(fill = "coral")+
-  labs(title = "Confianza en instituciones",
-       x = "Confianza en instituciones",
-       y = "Frecuencia") +
-  theme_bw()
-
-graph1
-
-# y lo podemos guardar:
-
-ggsave(graph1, file="files/img/graph1.png")
-
-```
-
-
-### 3.3 Exploración de asociación entre variables
-
-Dado que las hipótesis de investigación corresponden a asociación entre variables, antes de realizar el contraste de hipótesis se suele presentar un análisis descriptivo que explora las asociaciones entre variables.
-
-La forma de explorar las asociaciones entre variables dependen de la naturaleza de las variables que se asocian:
-
--   Variables categóricas: tabla de contingencia
--   Variable categórica y continua: tabla de promedios por cada categoría
-
-En esta sección también es muy relevante la visualización de datos mediante gráficos, por lo que incluiremos algunos.
-
-El uso tanto de tablas como de gráficos en el reporte queda a discreción del/a autor/a. La pregunta que orienta esta decisión es: *¿Me permite enriquecer la discusión de los resultados en relación a las hipótesis planteadas?*
-
-#### Tablas de contingencia para variables categóricas
-
-Para tablas de contingencia categóricas utilizaremos la función sjt.xtab, de la librería `sjPlot`. Veamos primero una especificación simple: [sjPlot::sjt.xtab]{.sidenote}
-
-```{r}
-sjt.xtab(proc_data$educacion, proc_data$sexo)
-```
-
-Al ejecutar el comando, el resultado aparece automáticamente en el visor de RStudio. A esta tabla podemos también agregar porcentajes de filas y/o columnas, según sea lo más relevante analizar. En general se recomienda agregar solo un porcentaje, de otra manera la tabla se satura de información. Además, vamos a quitar el pie de la tabla (conviene dejarlo solo si hay hipótesis asociadas al cruce simple entre las dos variables).
-
-```{r}
-sjt.xtab(proc_data$educacion, proc_data$sexo,
-        show.col.prc=TRUE,
-        show.summary=FALSE,
-        encoding = "UTF-8"
-)
-```
-
-#### Tablas de promedio de variable continua por una categóricas
-
-En ejemplo vamos a explorar datos de nuestra variable de confianza en instituciones *conf_inst* por los niveles educacionales *educacion*.
-
-Una forma rápida de explorar esto es mediante la función `tapply`, que nos entrega de manera simple el promedio de una variable por otra:
-
-```{r}
-tapply(proc_data$conf_inst, proc_data$educacion, mean)
-```
-
-Aquí vemos en promedio de *conf_inst* para cada uno de los 3 niveles de la variable educación *educacion*. Si se estima conveniente este tipo de cruces se puede representar también en una tabla con más opciones de información y también de publicación. Para esto utilizaremos una función algo más compleja de la librería `dplyr`.[dplyr]{.sidenote} Esta librería permite aplicar una serie de funciones concatenadas y enlazadas mediante el operador `%>%`. El sentido de cada función aparece comentado abajo:
-
-```{r}
-proc_data %>% # se especifica la base de datos
-  select(conf_inst,educacion) %>% # se seleccionan las variables
-  dplyr::group_by(Educación=sjlabelled::as_label(educacion)) %>% # se agrupan por la variable categórica y se usan sus etiquetas con as_label
-  dplyr::summarise(Obs.=n(),Promedio=mean(conf_inst),SD=sd(conf_inst)) %>% # se agregan las operaciones a presentar en la tabla
-  kable(., format = "markdown") # se genera la tabla
-```
-
-Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `geom_boxplot` de `gplot2`:
-
-```{r}
-graph <- ggplot(proc_data, aes(x =educacion, y = conf_inst)) +
-  geom_boxplot() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_minimal()
-
-graph
-
-# y lo podemos guardar:
-
-ggsave(graph, file="files/img/graph.png")
-```
-
-Sin embargo, al ser los promedios similares no permite ver demasiadas diferencias... Probemos otro
-
-```{r}
-ggplot(proc_data, aes(x =educacion, y = conf_inst)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_minimal()
-
-```
-
-En este gráfico cada punto representa una observación para cada categoría. Por lo tanto, al existir tantos valores difernetes en cada categoría, el gráfico tampoco nos presenta información sustantiva ¿Qué necesitamos hacer? Necesitamos obtener exactamente los datos que queremos graficar, esto es, el promedio por cada categoría. Volvamos a `group_by`
-
-```{r}
-datos <- proc_data %>% group_by(educacion) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_minimal()+
-  ylim(0, 12)
-```
-
-Este gráfico entrega un poco más de información, pero al ver pocas diferencias en el promedio de cada categoría no se logran evidenciar
-
-```{r warning=FALSE}
-proc_data$idenpa <- factor(proc_data$idenpa,
-            labels=c("Argentina",
-         "Bolivia",
-         "Brasil",
-         "Chile",
-         "Colombia",
-         "Costa Rica",
-         "Cuba",
-         "República Dominicana",
-         "Ecuador",
-         "El Salvador",
-         "Guatemala",
-         "Honduras",
-         "México",
-         "Nicaragua",
-         "Panamá",
-         "Paraguay",
-         "Uruguay",
-         "Venezuela"),
-            levels=c("32",
-         "68",
-         "76",
-         "152",
-         "170",
-         "188",
-         "214",
-         "218",
-         "222",
-         "320",
-         "340",
-         "484",
-         "558",
-         "591",
-         "600",
-         "604",
-         "858",
-         "862"))
-
-
-graph_box <- ggplot(proc_data, aes(x = idenpa, y = conf_inst)) +
-  geom_boxplot() +
-  labs(x = "País", y = "Confianza en instituciones") +
-  theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotar las etiquetas del eje x
-
-graph_box
-
-# y lo podemos guardar:
-
-ggsave(graph_box, file="files/img/graph.png")
-```
-
-De manera alternativa, podemos seguir explorando nuestros datos con otros gráficos
-
-Para varias variables univariadas, tipo escala likert, una buena alternativa es el paquete sjPlot, en este caso la función plot_stackfrq:
-
-```{r}
-graph2 <- sjPlot::plot_stackfrq(dplyr::select(proc_data, conf_gob,
-                                 conf_cong,
-                                 conf_jud,
-                                 conf_partpol),
-                                 title = "Confianza en instituciones políticas") +
-  theme(legend.position="bottom")
-
-graph2
-
-# Guardamos
-
-ggsave(graph2, file="files/img/graph2.png")
-```
-
-Para asociación de dos variables, retomemos el primer gráfico:
-
-```{r}
-graph3 <- proc_data %>% ggplot(aes(x = conf_inst, fill = sexo)) + 
-  geom_bar() +
-  xlab("Confianza en instituciones") +
-  ylab("Cantidad") + 
-  labs(fill="Sexo")+
-  scale_fill_discrete(labels = c('Hombre','Mujer'))
-
-graph3
-
-# Guardamos
-
-ggsave(graph3, file="files/img/graph3.png")
-```
-
-una forma alternativa:
-
-```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar() +
-  xlab("Confianza en instituciones") +
-  ylab("Cantidad")+
-  facet_wrap(~sexo)
-```
-
-
-Para variables continuas
-
-```{r}
-graph4 <- ggplot(proc_data, aes(x = as.numeric(edad))) +
-  geom_histogram(binwidth=0.6, colour="black", fill="yellow") +
-  theme_bw() +
-  xlab("Edad") +
-  ylab("Cantidad")
-
-graph4 
-
-
-
-# Guardamos
-
-ggsave(graph4, file="files/img/graph4.png")
-```
-
-y lo podemos complicar un poco más...
-
-### Asociación entre tres variables
-
-con facet_wrap dividimos el gráfico en distintos paneles, según la cantidad de categorías que tenga una variable
-
-```{r}
-datos <- proc_data %>% group_by(educacion, sexo) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 12)+
-  facet_wrap(~sexo)
-```
-
-o alternativamente...
-
-```{r}
-ggplot(datos, aes(x =sexo, y = promedio)) +
-  geom_point() +
-  labs(x = "Sexo", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 12)+
-  facet_wrap(~educacion)
-```
-
-Probemos otras agrupaciones. Por ejemplo, categorizar edad en grupos para estimar promedios grupales. Una función clave para lograr esto puede ser case_when de dplyr, combinándolo con mutate. Es decir, crear una nueva variable a partir de un condicional
-
-```{r}
-summary(proc_data$edad)
-
-proc_data <- proc_data %>% 
-  mutate(edad_groups = case_when(edad >=16 & edad<=25 ~ "Entre 16 y 25 años",
-                                 edad >=26 & edad<=39 ~ "Entre 26 y 39 años",
-                                 edad >=40 & edad<=65 ~ "Entre 40 y 65 años",
-                                 edad >65 ~ "Más de 65 años"))
-
-table(proc_data$edad_groups)
-```
-
-Ahora creamos este gráfico
-
-```{r}
-datos <- proc_data %>% group_by(educacion, edad_groups) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 7)+
-  facet_wrap(~edad_groups)
-```
-
-y lo podemos seguir complicando, por ejemplo, agregando otra variable en el gráfico
-
-```{r}
-datos <- proc_data %>% group_by(educacion, sexo, edad_groups) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio, color=sexo)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 7)+
-  facet_wrap(~edad_groups)
-```
-
-Con 'color' (gráfico anterior) solo se diferencia la variable según color. Con 'shape' (gráfico siguiente) también se diferencia según la forma de la representación
-
-```{r}
-ggplot(datos, aes(x =educacion, y = promedio, color=sexo, shape=sexo)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 7)+
-  facet_wrap(~edad_groups)
-```
-
-Y tenemos aún un problema... las categorías del eje x se están solapando. Eso lo podemos corregir modificando el ángulo del eje x.
-
-```{r}
-ggplot(datos, aes(x = educacion, y = promedio, color = sexo, shape = sexo)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw() +
-  ylim(0, 7) +
-  facet_wrap(~edad_groups) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-## Unir bases de datos
-
-Una de las grandes ventajas del uso de sofwares para el análisis de datos es poder utilizar distintas fuentes de datos y combinarlas en una sola base de datos que nos permita potenciar y profundizar nuestros análisis. Por ejemplo, si utilizamos la base de datos del Latinobarómetro, que incluye datos de 18 países de latinoamérica, podemos combinar esta base enfocada en preguntas de percepciones, creencias y actitudes sociopolíticas con datos administrativos de cada país. 
-
-En este ejemplo, vincularemos la base del Latinobarómetro con la World Values Survey, una encuesta internacional que incluye datos para 86 países de todo el mundo. Sin embargo, debido a la gran envergadura de esta base de datos, no contamos con datos para los 18 países del latinobarómetro. Vamos verificando paso a paso lo que podemos hacer.
-
-### Retomando desde el comienzo
-
-Cargamos ambas bases de datos desde internet
-
-```{r}
-load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData")) #Cargar base de datos
-load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/data_wvs.RData")) #Cargar base de datos
-```
-
-Para trabajar con ambas bases, agruparemos las variables de interés por país, por lo que ya no trabajaremos directamente con individuos.
-
-```{r}
-context_data <- wvs %>% group_by(B_COUNTRY) %>% # Agrupar por país
-  summarise(gdp = mean(GDPpercap1, na.rm = TRUE), # Promedio de GDP per capita
-         life_exp = mean(lifeexpect, na.rm = TRUE), # Promedio esperanza de vida
-         gini = mean(giniWB, na.rm = TRUE)) %>%  # Promedio gini
-  rename(idenpa=B_COUNTRY) # Para poder vincular ambas bases, es necesario que la variable de identificación se llamen igual
-context_data$idenpa <- as.numeric(context_data$idenpa) # Como era categórica, la dejamos numérica
-
-proc_data <- proc_data %>% group_by(idenpa) %>%  # agrupamos por país
-  summarise(promedio = mean(conf_inst, na.rm = TRUE)) # promedio de confianza en instituciones por país
-```
-
-Para vincular nuestras bases de datos existen múltiples opciones, la primera es 'merge' de R base y las siguinetes tres vienen desde dplyr: 'right_join', 'full_join' y 'left_join'. Cada una tiene sus propias potencialidades y limitaciones y dependerá de cada caso cuál usemos
-
-### Probemos merge
-
-```{r}
-data <- merge(proc_data, context_data, by="idenpa")
-```
-
-data tiene 12 observaciones y 5 variables. En el fondo lo que hace es vincular solo aquellos casos que tienen datos disponibles para ambas bases originales
-
-```{r}
-data1 <- right_join(proc_data, context_data, by="idenpa")
-```
-
-data1 tiene 64 observaciones y 5 variables. Esta función lo que hace es mantener todos los valores de la base de la 'derecha' (los 64 originales) y añadir los de la 'izquierda' con la identificación que corresponde. Para el resto de países que no tienen valores en la base del latinobarómetro, los agrega como NA
-
-```{r}
-data2 <- left_join(proc_data, context_data, by="idenpa")
-```
-
-data2 tiene 18 observaciones y 5 variables. Esta función es el proceso inverso de right_join. Mantiene todos los valores de la base de la 'izquierda' y los vincula con los de la 'derecha' cuando corresponde. Para el resto de países de latinobarómetro que no tienen casos en WVS, los deja como NA en las nuevas varaibles
-
-```{r}
-data3 <- full_join(proc_data, context_data, by="idenpa")
-```
-
-Finalmente data3 tiene 70 observaciones y 5 variables. Esta función junta todo lo que pueda, es decir, mantiene todos los casos de latinobarómetro y de WVS, por eso si nos fijamos en el país que tiene por código 909, esta función lo mantiene aunque no tenga valores en latinobarómetro ni en WVS.
-
-¿Cuál es la mejor opción para este caso?
-
-Vamos a quedarnos con la función original de R base 'merge' ya que para poder visualizar y representar resultados en un gráfico, en este ejemplo solo nos interesa mostrar aquellos casos completos.
-
-```{r}
-data <- data %>%
-  mutate(idenpa = as.character(idenpa)) %>%
-  mutate(idenpa = case_when(
-    idenpa == "32" ~ "Argentina",
-    idenpa == "68" ~ "Bolivia",
-    idenpa == "76" ~ "Brasil",
-    idenpa == "152" ~ "Chile",
-    idenpa == "170" ~ "Colombia",
-    idenpa == "188" ~ "Costa Rica",
-    idenpa == "214" ~ "Cuba",
-    idenpa == "218" ~ "República Dominicana",
-    idenpa == "222" ~ "Ecuador",
-    idenpa == "320" ~ "El Salvador",
-    idenpa == "340" ~ "Guatemala",
-    idenpa == "484" ~ "Honduras",
-    idenpa == "558" ~ "México",
-    idenpa == "591" ~ "Nicaragua",
-    idenpa == "600" ~ "Panamá",
-    idenpa == "604" ~ "Paraguay",
-    idenpa == "858" ~ "Uruguay",
-    idenpa == "862" ~ "Venezuela"))
-data$gdp <- as.numeric(data$gdp)
-data$gdp[data$gdp==0] <- NA
-data <- na.omit(data)
-```
-```{r}
-data %>%
-  ggplot(aes(x = gdp, y = promedio, label = idenpa)) +
-  geom_point() +
-  geom_text(vjust = -0.5) +
-  labs(x = "GDP", y = "Promedio") +
+plot_model(reg8, 
+            title = "", #quitar titulo
+            show.values = TRUE, #mostrar valor de efectos
+            dot.size = 3, #tamaño circulos
+            line.size = 1, #tamaño CI
+            value.size = 4, #tamaño valor efectoss
+            spacing = 1, #espacio entre efectos
+            vline.color = "red", # linea roja en punto neutro (0)
+            axis.labels = rev(c("Edad",
+                              "Educación media", 
+                              "Educación superior", 
+                              "Mujer")), #con rev porque automatico los tira en otro orden
+            show.legend = FALSE) + # variables dependientes
   theme_bw()
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 

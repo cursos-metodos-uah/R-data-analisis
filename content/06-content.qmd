@@ -1,6 +1,6 @@
 ---
-title: "Clase 6"
-date: "2024-04-30"
+title: "Presentación"
+date: "2024-10-02"
 lang: es
 ---
 
@@ -8,6 +8,7 @@ lang: es
  
 <iframe src=/slides/06-clase6/06-clase6.html height="550" width=100% allowfullscreen="true">
 </iframe> 
+
 
 
 

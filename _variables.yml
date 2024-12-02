@@ -1,30 +1,42 @@
 author: Kevin Carrasco (Fork from Andrew Heiss)
 
 instructor:
+  name: Daniela Olivares
+  name_no_title: Daniela Olivares
+  email: danielaolivarescollio@gmail.com
+  url: "https://coes.cl/integrantes/daniela-olivares-collio/"
+#  twitter: pablo_perez_a
+  github: DaniOlivaresCollio
+  office: ""
+  contact_policy: >-
+    A través de correo
+#  appointment_url: https://calendly.com/andrewheiss/
+
+instructor2:
   name: Kevin Carrasco
   name_no_title: Kevin Carrasco
   email: kevin.carrasco@ug.uchile.cl
   url: "https://coes.cl/integrantes/kevin-carrasco-quintanilla/"
-  twitter: kevincarrascoq1
- # github: andrewheiss
-#  office: "Departamento de Sociología N° 319"
+  twitter: KevinCarrascoQ1
+  github: kevin-carrasco
+  office: ""
   contact_policy: >-
     A través de correo
 #  appointment_url: https://calendly.com/andrewheiss/
 
 other:
-  email: Javiera.wompner@ug.uchile.cl
+  email: maria.nunez.2@ug.uchile.cl
 
 
 course:
-  number: "CSSOCIAL 6607-SOC1(1052)"
-  semester: "Primer semestre 2024"
-  days: "Martes"
-  time: "16:00 a 17:20 y 17:30 a 18:50"
-  location: "Sala E67"
-  dates: "Marzo 12 - Julio 15 2024"
-  github: "https://github.com/Kevin-carrasco/R-data-analisis"
-  url: "https://R-Data-Analisis.netlify.app"
+  number: "CSSOCIAL 6601-SOC1 (1357)"
+  semester: "Segundo semestre 2024"
+  days: "Miércoles"
+  time: "08:30 a 09:50 y 10:00 a 11:20"
+  location: "Sala Lab. E67"
+  dates: "Agosto 14 - Diciembre 11 2024"
+  github: "https://github.com/cursos-metodos-uah/estadisticaIV"
+  url: "https://estadisticaIV.netlify.app"
   copyright_year: "2024"
   slack: ""
 

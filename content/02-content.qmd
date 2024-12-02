@@ -1,13 +1,14 @@
 ---
-title: "Clase 2"
-date: "2024-03-19"
+title: "Presentación"
+date: "2024-08-21"
 lang: es
 ---
 
 ## Documento de presentación
  
-<iframe src=/slides/02-clase2/02-clase2.html height="550" width=100% allowfullscreen="true">
+<iframe src=/slides/02-clase2/sesion_01__chi_cuadrado.pdf height="550" width=100% allowfullscreen="true">
 </iframe> 
+
 
 
 

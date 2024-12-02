@@ -1,0 +1,467 @@
+---
+title: "R para análisis de datos"
+author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
+date: "1er Sem 2024"
+output:
+  xaringan::moon_reader:
+    css: "../../files/css/custom_2020.css"
+    includes:
+      after_body: "../insert-logo.html"     
+    lib_dir: libs
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "https://multinivel.netlify.app/docpres/xaringan_custom/macros.js"
+    seal: false # esto omite title slide automática
+---
+class: front
+
+
+```{r eval=FALSE, include=FALSE}
+# Correr esto para que funcione el infinite moonreader, el root folder debe ser static para si dirigir solo "bajndo" en directorios hacia el bib y otros
+
+xaringan::inf_mr('/static/docpres/02_bases/2mlmbases.Rmd')
+
+o en RStudio:
+  - abrir desde carpeta root del proyecto
+  - Addins-> infinite moon reader
+```
+
+
+```{r setup, include=FALSE, cache = FALSE}
+require("knitr")
+options(htmltools.dir.version = FALSE)
+pacman::p_load(RefManageR)
+# bib <- ReadBib("../../bib/electivomultinivel.bib", check = FALSE)
+opts_chunk$set(warning=FALSE,
+             message=FALSE,
+             echo=FALSE,
+             cache = FALSE #,fig.width=7, fig.height=5.2
+             )
+pacman::p_load(flipbookr, tidyverse)
+```
+
+
+```{r xaringanExtra, include=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css"))
+xaringanExtra::use_scribble()
+```
+
+<!---
+Para correr en ATOM
+- open terminal, abrir R (simplemente, R y enter)
+- rmarkdown::render('static/docpres/07_interacciones/7interacciones.Rmd', 'xaringan::moon_reader')
+
+About macros.js: permite escalar las imágenes como [scale 50%](path to image), hay si que grabar ese archivo js en el directorio.
+--->
+
+
+.pull-left[
+# R para el análisis de datos
+## **Kevin Carrasco**
+## Sociología - UAH
+## 1er Sem 2024 
+## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+] 
+
+
+.pull-right[
+.right[
+<br>
+## .yellow[Sesión 8: Regresión lineal y valores predichos]
+![:scale 70%](../../files/img/eval-hires.png)
+
+]
+
+]
+---
+class: inverse, bottom, right
+
+
+# .red[Sesión 8]
+<br>
+
+.yellow[Repaso sesión anterior]
+
+Valores predichos
+
+<br>
+<br>
+<br>
+<br>
+---
+
+layout: true
+class: animated, fadeIn
+
+---
+# Asociación: covarianza / correlación
+
+.pull-left[
+  _¿Se relaciona la variación de una variable, con la variación de otra variable?_
+]
+.pull-right[
+.center[![:scale 100%](../../files/img/ingresoeduc.png)]
+]
+
+---
+.pull-left[* Pero ojo, 
+**correlación no implica causalidad**]
+
+
+.pull-right[![:scale 100%](../../files/img/causalidad.png)]
+
+---
+
+## ¿Qué es la regresión lineal?
+
+--
+
+* Es un modelo estadístico que se usa para:
+
+  - **Conocer**: La relación de una variable dependiente de acuerdo a una/otras independiente(s)
+  - **Predecir**: Estimar el valor de una variable dependiente de acuerdo al valor de otras
+  - **Inferir**: si estas relaciones son estadísticamente significativas
+
+---
+## ¿Qué es la regresión lineal?
+
+* Dos tipos de regresión:
+  - Regresión lineal simple (una variable independiente)
+  - Regresión lineal múltiple (más de una variable independiente)
+
+---
+```{r echo=FALSE}
+data <- cbind(Educacion=c(1,2,3,4,5,6,7,8),
+              Ingreso=c(250,200,250,300,400,350,400,350))
+data <- as.data.frame(data)
+```
+
+
+.pull-left-narrow[
+### Ejemplo ]
+
+.pull-right-wide[
+```{r}
+data
+```
+
+]
+
+---
+.pull-left-narrow[
+### Ejemplo ]
+
+.pull-right-wide[
+```{r}
+ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point(size=3)+
+  xlim(0,8)+
+  ylim(100,400)
+```
+]
+
+---
+
+.pull-left-narrow[
+### Ejemplo ]
+
+.pull-right-wide[
+```{r}
+ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point(size=3)+
+  geom_smooth(method = "lm", se=FALSE)+
+  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 400, by = 100))+
+  ylim(100,400)+
+  xlim(0,8)
+```
+]
+
+---
+.pull-left-narrow[
+### La recta de regresión]
+
+.pull-right-wide[
+
+$$\widehat{Y}=b_{0} +b_{1}X$$
+
+Donde
+
+- $\widehat{Y}$ es el valor estimado de $Y$
+
+- $b_{0}$ es el intercepto de la recta (el valor de Y cuando X es 0)
+
+- $b_{1}$ es el coeficiente de regresión, que nos dice cuánto aumenta Y por cada punto que aumenta X
+]
+
+---
+# Estimación de los coeficientes de la ecuación:
+
+$$b_{1}=\frac{Cov(XY)}{VarX}$$
+
+$$b_{1}=\frac{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}}{\frac{\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})} {n-1}}$$
+
+Y simplificando
+
+$$b_{1}=\frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})}$$
+
+---
+
+### Pero este es un curso de R, así que:
+
+```{r}
+reg1<-lm(Ingreso~Educacion, data=data)
+reg1
+```
+
+
+
+---
+### Estimación de los coeficientes de la ecuación:
+
+$$\bar{Y}=b_{0}+b_{1}\bar{X}$$
+Reemplazando:
+
+$$\bar{Y}=b_{0}+25\bar{X}$$
+
+Despejando el valor de $b_{0}$
+
+$$b_{0}=200-0\bar{X}$$
+---
+
+.pull-left-narrow[
+### Ejemplo 
+
+
+*Por cada unidad que aumenta educación, ingreso aumenta en 25 unidades*
+]
+
+.pull-right-wide[
+```{r}
+ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point(size=3)+
+  geom_smooth(method = "lm", se=FALSE)+
+  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 400, by = 100))+
+  ylim(100,400)+
+  xlim(0,8)
+```
+]
+
+---
+## Varianza explicada
+
+- ¿Qué porcentaje de la varianza de Y logramos explicar con X?
+
+--
+
+* .red[R2] = Porcentaje de la variación de Y puede ser asociado a la variación de X
+
+---
+
+.pull-left-narrow[
+### Ejemplo 
+
+
+El ajuste del modelo a los datos se relaciona con la proporción de residuos generados por el modelo respecto de la varianza total de Y (R2)
+]
+
+.pull-right-wide[
+```{r}
+ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
+  geom_point(size=3)+
+  geom_smooth(method = "lm", se=FALSE)+
+  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 400, by = 100))+
+  ylim(100,400)+
+  xlim(0,8)
+```
+]
+
+---
+
+## Inferencia estadística
+
+* ¿Cómo sabemos si $b_{1}$ es estadísticamente significativo?
+
+--
+
+* ¿Nuestros datos se pueden extrapolar a la población?
+
+---
+
+## Inferencia estadística
+
+- Según criterios muestrales:
+  * Distribución normal
+  * Desviación estándar
+  
+- Error estándar
+
+---
+
+```{r results='asis'}
+texreg::htmlreg(reg1, caption="")
+```
+
+---
+
+```{r echo=FALSE}
+data <- as.data.frame(cbind(data,
+              edad=c(25,20,20,30,45,30,45,40)))
+```
+
+
+```{r results='asis'}
+reg2 <- lm(Ingreso~Educacion+edad, data = data)
+texreg::htmlreg(reg2, caption="")
+```
+
+---
+
+## Parcialización
+
+.center[![:scale 50%](../../files/img/ingresoeducexp.png)]
+
+---
+```{r echo=FALSE}
+data <- as.data.frame(cbind(data,
+              Educacion_rec=c("Basica","Basica","Basica","Media","Media","Superior","Superior","Superior")))
+reg3 <-lm(Ingreso~Educacion_rec, data=data)
+```
+
+¿y la interpretación para variables categóricas?
+
+.pull-left[
+.small[
+```{r results='asis'}
+texreg::htmlreg(reg3, caption="",
+                custom.coef.names = c("Intercepto",
+                                     "Educación media",
+                                     "Educación superior"))
+```
+]
+]
+--
+.pull-right[
+*Las personas que tienen educación media ganan $116mil más en comparación con quienes tienen educación básica, efecto que es estadísticamente significativo (p<0.01)*
+
+]
+
+---
+class: inverse, bottom, right
+
+# .red[Sesión 7]
+<br>
+
+Repaso sesión anterior
+
+.yellow[Valores predichos]
+
+<br>
+<br>
+<br>
+<br>
+
+---
+¿Cómo podemos predecir el valor esperado de una variable para una persona en particular?
+
+.pull-left-narrow[
+.small[
+```{r results='asis'}
+texreg::htmlreg(reg3, caption="",
+                custom.coef.names = c("Intercepto",
+                                     "Educación media",
+                                     "Educación superior"))
+```
+]
+]
+
+.pull-right-wide[
+$$\bar{Y}=b_{0}+b_{1}\bar{X}$$
+
+Reemplazando:
+
+$$\bar{Y}=233+b_{1}\bar{X}$$
+
+¿Si una persona tuviera un nivel de educación superior?
+
+$$\bar{Y}=233+133$$
+$$\bar{Y}=366$$
+]
+
+---
+## Graficando
+
+```{r}
+ggeffects::ggpredict(reg3, terms = c("Educacion_rec")) %>%
+  ggplot(aes(x=x, y=predicted)) +
+  geom_bar(stat="identity", color="grey", fill="grey")+
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width=.1) +
+  labs(title="Educación", x = "", y = "") +
+  theme_bw()
+```
+
+
+---
+## Variables numéricas
+
+```{r results='asis'}
+reg4 <- lm(Ingreso~edad, data = data)
+texreg::htmlreg(reg4, caption="")
+```
+
+---
+.pull-left[
+```{r}
+ggeffects::ggpredict(reg2, terms="edad") %>%
+  ggplot(mapping=aes(x = x, y=predicted)) +
+  labs(title="Edad", x = "", y = "")+
+  theme_bw() +
+  geom_smooth()+
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .2, fill = "black")
+```
+]
+
+
+.pull-right[
+$$\bar{Y}=b_{0}+b_{1}\bar{X}$$
+
+Reemplazando:
+
+$$\bar{Y}=96.44+b_{1}*6,78$$
+
+¿Una persona de edad 40?
+
+$$\bar{Y}=96,44+40*6,78$$
+$$\bar{Y}=367.64$$
+]
+
+
+---
+class: front
+
+.pull-left[
+# R para el análisis de datos
+## **Kevin Carrasco**
+## Sociología - UAH
+## 1er Sem 2024 
+## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+] 
+
+
+.pull-right[
+.right[
+<br>
+## .yellow[Sesión 6: Índices y escalas]
+![:scale 70%](../../files/img/eval-hires.png)
+
+
+
+]
+
+]
+

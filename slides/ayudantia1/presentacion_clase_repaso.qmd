@@ -1,0 +1,480 @@
+---
+pagetitle: "Clase Repaso Software R"
+author: "Equipo docente estadística IV 2024"
+
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+      
+format: 
+  revealjs:
+    logo: images/eval-hires.png
+    slide-number: true
+    theme: [pp.scss]
+    title-slide-attributes:
+      visibility: false
+#      data-background-image: images/portada.jpg
+#      data-background-size: cover
+    auto-play-media: true
+
+
+editor:
+  render-on-save: true
+---
+
+## {data-background-color="black"}
+::: {.columns .v-center-container}
+::: {.column width="20%"}
+![](images/eval-hires.png)
+
+:::
+::: {.column width=80%}
+::: rojo 
+Repaso Software R Studio
+:::
+
+### Estadística IV
+
+------------------------------------------------------------------------
+
+Universidad Alberto Hurtado
+
+Profesores: Kevin Carrasco y  Daniela Olivares <br /> Ayudante: María Fernanda Núñez
+:::
+::::
+
+
+## [Primera distinción:]{.black} [R y RStudio]{.purple}
+
+:::: {.columns}
+::: {.column width="50%"}
+<br/ >
+<br />
+
+- [**R**]{.purple} es un lenguaje de programación que permite la manipulación, almacenaje, cálculo y visualización de datos.
+
+
+:::
+
+::: {.column width="50%"}
+<br/ >
+<br />
+
+- [**RStudio**]{.purple} es el ambiente que nos permite visulizar de forma más amigable R. <span style="background:#CABFFF">Contiene 4 espacios </span> 
+:::
+::::
+
+## [4 cuadrantes de RStudio:]{.black} {data-background-color="#CABFFF"}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- <span style="background:#F0645C">**Editor de sintaxis**</span> : entorno donde se despliega la hoja de códigos (generalmente un R Script) que se utlizará para procesar la base de datos
+
+ ![](images/editor_sintaxis.png){width="500" height="300"}
+:::
+::: {.column width="50%"}
+- <span style="background:#F0645C">**Consola**</span>: visualizador de resultados de los códigos desplegados en la sintaxis
+![](images/consola.png){width="500" height="300"}
+:::
+::::
+
+## [4 cuadrantes de RStudio:]{.black} {data-background-color="#CABFFF"}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- <span style="background:#F0645C">**Entorno de trabajo**</span>: espacio donde se alojan la base de datos, los objetos, las tablas, etc. que vamos creando en nuestra sesión de trabajo 
+    
+![](images/entorno.png){width="500" height="300"}
+::: 
+::: {.column width="50%"}
+- Espacio de <span style="background:#F0645C">**archivos/carpetas, gráficos, paquetes y ayuda**</span>
+
+![](images/cuarto.png){width="500" height="300"}
+:::
+::::
+
+## [Flujo de trabajo:]{.black} [IPO]{.purple}
+
+![](images/ipo.jpeg){width='500px'}
+
+## [Crear un proyecto]{.black}
+
+1. Abrir RStudio
+2. Hacer click en el siguiente simbólo que aparece en el esquina superior derecha:  
+    
+    ![](images/r.png) 
+  
+3. Seleccionar <span style="background:#CABFFF">"New Project"</span>
+4. Seleccionar <span style="background:#CABFFF">"New directory"</span>
+5. Definir un nombre al proyecto
+6. Definir ubicación del proyecto con la opción <span style="background:#CABFFF">“Browse”</span>
+
+
+## [Crear un script (o documento de R)]{.black}
+
+Un R Script es una <span style="background:#CABFFF">**hoja de código**</span> donde se escriben las instrucciones y los códigos para el tratamiento de datos. Para crear un R Script hay **dos formas**: 
+
+:::: {.colmuns}
+::: {.column width="60%"}
+
+:::{.content-box-purple}
+1. En la esquina superior izquierda hay un **icono de una hoja con un signo "+" verde**, hay que clikearlo y seleccionar R Script. 
+
+    ![](images/script.png)
+:::
+:::
+::: {.column width="40%"}
+:::{.content-box-purple}
+2. con las teclas **Ctrl+Shift+N**
+:::
+:::
+::::
+Para guardarlo, hay que (a) hacer click en el signo de documento en la parte superior del Script, o (b) con las teclas **Crtl + S**
+
+
+# [*Lenguaje de R*: <br> nociones básicas de código]{.black} {data-background-color="#F0645C"}
+
+## [R como calculadora]{.purple} 
+Para sumar:
+```{r, echo=TRUE}
+1+2
+
+```
+
+## [R como calculadora]{.purple} 
+Para sumar:
+```{r, echo=TRUE}
+1+2
+
+```
+
+Para restar:
+```{r, echo=TRUE}
+3-1
+
+```
+
+## [R como calculadora]{.purple} 
+
+Para sumar: 
+```{r, echo=TRUE}
+1+2
+
+```
+
+Para restar:
+```{r, echo=TRUE}
+3-1
+
+
+```
+
+Para multiplicar:
+```{r, echo=TRUE}
+3*5
+
+```
+
+## [R como calculadora]{.purple}
+Para sumar:
+```{r, echo=TRUE}
+1+2
+
+```
+
+Para restar:
+```{r, echo=TRUE}
+3-1
+
+```
+
+Para multiplicar:
+```{r, echo=TRUE}
+3*5
+
+```
+
+Para dividir:
+```{r, echo=TRUE}
+4/2
+```
+
+
+## [R como calculadora]{.purple} 
+Para sumar:
+```{r, echo=TRUE}
+1+2
+
+```
+
+Para restar:
+```{r, echo=TRUE}
+3-1
+
+```
+
+Para multiplicar:
+```{r, echo=TRUE}
+3*5
+
+```
+
+
+Para dividir:
+```{r, echo=TRUE}
+4/2
+```
+
+Para elevar al cuadrado:
+```{r, echo=TRUE}
+2^2
+  
+```
+
+
+## [Objetos/vectores/variables]{.purple}
+
+::: {.content-box-purple}
+- Se trata de: [**asignar un valor a un objeto**]{.purple} o asignar a un objeto un valor,
+donde  **< -**  es nuestro "[**asignador**]{.purple}" que nos sirve para *crear objetos* 
+- Se pueden asignar **números** o **nombres**
+:::
+
+```{r, echo=TRUE}
+x <- 2 #asignamos el valor
+x #ejecutamos
+
+y <- "hola"
+
+y
+```
+
+
+
+
+## [Variable (conjunto de datos)]{.purple}
+
+- Podemos crear un **vector**, **conjunto de datos** o una **variable** con el siguiente comando: 
+ 
+```{r, echo=TRUE}
+genero <- c(1,1,2,1,2,2,2,1,2)
+```
+
+- Donde: masculino=1; femenino =2
+
+
+## [Tipos de datos]{.purple} 
+::: {.content-box-purple}
+- **Character**: valores alfanuméricos, es decir, letras, números y signos mezclados. 
+:::
+```{r, echo=TRUE}
+a <- "totalmente de acuerdo"
+a
+
+class(a) #para observar la clase (o tipo de vector) del objeto 
+```
+
+
+## [Tipos de datos]{.purple} 
+
+::: {.content-box-purple}
+- **Numeric**: valores numéricos, incluye decimales.
+:::
+```{r, echo=TRUE}
+b <- 1
+b
+
+class(b)
+```
+
+
+
+## [Tipos de datos]{.purple} 
+::: {.content-box-purple}
+- **logical**: valores lógicos, TRUE (T) o FALSE (F). 
+:::
+
+```{r, echo=TRUE}
+i <- FALSE 
+i
+
+class(i)
+```
+
+
+ 
+
+## [Data Frame (o base de datos)]{.purple}
+
+::: {.content-box-purple}
+- Un data frame es una base de datos que contiene dos dimensiones (**columnas** y **filas**) donde podemos **agrupar variables** 
+:::
+
+Siguiendo con el caso anterior: 
+```{r, echo=TRUE}
+genero <- c(1,1,2,1,2,2,2,1,2)
+
+ingreso <- c(100000,300000,500000,340000,300000,500000,650000,410000,750000)
+
+acuerdo <- c(1,1,3,2,4,1,5,3,2)
+```
+
+OJO: **todas** las variables deben tener la misma cantidad de casos
+
+## [Data Frame (o base de datos)]{.purple}
+
+Creamos el data frame:
+```{r, echo=TRUE}
+datos_ficticios <- data.frame(genero, ingreso, acuerdo)
+```
+
+Verificamos: 
+```{r, echo=TRUE}
+names(datos_ficticios)# nos muestra los nombres de nuestras variables
+dim(datos_ficticios) #nos muestra la cantidad de casos (9) y de variables (3)
+```
+
+
+# [Códigos básicos para el uso de R en la carrera]{.black} {data-background-color="#F0645C"}
+
+
+## <span style="background:#F0645C">[Librerias]{.black} </span> 
+
+- Las librerias corresponden al conjunto de paquetes que utlizaremos para trabajar en nuestra sesión de R 
+- Estas deben ser **siempre** cargadas antes de comenzar a trabajar en nuestra hoja de códigos. En cada sesión de trabajo
+- Sin embargo, esta deben ser *instaladas* solo **una vez** 
+
+Para instalar librerías se utiliza el siguiente código: 
+
+:::{.content-box-purple}
+ [**install.packages("paquete_a_utilizar")**]{.purple} 
+:::
+Para cargar librerias se utiliza el siguiente código:
+
+:::{.content-box-purple}
+  [**library (paquete_A_utilizar)**]{.purple}
+:::
+
+
+## <span style="background:#F0645C">[Paquetes]{.black} </span> 
+- Los paquetes corresponden al conjunto de funciones específicas que usaremos en nuestra sesión de R. 
+- Los principales son dos:
+
+:::{.content-box-purple}
+ **pacman**: este facilita y agiliza la lectura de los paquetes a utilizar en R
+:::
+
+::: {.content-box-purple}
+[***tidyverse***]{.purple}: es nuestro entorno de trabajo o colección de paquetes que utlizaremos para el *procesamiento* de nuestros datos, de los cuales destacan los paquetes **dplyr** y **haven**
+:::
+
+## <span style="background:#F0645C">[Paquetes:]{.black} [*tidyverse*]{.purple} </span> 
+- ***dplyr***: nos permite **seleccionar** variables de un set de datos
+
+## <span style="background:#F0645C">[Paquetes:]{.black} [*tidyverse*]{.purple}</span> 
+- ***dplyr***: nos permite **seleccionar** variables de un set de datos
+- ***haven***: **cargar** y **exportar** bases de datos en formatos .sav y .dta
+
+## <span style="background:#F0645C">[Paquetes:]{.black} [*tidyverse*]{.purple}</span> 
+- ***dplyr***: nos permite **seleccionar** variables de un set de datos
+- ***haven***: **cargar** y **exportar** bases de datos en formatos .sav y .dta
+- ***car***: para **recodificar/agrupar** valores de variables
+
+## <span style="background:#F0645C">[Paquetes:]{.black} [*tidyverse*]{.purple}</span> 
+- ***dplyr***: nos permite **seleccionar** variables de un set de datos
+- ***haven***: **cargar** y **exportar** bases de datos en formatos .sav y .dta
+- ***car***: para **recodificar/agrupar** valores de variables
+
+
+
+## <span style="background:#F0645C">[Importar base de datos]{.black} </span> 
+
+A continuación se presentan funciones para importar diferentes formatos de base de datos:
+
+::: {.content-box-blue}
+ [base_sav <- read_sav("input/data/nombre_de_la_base.sav")]{.purple} 
+:::
+
+::: {.content-box-blue}
+[base.dta <- haven::read_dta(file = "input/data/nombre_de_la_base.dta", encoding = "UTF-8")]{.purple}
+:::
+
+::: {.content-box-blue}
+[base.csv <- readr::read_csv(file ="input/data/nombre_de_la_base.csv")]{.purple}
+
+:::
+
+## <span style="background:#F0645C">[Importar base de datos]{.black} </span> 
+::: {.content-box-blue}
+[base.xlxx <- readxl::read_excel("input/data/nombre_de_la_base.xlsx")]{.purple}
+:::
+::: {.content-box-blue}
+[base.RData <- base::load(file = "input/data/nombre_de_la_base.RData")]{.purple} 
+:::
+
+
+## <span style="background:#F0645C">[Seleccionar]{.black} </span>
+
+- Para seleccionar: 
+
+```{r, echo=TRUE}
+dim(datos_ficticios)
+names(datos_ficticios)
+
+```
+
+dplyr::select(datos_ficticios, genero, ingreso) 
+```{r, echo=FALSE}
+dplyr::select(datos_ficticios, genero, ingreso) 
+```
+
+
+
+## <span style="background:#F0645C">[Filtrar]{.black} </span>
+
+- Para filtrar: 
+
+```{r, echo=TRUE}
+dplyr::filter(datos_ficticios, genero == 1)
+
+```
+
+
+## <span style="background:#F0645C">[Recodificar]{.black} </span> 
+
+- Ejemplo: para recodificar el grado de acuerdo de 1 a 5 a 3 valores. 
+
+```{r, echo=TRUE}
+table(datos_ficticios$acuerdo)
+
+library(car)
+
+datos_ficticios$acuerdo <- car::recode(datos_ficticios$acuerdo, c("1=1", "2=1","3=2", "4=3,5=3"))
+
+```
+
+
+## <span style="background:#F0645C">[Transformar variables: creación o derivación]{.black} </span>
+
+- **mutate()** de dplyr 
+- **Case_when()**: cuando el valor sea X, asignar un nombre Y.
+- **if_else**: para crear una variable a partir de una condición.
+
+
+## <span style="background:#F0645C">[Guardar procesamiento de los datos]{.black} </span> 
+
+- Solo utilizamos la siguiente línea de código:
+
+```{r, echo=TRUE}
+#saveRDS(datos_ficticios, file = "input/data/proc/datos_proc.Rdata")
+
+```
+
+## [Ahora con datos reales]{.black} {data-background-color="#F0645C"}
+
+

@@ -9,146 +9,109 @@ library(pander)
 ```
 
 ::: {.grid .course-details .course-details-smaller}
+::: g-col-6
+### Profesores
 
-::: {.g-col-6}
-### Profesor
+-   {{< fa user >}}   [{{< var instructor.name >}}]({{< var instructor.url >}})
+-   {{< fa envelope >}} <a href="mailto:danielaolivarescollio@gmail.com">danielaolivarescollio\@gmail.com</a>
 
-- {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
-- {{< fa university >}} &nbsp; {{< var instructor.office >}}
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
+------------------------------------------------------------------------
+
+-   {{< fa user >}}   [{{< var instructor2.name >}}]({{< var instructor2.url >}})
+-   {{< fa envelope >}} <a href="mailto:kevin.carrasco@ug.uchile.cl">kevin.carrasco\@ug.uchile.cl</a>
 :::
 
-::: {.g-col-6}
+::: g-col-6
 ### Detalles del curso
 
-- {{< fa calendar >}} &nbsp; {{< var course.days >}}
-- {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
-- {{< fa clock >}} &nbsp; {{< var course.time >}}
-- {{< fa location-dot >}} &nbsp; {{< var course.location >}}
+-   {{< fa calendar >}}   {{< var course.days >}}
+-   {{< fa calendar-alt >}}   {{< var course.dates >}}
+-   {{< fa clock >}}   {{< var course.time >}}
+-   {{< fa location-dot >}}   {{< var course.location >}}
+:::
 :::
 
-:::
+## Propósitos de aprendizaje
 
-## Propósito general del curso
+Al término de esta actividad curricular los estudiantes serán capaces de:
 
-Se espera que al término del curso los y las estudiantes puedan elaborar y analizar diseños de investigación social de carácter cuantitativo, así como describir cuantitativamente un conjunto de datos utilizando el lenguaje R. En ese sentido, se profundizará el uso de R y la interfaz de RStudio para su uso en contextos académicos, así como el uso de otros sistemas de publicaciones como Quarto. Al mismo tiempo, el curso profundiza en temas relevantes para las ciencias sociales como el análisis estadístico, pero con un foco específico en la presentación de resultados (visualización de datos) a través de documentos dinámicos.
-
-### Objetivos específicos
-
-- Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos.
-
-- Interpretar y analizar los elementos centrales de una base de datos con información social.
-
-- Presentar resultados a partir de la visualización de datos y construcción de documentos dinámicos en R (Quarto).
-
-- Aplicar, interpretar y visualizar técnicas de estadística descriptiva según las distintas características de los datos en R.
-
-- Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para muestras complejas en R.
-
-- Aplicar, interpretar y visualizar técnicas de regresión lineal y logística para variables numéricas y variables categóricas en R.
-
+-   Identificar las diferencias claves entre las técnicas de análisis exploratorio.
+-   Interpretar la información derivada de software estadísticos de cada técnica. software estadísticos de cada técnica.
+-   Aplicar las diferentes técnicas de análisis exploratorio a problemas de investigación social.
 
 ## Contenidos
 
-### Unidad 1: Elementos y herramientas de R
+### Unidad 1: Análisis de variables observadas categóricas: Análisis de Correspondencias simple y múltiple
 
-1.1 R enviroment: interfaz de RStudio, elementos de script, workspace
+-   Aspectos previos al Análisis de Correspondencias: la prueba Chi-cuadrado.
+-   Objetivos del Análisis de Correspondencias.
+-   Construcción de mapas perceptuales: conceptos de media ponderada, masa, perfiles, vértices, distancias Chi-cuadrado e inercia.
+-   Reducción de dimensionalidad y escalamiento óptimo: cómo construir mapas perceptuales bidimensionales.
+-   Transformación de mapas simétricos en mapas asimétricos.
+-   Implementación de la técnica y análisis de resultados en software estadísticos.
 
-1.2 Herramientas para la colaboración y comunicación: Rproject, GitHub, Zotero y Slack
+### Unidad 2: Análisis exploratorio de variables latentes: Análisis Factorial y Análisis de Componentes Principales
 
-1.3 Protocolo IPO para la reproducibilidad de investigaciones sociales
+-   Aspectos previos: correlación y regresión lineal de mínimos cuadrados ordinarios (MCO).
+-   Aproximaciones a la técnica: diferencias entre análisis de variables reflectivas y de variables formativas; diferencias entre Análisis de Componentes Principales y Análisis de Factor Común (o “Análisis Factorial”); diferencias entre análisis exploratorio y análisis confirmatorio.
+-   Forma de operación del análisis de componentes principales (ACP): procedimiento de extracción componentes; criterios para escoger el número de componentes adecuado; análisis de la matriz factorial; rotación de componentes y tipos de rotación disponibles; interpretación y evaluación del modelo final; cálculo de puntuaciones factoriales.
+-   Implementación de la técnica e interpretación de resultados en software estadísticos.
+-   Aplicación práctica (construcción de escalas): el ACP como técnica para chequear la dimensionalidad de una escala; chequeo de la validez de una escala (Alfa de Cronbach).
 
-1.4 Construcción de reportes automáticos, reproducibles e integrados con código: Quarto
+### Unidad 3: Análisis exploratorio de variables observadas: Análisis de conglomerados
 
-### Unidad 2: Operacionalización y análisis descriptivo de datos
-
-2.1 Operacionalización y niveles de medición
-
-2.2 Tidy data: unir, dividir, filtrar, ordenar y exportar datos en R
-
-2.3 Recodificación de variables: descriptivos básicos, casos perdidos, etiquetamiento de variables
-
-2.4 Agrupación de datos y construcción de variables a partir de datos existentes
-
-2.5 Tablas descriptivas y tablas de contingencia
-
-2.6 ggplot2: gráficos de barra, de caja, dispersión e histograma
-
-### Unidad 3: Análisis estadístico inferencial en R
-
-3.1 Análisis bivariado: Correlación de Pearson y ANOVA
-
-3.2 Muestras complejas e inferencia estadística con survey y srvyr
-
-### Unidad 4: Regresión lineal y regresión logística
-
-4.2 Regresiones lineales de mínimos cuadrados ordinarios
-
-4.3 Interpretación de coeficientes (variables cuantitativas y cualitativas)
-
-4.4 Aspectos básicos de regresión logística
-
-4.5 Representación gráfica de coeficientes de regresión lineal y logística (probabilidades predichas)
-
+-   Objetivo de la técnica: clasificación en ciencias sociales.
+-   El análisis de conglomerado como técnica de clasificación, reducción de datos e identificación de relaciones.
+-   Funcionamiento de la técnica: definición de supuestos; elección de variables, de la medición de similitud entre objetos y del método de conglomeración; definición del número adecuado de grupos, caracterización y validación de dichos grupos.
+-   Implementación de la técnica e interpretación de resultados en software estadísticos.
 
 ## Metodología
 
-Se tendrán tres espacios principales de aprendizaje:
+El curso se realizará de una manera presencial y consistirá en clases expositivas y prácticas en donde se revisarán los elementos teóricos básicos de cada técnica estadística, así como su aplicación en la investigación empírica y la interpretación de sus resultados. La participación activa de los/as estudiantes en clases formará parte de la nota final.
 
-1. Sesiones de clases lectivas, donde se presentarán los aspectos centrales de los contenidos correspondientes a la semana. Estas se desarrollarán en el primer bloque del martes. 
+El curso cuenta también con sesiones de ayudantía en donde los/las estudiantes reforzarán los contenidos aprendidos en la cátedra, aprenderán el uso de comandos de software estadísticos y se prepararán para los trabajos. La definición del horario se realizará la primera semana de clases.
 
-2. Prácticas guiadas: cada tema de las sesiones se acompaña de una guía práctica de aplicación de contenidos. Estas guías están diseñadas para ser desarrolladas de manera autónoma por cada estudiante semana a semana. También serán desarrolladas y revisadas cada semana por el profesor y/o ayudantes para dar mayor oportunidad de participación y resolver las dudas respectivas. Estas se desarrollan en el segundo bloque del martes. 
+## Evaluación de aprendizajes
 
-3. Evaluaciones: se desarrollarán trabajos periódicos que permitirán a las/os estudiantes aplicar contenidos y replicar lo aprendido en los prácticos en base a una base de datos seleccionada por ellas/os a inicio de semestre. Esto permitirá no solo recibir retroalimentación constante, sino que aprender con datos que puedan ser útiles para otros proyectos de investigación. Al finalizar el curso, el/la estudiante deberá entregar un proyecto de investigación que incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones. Además, el/la estudiante deberá realizar una presentación de resultados en formato académico/conferencia.
+Durante el semestre se realizarán distintas actividades evaluadas, que incluyen instancias individuales y en pareja:
 
-Las instrucciones de las tareas serán publicadas con una semana de anticipación a su entrega.
+**Trabajos aplicados**: durante el semestre los/as estudiantes deberán realizar *tres trabajos en pareja*, en donde los/as estudiantes deberán aplicar los contenidos del curso a una pregunta de investigación relevante sociológicamente que pueda ser respondida por medio de las técnicas vistas en el curso. Los/as estudiantes deberán utilizar el software R. Cada trabajo equivale a un 25% de la nota final.
 
-## Recursos principales de aprendizaje y comunicación
+**Examen**: Se realizará un examen oral individual para quienes tengan una nota menor a 5,5. Se evaluará todo el contenido del curso. Este examen tiene una ponderación del 25%.
 
-1. Sitio web
+Podrán rendir un **examen de repetición** los/as estudiantes que terminaron con una nota final, ya rendido el primer examen, entre 3,5 a 3,9. Considerando que se trata de un examen de última oportunidad, a quienes aprueban el examen de repetición (esto es, obtengan la nota que respectivamente necesitan según sus notas de presentación), se les ingresará al sistema una nota final de 4,0 que permita aprobar la asignatura.
 
-El curso estará disponible en un sitio web programado por el docente, en tanto permite integrar texto y código de R.     
+Tendrán derecho a rendir los exámenes todos los/as estudiantes que hayan cumplido con la exigencia de asistencia mínima al curso, correspondiente al 70% de las clases efectivamente realizadas, y cuyo promedio de notas sea igual o superior a 3,5.
 
-2. R, RStudio y RStudio Cloud
-
-El software que se utilizará principalmente será R y su interfaz RStudio. Ahora bien, muchos usuario/as de R presentan problemas de instalación dada la capacidad de sus computadores y sistemas operativos. Por ello, para quienes tengan estos problemas se promoverá el uso del servicio gratuito de RStudio.cloud           
-
-3. Slack
-
-Slack es una herramienta de uso frecuente en equipos de trabajo que utilizan R pues permite integrar script de distintos lenguajes en el chat. Se tendrá un espacio de trabajo en la app Slack que permite que cualquier persona del curso pueda hacer preguntas y cualquiera pueda responder. Esta es una de las prácticas que se promoverán en el curso pues es probable que los/as estudiantes tengan dudas similares a las de sus compañeros, por lo que las respuestas del docente, ayudantes y otros compañeros/as serán de libre disposición de todo el curso. Dentro de Slack se tendrán canales específicos para hacer preguntas sobre las sesiones, tareas y proyectos, y el link que permite unirse a este estará disponible en el sitio del curso.
-
-4. GitHub
-
-Github es una plataforma online que permite depositar archivos y el control de versiones (VCS), por lo que se ha transformado en una herramienta fácil y popular para corregir, colaborar y compartir códigos de distintos lenguajes (no solo R). Utilizaremos esta plataforma para subir las tareas, ayudarlos/as de manera directa con su código y darles feedback. 
+| Evaluación           | Ponderación |
+|----------------------|-------------|
+| Trabajo 1            | 25%         |
+| Trabajo 2            | 25%         |
+| Trabajo 3            | 25%         |
+| Examen               | 25%         |
+| Examen de repetición |             |
 
 
-## Evaluación de aprendizaje
+Las evaluaciones se corregirán en un plazo máximo de 15 días hábiles transcurrida la fecha de su entrega y proporcionará retroalimentación en el formato que la profesora y ayudantes estimen conveniente.
+Se autoriza el uso de un lenguaje inclusivo en las evaluaciones del curso a quienes deseen emplearlo, respetando un vocabulario formal y académico.
+Las peticiones de recorrección deberán hacerse por correo electrónico a l-s profesores (daolivares@uahurtado.cl; kcarrasco@uahurtado.cl ) en un plazo máximo de 5 días hábiles desde la entrega de las correcciones. Las solicitudes tendrán que estar debidamente fundamentadas y no se aceptarán recorrecciones de pruebas redactadas con lápiz grafito o de texto escrito en lugares previamente no autorizados en la evaluación.
 
-Las evaluaciones del curso se componen de tareas (60% de la nota final), la entrega de una investigación (30% de la nota final) y una presentación (10% de la nota final), en dónde en todos los casos la/el estudiante deberá seleccionar datos y temas de interés de modo de acercar la aplicación del software a contextos de investigación propios de la/el estudiante. En concreto, cada evaluación consiste en:
 
-1. Trabajos (60% de la nota final): consisten en evaluaciones parciales temáticas que buscan poner en práctica los aprendizajes expuestos en la sesión de clases y herramientas reforzadas en los prácticos. Durante el semestre se realizarán 4 tareas (15% c/u).
-
-2. Presentación final (10% de la nota final): Consiste en una presentación final individual que resuma el trabajo realizado en el proyecto de investigación. Al tratarse de un curso metodológico, más que los fundamentos teóricos de la investigación, el foco de la presentación debe estar centrado en los resultados de la investigación (visualización de resultados) y en reflexiones de toma de decisiones metodológicas en términos de apertura y reproducibilidad.
-
-3. Investigación final (examen) (30% de la nota final): consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones. 
 
 
 ## Información general
 
-Los/as alumnas/os que no se presenten o entreguen una evaluación por enfermedad deben hacer llegar el certificado médico a coordinación en el plazo establecido por el reglamento. Quienes no lo hagan serán evaluados con nota 1,0. Las pruebas atrasadas serán reprogramadas la primera semana de junio.
+Los/as alumnas/os que no se presenten o entreguen una evaluación por enfermedad deben hacer llegar el certificado médico a coordinación en el plazo establecido por el reglamento. Quienes no lo hagan serán evaluados con nota 1,0. 
 
-Ningún curso podrá ser aprobado si no cuenta con el mínimo del 70% de asistencia. Tendrán derecho a rendir los exámenes todos los/as estudiantes que hayan cumplido con la exigencia de asistencia mínima al curso y cuyo promedio de notas sea igual o superior a 3,5.
+Para presentarse a examen se requiere nota promedio 3,5 y una asistencia mínima del 70% a las clases. En caso de eximición, la nota mínima es igual o superior a 5,5, el docente es quien decidirá si el curso tendrá alumnos que se eximen o no y si los tuviera deberá repetir la nota promedio del curso en el examen. 
 
-Los/as estudiantes podrán eximirse de la obligación de rendir los exámenes finales de cada curso. Al iniciarse el semestre académico, cada profesor/a deberá indicar a los/as estudiantes en el programa del curso si existe la posibilidad de eximirse y bajo qué condiciones. Con todo, no será posible eximirse de examen alguno si el/a estudiante no tiene una nota promedio igual o superior a 5,5 y una asistencia igual o superior al 70% de las clases efectivamente realizadas en el respectivo curso.
 
 ## Reglamento Académico del Estudiante de Pregrado.
 
 Art. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.
 
-Asimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado. 
+Asimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.
 
 Art. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.
 
-***Para evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) http://www.apastyle.org o MLA (Modern Language Association) http://www.mla.org/.
-
+\*\*\*Para evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) http://www.apastyle.org o MLA (Modern Language Association) http://www.mla.org/.
