@@ -7,37 +7,33 @@ page-layout: full
 
 Los tres componentes centrales del curso son las clases teóricas, los prácticos en R y los trabajos. Las **clases** se realizarán los días **Martes 16:00 a 17:20** en sala **E67**. Los **prácticos en R** se realizarán el mismo día en el horario de **17:30 a 18:50**.
 
+-   [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y sesiones teóricas
 
-- [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y sesiones teóricas
+-   [**Talleres y actividades en R**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas a desarrollar en el segundo bloque de la clase, según programación al final de esta página.
 
-- [**Talleres y actividades en R**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas a desarrollar en el segundo bloque de la clase, según programación al final de esta página.
+-   [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
 
-- [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
-
-
-
-| |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Talleres y prácticos en R | <i class="fas fa-book-reader"></i> Lecturas y material adicional
------|----|-----------|-----------
-<font color="orange"> **Marzo** </font> |   |   |
-Martes 12 | Unidad 1: Elementos y herramientas de R | Práctico 1 | - Leer detalladamente [programa del curso](syllabus.html)
-Martes 19 | Unidad 1: Elementos y herramientas de R | Práctico 2 | 
-Martes 26 | Unidad 2: Operacionalización y análisis descriptivo de datos  | Práctico 3 | 
-<font color="orange"> **Abril** </font> |   |   |
-Martes 02 | Unidad 2: Operacionalización y análisis descriptivo de datos  | Práctico 4 | 
-Martes 09 | Unidad 2: Operacionalización y análisis descriptivo de datos  | Práctico 5 |
-Martes 16 | Sesión de apoyo Trabajo N°2  | Trabajo 2 (18/04)  |
-Martes 23 | Unidad 3: Asociación de variables en R | Práctico 6 |
-Martes 30 | Unidad 3: Indices y escalas | Práctico 7  |
-<font color="orange"> **Mayo** </font> |   |   |
-Martes 07 | Sesión de apoyo Trabajo N°3 | Trabajo 3 |
-Martes 14 | Unidad 4: Regresión lineal y regresión logística | Práctico 8 | 
-Martes 21 | *Feriado* | | |
-Martes 28 | Unidad 4: Regresión lineal y regresión logística | Práctico 9 | 
-<font color="orange"> **Junio** </font> |   |   |
-Martes 04 | Sesión de apoyo Trabajo N°4 | Trabajo N°4  |
-Martes 11 | Trabajo de investigación | Práctico 10 |  |
-Martes 18 | Trabajo de investigación | Presentaciones  | 
-Martes 25 | Sesión de apoyo evaluación final. | | 
-<font color="orange"> **Julio** </font> |   |   |
-Martes 02 | Examen final  |   | 
-
+|                                         | <i class="fas fa-chalkboard-teacher"></i> Clases             | <i class="fas fa-user-edit"></i> Talleres y prácticos en R | <i class="fas fa-book-reader"></i> Lecturas y material adicional |
+|---------------|---------------|----------------------|----------------------|
+| <font color="orange"> **Marzo** </font> |                                                              |                                                            |                                                                  |
+| Martes 11                               | Unidad 1: Elementos y herramientas de R                      | Práctico 1                                                 | \- Leer detalladamente [programa del curso](syllabus.html)       |
+| Martes 18                               | Unidad 1: Elementos y herramientas de R                      | Práctico 2                                                 |                                                                  |
+| Martes 25                               | Unidad 2: Operacionalización y análisis descriptivo de datos | Práctico 3                                                 |                                                                  |
+| <font color="orange"> **Abril** </font> |                                                              |                                                            |                                                                  |
+| Martes 01                               | Unidad 2: Operacionalización y análisis descriptivo de datos | Práctico 4                                                 |                                                                  |
+| Martes 08                               | Unidad 2: Operacionalización y análisis descriptivo de datos | Práctico 5                                                 |                                                                  |
+| Martes 15                               | Sesión de apoyo Trabajo N°1                                  | Trabajo 1 (16/04)                                          |                                                                  |
+| Martes 22                               | Unidad 3: Asociación de variables en R                       | Práctico 6                                                 |                                                                  |
+| Martes 29                               | Unidad 3: Indices y escalas                                  | Práctico 7                                                 |                                                                  |
+| <font color="orange"> **Mayo** </font>  |                                                              |                                                            |                                                                  |
+| Martes 06                               | Sesión de apoyo Trabajo N°2                                  | Trabajo 2 (07/05)                                          |                                                                  |
+| Martes 13                               | Unidad 4: Regresión lineal y regresión logística             | Práctico 8                                                 |                                                                  |
+| Martes 20                               | Unidad 4: Regresión lineal y regresión logística             | Práctico 9                                                 |                                                                  |
+| Martes 27                               | Unidad 4: Regresión lineal y regresión logística             | Práctico 10                                                |                                                                  |
+| <font color="orange"> **Junio** </font> |                                                              |                                                            |                                                                  |
+| Martes 03                               | Sesión de apoyo Trabajo N°3                                  | Trabajo N°3 (04/06)                                        |                                                                  |
+| Martes 10                               | Trabajo de investigación                                     | Práctico 11                                                |                                                                  |
+| Martes 17                               | Trabajo de investigación                                     | Presentaciones (17/06)                                     |                                                                  |
+| Martes 24                               | Sesión de apoyo evaluación final.                            |                                                            |                                                                  |
+| <font color="orange"> **Julio** </font> |                                                              |                                                            |                                                                  |
+| Martes 08                               | Examen final                                                 |                                                            |                                                                  |

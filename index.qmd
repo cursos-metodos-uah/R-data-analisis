@@ -2,7 +2,7 @@
 title: "R para análisis estadístico"
 subtitle: "Departamento de Sociología - Facultad de Ciencias Sociales de la Universidad Alberto Hurtado"
 details: |
-  CSSOCIAL 6607-SOC1(1052) • Primer semestre 2024<br>Departamento de Sociología<br>Universidad Alberto Hurtado
+  CSSOCIAL 6607-SOC1(1052) • Primer semestre 2025<br>Departamento de Sociología<br>Universidad Alberto Hurtado
 sidebar: false
 toc: false
 page-layout: full
@@ -27,20 +27,13 @@ withr::with_dir(here::here(), {
 ::: {.grid .course-details}
 
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
-### Equipo docente
-
-**Profesor**
+### Profesor
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
-- {{< fa university >}} &nbsp; {{< var instructor.office >}}
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">
 
+- {{< fa envelope >}} &nbsp; [{{< var instructor.email >}}](mailto:{{< var instructor.email >}})
 
-**Ayudante**
-
-
-- {{< fa user >}} &nbsp; Javiera Wompner
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other.email >}}">{{< var other.email >}}</a>
+- {{< fa brands twitter >}} [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
 
 :::
 
@@ -55,3 +48,7 @@ withr::with_dir(here::here(), {
 
 
 :::
+
+### Otras versiones
+
+- [versión 2024](https://version2024--r-data-analisis.netlify.app/)

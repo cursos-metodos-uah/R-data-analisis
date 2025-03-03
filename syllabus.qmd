@@ -9,25 +9,22 @@ library(pander)
 ```
 
 ::: {.grid .course-details .course-details-smaller}
-
-::: {.g-col-6}
+::: g-col-6
 ### Profesor
 
-- {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
-- {{< fa university >}} &nbsp; {{< var instructor.office >}}
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
+-   {{< fa user >}} [{{< var instructor.name >}}]({{< var instructor.url >}})
+-   {{< fa envelope >}} &nbsp; [{{< var instructor.email >}}](mailto:{{< var instructor.email >}})
+-   {{< fa brands twitter >}} [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
 :::
 
-::: {.g-col-6}
+::: g-col-6
 ### Detalles del curso
 
-- {{< fa calendar >}} &nbsp; {{< var course.days >}}
-- {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
-- {{< fa clock >}} &nbsp; {{< var course.time >}}
-- {{< fa location-dot >}} &nbsp; {{< var course.location >}}
+-   {{< fa calendar >}}   {{< var course.days >}}
+-   {{< fa calendar-alt >}}   {{< var course.dates >}}
+-   {{< fa clock >}}   {{< var course.time >}}
+-   {{< fa location-dot >}}   {{< var course.location >}}
 :::
-
 :::
 
 ## Propósito general del curso
@@ -36,18 +33,17 @@ Se espera que al término del curso los y las estudiantes puedan elaborar y anal
 
 ### Objetivos específicos
 
-- Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos.
+-   Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos.
 
-- Interpretar y analizar los elementos centrales de una base de datos con información social.
+-   Interpretar y analizar los elementos centrales de una base de datos con información social.
 
-- Presentar resultados a partir de la visualización de datos y construcción de documentos dinámicos en R (Quarto).
+-   Presentar resultados a partir de la visualización de datos y construcción de documentos dinámicos en R (Quarto).
 
-- Aplicar, interpretar y visualizar técnicas de estadística descriptiva según las distintas características de los datos en R.
+-   Aplicar, interpretar y visualizar técnicas de estadística descriptiva según las distintas características de los datos en R.
 
-- Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para muestras complejas en R.
+-   Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para muestras complejas en R.
 
-- Aplicar, interpretar y visualizar técnicas de regresión lineal y logística para variables numéricas y variables categóricas en R.
-
+-   Aplicar, interpretar y visualizar técnicas de regresión lineal y logística para variables numéricas y variables categóricas en R.
 
 ## Contenidos
 
@@ -91,48 +87,57 @@ Se espera que al término del curso los y las estudiantes puedan elaborar y anal
 
 4.5 Representación gráfica de coeficientes de regresión lineal y logística (probabilidades predichas)
 
-
 ## Metodología
 
 Se tendrán tres espacios principales de aprendizaje:
 
-1. Sesiones de clases lectivas, donde se presentarán los aspectos centrales de los contenidos correspondientes a la semana. Estas se desarrollarán en el primer bloque del martes. 
+1.  Sesiones de clases lectivas, donde se presentarán los aspectos centrales de los contenidos correspondientes a la semana. Estas se desarrollarán en el primer bloque del martes.
 
-2. Prácticas guiadas: cada tema de las sesiones se acompaña de una guía práctica de aplicación de contenidos. Estas guías están diseñadas para ser desarrolladas de manera autónoma por cada estudiante semana a semana. También serán desarrolladas y revisadas cada semana por el profesor y/o ayudantes para dar mayor oportunidad de participación y resolver las dudas respectivas. Estas se desarrollan en el segundo bloque del martes. 
+2.  Prácticas guiadas: cada tema de las sesiones se acompaña de una guía práctica de aplicación de contenidos. Estas guías están diseñadas para ser desarrolladas de manera autónoma por cada estudiante semana a semana. También serán desarrolladas y revisadas cada semana por el profesor y/o ayudantes para dar mayor oportunidad de participación y resolver las dudas respectivas. Estas se desarrollan en el segundo bloque del martes.
 
-3. Evaluaciones: se desarrollarán trabajos periódicos que permitirán a las/os estudiantes aplicar contenidos y replicar lo aprendido en los prácticos en base a una base de datos seleccionada por ellas/os a inicio de semestre. Esto permitirá no solo recibir retroalimentación constante, sino que aprender con datos que puedan ser útiles para otros proyectos de investigación. Al finalizar el curso, el/la estudiante deberá entregar un proyecto de investigación que incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones. Además, el/la estudiante deberá realizar una presentación de resultados en formato académico/conferencia.
+3.  Evaluaciones: se desarrollarán trabajos periódicos que permitirán a las/os estudiantes aplicar contenidos y replicar lo aprendido en los prácticos en base a una base de datos seleccionada por ellas/os a inicio de semestre. Esto permitirá no solo recibir retroalimentación constante, sino que aprender con datos que puedan ser útiles para otros proyectos de investigación. Al finalizar el curso, el/la estudiante deberá entregar un proyecto de investigación que incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones. Además, el/la estudiante deberá realizar una presentación de resultados en formato académico/conferencia.
 
 Las instrucciones de las tareas serán publicadas con una semana de anticipación a su entrega.
 
 ## Recursos principales de aprendizaje y comunicación
 
-1. Sitio web
+1.  Sitio web
 
-El curso estará disponible en un sitio web programado por el docente, en tanto permite integrar texto y código de R.     
+El curso estará disponible en un sitio web programado por el docente, en tanto permite integrar texto y código de R.
 
-2. R, RStudio y RStudio Cloud
+2.  R, RStudio y RStudio Cloud
 
-El software que se utilizará principalmente será R y su interfaz RStudio. Ahora bien, muchos usuario/as de R presentan problemas de instalación dada la capacidad de sus computadores y sistemas operativos. Por ello, para quienes tengan estos problemas se promoverá el uso del servicio gratuito de RStudio.cloud           
+El software que se utilizará principalmente será R y su interfaz RStudio. Ahora bien, muchos usuario/as de R presentan problemas de instalación dada la capacidad de sus computadores y sistemas operativos. Por ello, para quienes tengan estos problemas se promoverá el uso del servicio gratuito de RStudio.cloud
 
-3. Slack
+3.  GitHub
 
-Slack es una herramienta de uso frecuente en equipos de trabajo que utilizan R pues permite integrar script de distintos lenguajes en el chat. Se tendrá un espacio de trabajo en la app Slack que permite que cualquier persona del curso pueda hacer preguntas y cualquiera pueda responder. Esta es una de las prácticas que se promoverán en el curso pues es probable que los/as estudiantes tengan dudas similares a las de sus compañeros, por lo que las respuestas del docente, ayudantes y otros compañeros/as serán de libre disposición de todo el curso. Dentro de Slack se tendrán canales específicos para hacer preguntas sobre las sesiones, tareas y proyectos, y el link que permite unirse a este estará disponible en el sitio del curso.
-
-4. GitHub
-
-Github es una plataforma online que permite depositar archivos y el control de versiones (VCS), por lo que se ha transformado en una herramienta fácil y popular para corregir, colaborar y compartir códigos de distintos lenguajes (no solo R). Utilizaremos esta plataforma para subir las tareas, ayudarlos/as de manera directa con su código y darles feedback. 
-
+Github es una plataforma online que permite depositar archivos y el control de versiones (VCS), por lo que se ha transformado en una herramienta fácil y popular para corregir, colaborar y compartir códigos de distintos lenguajes (no solo R). Utilizaremos esta plataforma para subir las tareas, ayudarlos/as de manera directa con su código y darles feedback.
 
 ## Evaluación de aprendizaje
 
 Las evaluaciones del curso se componen de tareas (60% de la nota final), la entrega de una investigación (30% de la nota final) y una presentación (10% de la nota final), en dónde en todos los casos la/el estudiante deberá seleccionar datos y temas de interés de modo de acercar la aplicación del software a contextos de investigación propios de la/el estudiante. En concreto, cada evaluación consiste en:
 
-1. Trabajos (60% de la nota final): consisten en evaluaciones parciales temáticas que buscan poner en práctica los aprendizajes expuestos en la sesión de clases y herramientas reforzadas en los prácticos. Durante el semestre se realizarán 4 tareas (15% c/u).
+1.  Trabajos (60% de la nota final): consisten en evaluaciones parciales temáticas que buscan poner en práctica los aprendizajes expuestos en la sesión de clases y herramientas reforzadas en los prácticos. Durante el semestre se realizarán 3 tareas (20% c/u).
 
-2. Presentación final (10% de la nota final): Consiste en una presentación final individual que resuma el trabajo realizado en el proyecto de investigación. Al tratarse de un curso metodológico, más que los fundamentos teóricos de la investigación, el foco de la presentación debe estar centrado en los resultados de la investigación (visualización de resultados) y en reflexiones de toma de decisiones metodológicas en términos de apertura y reproducibilidad.
+2.  Presentación final (10% de la nota final): Consiste en una presentación final individual que resuma el trabajo realizado en el proyecto de investigación. Al tratarse de un curso metodológico, más que los fundamentos teóricos de la investigación, el foco de la presentación debe estar centrado en los resultados de la investigación (visualización de resultados) y en reflexiones de toma de decisiones metodológicas en términos de apertura y reproducibilidad.
 
-3. Investigación final (examen) (30% de la nota final): consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones. 
+3.  Investigación final (examen) (30% de la nota final): consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones.
 
++------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
+| Evaluación                         | Unidades por evaluar                                                                                    | Fecha | \%   |
++====================================+=========================================================================================================+=======+======+
+| Trabajo 1                          | 1.  Procesamiento y visualización de análisis descriptivo                                               | 16/04 | 20%  |
++------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
+| Trabajo 2                          | 2.  Análisis bivariado en R                                                                             | 07/05 | 20%  |
++------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
+| Trabajo 3                          | 3.  Regresión lineal y logística                                                                        | 04/06 | 20%  |
++------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
+| Presentación final                 | Consiste en una presentación individual que resuma el trabajo realizado en el proyecto de investigación | 17/06 | 10%  |
++------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
+| Investigación final (examen final) | Contenido general del curso                                                                             | 08/07 | 30%  |
++------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
+|                                    |                                                                                                         |       | 100% |
++------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
 
 ## Información general
 
@@ -146,9 +151,8 @@ Los/as estudiantes podrán eximirse de la obligación de rendir los exámenes fi
 
 Art. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.
 
-Asimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado. 
+Asimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.
 
 Art. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.
 
-***Para evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) http://www.apastyle.org o MLA (Modern Language Association) http://www.mla.org/.
-
+\*\*\*Para evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) http://www.apastyle.org o MLA (Modern Language Association) http://www.mla.org/.

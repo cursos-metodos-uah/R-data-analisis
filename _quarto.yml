@@ -75,20 +75,20 @@ website:
           contents:
             - text: "01: Clase 1"
               file: content/01-content.qmd
-            - text: "02: Clase 2"
-              file: content/02-content.qmd
-            - text: "03: Clase 3"
-              file: content/03-content.qmd
-            - text: "04: Clase 4"
-              file: content/04-content.qmd
-            - text: "05: Clase 5"
-              file: content/05-content.qmd
-            - text: "06: Clase 6"
-              file: content/06-content.qmd
-            - text: "07: Clase 7"
-              file: content/07-content.qmd
-            - text: "08: Clase 8"
-              file: content/08-content.qmd
+            # - text: "02: Clase 2"
+            #   file: content/02-content.qmd
+            # - text: "03: Clase 3"
+            #   file: content/03-content.qmd
+            # - text: "04: Clase 4"
+            #   file: content/04-content.qmd
+            # - text: "05: Clase 5"
+            #   file: content/05-content.qmd
+            # - text: "06: Clase 6"
+            #   file: content/06-content.qmd
+            # - text: "07: Clase 7"
+            #   file: content/07-content.qmd
+            # - text: "08: Clase 8"
+            #   file: content/08-content.qmd
 
     - title: "Prácticos"
       style: "docked"
@@ -102,26 +102,26 @@ website:
           contents:
             - text: "01: Práctico 1"
               file: practicos/01-content.qmd
-            - text: "02: Práctico 2"
-              file: practicos/02-content.qmd
-            - text: "03: Práctico 3"
-              file: practicos/03-content.qmd
-            - text: "04: Práctico 4"
-              file: practicos/04-content.qmd
-            - text: "05: Práctico 5"
-              file: practicos/05-content.qmd
-            - text: "06: Práctico 6"
-              file: practicos/06-content.qmd
-            - text: "07: Práctico 7"
-              file: practicos/07-content.qmd
-            - text: "08: Resumen"
-              file: practicos/resumen-content.qmd
-            - text: "09: Práctico 8"
-              file: practicos/08-content.qmd
-            - text: "10: Práctico 9"
-              file: practicos/09-content.qmd
-            - text: "11: Práctico 10"
-              file: practicos/10-content.qmd
+            # - text: "02: Práctico 2"
+            #   file: practicos/02-content.qmd
+            # - text: "03: Práctico 3"
+            #   file: practicos/03-content.qmd
+            # - text: "04: Práctico 4"
+            #   file: practicos/04-content.qmd
+            # - text: "05: Práctico 5"
+            #   file: practicos/05-content.qmd
+            # - text: "06: Práctico 6"
+            #   file: practicos/06-content.qmd
+            # - text: "07: Práctico 7"
+            #   file: practicos/07-content.qmd
+            # - text: "08: Resumen"
+            #   file: practicos/resumen-content.qmd
+            # - text: "09: Práctico 8"
+            #   file: practicos/08-content.qmd
+            # - text: "10: Práctico 9"
+            #   file: practicos/09-content.qmd
+            # - text: "11: Práctico 10"
+            #   file: practicos/10-content.qmd
 
     - title: "Herramientas"
       style: "docked"
@@ -146,18 +146,18 @@ website:
             - assignment/index.qmd
         - section: "Trabajos"
           contents:
-            - text: "Trabajo 1"
-              file: assignment/01-trabajo.qmd
-            - text: "Trabajo 2"
-              file: assignment/02-trabajo.qmd
-            - text: "Trabajo 3"
-              file: assignment/03-trabajo.qmd
-            - text: "Trabajo 4"
-              file: assignment/04-trabajo.qmd
-            - text: "Presentaciones"
-              file: assignment/05-presentacion.qmd
-            - text: "Examen"
-              file: assignment/06-examen.qmd
+            # - text: "Trabajo 1"
+            #   file: assignment/01-trabajo.qmd
+            # - text: "Trabajo 2"
+            #   file: assignment/02-trabajo.qmd
+            # - text: "Trabajo 3"
+            #   file: assignment/03-trabajo.qmd
+            # - text: "Trabajo 4"
+            #   file: assignment/04-trabajo.qmd
+            # - text: "Presentaciones"
+            #   file: assignment/05-presentacion.qmd
+            # - text: "Examen"
+            #   file: assignment/06-examen.qmd
 
 
   page-footer:
