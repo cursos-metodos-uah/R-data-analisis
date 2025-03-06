@@ -5,7 +5,7 @@ toc: false
 page-layout: full
 ---
 
-Los tres componentes centrales del curso son las clases teóricas, los prácticos en R y los trabajos. Las **clases** se realizarán los días **Martes 16:00 a 17:20** en sala **E67**. Los **prácticos en R** se realizarán el mismo día en el horario de **17:30 a 18:50**.
+Los tres componentes centrales del curso son las clases teóricas, los prácticos en R y los trabajos. Las **clases** se realizarán los días **Martes 16:00 a 17:20** en sala **E62**. Los **prácticos en R** se realizarán el mismo día en el horario de **17:30 a 18:50**.
 
 -   [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y sesiones teóricas
 
