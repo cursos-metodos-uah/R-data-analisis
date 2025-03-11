@@ -403,39 +403,53 @@
     "text": "Reglamento Académico del Estudiante de Pregrado.\nArt. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.\nAsimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.\nArt. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.\n***Para evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) http://www.apastyle.org o MLA (Modern Language Association) http://www.mla.org/."
   },
   {
-    "objectID": "practicos/02-content-zotero.html",
-    "href": "practicos/02-content-zotero.html",
-    "title": "Práctico R 2. Vinculación R y Zotero",
+    "objectID": "practicos/10-content.html",
+    "href": "practicos/10-content.html",
+    "title": "10: Presentaciones en Quarto",
     "section": "",
-    "text": "Acceder a la página de zotero\n\nVamos a Log in\n\n\nY creamos una cuenta gratis\n\n\n\nFinalmente volvemos al inicio y descargamos el programa:\n\n\n\n\n\nZotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.\n\nEs posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos\nAl visualizar una referencia bibliográfica nos muestra todos los metadatos: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.\nEl dato central que nos va a servir en esta parte del proceso es el DOI\n\n\n\n\n\n\n\nNota\n\n\n\nDOI: Digital Object Identifier (Identificador de objetos digitales)\nEl DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.\n\n\n\n\nPara crear una biblioteca en zotero vamos a Archivo -&gt; Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios\n\n\nEn este caso mi biblioteca se llama “percepcion-desigualdad”.\n\nZotero tiene dos funciones para agregar referencias botón verde “Nuevo elemento” o varita mágica “añadir elemento por identificador”. Esta vez vamos por la segunda opción\nBuscamos un paper que nos interese: en este caso busqué el paper The paradox of inequality: income inequality and belief in meritocracy go hand in hand de Jonathan Mijs (2021). Su DOI es https://doi.org/10.1093/ser/mwy051\nUsamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero\n\n\n¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?\n\n\n\n\nResearch Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero\n\nIngresar a la página https://researchrabbitapp.com/.\nCrear cuenta\n\n\n\nUna vez dentro apretamos “Import Zotero Collection” y seleccionamos nuestra biblioteca\n\n\n\nAsí se ve research rabbit\n\n\n\nPodemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca\n\n\n\nDespués volvemos a Zotero, actualizamos y aparece nuestro nuevo paper\n\n\nAhora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R\n\nVamos a este link y descargamos zotero-better-bibtex-6.7.169.xpi\nVolvemos a Zotero –&gt; Herramientas –&gt; Complementos –&gt; La tuerca en la esquina superior derecha –&gt; Instalar Add-on desde archivo –&gt; Seleccionamos el archivo que acabamos de descargar\n\n\n\nPaso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca –&gt; Exportar colección\n\n\n\nSeleccionamos formato: Better BibTeX y marcamos la casilla “Keep updated”. Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía\n\n\n\nGuardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo\n\n\n\n\nLa escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:\n\n\n\nCódigo\nAsí se ve\n\n\n\n\nAlgo de texto en el párrafo.\n\nMás texto\nespacio entre lineas.\nAlgo de texto.\nAlgo de texto en el párrafo. Siempre utilizando espacios para dividir párrafos\n\n\n`*Cursivas*`\nCursivas\n\n\n`**Negrita**`\nNegrita\n\n\n# Título 1\n\n\n\n## Título 2\n\n\n\n### Título 3\n\n\n\n(puedes llegar hasta un título N° 6 con ######)\n\n\n\n`[Texto enlace](https://quarto.org/)`\nTexto enlace\n\n\n`![Texto imagen](/path/to/image.png)`\n\n\n\nTexto imagen\n\n\n\n\n&gt; Citas\n\nCitas\n\n\n\n1. Una\n2. lista\n3 ordenada\n\nUna\nlista\nordenada\n\n\n\n- Otro\n- tipo\n- de lista\n\nOtro\ntipo\nde lista\n\n\n\n\n\nAbrimos nuestro Rproject y creamos un nuevo documento de Quarto file –&gt; new file –&gt; Quarto document\nEditamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes\n\n\n\n\n\n\n\nNota\n\n\n\nYAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.\n\n\n\n\nComenzamos a escribir la introducción de nuestra investigación\nPara insertar referencias:\n\nSe pueden insertar citas usando el comando Insert -&gt; Citation o usando la sintaxis directamente (por ejemplo, (cita?) o (cita?)).\nLas citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por ‘@’ + el identificador de la cita en zotero.\n\nEn este caso, [@mijsParadoxInequalityIncome2021a]\nAquí hay otros ejemplos:\nLa investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años [ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013].\nEspecíficamente, se ha encontrado evidencia sobre que… [@mijsParadoxInequalityIncome2021a]. De todas formas, @crucesBiasedPerceptionsIncome2013 plantea que…\nAsí mismo, Mijs señala que… [-@mijsParadoxInequalityIncome2021a]\nAunque ambos concluyen que… [@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]\n\n\nLuego renderizamos y se debería ver así:\n\n\nCon referencias automáticas!\n\nAhora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop."
+    "text": "El objetivo de esta práctica es revisar el proceso de elaboración de una presentación mediante documentos dinámicos, específicamente mediante Quarto. La guía oficial para elaborar este documento la puedes revisar acá\n\n\n\n\n\n\nNota\n\n\n\nPara presentar resultados de una investigación, lo más fácil es anteriormente haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output.\nSi recordamos de los prácticos anteriores, suponiendo que estamos trabajando en nuestro archivo de análisis, dentro de la carpeta de procesamiento, el código estándar para exportar gráficos es el siguiente:\n\n\nCódigo\ngraph1 &lt;- data %&gt;% ggplot2::ggplot(aes(x=conf_inst))+\n                            geom_bar()\n\nggsave(graph1, file=\"output/graphs/graph1.png\")\n\n\nDe esta forma guardamos nuestro gráfico en la carpeta output, dentro de una segunda subcarpeta ‘graphs’."
   },
   {
-    "objectID": "practicos/02-content-zotero.html#zotero",
-    "href": "practicos/02-content-zotero.html#zotero",
-    "title": "Práctico R 2. Vinculación R y Zotero",
-    "section": "",
-    "text": "Acceder a la página de zotero\n\nVamos a Log in\n\n\nY creamos una cuenta gratis\n\n\n\nFinalmente volvemos al inicio y descargamos el programa:\n\n\n\n\n\nZotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.\n\nEs posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos\nAl visualizar una referencia bibliográfica nos muestra todos los metadatos: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.\nEl dato central que nos va a servir en esta parte del proceso es el DOI\n\n\n\n\n\n\n\nNota\n\n\n\nDOI: Digital Object Identifier (Identificador de objetos digitales)\nEl DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.\n\n\n\n\nPara crear una biblioteca en zotero vamos a Archivo -&gt; Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios\n\n\nEn este caso mi biblioteca se llama “percepcion-desigualdad”.\n\nZotero tiene dos funciones para agregar referencias botón verde “Nuevo elemento” o varita mágica “añadir elemento por identificador”. Esta vez vamos por la segunda opción\nBuscamos un paper que nos interese: en este caso busqué el paper The paradox of inequality: income inequality and belief in meritocracy go hand in hand de Jonathan Mijs (2021). Su DOI es https://doi.org/10.1093/ser/mwy051\nUsamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero\n\n\n¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?"
+    "objectID": "practicos/10-content.html#ejemplo",
+    "href": "practicos/10-content.html#ejemplo",
+    "title": "10: Presentaciones en Quarto",
+    "section": "Ejemplo:",
+    "text": "Ejemplo:"
   },
   {
-    "objectID": "practicos/02-content-zotero.html#researchrabbit",
-    "href": "practicos/02-content-zotero.html#researchrabbit",
-    "title": "Práctico R 2. Vinculación R y Zotero",
-    "section": "",
-    "text": "Research Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero\n\nIngresar a la página https://researchrabbitapp.com/.\nCrear cuenta\n\n\n\nUna vez dentro apretamos “Import Zotero Collection” y seleccionamos nuestra biblioteca\n\n\n\nAsí se ve research rabbit\n\n\n\nPodemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca\n\n\n\nDespués volvemos a Zotero, actualizamos y aparece nuestro nuevo paper\n\n\nAhora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R\n\nVamos a este link y descargamos zotero-better-bibtex-6.7.169.xpi\nVolvemos a Zotero –&gt; Herramientas –&gt; Complementos –&gt; La tuerca en la esquina superior derecha –&gt; Instalar Add-on desde archivo –&gt; Seleccionamos el archivo que acabamos de descargar\n\n\n\nPaso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca –&gt; Exportar colección\n\n\n\nSeleccionamos formato: Better BibTeX y marcamos la casilla “Keep updated”. Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía\n\n\n\nGuardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo"
+    "objectID": "practicos/10-content.html#bases",
+    "href": "practicos/10-content.html#bases",
+    "title": "10: Presentaciones en Quarto",
+    "section": "Bases",
+    "text": "Bases\nLas presentaciones elaboradas con Quarto se pueden exportar en tres ‘output’ o formatos diferentes:\n\nrevealjs = reveal.js (HTML)\npptx = PowerPoint (MS Office)\nbeamer = Beamer (LaTeX/PDF)\n\nPara este caso nos enfocaremos en revealjs que nos permite posteriormente visualizar la presentación en Github Pages."
   },
   {
-    "objectID": "practicos/02-content-zotero.html#quarto",
-    "href": "practicos/02-content-zotero.html#quarto",
-    "title": "Práctico R 2. Vinculación R y Zotero",
-    "section": "",
-    "text": "La escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:\n\n\n\nCódigo\nAsí se ve\n\n\n\n\nAlgo de texto en el párrafo.\n\nMás texto\nespacio entre lineas.\nAlgo de texto.\nAlgo de texto en el párrafo. Siempre utilizando espacios para dividir párrafos\n\n\n`*Cursivas*`\nCursivas\n\n\n`**Negrita**`\nNegrita\n\n\n# Título 1\n\n\n\n## Título 2\n\n\n\n### Título 3\n\n\n\n(puedes llegar hasta un título N° 6 con ######)\n\n\n\n`[Texto enlace](https://quarto.org/)`\nTexto enlace\n\n\n`![Texto imagen](/path/to/image.png)`\n\n\n\nTexto imagen\n\n\n\n\n&gt; Citas\n\nCitas\n\n\n\n1. Una\n2. lista\n3 ordenada\n\nUna\nlista\nordenada\n\n\n\n- Otro\n- tipo\n- de lista\n\nOtro\ntipo\nde lista\n\n\n\n\n\nAbrimos nuestro Rproject y creamos un nuevo documento de Quarto file –&gt; new file –&gt; Quarto document\nEditamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes\n\n\n\n\n\n\n\nNota\n\n\n\nYAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.\n\n\n\n\nComenzamos a escribir la introducción de nuestra investigación\nPara insertar referencias:\n\nSe pueden insertar citas usando el comando Insert -&gt; Citation o usando la sintaxis directamente (por ejemplo, (cita?) o (cita?)).\nLas citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por ‘@’ + el identificador de la cita en zotero.\n\nEn este caso, [@mijsParadoxInequalityIncome2021a]\nAquí hay otros ejemplos:\nLa investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años [ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013].\nEspecíficamente, se ha encontrado evidencia sobre que… [@mijsParadoxInequalityIncome2021a]. De todas formas, @crucesBiasedPerceptionsIncome2013 plantea que…\nAsí mismo, Mijs señala que… [-@mijsParadoxInequalityIncome2021a]\nAunque ambos concluyen que… [@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]\n\n\nLuego renderizamos y se debería ver así:\n\n\nCon referencias automáticas!\n\nAhora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop."
+    "objectID": "practicos/10-content.html#abrir-un-documento-de-quarto-presentations",
+    "href": "practicos/10-content.html#abrir-un-documento-de-quarto-presentations",
+    "title": "10: Presentaciones en Quarto",
+    "section": "Abrir un documento de Quarto presentations",
+    "text": "Abrir un documento de Quarto presentations\n1- file -&gt; new file -&gt; Quarto presentations\n\n2- Agregamos un título a la presentación y nuestro nombre como autores. Nos aseguramos que esté en formato revealjs y creamos el documento\n3- Para facilitar la elaboración de una presentación cambiaremos el modo de visualización desde ‘visual’ a ‘source’ (para ver el código fuente)"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "\n            R para análisis estadístico\n        ",
+    "objectID": "practicos/10-content.html#slides",
+    "href": "practicos/10-content.html#slides",
+    "title": "10: Presentaciones en Quarto",
+    "section": "Slides",
+    "text": "Slides\nAl igual que al trabajar en un documento de Quarto, cada sección se puede separar con # o ##. En este caso, cada separación o título representará una slide (lámina) diferente. Un # sirve para generar un título grande que aparece centrado y ## crean un título más pequeño que aparece al comienzo de la slide.\n4- Probemos creando dos slides para una presentación académica. Primero, una slide que tenga por título ‘Introducción’ y una segunda slide que tenga por título ‘Descriptivos’.\n\n5- Ya podemos renderizar el documento para ver cómo está quedando. Posiblemente nos pedirá guardar y lo almacenamos en la misma carpeta que tiene nuestro proyecto .Rproject y nuestra carpeta output con las imágenes que hemos exportado. Se debería ver más o menos así:\n\n\n\nPersonalización de slides\nLe podemos asignar distintas características a cada slide como, por ejemplo, separar una slide en dos columnas o dos espacios de tamaño personalizable.\n:::: {.columns}\n\n::: {.column width=\"40%\"}\nColumna izquierda\n:::\n\n::: {.column width=\"60%\"}\nColumna derecha\n:::\n\n::::\nSuponiendo que una slide tiene un 100% de tamaño, cada porcentaje luego de width representa la proporción que utilizará cada columna en la slide. Lo más fácil es tener dos columnas iguales de 50%, pero dependerá de nuestra presentación.\n6- Creemos dos columnas en la slide de ‘Descriptivos’\n\nOtra cosa que podemos hacer es agregar imágenes a cada slides, lo que nos servirá para incluir nuestros gráficos y resultados en general. El código base para agregar una imagen, suponiendo que nuestro archivo de presentación está en la carpeta raiz (siguiendo la estructura recomendada del protocolo IPO), es el siguiente:\n\n![](output/graphs/grafico1.png)\n7- Agreguemos algún gráfico en la sección de correlaciones\n\nSi combinamos ambas cosas, podemos por ejemplo mostrar en una columna un gráfico y en otra columna su interpretación\n8- Agreguemos un gráfico en la columna derecha de la slide de regresiones y su interpretación en la columna izquierda:\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\nEl gráfico muestra que por cada año que aumenta la edad, la variable dependiente aumenta en 0.05 unidades, con un 99% de confianza.\n:::\n\n::: {.column width=\"50%\"}\n![](output/graphs/grafico2.png)\n:::\n\n::::\n\nSi queremos presentar una slide que tenga un incremento en los puntos que vamos mostrando en la presentación, la función es agregar ‘incremental’ al comienzo de los puntos que queremos que vayan incrementando.\n::: {.incremental}\n- En esta investigación quisimos demostrar...\n- Nuestros principales resultados indican que...\n:::\n9- Agreguemos un incremento de puntos en la sección de conclusión:"
+  },
+  {
+    "objectID": "practicos/10-content.html#templates-y-otros",
+    "href": "practicos/10-content.html#templates-y-otros",
+    "title": "10: Presentaciones en Quarto",
+    "section": "Templates y otros",
+    "text": "Templates y otros\nPodemos cambiar el estilo completo de la presentación cambiando el Tema (‘theme’) dentro del YAML del inicio. Por ejemplo:\n\n---\ntitle: \"Cohesión barrial\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs: \n    theme: dark\neditor: visual\n---\nOtras opciones de temas son:\n\nbeige\nblood\ndark\ndefault\nleague\nmoon\nnight\nserif\nsimple\nsky\nsolarized\n\n10- Probemos alguno en nuestro ejemplo y volvemos a renderizar:\n\n\nVarios\nY podemos probar algunas otras cosas para personalizar aún más nuestras presentaciones:\n---\ntitle: \"Cohesión barrial en Chile\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs:\n    slideNumber: true # Número de slide abajo a la derecha\neditor: visual\ntitle-slide-attributes:\n    data-background-image: input/cohesion.jpg # Agregar una imagen al comienzo de la presentación\n    data-background-size: contain\n    data-background-opacity: \"0.1\" # Qué tan difuminada se ve la imagen (0.1 es lo menor)\nbibliography: cohesion.bib # Agregar nuestra bibligrofía\nlink-citations: TRUE # Que la bibliografía tenga links automáticos\n---\n\n\n\n\n\n\nNota\n\n\n\nSi guardamos el archivo de presentación en la carpeta raíz (junto al archivo .Rproject) y subimos todos los documentos a github, entonces el link estandar para visualizar la presentación debería ser:\nhttps://kevin-carrasco.github.io/ipo/presentacion.html"
+  },
+  {
+    "objectID": "news/index.html",
+    "href": "news/index.html",
+    "title": "Noticias",
     "section": "",
-    "text": "R para análisis estadístico\n        \n        \n            Departamento de Sociología - Facultad de Ciencias Sociales de la Universidad Alberto Hurtado\n        \n        \n            CSSOCIAL 6607-SOC1(1052) • Primer semestre 2025Departamento de SociologíaUniversidad Alberto Hurtado\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\nProfesor\n\n   Kevin Carrasco\n   kevin.carrasco@ug.uchile.cl\n kevincarrascoq1\n\n\n\nInformación del curso\n\n   Martes\n   Marzo 11 - Julio 08 2025\n   16:00 a 17:20 y 17:30 a 18:50\n   Sala E62\n\n\n\n\nVersiones anteriores\n\nversión 2024"
+    "text": "Ordenar por\n       Por defecto\n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Título\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nFecha\n\n\nTítulo\n\n\nCategorías\n\n\n\n\n\n\nlunes agosto 7, 2023 at 12:00 AM\n\n\nBienvenid_s a clases!\n\n\ncomenzando\n\n\n\n\nlunes agosto 7, 2023 at 12:00 AM\n\n\nInformaciones de la semana\n\n\ninfo\n\n\n\n\n\nNo hay resultados\n\n\n\n\n\n\n\n\nSuscribirse!\n\n\n\nPuedes usar un lector de feeds como Feedly o un servicio RSS-to-email como Blogtrottr para suscribirte a cualquiera de estos mensajes. ::: {.grid}\n\n\n RSS\n\n\n\n\n\n\n\n\n\n:::"
   },
   {
     "objectID": "schedule.html",
@@ -742,53 +756,305 @@
     ]
   },
   {
-    "objectID": "news/index.html",
-    "href": "news/index.html",
-    "title": "Noticias",
+    "objectID": "slides/ejemplo.html#correlacional",
+    "href": "slides/ejemplo.html#correlacional",
+    "title": "Cohesión barrial",
+    "section": "Correlacional",
+    "text": "Correlacional\nAcá correlacional o bivariados"
+  },
+  {
+    "objectID": "slides/ejemplo.html#regresiones",
+    "href": "slides/ejemplo.html#regresiones",
+    "title": "Cohesión barrial",
+    "section": "Regresiones",
+    "text": "Regresiones\n\n\nEl gráfico muestra que por cada año que aumenta la edad, la variable dependiente aumenta en 0.05 unidades, con un 99% de confianza."
+  },
+  {
+    "objectID": "slides/ejemplo.html#conclusión",
+    "href": "slides/ejemplo.html#conclusión",
+    "title": "Cohesión barrial",
+    "section": "Conclusión",
+    "text": "Conclusión\n\n\nEn esta investigación quisimos demostrar…\nNuestros principales resultados indican que…"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\n            R para análisis estadístico\n        ",
     "section": "",
-    "text": "Ordenar por\n       Por defecto\n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Título\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nFecha\n\n\nTítulo\n\n\nCategorías\n\n\n\n\n\n\nlunes agosto 7, 2023 at 12:00 AM\n\n\nBienvenid_s a clases!\n\n\ncomenzando\n\n\n\n\nlunes agosto 7, 2023 at 12:00 AM\n\n\nInformaciones de la semana\n\n\ninfo\n\n\n\n\n\nNo hay resultados\n\n\n\n\n\n\n\n\nSuscribirse!\n\n\n\nPuedes usar un lector de feeds como Feedly o un servicio RSS-to-email como Blogtrottr para suscribirte a cualquiera de estos mensajes. ::: {.grid}\n\n\n RSS\n\n\n\n\n\n\n\n\n\n:::"
+    "text": "R para análisis estadístico\n        \n        \n            Departamento de Sociología - Facultad de Ciencias Sociales de la Universidad Alberto Hurtado\n        \n        \n            CSSOCIAL 6607-SOC1(1052) • Primer semestre 2025Departamento de SociologíaUniversidad Alberto Hurtado\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\nProfesor\n\n   Kevin Carrasco\n   kevin.carrasco@ug.uchile.cl\n kevincarrascoq1\n\n\n\nInformación del curso\n\n   Martes\n   Marzo 11 - Julio 08 2025\n   16:00 a 17:20 y 17:30 a 18:50\n   Sala E62\n\n\n\n\nVersiones anteriores\n\nversión 2024"
   },
   {
-    "objectID": "practicos/10-content.html",
-    "href": "practicos/10-content.html",
-    "title": "10: Presentaciones en Quarto",
+    "objectID": "practicos/02-content-zotero.html",
+    "href": "practicos/02-content-zotero.html",
+    "title": "Práctico R 2. Vinculación R y Zotero",
     "section": "",
-    "text": "El objetivo de esta práctica es revisar el proceso de elaboración de una presentación mediante documentos dinámicos, específicamente mediante Quarto. La guía oficial para elaborar este documento la puedes revisar acá\n\n\n\n\n\n\nNota\n\n\n\nPara presentar resultados de una investigación, lo más fácil es anteriormente haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output.\nSi recordamos de los prácticos anteriores, suponiendo que estamos trabajando en nuestro archivo de análisis, dentro de la carpeta de procesamiento, el código estándar para exportar gráficos es el siguiente:\n\n\nCódigo\ngraph1 &lt;- data %&gt;% ggplot2::ggplot(aes(x=conf_inst))+\n                            geom_bar()\n\nggsave(graph1, file=\"output/graphs/graph1.png\")\n\n\nDe esta forma guardamos nuestro gráfico en la carpeta output, dentro de una segunda subcarpeta ‘graphs’."
+    "text": "Acceder a la página de zotero\n\nVamos a Log in\n\n\nY creamos una cuenta gratis\n\n\n\nFinalmente volvemos al inicio y descargamos el programa:\n\n\n\n\n\nZotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.\n\nEs posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos\nAl visualizar una referencia bibliográfica nos muestra todos los metadatos: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.\nEl dato central que nos va a servir en esta parte del proceso es el DOI\n\n\n\n\n\n\n\nNota\n\n\n\nDOI: Digital Object Identifier (Identificador de objetos digitales)\nEl DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.\n\n\n\n\nPara crear una biblioteca en zotero vamos a Archivo -&gt; Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios\n\n\nEn este caso mi biblioteca se llama “percepcion-desigualdad”.\n\nZotero tiene dos funciones para agregar referencias botón verde “Nuevo elemento” o varita mágica “añadir elemento por identificador”. Esta vez vamos por la segunda opción\nBuscamos un paper que nos interese: en este caso busqué el paper The paradox of inequality: income inequality and belief in meritocracy go hand in hand de Jonathan Mijs (2021). Su DOI es https://doi.org/10.1093/ser/mwy051\nUsamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero\n\n\n¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?\n\n\n\n\nResearch Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero\n\nIngresar a la página https://researchrabbitapp.com/.\nCrear cuenta\n\n\n\nUna vez dentro apretamos “Import Zotero Collection” y seleccionamos nuestra biblioteca\n\n\n\nAsí se ve research rabbit\n\n\n\nPodemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca\n\n\n\nDespués volvemos a Zotero, actualizamos y aparece nuestro nuevo paper\n\n\nAhora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R\n\nVamos a este link y descargamos zotero-better-bibtex-6.7.169.xpi\nVolvemos a Zotero –&gt; Herramientas –&gt; Complementos –&gt; La tuerca en la esquina superior derecha –&gt; Instalar Add-on desde archivo –&gt; Seleccionamos el archivo que acabamos de descargar\n\n\n\nPaso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca –&gt; Exportar colección\n\n\n\nSeleccionamos formato: Better BibTeX y marcamos la casilla “Keep updated”. Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía\n\n\n\nGuardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo\n\n\n\n\nLa escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:\n\n\n\nCódigo\nAsí se ve\n\n\n\n\nAlgo de texto en el párrafo.\n\nMás texto\nespacio entre lineas.\nAlgo de texto.\nAlgo de texto en el párrafo. Siempre utilizando espacios para dividir párrafos\n\n\n`*Cursivas*`\nCursivas\n\n\n`**Negrita**`\nNegrita\n\n\n# Título 1\n\n\n\n## Título 2\n\n\n\n### Título 3\n\n\n\n(puedes llegar hasta un título N° 6 con ######)\n\n\n\n`[Texto enlace](https://quarto.org/)`\nTexto enlace\n\n\n`![Texto imagen](/path/to/image.png)`\n\n\n\nTexto imagen\n\n\n\n\n&gt; Citas\n\nCitas\n\n\n\n1. Una\n2. lista\n3 ordenada\n\nUna\nlista\nordenada\n\n\n\n- Otro\n- tipo\n- de lista\n\nOtro\ntipo\nde lista\n\n\n\n\n\nAbrimos nuestro Rproject y creamos un nuevo documento de Quarto file –&gt; new file –&gt; Quarto document\nEditamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes\n\n\n\n\n\n\n\nNota\n\n\n\nYAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.\n\n\n\n\nComenzamos a escribir la introducción de nuestra investigación\nPara insertar referencias:\n\nSe pueden insertar citas usando el comando Insert -&gt; Citation o usando la sintaxis directamente (por ejemplo, (cita?) o (cita?)).\nLas citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por ‘@’ + el identificador de la cita en zotero.\n\nEn este caso, [@mijsParadoxInequalityIncome2021a]\nAquí hay otros ejemplos:\nLa investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años [ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013].\nEspecíficamente, se ha encontrado evidencia sobre que… [@mijsParadoxInequalityIncome2021a]. De todas formas, @crucesBiasedPerceptionsIncome2013 plantea que…\nAsí mismo, Mijs señala que… [-@mijsParadoxInequalityIncome2021a]\nAunque ambos concluyen que… [@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]\n\n\nLuego renderizamos y se debería ver así:\n\n\nCon referencias automáticas!\n\nAhora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop."
   },
   {
-    "objectID": "practicos/10-content.html#ejemplo",
-    "href": "practicos/10-content.html#ejemplo",
-    "title": "10: Presentaciones en Quarto",
-    "section": "Ejemplo:",
-    "text": "Ejemplo:"
+    "objectID": "practicos/02-content-zotero.html#zotero",
+    "href": "practicos/02-content-zotero.html#zotero",
+    "title": "Práctico R 2. Vinculación R y Zotero",
+    "section": "",
+    "text": "Acceder a la página de zotero\n\nVamos a Log in\n\n\nY creamos una cuenta gratis\n\n\n\nFinalmente volvemos al inicio y descargamos el programa:\n\n\n\n\n\nZotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.\n\nEs posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos\nAl visualizar una referencia bibliográfica nos muestra todos los metadatos: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.\nEl dato central que nos va a servir en esta parte del proceso es el DOI\n\n\n\n\n\n\n\nNota\n\n\n\nDOI: Digital Object Identifier (Identificador de objetos digitales)\nEl DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.\n\n\n\n\nPara crear una biblioteca en zotero vamos a Archivo -&gt; Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios\n\n\nEn este caso mi biblioteca se llama “percepcion-desigualdad”.\n\nZotero tiene dos funciones para agregar referencias botón verde “Nuevo elemento” o varita mágica “añadir elemento por identificador”. Esta vez vamos por la segunda opción\nBuscamos un paper que nos interese: en este caso busqué el paper The paradox of inequality: income inequality and belief in meritocracy go hand in hand de Jonathan Mijs (2021). Su DOI es https://doi.org/10.1093/ser/mwy051\nUsamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero\n\n\n¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?"
   },
   {
-    "objectID": "practicos/10-content.html#bases",
-    "href": "practicos/10-content.html#bases",
-    "title": "10: Presentaciones en Quarto",
-    "section": "Bases",
-    "text": "Bases\nLas presentaciones elaboradas con Quarto se pueden exportar en tres ‘output’ o formatos diferentes:\n\nrevealjs = reveal.js (HTML)\npptx = PowerPoint (MS Office)\nbeamer = Beamer (LaTeX/PDF)\n\nPara este caso nos enfocaremos en revealjs que nos permite posteriormente visualizar la presentación en Github Pages."
+    "objectID": "practicos/02-content-zotero.html#researchrabbit",
+    "href": "practicos/02-content-zotero.html#researchrabbit",
+    "title": "Práctico R 2. Vinculación R y Zotero",
+    "section": "",
+    "text": "Research Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero\n\nIngresar a la página https://researchrabbitapp.com/.\nCrear cuenta\n\n\n\nUna vez dentro apretamos “Import Zotero Collection” y seleccionamos nuestra biblioteca\n\n\n\nAsí se ve research rabbit\n\n\n\nPodemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca\n\n\n\nDespués volvemos a Zotero, actualizamos y aparece nuestro nuevo paper\n\n\nAhora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R\n\nVamos a este link y descargamos zotero-better-bibtex-6.7.169.xpi\nVolvemos a Zotero –&gt; Herramientas –&gt; Complementos –&gt; La tuerca en la esquina superior derecha –&gt; Instalar Add-on desde archivo –&gt; Seleccionamos el archivo que acabamos de descargar\n\n\n\nPaso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca –&gt; Exportar colección\n\n\n\nSeleccionamos formato: Better BibTeX y marcamos la casilla “Keep updated”. Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía\n\n\n\nGuardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo"
   },
   {
-    "objectID": "practicos/10-content.html#abrir-un-documento-de-quarto-presentations",
-    "href": "practicos/10-content.html#abrir-un-documento-de-quarto-presentations",
-    "title": "10: Presentaciones en Quarto",
-    "section": "Abrir un documento de Quarto presentations",
-    "text": "Abrir un documento de Quarto presentations\n1- file -&gt; new file -&gt; Quarto presentations\n\n2- Agregamos un título a la presentación y nuestro nombre como autores. Nos aseguramos que esté en formato revealjs y creamos el documento\n3- Para facilitar la elaboración de una presentación cambiaremos el modo de visualización desde ‘visual’ a ‘source’ (para ver el código fuente)"
+    "objectID": "practicos/02-content-zotero.html#quarto",
+    "href": "practicos/02-content-zotero.html#quarto",
+    "title": "Práctico R 2. Vinculación R y Zotero",
+    "section": "",
+    "text": "La escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:\n\n\n\nCódigo\nAsí se ve\n\n\n\n\nAlgo de texto en el párrafo.\n\nMás texto\nespacio entre lineas.\nAlgo de texto.\nAlgo de texto en el párrafo. Siempre utilizando espacios para dividir párrafos\n\n\n`*Cursivas*`\nCursivas\n\n\n`**Negrita**`\nNegrita\n\n\n# Título 1\n\n\n\n## Título 2\n\n\n\n### Título 3\n\n\n\n(puedes llegar hasta un título N° 6 con ######)\n\n\n\n`[Texto enlace](https://quarto.org/)`\nTexto enlace\n\n\n`![Texto imagen](/path/to/image.png)`\n\n\n\nTexto imagen\n\n\n\n\n&gt; Citas\n\nCitas\n\n\n\n1. Una\n2. lista\n3 ordenada\n\nUna\nlista\nordenada\n\n\n\n- Otro\n- tipo\n- de lista\n\nOtro\ntipo\nde lista\n\n\n\n\n\nAbrimos nuestro Rproject y creamos un nuevo documento de Quarto file –&gt; new file –&gt; Quarto document\nEditamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes\n\n\n\n\n\n\n\nNota\n\n\n\nYAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.\n\n\n\n\nComenzamos a escribir la introducción de nuestra investigación\nPara insertar referencias:\n\nSe pueden insertar citas usando el comando Insert -&gt; Citation o usando la sintaxis directamente (por ejemplo, (cita?) o (cita?)).\nLas citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por ‘@’ + el identificador de la cita en zotero.\n\nEn este caso, [@mijsParadoxInequalityIncome2021a]\nAquí hay otros ejemplos:\nLa investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años [ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013].\nEspecíficamente, se ha encontrado evidencia sobre que… [@mijsParadoxInequalityIncome2021a]. De todas formas, @crucesBiasedPerceptionsIncome2013 plantea que…\nAsí mismo, Mijs señala que… [-@mijsParadoxInequalityIncome2021a]\nAunque ambos concluyen que… [@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]\n\n\nLuego renderizamos y se debería ver así:\n\n\nCon referencias automáticas!\n\nAhora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop."
   },
   {
-    "objectID": "practicos/10-content.html#slides",
-    "href": "practicos/10-content.html#slides",
-    "title": "10: Presentaciones en Quarto",
-    "section": "Slides",
-    "text": "Slides\nAl igual que al trabajar en un documento de Quarto, cada sección se puede separar con # o ##. En este caso, cada separación o título representará una slide (lámina) diferente. Un # sirve para generar un título grande que aparece centrado y ## crean un título más pequeño que aparece al comienzo de la slide.\n4- Probemos creando dos slides para una presentación académica. Primero, una slide que tenga por título ‘Introducción’ y una segunda slide que tenga por título ‘Descriptivos’.\n\n5- Ya podemos renderizar el documento para ver cómo está quedando. Posiblemente nos pedirá guardar y lo almacenamos en la misma carpeta que tiene nuestro proyecto .Rproject y nuestra carpeta output con las imágenes que hemos exportado. Se debería ver más o menos así:\n\n\n\nPersonalización de slides\nLe podemos asignar distintas características a cada slide como, por ejemplo, separar una slide en dos columnas o dos espacios de tamaño personalizable.\n:::: {.columns}\n\n::: {.column width=\"40%\"}\nColumna izquierda\n:::\n\n::: {.column width=\"60%\"}\nColumna derecha\n:::\n\n::::\nSuponiendo que una slide tiene un 100% de tamaño, cada porcentaje luego de width representa la proporción que utilizará cada columna en la slide. Lo más fácil es tener dos columnas iguales de 50%, pero dependerá de nuestra presentación.\n6- Creemos dos columnas en la slide de ‘Descriptivos’\n\nOtra cosa que podemos hacer es agregar imágenes a cada slides, lo que nos servirá para incluir nuestros gráficos y resultados en general. El código base para agregar una imagen, suponiendo que nuestro archivo de presentación está en la carpeta raiz (siguiendo la estructura recomendada del protocolo IPO), es el siguiente:\n\n![](output/graphs/grafico1.png)\n7- Agreguemos algún gráfico en la sección de correlaciones\n\nSi combinamos ambas cosas, podemos por ejemplo mostrar en una columna un gráfico y en otra columna su interpretación\n8- Agreguemos un gráfico en la columna derecha de la slide de regresiones y su interpretación en la columna izquierda:\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\nEl gráfico muestra que por cada año que aumenta la edad, la variable dependiente aumenta en 0.05 unidades, con un 99% de confianza.\n:::\n\n::: {.column width=\"50%\"}\n![](output/graphs/grafico2.png)\n:::\n\n::::\n\nSi queremos presentar una slide que tenga un incremento en los puntos que vamos mostrando en la presentación, la función es agregar ‘incremental’ al comienzo de los puntos que queremos que vayan incrementando.\n::: {.incremental}\n- En esta investigación quisimos demostrar...\n- Nuestros principales resultados indican que...\n:::\n9- Agreguemos un incremento de puntos en la sección de conclusión:"
+    "objectID": "slides/01-clase1/01-clase1.html#section",
+    "href": "slides/01-clase1/01-clase1.html#section",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2024\nR-data-analisis.netlify.com"
   },
   {
-    "objectID": "practicos/10-content.html#templates-y-otros",
-    "href": "practicos/10-content.html#templates-y-otros",
-    "title": "10: Presentaciones en Quarto",
-    "section": "Templates y otros",
-    "text": "Templates y otros\nPodemos cambiar el estilo completo de la presentación cambiando el Tema (‘theme’) dentro del YAML del inicio. Por ejemplo:\n\n---\ntitle: \"Cohesión barrial\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs: \n    theme: dark\neditor: visual\n---\nOtras opciones de temas son:\n\nbeige\nblood\ndark\ndefault\nleague\nmoon\nnight\nserif\nsimple\nsky\nsolarized\n\n10- Probemos alguno en nuestro ejemplo y volvemos a renderizar:\n\n\nVarios\nY podemos probar algunas otras cosas para personalizar aún más nuestras presentaciones:\n---\ntitle: \"Cohesión barrial en Chile\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs:\n    slideNumber: true # Número de slide abajo a la derecha\neditor: visual\ntitle-slide-attributes:\n    data-background-image: input/cohesion.jpg # Agregar una imagen al comienzo de la presentación\n    data-background-size: contain\n    data-background-opacity: \"0.1\" # Qué tan difuminada se ve la imagen (0.1 es lo menor)\nbibliography: cohesion.bib # Agregar nuestra bibligrofía\nlink-citations: TRUE # Que la bibliografía tenga links automáticos\n---\n\n\n\n\n\n\nNota\n\n\n\nSi guardamos el archivo de presentación en la carpeta raíz (junto al archivo .Rproject) y subimos todos los documentos a github, entonces el link estandar para visualizar la presentación debería ser:\nhttps://kevin-carrasco.github.io/ipo/presentacion.html"
+    "objectID": "slides/01-clase1/01-clase1.html#este-curso",
+    "href": "slides/01-clase1/01-clase1.html#este-curso",
+    "title": "R para Análisis estadístico",
+    "section": "Este curso",
+    "text": "Este curso\n\nUnidad 1: Elementos y herramientas de R\nUnidad 2: Operacionalización y análisis descriptivo de datos\nUnidad 3: Análisis estadístico inferencial en R\nUnidad 4: Regresión lineal y regresión logística"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#evaluación",
+    "href": "slides/01-clase1/01-clase1.html#evaluación",
+    "title": "R para Análisis estadístico",
+    "section": "Evaluación",
+    "text": "Evaluación\n\n3 trabajos (20% c/u). En parejas\nPresentación final de investigación (10%)\nExamen Final (30%)\nFoco en reproducibilidad, reporte, visualización y análisis de resultados."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#sitio-web-del-curso",
+    "href": "slides/01-clase1/01-clase1.html#sitio-web-del-curso",
+    "title": "R para Análisis estadístico",
+    "section": "Sitio web del curso",
+    "text": "Sitio web del curso\nR-data-analisis.netlify.app\n\nVentajas: Todo en un mismo lugar, permite combinar texto y código, reproducible, gratis, acceso abierto, etc."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#sitio-web",
+    "href": "slides/01-clase1/01-clase1.html#sitio-web",
+    "title": "R para Análisis estadístico",
+    "section": "Sitio web",
+    "text": "Sitio web"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ciencia-abierta",
+    "href": "slides/01-clase1/01-clase1.html#ciencia-abierta",
+    "title": "R para Análisis estadístico",
+    "section": "Ciencia abierta",
+    "text": "Ciencia abierta"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#reproducibilidad",
+    "href": "slides/01-clase1/01-clase1.html#reproducibilidad",
+    "title": "R para Análisis estadístico",
+    "section": "Reproducibilidad",
+    "text": "Reproducibilidad\n\nEs la posibilidad de regenerar de manera independiente los resultados usando los materiales originales de una investigación ya publicada.\nEn términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#qué-porcentaje-de-los-estudios-publicados-son-reproducibles",
+    "href": "slides/01-clase1/01-clase1.html#qué-porcentaje-de-los-estudios-publicados-son-reproducibles",
+    "title": "R para Análisis estadístico",
+    "section": "¿Qué porcentaje de los estudios publicados son reproducibles?",
+    "text": "¿Qué porcentaje de los estudios publicados son reproducibles?\n\n\n\n\nAlrededor de un 40%! dependiendo de la disciplina"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#hay-crisis-de-reproducibilidad",
+    "href": "slides/01-clase1/01-clase1.html#hay-crisis-de-reproducibilidad",
+    "title": "R para Análisis estadístico",
+    "section": "¿Hay crisis de reproducibilidad?",
+    "text": "¿Hay crisis de reproducibilidad?\n\n\n\n\nFuente: Baker (2016) 1,500 scientists lift the lid on reproducibility - Nature"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#y-en-la-práctica-cómo-afecta-la-reproducibilidad",
+    "href": "slides/01-clase1/01-clase1.html#y-en-la-práctica-cómo-afecta-la-reproducibilidad",
+    "title": "R para Análisis estadístico",
+    "section": "¿y en la práctica cómo afecta la reproducibilidad?",
+    "text": "¿y en la práctica cómo afecta la reproducibilidad?\n\n\n\n\nBreznau, et. al, (2023) coordinó una investigación con 161 investigadores de 73 equipos de investigación.\nLos equipos informaron tanto hallazgos numéricos como conclusiones sustanciales muy diversas"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ejemplo-con-procesador-de-texto-tradicional",
+    "href": "slides/01-clase1/01-clase1.html#ejemplo-con-procesador-de-texto-tradicional",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo con procesador de texto tradicional",
+    "text": "Ejemplo con procesador de texto tradicional"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ejemplo-con-procesador-de-texto-tradicional-1",
+    "href": "slides/01-clase1/01-clase1.html#ejemplo-con-procesador-de-texto-tradicional-1",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo con procesador de texto tradicional",
+    "text": "Ejemplo con procesador de texto tradicional"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#algunas-limitaciones",
+    "href": "slides/01-clase1/01-clase1.html#algunas-limitaciones",
+    "title": "R para Análisis estadístico",
+    "section": "Algunas limitaciones",
+    "text": "Algunas limitaciones\n\n\n\nBarrera de pago/licencia para acceder a contenidos (propiedad)\nDifícil versionamiento y llevar registro de quién hizo qué cambio, barrera a la reproducibilidad y colaboración\nNo permite un documento enteramente reproducible que combine texto y código de análisis (en caso de utilizarlo)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#introducción-a-r-y-rstudio",
+    "href": "slides/01-clase1/01-clase1.html#introducción-a-r-y-rstudio",
+    "title": "R para Análisis estadístico",
+    "section": "Introducción a R y RStudio",
+    "text": "Introducción a R y RStudio"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#así-se-ve-rstudio",
+    "href": "slides/01-clase1/01-clase1.html#así-se-ve-rstudio",
+    "title": "R para Análisis estadístico",
+    "section": "Así se ve Rstudio",
+    "text": "Así se ve Rstudio"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-3",
+    "href": "slides/01-clase1/01-clase1.html#section-3",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": ".small[.right[fuente: Guía de campo de R]]"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#por-qué-usar-r",
+    "href": "slides/01-clase1/01-clase1.html#por-qué-usar-r",
+    "title": "R para Análisis estadístico",
+    "section": "¿Por qué usar R?",
+    "text": "¿Por qué usar R?\n\nGratis: No es necesario pagar licencias\nMultiplataforma (Windows, Mac-OS, Linux): Los códigos de análisis pueden ser usados en distintas plataformas\nInvestigación reproducible: Permite documentar los resultados obtenidos paso a paso, mostrando el flujo completo de procesamiento de los datos por medio de scripts\nIntegración con otros softwares"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-4",
+    "href": "slides/01-clase1/01-clase1.html#section-4",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Independiente de programa comercial\nIndependiente de plataformas específicas\nPermite combinar texto y análisis en un mismo documento\nFoco en los contenidos en lugar del formato\nPermite distintas opciones de formato final"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#así-se-ve-quarto",
+    "href": "slides/01-clase1/01-clase1.html#así-se-ve-quarto",
+    "title": "R para Análisis estadístico",
+    "section": "Así se ve Quarto",
+    "text": "Así se ve Quarto\n)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-1",
+    "href": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-1",
+    "title": "R para Análisis estadístico",
+    "section": "Así se ve Quarto",
+    "text": "Así se ve Quarto"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#alternativas",
+    "href": "slides/01-clase1/01-clase1.html#alternativas",
+    "title": "R para Análisis estadístico",
+    "section": "Alternativas",
+    "text": "Alternativas\n\n\n\nA. ad-hoc\n\ncada investigador define numero de archivos, nombres, carpetas y organización\nexplicar al resto cómo se organiza\ndocumentar en un archivo cómo se organiza\n\n–&gt; reproducibilidad y transparencia LIMITADA\n\n\n\nB. Protocolo reproducible\n\nestructura de carpetas y archivos interconectados que refieren a reglas conocidas (estándares)\nautocontenido: toda la información necesaria para la reproducibilidad se encuentra en la carpeta raíz o directorio de trabajo."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#propuesta-protocolo-ipo",
+    "href": "slides/01-clase1/01-clase1.html#propuesta-protocolo-ipo",
+    "title": "R para Análisis estadístico",
+    "section": "Propuesta: Protocolo IPO",
+    "text": "Propuesta: Protocolo IPO"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#estructura-ipo",
+    "href": "slides/01-clase1/01-clase1.html#estructura-ipo",
+    "title": "R para Análisis estadístico",
+    "section": "Estructura IPO",
+    "text": "Estructura IPO"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#mayores-detalles-y-plantilla-de-carpetas",
+    "href": "slides/01-clase1/01-clase1.html#mayores-detalles-y-plantilla-de-carpetas",
+    "title": "R para Análisis estadístico",
+    "section": "Mayores detalles y plantilla de carpetas:",
+    "text": "Mayores detalles y plantilla de carpetas:\n\nhttps://lisa-coes.com/ipo-repro/\nhttps://github.com/lisa-coes/ipo"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#carpeta-autocontenida",
+    "href": "slides/01-clase1/01-clase1.html#carpeta-autocontenida",
+    "title": "R para Análisis estadístico",
+    "section": "Carpeta autocontenida",
+    "text": "Carpeta autocontenida\n\nproyecto autocontenido: reproducible sin necesidad de archivos externos\nrequisito: establecer directorio de trabajo\n\nposición de referencia de todas las operaciones al interior del proyecto\ntambién llamado directorio raíz"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#directorio-de-trabajo",
+    "href": "slides/01-clase1/01-clase1.html#directorio-de-trabajo",
+    "title": "R para Análisis estadístico",
+    "section": "Directorio de trabajo",
+    "text": "Directorio de trabajo\n\nej. forma tradicional en hoja de código R:\n\nsetwd(ruta-a-carpeta-de-proyecto)\nproblemas: hace referencia a ruta local en el computador donde se está trabajando, por lo tanto no es reproducible y se debe evitar\n\nalternativa sugerida en R: RStudio Projects"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#rstudio-projects",
+    "href": "slides/01-clase1/01-clase1.html#rstudio-projects",
+    "title": "R para Análisis estadístico",
+    "section": "RStudio Projects",
+    "text": "RStudio Projects\n\nLa funcionalidad Projects de RStudio permite establecer claramente un directorio de trabajo de manera eficiente\nPara ello, genera un archivo de extensión .Rproj en el directorio raiz de la carpeta del proyecto\nLuego se facilita acceder a la carpeta del proyecto en RStudio ejecutando desde el administrador de archivos del computador (file manager) el archivo .Rproj\npara comprobar, ejecutar getwd() y debería dar la ruta hacia la carpeta del proyecto"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-5",
+    "href": "slides/01-clase1/01-clase1.html#section-5",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "La escritura en texto simple (como Markdown o Quarto) permite implementar un sistema de control de versiones, además de herramientas de respaldo, colaboración y comunicación"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#el-origen-abriendo-un-sistema-operativo",
+    "href": "slides/01-clase1/01-clase1.html#el-origen-abriendo-un-sistema-operativo",
+    "title": "R para Análisis estadístico",
+    "section": "El origen: Abriendo un sistema operativo",
+    "text": "El origen: Abriendo un sistema operativo\n\n\n\n\n\nLinus Torvalds, 1991 (21 años)\nCrea sistema operativo libre (Linux) y lo abre a la colaboración. Postea:\n\n“I’m doing a (free) operating system (just a hobby, won’t be big and professional…”\n\nTED talk"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#git",
+    "href": "slides/01-clase1/01-clase1.html#git",
+    "title": "R para Análisis estadístico",
+    "section": "Git",
+    "text": "Git\n\n\n\n\n\nes una especie de memoria o registro local que guarda información sobre:\n\nquién hizo un cambio\ncuándo lo hizo\nqué hizo\n\nmantiene la información de todos los cambios en la historia de la carpeta / repositorio local\nse puede sincronizar con un repositorio remoto (ej. Github)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#gitgithub",
+    "href": "slides/01-clase1/01-clase1.html#gitgithub",
+    "title": "R para Análisis estadístico",
+    "section": "Git/github",
+    "text": "Git/github\n\nactualmente, Git / Github posee más de 100 millones de repositorios\nmayor fuente de código en el mundo\nha transitado desde el mundo de desarrollo de software hacia distintos ámbitos de trabajo colaborativo y abierto\nentorno de trabajo que favorece la ciencia abierta"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-6",
+    "href": "slides/01-clase1/01-clase1.html#section-6",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Git no es un registro de versiones de archivos específicos, sino de una carpeta completa\nGuarda “fotos” de momentos específicos de la carpeta, y esta foto se saca mediante un commit"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#commits",
+    "href": "slides/01-clase1/01-clase1.html#commits",
+    "title": "R para Análisis estadístico",
+    "section": "Commits",
+    "text": "Commits\n\nEl commit es el procedimiento fundamental del control de versiones\nGit no registra cualquier cambio que se “guarda”, sino los que se “comprometen” (commit).\nEn un commit\n\nse seleccionan los archivos cuyo cambio se desea registrar (stage)\nse registra lo que se está comprometiendo en el cambio (mensaje de commit)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#cuándo-hacer-un-commit",
+    "href": "slides/01-clase1/01-clase1.html#cuándo-hacer-un-commit",
+    "title": "R para Análisis estadístico",
+    "section": "¿Cuándo hacer un commit?",
+    "text": "¿Cuándo hacer un commit?\n\nsegún conveniencia\nsugerencias:\n\nque sea un momento que requiera registro (momento de foto)\nno para cambios menores\nno esperar muchos cambios distintos que puedan hacer perder el sentido del commit"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-8",
+    "href": "slides/01-clase1/01-clase1.html#section-8",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2024\nR-data-analisis.netlify.com"
   },
   {
     "objectID": "trabajos.html",
