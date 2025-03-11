@@ -2,7 +2,7 @@
 title: "Práctico 1. Aproximación inicial a R"
 subtitle: "R para análisis estadístico"
 linktitle: "Práctico 1: Aproximación R"
-date: "2023-03-17"
+date: "2025-03-11"
 lang: es
 ---
 
@@ -181,24 +181,6 @@ guaguas %>%
        title = "Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979")
 ```
 
-# Parte 2
 
-## Rproject
-
-Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la **reproducibilidad**. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el [protocolo IPO](https://lisa-coes.com/ipo-repro/).
-
-Para crear un Rproject:
-
-1. Abrir Rstudio
-
-2. Seleccionar Archivo -> Nuevo proyecto
-
-![](images/project.png)
-
-3. Seleccionamos la opción de directorio existente
-
-4. Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior
-
-5. Apretamos el botón de crear proyecto
 
 

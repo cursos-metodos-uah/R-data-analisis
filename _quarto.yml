@@ -100,10 +100,10 @@ website:
             - practicos/index.qmd
         - section: "Talleres"
           contents:
-            - text: "01: Práctico 1"
+            - text: "Práctico 1: Introducción a R"
               file: practicos/01-content.qmd
-            # - text: "02: Práctico 2"
-            #   file: practicos/02-content.qmd
+            - text: "Práctico 2: Operacionalización"
+              file: practicos/02-content.qmd
             # - text: "03: Práctico 3"
             #   file: practicos/03-content.qmd
             # - text: "04: Práctico 4"

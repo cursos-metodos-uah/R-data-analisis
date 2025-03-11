@@ -93,14 +93,6 @@ class: inverse, bottom, right, animated, slideInRight
 
 # .red[Presentación]
 
----
-
-class: inverse, bottom, right
-
-
-.center[![:scale 37%](../../files/img/encuesta.png)]
-
-# .red[Presentación]
 
 ---
 
@@ -127,7 +119,7 @@ class: inverse, bottom, right
 
 # Evaluación 
 
-- 4 trabajos (15% c/u). Asociado a cada unidad
+- 3 trabajos (20% c/u). En parejas
 
 - Presentación final de investigación (10%)
 
