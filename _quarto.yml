@@ -103,10 +103,10 @@ website:
               file: practicos/01-content.qmd
             - text: "Práctico 2: Operacionalización"
               file: practicos/02-content.qmd
-            # - text: "03: Práctico 3"
-            #   file: practicos/03-content.qmd
-            # - text: "04: Práctico 4"
-            #   file: practicos/04-content.qmd
+            - text: "Práctico 3: Operacionalización (parte 2)"
+              file: practicos/03-content.qmd
+            - text: "Práctico 4: Visualización"
+              file: practicos/04-content.qmd
             # - text: "05: Práctico 5"
             #   file: practicos/05-content.qmd
             # - text: "06: Práctico 6"
