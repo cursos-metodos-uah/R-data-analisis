@@ -1,16 +1,10 @@
 ---
 title: "Clase 2"
-date: "2024-03-19"
+date: "2025-03-25"
 lang: es
 ---
 
-## Documento de presentación
- 
-<iframe src=/slides/02-clase2/02-clase2.html height="550" width=100% allowfullscreen="true">
-</iframe> 
 
+## Video presentación
 
-
-## Lecturas
-
-[R for Data Science](https://es.r4ds.hadley.nz/introducci%C3%B3n.html)
+{{< video https://youtu.be/-pPmtz29vZ8?si=jMu95O54wcZoWchs >}}

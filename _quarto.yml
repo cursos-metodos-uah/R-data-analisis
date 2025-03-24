@@ -74,8 +74,8 @@ website:
           contents:
             - text: "01: Clase 1"
               file: content/01-content.qmd
-            # - text: "02: Clase 2"
-            #   file: content/02-content.qmd
+            - text: "02: Clase 2"
+              file: content/02-content.qmd
             # - text: "03: Clase 3"
             #   file: content/03-content.qmd
             # - text: "04: Clase 4"

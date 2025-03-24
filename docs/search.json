@@ -769,58 +769,147 @@
     "text": "Ordenar por\n       Por defecto\n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Título\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nFecha\n\n\nTítulo\n\n\nCategorías\n\n\n\n\n\n\nlunes agosto 7, 2023 at 12:00 AM\n\n\nBienvenid_s a clases!\n\n\ncomenzando\n\n\n\n\nlunes agosto 7, 2023 at 12:00 AM\n\n\nInformaciones de la semana\n\n\ninfo\n\n\n\n\n\nNo hay resultados\n\n\n\n\n\n\n\n\nSuscribirse!\n\n\n\nPuedes usar un lector de feeds como Feedly o un servicio RSS-to-email como Blogtrottr para suscribirte a cualquiera de estos mensajes. ::: {.grid}\n\n\n RSS\n\n\n\n\n\n\n\n\n\n:::"
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Planificación",
-    "section": "",
-    "text": "Los tres componentes centrales del curso son las clases teóricas, los prácticos en R y los trabajos. Las clases se realizarán los días Martes 16:00 a 17:20 en sala E62. Los prácticos en R se realizarán el mismo día en el horario de 17:30 a 18:50.\n\nClases ( ): Lecturas, documentos de presentación y sesiones teóricas\nTalleres y actividades en R (): Actividades prácticas a desarrollar en el segundo bloque de la clase, según programación al final de esta página.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Talleres y prácticos en R\n Lecturas y material adicional\n\n\n\n\n Marzo \n\n\n\n\n\nMartes 11\nUnidad 1: Elementos y herramientas de R\nPráctico 1\n- Leer detalladamente programa del curso\n\n\nMartes 18\nUnidad 1: Elementos y herramientas de R\nPráctico 2\n\n\n\nMartes 25\nUnidad 2: Operacionalización y análisis descriptivo de datos\nPráctico 3\n\n\n\n Abril \n\n\n\n\n\nMartes 01\nUnidad 2: Operacionalización y análisis descriptivo de datos\nPráctico 4\n\n\n\nMartes 08\nUnidad 2: Operacionalización y análisis descriptivo de datos\nPráctico 5\n\n\n\nMartes 15\nSesión de apoyo Trabajo N°1\nTrabajo 1 (16/04)\n\n\n\nMartes 22\nUnidad 3: Asociación de variables en R\nPráctico 6\n\n\n\nMartes 29\nUnidad 3: Indices y escalas\nPráctico 7\n\n\n\n Mayo \n\n\n\n\n\nMartes 06\nSesión de apoyo Trabajo N°2\nTrabajo 2 (07/05)\n\n\n\nMartes 13\nUnidad 4: Regresión lineal y regresión logística\nPráctico 8\n\n\n\nMartes 20\nUnidad 4: Regresión lineal y regresión logística\nPráctico 9\n\n\n\nMartes 27\nUnidad 4: Regresión lineal y regresión logística\nPráctico 10\n\n\n\n Junio \n\n\n\n\n\nMartes 03\nSesión de apoyo Trabajo N°3\nTrabajo N°3 (04/06)\n\n\n\nMartes 10\nTrabajo de investigación\nPráctico 11\n\n\n\nMartes 17\nTrabajo de investigación\nPresentaciones (17/06)\n\n\n\nMartes 24\nSesión de apoyo evaluación final.\n\n\n\n\n Julio \n\n\n\n\n\nMartes 08\nExamen final"
+    "objectID": "slides/ejemplo.html#correlacional",
+    "href": "slides/ejemplo.html#correlacional",
+    "title": "Cohesión barrial",
+    "section": "Correlacional",
+    "text": "Correlacional\nAcá correlacional o bivariados"
   },
   {
-    "objectID": "news/2023-08-14_infos.html",
-    "href": "news/2023-08-14_infos.html",
-    "title": "Informaciones de la semana",
-    "section": "",
-    "text": "← News\n\n\n\n\nActualizaciones sitio web:"
+    "objectID": "slides/ejemplo.html#regresiones",
+    "href": "slides/ejemplo.html#regresiones",
+    "title": "Cohesión barrial",
+    "section": "Regresiones",
+    "text": "Regresiones\n\n\nEl gráfico muestra que por cada año que aumenta la edad, la variable dependiente aumenta en 0.05 unidades, con un 99% de confianza."
   },
   {
-    "objectID": "herramientas/index.html",
-    "href": "herramientas/index.html",
-    "title": "Herramientas",
+    "objectID": "slides/ejemplo.html#conclusión",
+    "href": "slides/ejemplo.html#conclusión",
+    "title": "Cohesión barrial",
+    "section": "Conclusión",
+    "text": "Conclusión\n\n\nEn esta investigación quisimos demostrar…\nNuestros principales resultados indican que…"
+  },
+  {
+    "objectID": "practicos/index.html",
+    "href": "practicos/index.html",
+    "title": "Actividades prácticas en R",
     "section": "",
-    "text": "En esta sección encontrarán todas las herramientas y softwares que facilitan el trabajo reproducible.\nEn construcción…",
+    "text": "En esta sección encontrarán todas las sesiones prácticas de R, realizadas durante el segundo bloque de clases, y que son fundamentales para la correcta realización de los trabajos.",
     "crumbs": [
-      "Herramientas",
+      "Prácticos",
       "Información general",
-      "Herramientas"
+      "Actividades prácticas en R"
     ]
   },
   {
-    "objectID": "example/index.html",
-    "href": "example/index.html",
-    "title": "Code examples",
+    "objectID": "news/2023-01-09_welcome.html",
+    "href": "news/2023-01-09_welcome.html",
+    "title": "Bienvenid_s a clases!",
     "section": "",
-    "text": "Visit this section after you have finished the readings and lecture videos. It contains fully annotated R code and other supplementary information and it will be indispensable as you work on your problem sets and project.\nMany sections also contain videos of me live coding the examples so you can see what it looks like to work with R in real time. You’ll notice me make all sorts of little errors, which is totally normal—everyone does!"
+    "text": "← News\n\n\n\n\nHola a todos!"
   },
   {
-    "objectID": "content/04-content.html#lecturas",
-    "href": "content/04-content.html#lecturas",
-    "title": "Clase 4",
+    "objectID": "herramientas/01-content.html",
+    "href": "herramientas/01-content.html",
+    "title": "Github",
+    "section": "",
+    "text": "Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software).\n\n\n\n\n\n\nNota\n\n\n\nEl 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.\n\n\n\n\n\nUn repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.\nLos repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.\n\n\n\n\n\n\n\n\n\n\nTérmino\nDefinición\n\n\n\n\nBranch\nUna versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.\n\n\nClonar\nPara descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.\n\n\nFork\nUn nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.\n\n\nMerge\nPara aplicar los cambios de una rama y en otra.\n\n\nPull request\nUna solicitud para combinar los cambios de una branch en otra.\n\n\nRemote\nUn repositorio almacenado en GitHub, no en el equipo.\n\n\nUpstream\nLa branch de un repositorio original que se ha forkeado o clonado. La branch correspondiente de la branch clonada o forkeada se denomina «descendente».\n\n\n\n\n\n\n\nAcceder a la página de github\n\nRegistrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)\n\nLa personalización de la cuenta se puede saltar haciendo click en skip abajo de la selección de opciones\n\nDescargar e instalar Github Desktop\n\n\n\n\n\nEn la página principal de github hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios\n\nUna vez accedemos a Tus repositorios hacemos click en New/Nuevo\n\nLuego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio\n\n\n\n\nUna vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.\nPara todas las siguientes veces, las instrucciones son estas:\n1- Apretamos Repositorio actual en la esquina superior izquierda\n2- Apretamos añadir\n3- Apretamos clonar repositorio…\n\n4- Seleccionamos nuestro repositorio\n5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.",
+    "crumbs": [
+      "Herramientas",
+      "Github"
+    ]
+  },
+  {
+    "objectID": "herramientas/01-content.html#descripción",
+    "href": "herramientas/01-content.html#descripción",
+    "title": "Github",
+    "section": "",
+    "text": "Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software).\n\n\n\n\n\n\nNota\n\n\n\nEl 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.",
+    "crumbs": [
+      "Herramientas",
+      "Github"
+    ]
+  },
+  {
+    "objectID": "herramientas/01-content.html#repositorios",
+    "href": "herramientas/01-content.html#repositorios",
+    "title": "Github",
+    "section": "",
+    "text": "Un repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.\nLos repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.",
+    "crumbs": [
+      "Herramientas",
+      "Github"
+    ]
+  },
+  {
+    "objectID": "herramientas/01-content.html#principales-términos",
+    "href": "herramientas/01-content.html#principales-términos",
+    "title": "Github",
+    "section": "",
+    "text": "Término\nDefinición\n\n\n\n\nBranch\nUna versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.\n\n\nClonar\nPara descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.\n\n\nFork\nUn nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.\n\n\nMerge\nPara aplicar los cambios de una rama y en otra.\n\n\nPull request\nUna solicitud para combinar los cambios de una branch en otra.\n\n\nRemote\nUn repositorio almacenado en GitHub, no en el equipo.\n\n\nUpstream\nLa branch de un repositorio original que se ha forkeado o clonado. La branch correspondiente de la branch clonada o forkeada se denomina «descendente».",
+    "crumbs": [
+      "Herramientas",
+      "Github"
+    ]
+  },
+  {
+    "objectID": "herramientas/01-content.html#crear-cuenta-e-instalación",
+    "href": "herramientas/01-content.html#crear-cuenta-e-instalación",
+    "title": "Github",
+    "section": "",
+    "text": "Acceder a la página de github\n\nRegistrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)\n\nLa personalización de la cuenta se puede saltar haciendo click en skip abajo de la selección de opciones\n\nDescargar e instalar Github Desktop",
+    "crumbs": [
+      "Herramientas",
+      "Github"
+    ]
+  },
+  {
+    "objectID": "herramientas/01-content.html#crear-repositorio",
+    "href": "herramientas/01-content.html#crear-repositorio",
+    "title": "Github",
+    "section": "",
+    "text": "En la página principal de github hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios\n\nUna vez accedemos a Tus repositorios hacemos click en New/Nuevo\n\nLuego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio",
+    "crumbs": [
+      "Herramientas",
+      "Github"
+    ]
+  },
+  {
+    "objectID": "herramientas/01-content.html#github-desktop",
+    "href": "herramientas/01-content.html#github-desktop",
+    "title": "Github",
+    "section": "",
+    "text": "Una vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.\nPara todas las siguientes veces, las instrucciones son estas:\n1- Apretamos Repositorio actual en la esquina superior izquierda\n2- Apretamos añadir\n3- Apretamos clonar repositorio…\n\n4- Seleccionamos nuestro repositorio\n5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.",
+    "crumbs": [
+      "Herramientas",
+      "Github"
+    ]
+  },
+  {
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Clases",
+    "section": "",
+    "text": "En esta sección podrán encontrar todas las clases del curso. Se irán subiendo semana a semana.",
+    "crumbs": [
+      "Clases",
+      "Información general",
+      "Clases"
+    ]
+  },
+  {
+    "objectID": "content/03-content.html#lecturas",
+    "href": "content/03-content.html#lecturas",
+    "title": "Clase 3",
     "section": "Lecturas",
     "text": "Lecturas"
   },
   {
-    "objectID": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "href": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "title": "Clase 4",
+    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 3",
     "section": "Moore: 1.Comprensión de los datos (1-54)",
     "text": "Moore: 1.Comprensión de los datos (1-54)"
-  },
-  {
-    "objectID": "content/02-content.html#lecturas",
-    "href": "content/02-content.html#lecturas",
-    "title": "Clase 2",
-    "section": "Lecturas",
-    "text": "Lecturas\nR for Data Science"
   },
   {
     "objectID": "assignment/index.html",
@@ -951,147 +1040,51 @@
     ]
   },
   {
-    "objectID": "content/03-content.html#lecturas",
-    "href": "content/03-content.html#lecturas",
-    "title": "Clase 3",
+    "objectID": "content/04-content.html#lecturas",
+    "href": "content/04-content.html#lecturas",
+    "title": "Clase 4",
     "section": "Lecturas",
     "text": "Lecturas"
   },
   {
-    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "title": "Clase 3",
+    "objectID": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 4",
     "section": "Moore: 1.Comprensión de los datos (1-54)",
     "text": "Moore: 1.Comprensión de los datos (1-54)"
   },
   {
-    "objectID": "content/index.html",
-    "href": "content/index.html",
-    "title": "Clases",
+    "objectID": "example/index.html",
+    "href": "example/index.html",
+    "title": "Code examples",
     "section": "",
-    "text": "En esta sección podrán encontrar todas las clases del curso. Se irán subiendo semana a semana.",
+    "text": "Visit this section after you have finished the readings and lecture videos. It contains fully annotated R code and other supplementary information and it will be indispensable as you work on your problem sets and project.\nMany sections also contain videos of me live coding the examples so you can see what it looks like to work with R in real time. You’ll notice me make all sorts of little errors, which is totally normal—everyone does!"
+  },
+  {
+    "objectID": "herramientas/index.html",
+    "href": "herramientas/index.html",
+    "title": "Herramientas",
+    "section": "",
+    "text": "En esta sección encontrarán todas las herramientas y softwares que facilitan el trabajo reproducible.\nEn construcción…",
     "crumbs": [
-      "Clases",
+      "Herramientas",
       "Información general",
-      "Clases"
+      "Herramientas"
     ]
   },
   {
-    "objectID": "herramientas/01-content.html",
-    "href": "herramientas/01-content.html",
-    "title": "Github",
+    "objectID": "news/2023-08-14_infos.html",
+    "href": "news/2023-08-14_infos.html",
+    "title": "Informaciones de la semana",
     "section": "",
-    "text": "Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software).\n\n\n\n\n\n\nNota\n\n\n\nEl 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.\n\n\n\n\n\nUn repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.\nLos repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.\n\n\n\n\n\n\n\n\n\n\nTérmino\nDefinición\n\n\n\n\nBranch\nUna versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.\n\n\nClonar\nPara descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.\n\n\nFork\nUn nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.\n\n\nMerge\nPara aplicar los cambios de una rama y en otra.\n\n\nPull request\nUna solicitud para combinar los cambios de una branch en otra.\n\n\nRemote\nUn repositorio almacenado en GitHub, no en el equipo.\n\n\nUpstream\nLa branch de un repositorio original que se ha forkeado o clonado. La branch correspondiente de la branch clonada o forkeada se denomina «descendente».\n\n\n\n\n\n\n\nAcceder a la página de github\n\nRegistrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)\n\nLa personalización de la cuenta se puede saltar haciendo click en skip abajo de la selección de opciones\n\nDescargar e instalar Github Desktop\n\n\n\n\n\nEn la página principal de github hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios\n\nUna vez accedemos a Tus repositorios hacemos click en New/Nuevo\n\nLuego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio\n\n\n\n\nUna vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.\nPara todas las siguientes veces, las instrucciones son estas:\n1- Apretamos Repositorio actual en la esquina superior izquierda\n2- Apretamos añadir\n3- Apretamos clonar repositorio…\n\n4- Seleccionamos nuestro repositorio\n5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.",
-    "crumbs": [
-      "Herramientas",
-      "Github"
-    ]
+    "text": "← News\n\n\n\n\nActualizaciones sitio web:"
   },
   {
-    "objectID": "herramientas/01-content.html#descripción",
-    "href": "herramientas/01-content.html#descripción",
-    "title": "Github",
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Planificación",
     "section": "",
-    "text": "Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software).\n\n\n\n\n\n\nNota\n\n\n\nEl 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.",
-    "crumbs": [
-      "Herramientas",
-      "Github"
-    ]
-  },
-  {
-    "objectID": "herramientas/01-content.html#repositorios",
-    "href": "herramientas/01-content.html#repositorios",
-    "title": "Github",
-    "section": "",
-    "text": "Un repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.\nLos repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.",
-    "crumbs": [
-      "Herramientas",
-      "Github"
-    ]
-  },
-  {
-    "objectID": "herramientas/01-content.html#principales-términos",
-    "href": "herramientas/01-content.html#principales-términos",
-    "title": "Github",
-    "section": "",
-    "text": "Término\nDefinición\n\n\n\n\nBranch\nUna versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.\n\n\nClonar\nPara descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.\n\n\nFork\nUn nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.\n\n\nMerge\nPara aplicar los cambios de una rama y en otra.\n\n\nPull request\nUna solicitud para combinar los cambios de una branch en otra.\n\n\nRemote\nUn repositorio almacenado en GitHub, no en el equipo.\n\n\nUpstream\nLa branch de un repositorio original que se ha forkeado o clonado. La branch correspondiente de la branch clonada o forkeada se denomina «descendente».",
-    "crumbs": [
-      "Herramientas",
-      "Github"
-    ]
-  },
-  {
-    "objectID": "herramientas/01-content.html#crear-cuenta-e-instalación",
-    "href": "herramientas/01-content.html#crear-cuenta-e-instalación",
-    "title": "Github",
-    "section": "",
-    "text": "Acceder a la página de github\n\nRegistrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)\n\nLa personalización de la cuenta se puede saltar haciendo click en skip abajo de la selección de opciones\n\nDescargar e instalar Github Desktop",
-    "crumbs": [
-      "Herramientas",
-      "Github"
-    ]
-  },
-  {
-    "objectID": "herramientas/01-content.html#crear-repositorio",
-    "href": "herramientas/01-content.html#crear-repositorio",
-    "title": "Github",
-    "section": "",
-    "text": "En la página principal de github hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios\n\nUna vez accedemos a Tus repositorios hacemos click en New/Nuevo\n\nLuego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio",
-    "crumbs": [
-      "Herramientas",
-      "Github"
-    ]
-  },
-  {
-    "objectID": "herramientas/01-content.html#github-desktop",
-    "href": "herramientas/01-content.html#github-desktop",
-    "title": "Github",
-    "section": "",
-    "text": "Una vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.\nPara todas las siguientes veces, las instrucciones son estas:\n1- Apretamos Repositorio actual en la esquina superior izquierda\n2- Apretamos añadir\n3- Apretamos clonar repositorio…\n\n4- Seleccionamos nuestro repositorio\n5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.",
-    "crumbs": [
-      "Herramientas",
-      "Github"
-    ]
-  },
-  {
-    "objectID": "news/2023-01-09_welcome.html",
-    "href": "news/2023-01-09_welcome.html",
-    "title": "Bienvenid_s a clases!",
-    "section": "",
-    "text": "← News\n\n\n\n\nHola a todos!"
-  },
-  {
-    "objectID": "practicos/index.html",
-    "href": "practicos/index.html",
-    "title": "Actividades prácticas en R",
-    "section": "",
-    "text": "En esta sección encontrarán todas las sesiones prácticas de R, realizadas durante el segundo bloque de clases, y que son fundamentales para la correcta realización de los trabajos.",
-    "crumbs": [
-      "Prácticos",
-      "Información general",
-      "Actividades prácticas en R"
-    ]
-  },
-  {
-    "objectID": "slides/ejemplo.html#correlacional",
-    "href": "slides/ejemplo.html#correlacional",
-    "title": "Cohesión barrial",
-    "section": "Correlacional",
-    "text": "Correlacional\nAcá correlacional o bivariados"
-  },
-  {
-    "objectID": "slides/ejemplo.html#regresiones",
-    "href": "slides/ejemplo.html#regresiones",
-    "title": "Cohesión barrial",
-    "section": "Regresiones",
-    "text": "Regresiones\n\n\nEl gráfico muestra que por cada año que aumenta la edad, la variable dependiente aumenta en 0.05 unidades, con un 99% de confianza."
-  },
-  {
-    "objectID": "slides/ejemplo.html#conclusión",
-    "href": "slides/ejemplo.html#conclusión",
-    "title": "Cohesión barrial",
-    "section": "Conclusión",
-    "text": "Conclusión\n\n\nEn esta investigación quisimos demostrar…\nNuestros principales resultados indican que…"
+    "text": "Los tres componentes centrales del curso son las clases teóricas, los prácticos en R y los trabajos. Las clases se realizarán los días Martes 16:00 a 17:20 en sala E62. Los prácticos en R se realizarán el mismo día en el horario de 17:30 a 18:50.\n\nClases ( ): Lecturas, documentos de presentación y sesiones teóricas\nTalleres y actividades en R (): Actividades prácticas a desarrollar en el segundo bloque de la clase, según programación al final de esta página.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Talleres y prácticos en R\n Lecturas y material adicional\n\n\n\n\n Marzo \n\n\n\n\n\nMartes 11\nUnidad 1: Elementos y herramientas de R\nPráctico 1\n- Leer detalladamente programa del curso\n\n\nMartes 18\nUnidad 1: Elementos y herramientas de R\nPráctico 2\n\n\n\nMartes 25\nUnidad 2: Operacionalización y análisis descriptivo de datos\nPráctico 3\n\n\n\n Abril \n\n\n\n\n\nMartes 01\nUnidad 2: Operacionalización y análisis descriptivo de datos\nPráctico 4\n\n\n\nMartes 08\nUnidad 2: Operacionalización y análisis descriptivo de datos\nPráctico 5\n\n\n\nMartes 15\nSesión de apoyo Trabajo N°1\nTrabajo 1 (16/04)\n\n\n\nMartes 22\nUnidad 3: Asociación de variables en R\nPráctico 6\n\n\n\nMartes 29\nUnidad 3: Indices y escalas\nPráctico 7\n\n\n\n Mayo \n\n\n\n\n\nMartes 06\nSesión de apoyo Trabajo N°2\nTrabajo 2 (07/05)\n\n\n\nMartes 13\nUnidad 4: Regresión lineal y regresión logística\nPráctico 8\n\n\n\nMartes 20\nUnidad 4: Regresión lineal y regresión logística\nPráctico 9\n\n\n\nMartes 27\nUnidad 4: Regresión lineal y regresión logística\nPráctico 10\n\n\n\n Junio \n\n\n\n\n\nMartes 03\nSesión de apoyo Trabajo N°3\nTrabajo N°3 (04/06)\n\n\n\nMartes 10\nTrabajo de investigación\nPráctico 11\n\n\n\nMartes 17\nTrabajo de investigación\nPresentaciones (17/06)\n\n\n\nMartes 24\nSesión de apoyo evaluación final.\n\n\n\n\n Julio \n\n\n\n\n\nMartes 08\nExamen final"
   },
   {
     "objectID": "index.html",

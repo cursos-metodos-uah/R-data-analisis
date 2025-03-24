@@ -471,7 +471,25 @@ kevin-carrasco.github.io/ipo/trabajo.html
 ![](images/url-pages.png)
 
 
+# Tarea (+5 décimas trabajo 1)
 
+El objetivo de esta tarea es que exploren una base de datos que pueda ser utilizada en su trabajo 1. La idea es que puedan realizar los 5 pasos del proceso de operacionalización/recodificación de variables y luego generar al menos una tabla descriptiva y al menos un gráfico. 
+
+La tarea debe ser subida a github y debe ser posible de visualizar con github pages, siguiende las instrucciones de este mismo taller.
+
+Entonces:
+
+1- Pensar en un tema de investigación de interés sociológico y que sea investigable cuantitativamente en el contexto del curso.
+
+2- Elegir una base de datos de acceso abierto que permita investigar el tema elegido
+
+3- Crear un documento .qmd que operacionalice las variables de interés en el tema de investigación escogido (dos o tres variables en esta tarea)
+
+4- Crear al menos una tabla descriptiva y al menos un gráfico
+
+5- renderizar el documento (que se cree el archivo .html), almacenarlo en un repositorio de github y visualizarlo a través de github pages.
+
+* La fecha de entrega es el próximo martes 1 de abril, hasta antes de la clase. Se revisará solo el envío del enlace al documento subido a github pages (ej. kevin-carrasco.github.io/tareas/tarea1.html)
 
 
 
