@@ -107,6 +107,8 @@ website:
               file: practicos/03-content.qmd
             - text: "Práctico 4: Visualización"
               file: practicos/04-content.qmd
+            - text: "Taller Github y Quarto"
+              file: practicos/taller-github-quarto/taller-quarto-github.qmd
             # - text: "05: Práctico 5"
             #   file: practicos/05-content.qmd
             # - text: "06: Práctico 6"
