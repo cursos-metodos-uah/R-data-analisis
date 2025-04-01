@@ -1,7 +1,7 @@
 ---
 title: "R para análisis de datos"
 author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2024"
+date: "1er Sem 2025"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -61,7 +61,7 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 # R para el análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024 
+## 1er Sem 2025
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
 
@@ -69,7 +69,7 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 2: Construcción de reportes automáticos, reproducibles e integrados con código]
+## .yellow[Sesión 3: Construcción de reportes automáticos, reproducibles e integrados con código]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 
@@ -254,7 +254,7 @@ class: front
 # R para análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024
+## 1er Sem 2025
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
     

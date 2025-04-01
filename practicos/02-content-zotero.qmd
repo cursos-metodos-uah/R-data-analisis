@@ -1,6 +1,6 @@
 ---
-title: "Práctico R 2. Vinculación R y Zotero"
-date: "2023-10-19"
+title: "Práctico 5. Vinculación R y Zotero"
+date: "2025-04-01"
 lang: es
 website:
   comments:
@@ -19,6 +19,19 @@ opts_chunk$set(warning=FALSE,
 
 # Presentación
 
+Este práctico tiene como objetivo retomar los contenidos vistos en la sesión anterior (Quarto + Github) y complementarlos con Zotero y ResearchRabbit.
+
+¿Cómo obtener los repositorios que fueron creados en nuestros computadores personales?
+
+Podemos hacerlo desde RStudio
+
+1. Vamos a file --> New project --> Version control --> Git
+
+![](images/version1.png)
+
+2. Seleccionamos URL y lugar para almacenar el repositorio
+
+y listo!
 
 ## Zotero
 
@@ -190,7 +203,7 @@ En este caso, `[@mijsParadoxInequalityIncome2021a]`
 
 Aquí hay otros ejemplos:
 
-La investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años `[ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013]`.
+La investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años `[@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]`.
 
 Específicamente, se ha encontrado evidencia sobre que... `[@mijsParadoxInequalityIncome2021a]`. De todas formas, `@crucesBiasedPerceptionsIncome2013` plantea que...
 
@@ -207,7 +220,24 @@ Aunque ambos concluyen que... `[@mijsParadoxInequalityIncome2021a; @crucesBiased
 
 Con referencias automáticas!
 
-6. Ahora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop.
+6. Ahora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop o de RStudio, dependiendo del programa que estemos usando.
 
+En RStudio:
 
+7. Vamos a la sección de 'Git' nuevamente en nuestro panel de la derecha.
 
+8. Marcamos en 'Staged' todos los documentos que queramos subir.
+
+9. Hacemos un 'commit'.
+
+![](images/version3.png)
+
+10. Agregamos mensaje de commit
+
+11. Hacemos el commit
+
+12. Hacemos 'push'
+
+![](images/version4.png)
+
+y listo!
