@@ -790,23 +790,273 @@
     "text": "Conclusión\n\n\nEn esta investigación quisimos demostrar…\nNuestros principales resultados indican que…"
   },
   {
-    "objectID": "practicos/index.html",
-    "href": "practicos/index.html",
-    "title": "Actividades prácticas en R",
+    "objectID": "practicos/taller-github-quarto.html",
+    "href": "practicos/taller-github-quarto.html",
+    "title": "Trabajo colaborativo en Github",
     "section": "",
-    "text": "En esta sección encontrarán todas las sesiones prácticas de R, realizadas durante el segundo bloque de clases, y que son fundamentales para la correcta realización de los trabajos.",
+    "text": "Primero recordemos…\n\n\n\n\n\n\n\n\n\nTérmino\nDefinición\n\n\n\n\nBranch\nUna versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.\n\n\nClonar\nPara descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.\n\n\nFork\nUn nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.\n\n\nMerge\nPara aplicar los cambios de una rama y en otra.\n\n\nPull request\nUna solicitud para combinar los cambios de una branch en otra.\n\n\nRemote\nUn repositorio almacenado en GitHub, no en el equipo.\n\n\nUpstream\nLa branch de un repositorio original que se ha forkeado o clonado. La branch correspondiente de la branch clonada o forkeada se denomina «descendente».\n\n\n\n\n\n\nPara este práctico, y también como recomendación para el trabajo, vamos a comenzar haciendo un fork a un repositorio que servirá como base para el trabajo colaborativo.\n1- Entramos a Github y nos aseguramos de tener iniciada nuestra sesión\n2- Vamos al siguiente repositorio https://github.com/cursos-metodos-uah/plantilla_trabajo\n3- Hacemos un fork de este repositorio, que es básicamente crear una copia en nuestra cuenta.\n\n4- Le asignamos un nombre a nuestro repositorio\n\n5- Vamos a Settings y después a collaborators\n\n6- Añadimos la cuenta de nuestro compañero de trabajos\n7- Ambos descargar el repositorio en sus computadores\n…. y comienza el trabajo",
     "crumbs": [
       "Prácticos",
-      "Información general",
-      "Actividades prácticas en R"
+      "Talleres",
+      "Taller Github Colaborativo"
     ]
   },
   {
-    "objectID": "news/2023-01-09_welcome.html",
-    "href": "news/2023-01-09_welcome.html",
-    "title": "Bienvenid_s a clases!",
+    "objectID": "practicos/taller-github-quarto.html#principales-términos",
+    "href": "practicos/taller-github-quarto.html#principales-términos",
+    "title": "Trabajo colaborativo en Github",
     "section": "",
-    "text": "← News\n\n\n\n\nHola a todos!"
+    "text": "Término\nDefinición\n\n\n\n\nBranch\nUna versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.\n\n\nClonar\nPara descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.\n\n\nFork\nUn nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.\n\n\nMerge\nPara aplicar los cambios de una rama y en otra.\n\n\nPull request\nUna solicitud para combinar los cambios de una branch en otra.\n\n\nRemote\nUn repositorio almacenado en GitHub, no en el equipo.\n\n\nUpstream\nLa branch de un repositorio original que se ha forkeado o clonado. La branch correspondiente de la branch clonada o forkeada se denomina «descendente».",
+    "crumbs": [
+      "Prácticos",
+      "Talleres",
+      "Taller Github Colaborativo"
+    ]
+  },
+  {
+    "objectID": "practicos/taller-github-quarto.html#crear-repositorio",
+    "href": "practicos/taller-github-quarto.html#crear-repositorio",
+    "title": "Trabajo colaborativo en Github",
+    "section": "",
+    "text": "Para este práctico, y también como recomendación para el trabajo, vamos a comenzar haciendo un fork a un repositorio que servirá como base para el trabajo colaborativo.\n1- Entramos a Github y nos aseguramos de tener iniciada nuestra sesión\n2- Vamos al siguiente repositorio https://github.com/cursos-metodos-uah/plantilla_trabajo\n3- Hacemos un fork de este repositorio, que es básicamente crear una copia en nuestra cuenta.\n\n4- Le asignamos un nombre a nuestro repositorio\n\n5- Vamos a Settings y después a collaborators\n\n6- Añadimos la cuenta de nuestro compañero de trabajos\n7- Ambos descargar el repositorio en sus computadores\n…. y comienza el trabajo",
+    "crumbs": [
+      "Prácticos",
+      "Talleres",
+      "Taller Github Colaborativo"
+    ]
+  },
+  {
+    "objectID": "news/2023-08-14_infos.html",
+    "href": "news/2023-08-14_infos.html",
+    "title": "Informaciones de la semana",
+    "section": "",
+    "text": "← News\n\n\n\n\nActualizaciones sitio web:"
+  },
+  {
+    "objectID": "herramientas/index.html",
+    "href": "herramientas/index.html",
+    "title": "Herramientas",
+    "section": "",
+    "text": "En esta sección encontrarán todas las herramientas y softwares que facilitan el trabajo reproducible.\nEn construcción…",
+    "crumbs": [
+      "Herramientas",
+      "Información general",
+      "Herramientas"
+    ]
+  },
+  {
+    "objectID": "example/index.html",
+    "href": "example/index.html",
+    "title": "Code examples",
+    "section": "",
+    "text": "Visit this section after you have finished the readings and lecture videos. It contains fully annotated R code and other supplementary information and it will be indispensable as you work on your problem sets and project.\nMany sections also contain videos of me live coding the examples so you can see what it looks like to work with R in real time. You’ll notice me make all sorts of little errors, which is totally normal—everyone does!"
+  },
+  {
+    "objectID": "content/04-content.html#lecturas",
+    "href": "content/04-content.html#lecturas",
+    "title": "Clase 4",
+    "section": "Lecturas",
+    "text": "Lecturas",
+    "crumbs": [
+      "Clases",
+      "04: Clase 4"
+    ]
+  },
+  {
+    "objectID": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 4",
+    "section": "Moore: 1.Comprensión de los datos (1-54)",
+    "text": "Moore: 1.Comprensión de los datos (1-54)",
+    "crumbs": [
+      "Clases",
+      "04: Clase 4"
+    ]
+  },
+  {
+    "objectID": "content/01-content.html#lecturas",
+    "href": "content/01-content.html#lecturas",
+    "title": "Presentación",
+    "section": "Lecturas",
+    "text": "Lecturas\nR for Data Science",
+    "crumbs": [
+      "Clases",
+      "01: Clase 1"
+    ]
+  },
+  {
+    "objectID": "assignment/06-examen.html",
+    "href": "assignment/06-examen.html",
+    "title": "Examen",
+    "section": "",
+    "text": "Examen\nLa investigación final (examen) de este curso representa el 30% de la nota final.\nEsta investigación consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo realizado en las tareas del curso, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones.\nPor lo tanto, esta investigación debe incluir los 4 trabajos anteriores en un solo documento, sumando una sección final de conclusiones.\nA continuación se detalla la rubrica específica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Introducción y bibliografía automática\nL-s estudiantes plantean un problema de investigación relevante y lo justifican con bibliografía automatizada (Trabajo 1)\n2pts\n\n\n2. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. (Trabajo 2)\n2pts\n\n\n3. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva y dos gráficos univariados (Trabajo 2)\n2ptos\n\n\n4. Asociación de variables\nL-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico (trabajo 3)\n2ptos\n\n\n5. Construcción de índices y escalas\nL-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna (Trabajo 3)\n2ptos\n\n\n6. Estimación de modelos de regresión\nL-s estudiantes son capaces de reportar y visualizar correctamente distintos modelos de regresión (Trabajo 4)\n3ptos\n\n\n7. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n5pts\n\n\nTotal\n-\n18puntos"
+  },
+  {
+    "objectID": "assignment/04-trabajo.html",
+    "href": "assignment/04-trabajo.html",
+    "title": "Trabajo 4. Regresión lineal",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1, la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión lineal. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/04-trabajo.html#objetivos-del-trabajo",
+    "href": "assignment/04-trabajo.html#objetivos-del-trabajo",
+    "title": "Trabajo 4. Regresión lineal",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1, la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión lineal. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/04-trabajo.html#instrucciones-generales",
+    "href": "assignment/04-trabajo.html#instrucciones-generales",
+    "title": "Trabajo 4. Regresión lineal",
+    "section": "Instrucciones generales",
+    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta cuarta entrega se espera que sean capaces de generar una tabla de regresiones que muestre distintos modelos de regresión asociados a las hipótesis propuestas. También se espera que sean capaces de elaborar al menos un gráfico que muestre los valores predichos de algún coeficiente de regresión.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 2. En la tercera sección debe ir el análisis bivariado del trabajo 3. El objetivo de este trabajo 4 es que sean capaces de operacionalizar variables, estimar y visualizar coeficientes de regresión.\n\nEntrega:\n\nJueves 06 de junio a través de Teams.\nSi se entrega a través de github pages se otorgarán 0,5 décimas adicionales\nSi se entrega solo el repositorio de github (sin pages ni html) se otorgarán 0,3 décimas adicionales\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Carga y Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n1pts\n\n\n2. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés.\n2pts\n\n\n3. Estimación de modelos de regresión\nL-s estudiantes son capaces de reportar y visualizar correctamente distintos modelos de regresión\n5ptos\n\n\n4. Visualización valores predichos\nL-s estudiantes son capaces de construir al menos un gráfico que muestre los valores predichos de un coeficiente de regresión\n5ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n5pts\n\n\nTotal\n-\n18puntos"
+  },
+  {
+    "objectID": "assignment/02-trabajo.html",
+    "href": "assignment/02-trabajo.html",
+    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/02-trabajo.html#objetivos-del-trabajo",
+    "href": "assignment/02-trabajo.html#objetivos-del-trabajo",
+    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/02-trabajo.html#instrucciones-generales",
+    "href": "assignment/02-trabajo.html#instrucciones-generales",
+    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
+    "section": "Instrucciones generales",
+    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, pero es importante mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e interpretar estas tablas/gráficos.\n\nEntrega:\n\nJueves 18 de Abril a través de Teams.\nSe debe enviar el link al repositorio de github\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Cargar base de datos\nL-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R\n2pts\n\n\n2. Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n3. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)\n5pts\n\n\n4. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)\n6ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos"
+  },
+  {
+    "objectID": "assignment/01-trabajo.html",
+    "href": "assignment/01-trabajo.html",
+    "title": "Trabajo 1. Reporte descriptivo en Quarto",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. Luego, se debe generar un reporte descriptivo de datos utilizando una base de datos a elección. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.\n\n\n\n\nTítulo: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 500 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 3 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input). Omitir este paso si se trabaja con la CASEN\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.\n\n\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta de investigación, además de mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e interpretar estas tablas/gráficos.\n\n\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.\n\n\n\n\n\nMiércoles 16 de Abril a través de U-campus\nSe debe enviar el link al repositorio de github y/o github pages\nNo más de 2500 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos: 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Introducción\nL-s estudiantes son capaces de redactar un problema de investigación justificado con referencias automáticas\n2pts\n\n\n2. Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n3. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)\n5pts\n\n\n4. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)\n6ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos",
+    "crumbs": [
+      "Trabajos",
+      "Trabajo 1"
+    ]
+  },
+  {
+    "objectID": "assignment/01-trabajo.html#objetivos-del-trabajo",
+    "href": "assignment/01-trabajo.html#objetivos-del-trabajo",
+    "title": "Trabajo 1. Reporte descriptivo en Quarto",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. Luego, se debe generar un reporte descriptivo de datos utilizando una base de datos a elección. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.",
+    "crumbs": [
+      "Trabajos",
+      "Trabajo 1"
+    ]
+  },
+  {
+    "objectID": "assignment/01-trabajo.html#secciones-del-trabajo",
+    "href": "assignment/01-trabajo.html#secciones-del-trabajo",
+    "title": "Trabajo 1. Reporte descriptivo en Quarto",
+    "section": "",
+    "text": "Título: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 500 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 3 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input). Omitir este paso si se trabaja con la CASEN\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.\n\n\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta de investigación, además de mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e interpretar estas tablas/gráficos.\n\n\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.",
+    "crumbs": [
+      "Trabajos",
+      "Trabajo 1"
+    ]
+  },
+  {
+    "objectID": "assignment/01-trabajo.html#entrega",
+    "href": "assignment/01-trabajo.html#entrega",
+    "title": "Trabajo 1. Reporte descriptivo en Quarto",
+    "section": "",
+    "text": "Miércoles 16 de Abril a través de U-campus\nSe debe enviar el link al repositorio de github y/o github pages\nNo más de 2500 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos: 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Introducción\nL-s estudiantes son capaces de redactar un problema de investigación justificado con referencias automáticas\n2pts\n\n\n2. Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n3. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)\n5pts\n\n\n4. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)\n6ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos",
+    "crumbs": [
+      "Trabajos",
+      "Trabajo 1"
+    ]
+  },
+  {
+    "objectID": "assignment/03-trabajo.html",
+    "href": "assignment/03-trabajo.html",
+    "title": "Trabajo 3. Asociación de variables y construcción de índices",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1 y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/03-trabajo.html#objetivos-del-trabajo",
+    "href": "assignment/03-trabajo.html#objetivos-del-trabajo",
+    "title": "Trabajo 3. Asociación de variables y construcción de índices",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1 y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/03-trabajo.html#instrucciones-generales",
+    "href": "assignment/03-trabajo.html#instrucciones-generales",
+    "title": "Trabajo 3. Asociación de variables y construcción de índices",
+    "section": "Instrucciones generales",
+    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta segunda entrega se espera que sean capaces de generar una tabla de correlaciones que muestre el grado de asociación de las variables utilizadas en la investigación. También se espera que sean capaces de elaborar al menos un índice ponderado y/o una escalados con su respectivo reporte de consistencia interna (alfa de cronbach) según corresponda.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 2. El objetivo de este trabajo 3 es que sean capaces de operacionalizar variables, estimar y visualizar su grado de asociación y construir índices y/o escalas.\n\nEntrega:\n\nJueves 09 de mayo a través de Teams.\nSi se entrega a través de github pages se otorgarán 0,5 décimas adicionales\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Carga y Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n2. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés.\n3pts\n\n\n3. Asociación de variables\nL-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico\n5ptos\n\n\n4. Construcción de índices y escalas\nL-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna\n5ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos"
+  },
+  {
+    "objectID": "assignment/05-presentacion.html",
+    "href": "assignment/05-presentacion.html",
+    "title": "Presentación",
+    "section": "",
+    "text": "Nota máxima\nCriterios\n\n\n\n\n7,0\nLa presentación cumple con todos los aspectos estéticos del trabajo: La presentación es realizada a través de Quarto presentations subida y visualizada en Github pages. Junto con esto la presentación es desarrollada de buena manera considerando los aspectos más relevantes del trabajo de investigación: Tema de investigación bien planteado; objetivos claros y coherentes en concordancia con métodos cuantitativos; presentación de los principales resultados de la investigación; presentación de conclusiones.\n\n\n6,0\nLa presentación desarrolla de buena manera los aspectos incluidos en el punto anterior pero tiene algunos errores que afectan su calidad global—por ejemplo presentación no disponible en github pages; objetivos mal planteados y no alineados con un diseño cuantitativo; falencias en la presentación e interpretación de resultados.\n\n\n5,0\nLa presentación desarrolla parcialmente lo pedido en el primer punto incurriendo en errores en algunos aspectos centrales (por ejemplo presentación en otro formato) o no desarrollando adecuadamente otros puntos (ej. No presentando correctamente gráficos).\n\n\n4,0\nLa presentación contiene errores persistentes y no cuenta con elementos que permitan demostrar un dominio básico de lo solicitado en el primer punto (por ejemplo tema no acorde con los resultados presentados; no presenta gráficos que resuman los resultados).\n\n\n3,0\nLa presentación es de calidad deficiente y sugiere que los/as estudiantes no tienen conocimientos mínimos requeridos para aprobar el curso. Esto más allá de que algunos aspectos formales estén correctos.\n\n\n2,0\nLa presentación no tiene ningún elemento que amerite ser evaluado en el marco de lo pedido en el primer punto más allá de formalidades mínimas.\n\n\n1,0\nNo asiste a la presentación y no presenta justificativo."
+  },
+  {
+    "objectID": "assignment/05-presentacion.html#rúbrica-de-evaluación-presentaciones",
+    "href": "assignment/05-presentacion.html#rúbrica-de-evaluación-presentaciones",
+    "title": "Presentación",
+    "section": "",
+    "text": "Nota máxima\nCriterios\n\n\n\n\n7,0\nLa presentación cumple con todos los aspectos estéticos del trabajo: La presentación es realizada a través de Quarto presentations subida y visualizada en Github pages. Junto con esto la presentación es desarrollada de buena manera considerando los aspectos más relevantes del trabajo de investigación: Tema de investigación bien planteado; objetivos claros y coherentes en concordancia con métodos cuantitativos; presentación de los principales resultados de la investigación; presentación de conclusiones.\n\n\n6,0\nLa presentación desarrolla de buena manera los aspectos incluidos en el punto anterior pero tiene algunos errores que afectan su calidad global—por ejemplo presentación no disponible en github pages; objetivos mal planteados y no alineados con un diseño cuantitativo; falencias en la presentación e interpretación de resultados.\n\n\n5,0\nLa presentación desarrolla parcialmente lo pedido en el primer punto incurriendo en errores en algunos aspectos centrales (por ejemplo presentación en otro formato) o no desarrollando adecuadamente otros puntos (ej. No presentando correctamente gráficos).\n\n\n4,0\nLa presentación contiene errores persistentes y no cuenta con elementos que permitan demostrar un dominio básico de lo solicitado en el primer punto (por ejemplo tema no acorde con los resultados presentados; no presenta gráficos que resuman los resultados).\n\n\n3,0\nLa presentación es de calidad deficiente y sugiere que los/as estudiantes no tienen conocimientos mínimos requeridos para aprobar el curso. Esto más allá de que algunos aspectos formales estén correctos.\n\n\n2,0\nLa presentación no tiene ningún elemento que amerite ser evaluado en el marco de lo pedido en el primer punto más allá de formalidades mínimas.\n\n\n1,0\nNo asiste a la presentación y no presenta justificativo."
+  },
+  {
+    "objectID": "assignment/index.html",
+    "href": "assignment/index.html",
+    "title": "Trabajos",
+    "section": "",
+    "text": "En esta sección se encuentran las instrucciones de los Trabajos a realizar durante el curso.\n\nEvaluaciones\nEl curso tendrá cinco instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):\n4 trabajos individuales acumulativos (15% c/u).\n1 presentación de resultados (10%).\nLa nota ponderada de las evaluaciones equivaldrá al 70% de la nota del curso y el examen final al 30% restante.\n\n\nSobre temas y datos\nEl tema de trabajo es libre. Sin embargo, de modo de lograr una mayor colaboración desde el equipo docente a sus trabajos, sugerimos desarrollar los siguientes temas:\n\nDesigualdad social, Estratificación social, justicia distributiva, percepción de desigualdad\nEducación cívica, política educativa\nCohesión social, sociología política, economía gig\n\nLa base de datos a utilizar también es libre, pero recomendamos las siguientes:\n\nEstudio Longitudinal Social de Chile (Ola 1 2016)\nCASEN 2022\nSIMCE\nLAPOP\nLATINOBARÓMETRO",
+    "crumbs": [
+      "Trabajos",
+      "Información general",
+      "Trabajos"
+    ]
+  },
+  {
+    "objectID": "content/03-content.html#lecturas",
+    "href": "content/03-content.html#lecturas",
+    "title": "Clase 3",
+    "section": "Lecturas",
+    "text": "Lecturas",
+    "crumbs": [
+      "Clases",
+      "03: Clase 3"
+    ]
+  },
+  {
+    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 3",
+    "section": "Moore: 1.Comprensión de los datos (1-54)",
+    "text": "Moore: 1.Comprensión de los datos (1-54)",
+    "crumbs": [
+      "Clases",
+      "03: Clase 3"
+    ]
+  },
+  {
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Clases",
+    "section": "",
+    "text": "En esta sección podrán encontrar todas las clases del curso. Se irán subiendo semana a semana.",
+    "crumbs": [
+      "Clases",
+      "Información general",
+      "Clases"
+    ]
   },
   {
     "objectID": "herramientas/01-content.html",
@@ -886,206 +1136,23 @@
     ]
   },
   {
-    "objectID": "content/index.html",
-    "href": "content/index.html",
-    "title": "Clases",
+    "objectID": "news/2023-01-09_welcome.html",
+    "href": "news/2023-01-09_welcome.html",
+    "title": "Bienvenid_s a clases!",
     "section": "",
-    "text": "En esta sección podrán encontrar todas las clases del curso. Se irán subiendo semana a semana.",
+    "text": "← News\n\n\n\n\nHola a todos!"
+  },
+  {
+    "objectID": "practicos/index.html",
+    "href": "practicos/index.html",
+    "title": "Actividades prácticas en R",
+    "section": "",
+    "text": "En esta sección encontrarán todas las sesiones prácticas de R, realizadas durante el segundo bloque de clases, y que son fundamentales para la correcta realización de los trabajos.",
     "crumbs": [
-      "Clases",
+      "Prácticos",
       "Información general",
-      "Clases"
+      "Actividades prácticas en R"
     ]
-  },
-  {
-    "objectID": "content/03-content.html#lecturas",
-    "href": "content/03-content.html#lecturas",
-    "title": "Clase 3",
-    "section": "Lecturas",
-    "text": "Lecturas",
-    "crumbs": [
-      "Clases",
-      "03: Clase 3"
-    ]
-  },
-  {
-    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "title": "Clase 3",
-    "section": "Moore: 1.Comprensión de los datos (1-54)",
-    "text": "Moore: 1.Comprensión de los datos (1-54)",
-    "crumbs": [
-      "Clases",
-      "03: Clase 3"
-    ]
-  },
-  {
-    "objectID": "assignment/index.html",
-    "href": "assignment/index.html",
-    "title": "Trabajos",
-    "section": "",
-    "text": "En esta sección se encuentran las instrucciones de los Trabajos a realizar durante el curso.\n\nEvaluaciones\nEl curso tendrá cinco instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):\n4 trabajos individuales acumulativos (15% c/u).\n1 presentación de resultados (10%).\nLa nota ponderada de las evaluaciones equivaldrá al 70% de la nota del curso y el examen final al 30% restante.\n\n\nSobre temas y datos\nEl tema de trabajo es libre. Sin embargo, de modo de lograr una mayor colaboración desde el equipo docente a sus trabajos, sugerimos desarrollar los siguientes temas:\n\nDesigualdad social, Estratificación social, justicia distributiva, percepción de desigualdad\nEducación cívica, política educativa\nCohesión social, sociología política, economía gig\n\nLa base de datos a utilizar también es libre, pero recomendamos las siguientes:\n\nEstudio Longitudinal Social de Chile (Ola 1 2016)\nCASEN 2022\nSIMCE\nLAPOP\nLATINOBARÓMETRO",
-    "crumbs": [
-      "Trabajos",
-      "Información general",
-      "Trabajos"
-    ]
-  },
-  {
-    "objectID": "assignment/05-presentacion.html",
-    "href": "assignment/05-presentacion.html",
-    "title": "Presentación",
-    "section": "",
-    "text": "Nota máxima\nCriterios\n\n\n\n\n7,0\nLa presentación cumple con todos los aspectos estéticos del trabajo: La presentación es realizada a través de Quarto presentations subida y visualizada en Github pages. Junto con esto la presentación es desarrollada de buena manera considerando los aspectos más relevantes del trabajo de investigación: Tema de investigación bien planteado; objetivos claros y coherentes en concordancia con métodos cuantitativos; presentación de los principales resultados de la investigación; presentación de conclusiones.\n\n\n6,0\nLa presentación desarrolla de buena manera los aspectos incluidos en el punto anterior pero tiene algunos errores que afectan su calidad global—por ejemplo presentación no disponible en github pages; objetivos mal planteados y no alineados con un diseño cuantitativo; falencias en la presentación e interpretación de resultados.\n\n\n5,0\nLa presentación desarrolla parcialmente lo pedido en el primer punto incurriendo en errores en algunos aspectos centrales (por ejemplo presentación en otro formato) o no desarrollando adecuadamente otros puntos (ej. No presentando correctamente gráficos).\n\n\n4,0\nLa presentación contiene errores persistentes y no cuenta con elementos que permitan demostrar un dominio básico de lo solicitado en el primer punto (por ejemplo tema no acorde con los resultados presentados; no presenta gráficos que resuman los resultados).\n\n\n3,0\nLa presentación es de calidad deficiente y sugiere que los/as estudiantes no tienen conocimientos mínimos requeridos para aprobar el curso. Esto más allá de que algunos aspectos formales estén correctos.\n\n\n2,0\nLa presentación no tiene ningún elemento que amerite ser evaluado en el marco de lo pedido en el primer punto más allá de formalidades mínimas.\n\n\n1,0\nNo asiste a la presentación y no presenta justificativo."
-  },
-  {
-    "objectID": "assignment/05-presentacion.html#rúbrica-de-evaluación-presentaciones",
-    "href": "assignment/05-presentacion.html#rúbrica-de-evaluación-presentaciones",
-    "title": "Presentación",
-    "section": "",
-    "text": "Nota máxima\nCriterios\n\n\n\n\n7,0\nLa presentación cumple con todos los aspectos estéticos del trabajo: La presentación es realizada a través de Quarto presentations subida y visualizada en Github pages. Junto con esto la presentación es desarrollada de buena manera considerando los aspectos más relevantes del trabajo de investigación: Tema de investigación bien planteado; objetivos claros y coherentes en concordancia con métodos cuantitativos; presentación de los principales resultados de la investigación; presentación de conclusiones.\n\n\n6,0\nLa presentación desarrolla de buena manera los aspectos incluidos en el punto anterior pero tiene algunos errores que afectan su calidad global—por ejemplo presentación no disponible en github pages; objetivos mal planteados y no alineados con un diseño cuantitativo; falencias en la presentación e interpretación de resultados.\n\n\n5,0\nLa presentación desarrolla parcialmente lo pedido en el primer punto incurriendo en errores en algunos aspectos centrales (por ejemplo presentación en otro formato) o no desarrollando adecuadamente otros puntos (ej. No presentando correctamente gráficos).\n\n\n4,0\nLa presentación contiene errores persistentes y no cuenta con elementos que permitan demostrar un dominio básico de lo solicitado en el primer punto (por ejemplo tema no acorde con los resultados presentados; no presenta gráficos que resuman los resultados).\n\n\n3,0\nLa presentación es de calidad deficiente y sugiere que los/as estudiantes no tienen conocimientos mínimos requeridos para aprobar el curso. Esto más allá de que algunos aspectos formales estén correctos.\n\n\n2,0\nLa presentación no tiene ningún elemento que amerite ser evaluado en el marco de lo pedido en el primer punto más allá de formalidades mínimas.\n\n\n1,0\nNo asiste a la presentación y no presenta justificativo."
-  },
-  {
-    "objectID": "assignment/03-trabajo.html",
-    "href": "assignment/03-trabajo.html",
-    "title": "Trabajo 3. Asociación de variables y construcción de índices",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1 y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/03-trabajo.html#objetivos-del-trabajo",
-    "href": "assignment/03-trabajo.html#objetivos-del-trabajo",
-    "title": "Trabajo 3. Asociación de variables y construcción de índices",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1 y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/03-trabajo.html#instrucciones-generales",
-    "href": "assignment/03-trabajo.html#instrucciones-generales",
-    "title": "Trabajo 3. Asociación de variables y construcción de índices",
-    "section": "Instrucciones generales",
-    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta segunda entrega se espera que sean capaces de generar una tabla de correlaciones que muestre el grado de asociación de las variables utilizadas en la investigación. También se espera que sean capaces de elaborar al menos un índice ponderado y/o una escalados con su respectivo reporte de consistencia interna (alfa de cronbach) según corresponda.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 2. El objetivo de este trabajo 3 es que sean capaces de operacionalizar variables, estimar y visualizar su grado de asociación y construir índices y/o escalas.\n\nEntrega:\n\nJueves 09 de mayo a través de Teams.\nSi se entrega a través de github pages se otorgarán 0,5 décimas adicionales\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Carga y Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n2. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés.\n3pts\n\n\n3. Asociación de variables\nL-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico\n5ptos\n\n\n4. Construcción de índices y escalas\nL-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna\n5ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos"
-  },
-  {
-    "objectID": "assignment/01-trabajo.html",
-    "href": "assignment/01-trabajo.html",
-    "title": "Trabajo 1. Reporte en Quarto",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.\n\n\n\n\nTítulo: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 1000 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/01-trabajo.html#objetivos-del-trabajo",
-    "href": "assignment/01-trabajo.html#objetivos-del-trabajo",
-    "title": "Trabajo 1. Reporte en Quarto",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/01-trabajo.html#secciones-del-trabajo",
-    "href": "assignment/01-trabajo.html#secciones-del-trabajo",
-    "title": "Trabajo 1. Reporte en Quarto",
-    "section": "",
-    "text": "Título: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 1000 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/02-trabajo.html",
-    "href": "assignment/02-trabajo.html",
-    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/02-trabajo.html#objetivos-del-trabajo",
-    "href": "assignment/02-trabajo.html#objetivos-del-trabajo",
-    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/02-trabajo.html#instrucciones-generales",
-    "href": "assignment/02-trabajo.html#instrucciones-generales",
-    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
-    "section": "Instrucciones generales",
-    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, pero es importante mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e interpretar estas tablas/gráficos.\n\nEntrega:\n\nJueves 18 de Abril a través de Teams.\nSe debe enviar el link al repositorio de github\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Cargar base de datos\nL-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R\n2pts\n\n\n2. Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n3. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)\n5pts\n\n\n4. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)\n6ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos"
-  },
-  {
-    "objectID": "assignment/04-trabajo.html",
-    "href": "assignment/04-trabajo.html",
-    "title": "Trabajo 4. Regresión lineal",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1, la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión lineal. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/04-trabajo.html#objetivos-del-trabajo",
-    "href": "assignment/04-trabajo.html#objetivos-del-trabajo",
-    "title": "Trabajo 4. Regresión lineal",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto en el Trabajo 1, la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión lineal. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/04-trabajo.html#instrucciones-generales",
-    "href": "assignment/04-trabajo.html#instrucciones-generales",
-    "title": "Trabajo 4. Regresión lineal",
-    "section": "Instrucciones generales",
-    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta cuarta entrega se espera que sean capaces de generar una tabla de regresiones que muestre distintos modelos de regresión asociados a las hipótesis propuestas. También se espera que sean capaces de elaborar al menos un gráfico que muestre los valores predichos de algún coeficiente de regresión.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 2. En la tercera sección debe ir el análisis bivariado del trabajo 3. El objetivo de este trabajo 4 es que sean capaces de operacionalizar variables, estimar y visualizar coeficientes de regresión.\n\nEntrega:\n\nJueves 06 de junio a través de Teams.\nSi se entrega a través de github pages se otorgarán 0,5 décimas adicionales\nSi se entrega solo el repositorio de github (sin pages ni html) se otorgarán 0,3 décimas adicionales\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Carga y Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n1pts\n\n\n2. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés.\n2pts\n\n\n3. Estimación de modelos de regresión\nL-s estudiantes son capaces de reportar y visualizar correctamente distintos modelos de regresión\n5ptos\n\n\n4. Visualización valores predichos\nL-s estudiantes son capaces de construir al menos un gráfico que muestre los valores predichos de un coeficiente de regresión\n5ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n5pts\n\n\nTotal\n-\n18puntos"
-  },
-  {
-    "objectID": "assignment/06-examen.html",
-    "href": "assignment/06-examen.html",
-    "title": "Examen",
-    "section": "",
-    "text": "Examen\nLa investigación final (examen) de este curso representa el 30% de la nota final.\nEsta investigación consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo realizado en las tareas del curso, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones.\nPor lo tanto, esta investigación debe incluir los 4 trabajos anteriores en un solo documento, sumando una sección final de conclusiones.\nA continuación se detalla la rubrica específica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Introducción y bibliografía automática\nL-s estudiantes plantean un problema de investigación relevante y lo justifican con bibliografía automatizada (Trabajo 1)\n2pts\n\n\n2. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. (Trabajo 2)\n2pts\n\n\n3. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva y dos gráficos univariados (Trabajo 2)\n2ptos\n\n\n4. Asociación de variables\nL-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico (trabajo 3)\n2ptos\n\n\n5. Construcción de índices y escalas\nL-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna (Trabajo 3)\n2ptos\n\n\n6. Estimación de modelos de regresión\nL-s estudiantes son capaces de reportar y visualizar correctamente distintos modelos de regresión (Trabajo 4)\n3ptos\n\n\n7. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n5pts\n\n\nTotal\n-\n18puntos"
-  },
-  {
-    "objectID": "content/01-content.html#lecturas",
-    "href": "content/01-content.html#lecturas",
-    "title": "Presentación",
-    "section": "Lecturas",
-    "text": "Lecturas\nR for Data Science",
-    "crumbs": [
-      "Clases",
-      "01: Clase 1"
-    ]
-  },
-  {
-    "objectID": "content/04-content.html#lecturas",
-    "href": "content/04-content.html#lecturas",
-    "title": "Clase 4",
-    "section": "Lecturas",
-    "text": "Lecturas"
-  },
-  {
-    "objectID": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "href": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "title": "Clase 4",
-    "section": "Moore: 1.Comprensión de los datos (1-54)",
-    "text": "Moore: 1.Comprensión de los datos (1-54)"
-  },
-  {
-    "objectID": "example/index.html",
-    "href": "example/index.html",
-    "title": "Code examples",
-    "section": "",
-    "text": "Visit this section after you have finished the readings and lecture videos. It contains fully annotated R code and other supplementary information and it will be indispensable as you work on your problem sets and project.\nMany sections also contain videos of me live coding the examples so you can see what it looks like to work with R in real time. You’ll notice me make all sorts of little errors, which is totally normal—everyone does!"
-  },
-  {
-    "objectID": "herramientas/index.html",
-    "href": "herramientas/index.html",
-    "title": "Herramientas",
-    "section": "",
-    "text": "En esta sección encontrarán todas las herramientas y softwares que facilitan el trabajo reproducible.\nEn construcción…",
-    "crumbs": [
-      "Herramientas",
-      "Información general",
-      "Herramientas"
-    ]
-  },
-  {
-    "objectID": "news/2023-08-14_infos.html",
-    "href": "news/2023-08-14_infos.html",
-    "title": "Informaciones de la semana",
-    "section": "",
-    "text": "← News\n\n\n\n\nActualizaciones sitio web:"
   },
   {
     "objectID": "schedule.html",

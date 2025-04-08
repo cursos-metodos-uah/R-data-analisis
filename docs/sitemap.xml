@@ -45,88 +45,92 @@
     <lastmod>2025-03-03T17:09:13.541Z</lastmod>
   </url>
   <url>
-    <loc>https://R-analisis-datos.netlify.app/practicos/index.html</loc>
-    <lastmod>2025-03-03T17:09:12.854Z</lastmod>
+    <loc>https://R-analisis-datos.netlify.app/practicos/taller-github-quarto.html</loc>
+    <lastmod>2025-04-08T18:34:20.281Z</lastmod>
   </url>
   <url>
-    <loc>https://R-analisis-datos.netlify.app/news/2023-01-09_welcome.html</loc>
+    <loc>https://R-analisis-datos.netlify.app/news/2023-08-14_infos.html</loc>
     <lastmod>2024-02-28T00:22:06.154Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/herramientas/01-content.html</loc>
-    <lastmod>2025-03-03T17:09:12.690Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/index.html</loc>
-    <lastmod>2025-03-03T17:09:10.935Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/07-content.html</loc>
-    <lastmod>2025-03-03T17:09:10.932Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/05-content.html</loc>
-    <lastmod>2025-03-03T17:09:10.931Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/03-content.html</loc>
-    <lastmod>2025-04-01T03:30:25.373Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/assignment/index.html</loc>
-    <lastmod>2025-03-03T17:09:10.926Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/assignment/05-presentacion.html</loc>
-    <lastmod>2025-03-03T17:09:10.908Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/assignment/03-trabajo.html</loc>
-    <lastmod>2025-03-03T17:09:10.904Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/assignment/01-trabajo.html</loc>
-    <lastmod>2025-03-03T17:09:10.901Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/assignment/02-trabajo.html</loc>
-    <lastmod>2025-03-03T17:09:10.903Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/assignment/04-trabajo.html</loc>
-    <lastmod>2025-03-03T17:09:10.906Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/assignment/06-examen.html</loc>
-    <lastmod>2025-03-03T17:09:10.909Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/01-content.html</loc>
-    <lastmod>2025-03-11T16:52:31.920Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/04-content.html</loc>
-    <lastmod>2025-03-03T17:09:10.930Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/06-content.html</loc>
-    <lastmod>2025-03-03T17:09:10.931Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/content/08-content.html</loc>
-    <lastmod>2025-03-03T17:09:10.933Z</lastmod>
-  </url>
-  <url>
-    <loc>https://R-analisis-datos.netlify.app/example/index.html</loc>
-    <lastmod>2024-02-28T00:22:05.965Z</lastmod>
   </url>
   <url>
     <loc>https://R-analisis-datos.netlify.app/herramientas/index.html</loc>
     <lastmod>2025-03-03T17:09:12.719Z</lastmod>
   </url>
   <url>
-    <loc>https://R-analisis-datos.netlify.app/news/2023-08-14_infos.html</loc>
+    <loc>https://R-analisis-datos.netlify.app/example/index.html</loc>
+    <lastmod>2024-02-28T00:22:05.965Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/08-content.html</loc>
+    <lastmod>2025-03-03T17:09:10.933Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/06-content.html</loc>
+    <lastmod>2025-03-03T17:09:10.931Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/04-content.html</loc>
+    <lastmod>2025-04-08T04:34:46.391Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/01-content.html</loc>
+    <lastmod>2025-03-11T16:52:31.920Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/assignment/06-examen.html</loc>
+    <lastmod>2025-03-03T17:09:10.909Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/assignment/04-trabajo.html</loc>
+    <lastmod>2025-03-03T17:09:10.906Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/assignment/02-trabajo.html</loc>
+    <lastmod>2025-03-03T17:09:10.903Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/assignment/01-trabajo.html</loc>
+    <lastmod>2025-04-08T04:20:10.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/assignment/03-trabajo.html</loc>
+    <lastmod>2025-03-03T17:09:10.904Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/assignment/05-presentacion.html</loc>
+    <lastmod>2025-03-03T17:09:10.908Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/assignment/index.html</loc>
+    <lastmod>2025-03-03T17:09:10.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/03-content.html</loc>
+    <lastmod>2025-04-01T03:30:25.373Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/05-content.html</loc>
+    <lastmod>2025-03-03T17:09:10.931Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/07-content.html</loc>
+    <lastmod>2025-03-03T17:09:10.932Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/content/index.html</loc>
+    <lastmod>2025-03-03T17:09:10.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/herramientas/01-content.html</loc>
+    <lastmod>2025-03-03T17:09:12.690Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/news/2023-01-09_welcome.html</loc>
     <lastmod>2024-02-28T00:22:06.154Z</lastmod>
+  </url>
+  <url>
+    <loc>https://R-analisis-datos.netlify.app/practicos/index.html</loc>
+    <lastmod>2025-03-03T17:09:12.854Z</lastmod>
   </url>
   <url>
     <loc>https://R-analisis-datos.netlify.app/schedule.html</loc>
