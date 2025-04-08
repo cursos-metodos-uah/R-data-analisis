@@ -111,6 +111,8 @@ website:
               file: practicos/taller-github-quarto/taller-quarto-github.qmd
             - text: "Práctico 5: Zotero"
               file: practicos/02-content-zotero.qmd
+            - text: "Taller Github Colaborativo"
+              file: practicos/taller-github-collab.qmd
             # - text: "06: Práctico 6"
             #   file: practicos/06-content.qmd
             # - text: "07: Práctico 7"
@@ -147,8 +149,8 @@ website:
             - assignment/index.qmd
         - section: "Trabajos"
           contents:
-            # - text: "Trabajo 1"
-            #   file: assignment/01-trabajo.qmd
+            - text: "Trabajo 1"
+              file: assignment/01-trabajo.qmd
             # - text: "Trabajo 2"
             #   file: assignment/02-trabajo.qmd
             # - text: "Trabajo 3"

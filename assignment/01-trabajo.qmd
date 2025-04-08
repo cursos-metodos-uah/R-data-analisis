@@ -1,8 +1,8 @@
 ---
-title: "Trabajo 1. Reporte en Quarto"
+title: "Trabajo 1. Reporte descriptivo en Quarto"
 subtitle: "R para análisis estadístico"
-linktitle: "Trabajo 1. Reporte en Quarto"
-date: "2024-03-19"
+linktitle: "Trabajo 1. Reporte descriptivo en Quarto"
+date: "2025-04-08"
 lang: es
 ---
 
@@ -10,23 +10,49 @@ lang: es
 
 ## Objetivos del trabajo
 
-El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
-
+El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. Luego, se debe generar un reporte descriptivo de datos utilizando una base de datos a elección. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
 
 ## Secciones del trabajo
 
-- Título: Breve, lo principal es hacer alusión al objeto central del estudio.
+-   Título: Breve, lo principal es hacer alusión al objeto central del estudio.
 
-- Introducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (**MÁXIMO** 1000 palabras)
+-   Introducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (**MÁXIMO** 500 palabras)
 
 Es importante considerar
 
-1. Relevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).
+1.  Relevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).
 
-2. Precisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.
+2.  Precisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.
 
-3. Precisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”
+3.  Precisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”
 
-4. Se deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio
+4.  Se deben incluir al menos 3 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio
 
-5. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
+5.  Descargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input). Omitir este paso si se trabaja con la CASEN
+
+6.  Operacionalización: Script de R llamado "Preparacion" y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.
+
+7.  Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.
+
+-   No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta de investigación, además de mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e **interpretar** estas tablas/gráficos.
+
+8.  El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
+
+## Entrega:
+
+-   Miércoles 16 de Abril a través de U-campus
+-   Se debe enviar el link al repositorio de github y/o github pages
+-   No más de 2500 palabras
+-   Se deben mantener las referencias de la literatura / bases de datos revisadas
+-   atrasos: 0,5 por día de atraso.
+
+Rúbrica de evaluación:
+
+| Ítem                                | Objetivo                                                                                                                                                                                                                                                                                             | Puntaje  |
+|------------------|----------------------------|--------------------------|
+| 1\. Introducción                    | L-s estudiantes son capaces de redactar un problema de investigación justificado con referencias automáticas                                                                                                                                                                                         | 2pts     |
+| 2\. Selección de variables          | L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación                                                                                                                                                                                               | 2pts     |
+| 3\. Operacionalización de variables | L-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto) | 5pts     |
+| 4\. Visualización de resultados     | L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)                                                                                                                  | 6ptos    |
+| 5\. Interpretación de resultados    | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados                                                                                                                                                                                                           | 3pts     |
+| Total                               | \-                                                                                                                                                                                                                                                                                                   | 18puntos |

@@ -1,7 +1,7 @@
 ---
 title: "R para análisis de datos"
 author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2024"
+date: "1er Sem 2025"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -60,7 +60,7 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 # R para el análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024 
+## 1er Sem 2025
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
 
@@ -68,7 +68,7 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 3: Introducción a la investigación cuantitativa]
+## .yellow[Sesión 4: Planteando una investigación cuantitativa]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 ]
@@ -84,10 +84,8 @@ class: animated, fadeIn
 class: inverse, bottom, right, animated, slideInRight
 
 
-# .red[Sesión 3]
+# .red[Sesión 4]
 <br>
-
-Repaso sesión anterior
 
 Introducción y bases de la investigación cuantitativa
 
@@ -99,79 +97,12 @@ Niveles de medición
 <br>
 <br>
 <br>
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 3]
-<br>
-
-.yellow[Repaso sesión anterior]
-
-Introducción y bases de la investigación cuantitativa
-
-Datos y variables
-
-Niveles de medición
-
-<br>
-<br>
-<br>
-<br>
----
-# Comentarios trabajo 1
-
-.center[¿Dudas, experiencias, problemas, sugerencias?]
-
----
-
-# Estructura de carpetas
-
-![](../../files/img/carpetas.png)
----
-
-# Repositorio
-
-![](../../files/img/repositorio.png)
----
-
-# Github pages
-
-![](../../files/img/url-pages.png)
-
----
-
-# Reproducibilidad
---
-
-- Es la posibilidad de **regenerar** de manera independiente los resultados usando los materiales originales de una investigación ya publicada.
-
-- En términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos.
-
----
-
-## Ciencia abierta
-
-<br>
-
-![](../../files/img/flujo-herramientas.png)
-
----
-class: center
-
-## Protocolo de trabajo reproducible
-
-![:scale 41%](../../files/img/ipo-hex.png)
-
-.small[.right[fuente: [lisa-coes.com/ipo-repro](https://lisa-coes.com/ipo-repro)]]
 
 ---
 class: inverse, bottom, right
 
-# .red[Sesión 3]
+# .red[Sesión 4]
 <br>
-
-Repaso sesión anterior
 
 .yellow[Introducción y bases de la investigación cuantitativa]
 
@@ -187,31 +118,106 @@ Niveles de medición
 
 # Introducción y bases de la investigación cuantitativa
 
-* Ciencia como método de investigación
+* En la investigación cuantitativa se asume que hay una realidad "allá afuera" que quien investiga puede conocer a través de su **cuantificación**
 
-* **Números** para representar a la realidad
-
-* Supuestos y limitaciones de explicar la realidad con números
+--
 
 * Permite lidiar con la **incertidumbre**
 
-* Instrumentos y técnicas de análisis que permiten trabajar con números
+--
+
+* Foco en la teoría (*generalmente* se enfatiza el **método hipotético-deductivo**, buscando probar hipótesis de teorías previamente estudiadas)
 
 ---
 
 # Introducción y bases de la investigación cuantitativa
-
-* Foco en la teoría
 
 * Explicar lo que es, no lo que debería ser
 
-* Conocer y explicar grupos de personas de manera general, no individuos por sí solos (inductivo/deductivo)
+--
+
+* Conocer y explicar grupos de personas de manera general, no individuos por sí solos
 
 ---
 
-# Introducción y bases de la investigación cuantitativa
+# Proceso de investigación cuantitativo (D'Ancona 2001)
 
-![](../../files/img/inductivo-deductivo.png)
+1. Formulación de un problema de investigación
+2. Operacionalización del problema
+  - Hipótesis
+  - Operacionalización de conceptos teóricos
+  - Delimitación de unidad de análisis
+3. Diseño de la investigación: cómo se realizará la investigación (diseños transversales, longitudinales, experimentales)
+4. Factibilidad de la investigación: Cronología de tareas; recursos disponibles (materiales y humanos); etc.
+
+---
+
+# Proceso de investigación cuantitativo (D'Ancona 2001)
+
+1. Formulación de un problema de investigación
+2. Operacionalización del problema
+  - Hipótesis
+  - .red[Operacionalización de conceptos teóricos]
+  - Delimitación de unidad de análisis
+3. Diseño de la investigación: cómo se realizará la investigación (diseños transversales, longitudinales, experimentales)
+4. Factibilidad de la investigación: Cronología de tareas; recursos disponibles (materiales y humanos); etc.
+
+---
+class: roja, center, middle
+
+# Medición y operacionalización
+
+---
+
+# Medición y operacionalización
+
+- Operacionalización = "codificación" de un fenómeno con el fin de hacerlo **medible**
+
+- Hay muchas formas de "codificar" un mismo concepto
+
+- ¿Por qué es importante definir operacionalmente los conceptos?
+
+---
+
+# Medición y operacionalización
+
+.center[¿Qué concepto se pretende medir con esta pregunta?]
+
+.center[![:scale 95%](../../files/img/iden_pol.png)]
+
+---
+
+# Medición y operacionalización
+
+.center[¿Y con estas preguntas?]
+
+.center[![:scale 60%](../../files/img/ejemplos_variables.png)]
+
+---
+
+# Medición y operacionalización
+
+.center[y si quisiéramos medir un concepto más complejo?]
+
+--
+
+.center[¿cómo se puede medir cohesión social?]
+
+---
+
+# Medición y operacionalización
+
+- Cohesión social según CEPAL (2021)
+
+.center[![:scale 75%](../../files/img/cohesion-cepal.png)]
+
+---
+
+# Medición y operacionalización
+
+- Cohesión social según Observatorio de cohesión social (ocs-coes) (2020)
+
+.center[![:scale 75%](../../files/img/cohesion.png)]
 
 ---
 
@@ -245,7 +251,7 @@ Niveles de medición
 ---
 class: inverse, bottom, right
 
-# .red[Sesión 3]
+# .red[Sesión 4]
 <br>
 
 Repaso sesión anterior
@@ -343,31 +349,11 @@ Medidas de tendencia central
 | *Razón*      	| Cero real                           	| + aditividad         	| Distancia         	|
 ]
 
----
-## Datos y .yellow[variables]
-
-- Pueden ser visibles o no visibles/latentes. (Ej: peso / inteligencia)
-
-- **Operacionalización**
-
---
-
-* Proceso de definición de la medición de un fenómeno que no se puede medir directamente, aunque su existencia se infiere de otros fenómenos
-
----
-## Datos y .yellow[variables]
-
-.center[![:scale 100%](../../files/img/operacionalizacion.png)]
-
----
-## Datos y .yellow[variables]
-
-.center[![:scale 100%](../../files/img/operacionalizacion2.png)]
 
 ---
 class: inverse, bottom, right
 
-# .red[Sesión 3]
+# .red[Sesión 4]
 <br>
 
 Repaso sesión anterior
@@ -415,16 +401,195 @@ class: middle, center
 
 ##-  [Moore: 1.Comprensión de los datos (1-54)](https://multivariada.netlify.app/docs/lecturas/moore_comprensiondelosdatos.pdf)
 
+---
+class: inverse, bottom, right
+
+
+# .red[Sesión 4]
+<br>
+
+Introducción y bases de la investigación cuantitativa
+
+Datos y variables
+
+Niveles de medición
+
+.yellow[Trabajo 1]
+
+<br>
+<br>
+<br>
+<br>
 
 ---
-## Recodificación de datos en R
 
-Guía de trabajo en:
+# Estructura de carpetas
 
-# .center[[**https://r-data-analisis.netlify.app/practicos/03-content**](https://r-data-analisis.netlify.app/practicos/03-content)]
+![](../../files/img/carpetas.png)
+---
+
+# Repositorio
+
+![](../../files/img/repositorio.png)
+---
+
+# Github pages
+
+![](../../files/img/url-pages.png)
+
+
+---
+class: center
+
+## Protocolo de trabajo reproducible
+
+![:scale 41%](../../files/img/ipo-hex.png)
+
+.small[.right[fuente: [lisa-coes.com/ipo-repro](https://lisa-coes.com/ipo-repro)]]
+
+
+---
+class: inverse, middle, center
+
+# .red[Repositorios y apertura]
+
+### La escritura en texto simple (como Markdown o Quarto) permite implementar un sistema de control de versiones, además de herramientas de respaldo, colaboración y comunicación
 
 ---
 
+# El origen: Abriendo un sistema operativo
+
+.pull-left[
+![](../../practicos/taller-github-quarto/images/torvalds.png)
+- [TED talk](https://www.youtube.com/watch?v=o8NPllzkFhE&ab_channel=TED)
+
+]
+
+.pull-right[
+- Linus Torvalds, 1991 (21 años)  
+- Crea sistema operativo libre **Linux** y lo abre a la colaboración. Postea:  
+> "I'm doing a (free) operating system (just a hobby, won't be big and professional...)"
+
+]
+
+---
+
+# Git
+
+.pull-left[
+![](../../practicos/taller-github-quarto/images/git.png)
+]
+
+.pull-right[
+- Es una especie de memoria o registro local que guarda información sobre:
+  - quién hizo un cambio  
+  - cuándo lo hizo  
+  - qué hizo  
+- Mantiene el historial completo del repositorio  
+- Se puede sincronizar con un repositorio remoto (ej. GitHub)  
+]
+
+---
+
+# Git / GitHub
+
+.pull-left[
+![](../../practicos/taller-github-quarto/images/github.png)
+]
+
+.pull-right[
+- Git / GitHub tiene más de 100 millones de repositorios  
+- Mayor fuente de código en el mundo  
+- Desde el desarrollo de software, se ha expandido a otros ámbitos  
+- Favorece la ciencia abierta  
+- En 2018, Microsoft compró GitHub por USD 7500 millones  
+- Aunque generó preocupación, sigue siendo la principal plataforma de colaboración  
+]
+
+---
+
+# Git ≠ archivos individuales
+
+
+### Git no es un registro de archivos específicos, sino de la carpeta completa  
+- Guarda *"fotos"* de momentos específicos del proyecto  
+- Cada "foto" se toma mediante un .red[commit]  
+
+
+---
+
+![](../../practicos/taller-github-quarto/images/gitflow.jpeg)
+
+---
+
+# Commits
+
+- El **commit** es la base del control de versiones  
+- Git no registra automáticamente, sino que requiere el paso de "comprometer" cambios  
+- Un commit:
+  - selecciona los archivos (stage)
+  - registra un mensaje explicativo
+
+---
+
+# ¿Cuándo hacer un commit?
+
+- Cuando haya un cambio que valga la pena registrar
+- No para cambios triviales
+- No esperar a tener demasiados cambios distintos
+- Que cada commit tenga sentido como “foto” del estado del proyecto
+
+---
+
+### Algunos términos
+
+.font50[
+
+| Término       | Definición |
+|--------------|------------|
+| Remote       | Repositorio en GitHub, no en tu equipo local |
+| Clonar       | Descargar una copia completa del repositorio |
+| Branch       | Versión paralela de los archivos del repositorio |
+| Fork         | Copia personal de un repositorio para modificarlo |
+| Upstream     | Rama del repositorio original desde el cual se hizo fork |
+| Merge        | Aplicar cambios de una rama en otra |
+| Pull request | Solicitud para integrar cambios de una rama en otra |
+
+]
+
+---
+
+# Branch
+
+- Una **branch** es una copia paralela del repositorio  
+- Permite trabajar en nuevas ideas sin modificar la rama principal  
+
+---
+
+![](../../practicos/taller-github-quarto/images/branches.png)
+
+---
+
+# Conflicted branch
+
+- Si dos personas modifican el mismo archivo, puede haber **conflictos de versiones**
+
+---
+
+![](../../practicos/taller-github-quarto/images/conflicted-branch.png)
+
+---
+
+# ¿Cómo evitar conflictos?
+
+- Trabajar en archivos o momentos diferentes  
+- Usar *pull request* para que una persona coordine los cambios  
+---
+## Guía de trabajo en:
+
+# .center[[**https://r-data-analisis.netlify.app/practicos/taller-github-collab**](https://r-data-analisis.netlify.app/practicos/taller-github-collab)]
+
+---
 
 class: front
 
@@ -432,7 +597,7 @@ class: front
 # R para el análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024 
+## 1er Sem 2025
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
 
@@ -440,7 +605,7 @@ class: front
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 1: Introducción]
+## .yellow[Sesión 4: Planteando una Investigación cuantitativa]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 
