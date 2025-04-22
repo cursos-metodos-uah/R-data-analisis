@@ -80,8 +80,8 @@ website:
               file: content/03-content.qmd
             - text: "04: Clase 4"
               file: content/04-content.qmd
-            # - text: "05: Clase 5"
-            #   file: content/05-content.qmd
+            - text: "05: Clase 5"
+              file: content/05-content.qmd
             # - text: "06: Clase 6"
             #   file: content/06-content.qmd
             # - text: "07: Clase 7"
@@ -113,8 +113,8 @@ website:
               file: practicos/02-content-zotero.qmd
             - text: "Taller Github Colaborativo"
               file: practicos/taller-github-collab.qmd
-            # - text: "06: Práctico 6"
-            #   file: practicos/06-content.qmd
+            - text: "Práctico 6: Inferencia y correlación"
+              file: practicos/06-content.qmd
             # - text: "07: Práctico 7"
             #   file: practicos/07-content.qmd
             # - text: "08: Resumen"
