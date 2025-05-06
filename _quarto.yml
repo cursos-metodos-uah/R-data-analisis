@@ -82,8 +82,8 @@ website:
               file: content/04-content.qmd
             - text: "05: Clase 5"
               file: content/05-content.qmd
-            # - text: "06: Clase 6"
-            #   file: content/06-content.qmd
+            - text: "06: Clase 6"
+              file: content/06-content.qmd
             # - text: "07: Clase 7"
             #   file: content/07-content.qmd
             # - text: "08: Clase 8"
@@ -115,8 +115,8 @@ website:
               file: practicos/taller-github-collab.qmd
             - text: "Práctico 6: Inferencia y correlación"
               file: practicos/06-content.qmd
-            # - text: "07: Práctico 7"
-            #   file: practicos/07-content.qmd
+            - text: "Práctico 7: Índices y escalas"
+              file: practicos/07-content.qmd
             # - text: "08: Resumen"
             #   file: practicos/resumen-content.qmd
             # - text: "09: Práctico 8"

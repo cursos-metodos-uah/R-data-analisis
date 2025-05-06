@@ -2,7 +2,7 @@
 title: "Práctico 7. Índices y escalas"
 subtitle: "R data analisis"
 linktitle: "Práctico 7: Índices y escalas"
-date: "2024-04-23"
+date: "2025-05-06"
 lang: es
 ---
 
@@ -63,7 +63,7 @@ Sin embargo, para realizar este ejercicio práctico utilizaremos una muestra ale
 ### Cargar base de datos
 
 ```{r }
-load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/casen2022.RData")) #Cargar base de datos
+load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/refs/heads/main/files/data/casen2022.RData")) #Cargar base de datos
 ```
 
 ### Descripción de variables

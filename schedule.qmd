@@ -14,7 +14,7 @@ Los tres componentes centrales del curso son las clases teóricas, los práctico
 -   [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
 
 |                                         | <i class="fas fa-chalkboard-teacher"></i> Clases             | <i class="fas fa-user-edit"></i> Talleres y prácticos en R | <i class="fas fa-book-reader"></i> Lecturas y material adicional |
-|---------------|---------------|----------------------|----------------------|
+|-----------------|-----------------|--------------------|--------------------|
 | <font color="orange"> **Marzo** </font> |                                                              |                                                            |                                                                  |
 | Martes 11                               | Unidad 1: Elementos y herramientas de R                      | Práctico 1                                                 | \- Leer detalladamente [programa del curso](syllabus.html)       |
 | Martes 18                               | Unidad 1: Elementos y herramientas de R                      | Práctico 2                                                 |                                                                  |
@@ -24,10 +24,10 @@ Los tres componentes centrales del curso son las clases teóricas, los práctico
 | Martes 08                               | Unidad 2: Operacionalización y análisis descriptivo de datos | Práctico 5                                                 |                                                                  |
 | Martes 15                               | Sesión de apoyo Trabajo N°1                                  | Trabajo 1 (16/04)                                          |                                                                  |
 | Martes 22                               | Unidad 3: Asociación de variables en R                       | Práctico 6                                                 |                                                                  |
-| Martes 29                               | Unidad 3: Indices y escalas                                  | Práctico 7                                                 |                                                                  |
+| Martes 29                               | *semana de receso*                                           | *semana de receso*                                         |                                                                  |
 | <font color="orange"> **Mayo** </font>  |                                                              |                                                            |                                                                  |
-| Martes 06                               | Sesión de apoyo Trabajo N°2                                  | Trabajo 2 (07/05)                                          |                                                                  |
-| Martes 13                               | Unidad 4: Regresión lineal y regresión logística             | Práctico 8                                                 |                                                                  |
+| Martes 06                               | Unidad 3: Indices y escalas                                  | Práctico 7                                                 |                                                                  |
+| Martes 13                               | Sesión de apoyo Trabajo N°2                                  | Trabajo 2 (14/05)                                          |                                                                  |
 | Martes 20                               | Unidad 4: Regresión lineal y regresión logística             | Práctico 9                                                 |                                                                  |
 | Martes 27                               | Unidad 4: Regresión lineal y regresión logística             | Práctico 10                                                |                                                                  |
 | <font color="orange"> **Junio** </font> |                                                              |                                                            |                                                                  |
