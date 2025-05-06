@@ -151,8 +151,8 @@ website:
           contents:
             - text: "Trabajo 1"
               file: assignment/01-trabajo.qmd
-            # - text: "Trabajo 2"
-            #   file: assignment/02-trabajo.qmd
+            - text: "Trabajo 2"
+              file: assignment/02-trabajo.qmd
             # - text: "Trabajo 3"
             #   file: assignment/03-trabajo.qmd
             # - text: "Trabajo 4"

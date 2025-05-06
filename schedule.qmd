@@ -14,7 +14,7 @@ Los tres componentes centrales del curso son las clases teóricas, los práctico
 -   [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
 
 |                                         | <i class="fas fa-chalkboard-teacher"></i> Clases             | <i class="fas fa-user-edit"></i> Talleres y prácticos en R | <i class="fas fa-book-reader"></i> Lecturas y material adicional |
-|-----------------|-----------------|--------------------|--------------------|
+|------------------|------------------|-------------------|-------------------|
 | <font color="orange"> **Marzo** </font> |                                                              |                                                            |                                                                  |
 | Martes 11                               | Unidad 1: Elementos y herramientas de R                      | Práctico 1                                                 | \- Leer detalladamente [programa del curso](syllabus.html)       |
 | Martes 18                               | Unidad 1: Elementos y herramientas de R                      | Práctico 2                                                 |                                                                  |

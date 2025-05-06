@@ -1,29 +1,28 @@
 ---
-title: "Trabajo 2. Procesamiento y visualización de análisis descriptivo "
+title: "Trabajo 2. Asociación de variables y construcción de índices"
 subtitle: "R para análisis estadístico"
-linktitle: "Trabajo 2. Análisis descriptivo"
-date: "2024-04-09"
+linktitle: "Trabajo 3. Asociación de variables"
+date: "2025-05-06"
 lang: es
 ---
 
 ## Objetivos del trabajo
 
-El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
+El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 1) del problema de investigación y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
 
 
 ## Instrucciones generales
 
 - Descargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)
 - Operacionalización: Script de R llamado "Preparacion" y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.
-- Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.
+- Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta segunda entrega se espera que sean capaces de generar una tabla de correlaciones que muestre el grado de asociación de las variables utilizadas en la investigación. También se espera que sean capaces de elaborar al menos un índice ponderado y/o una escalados con su respectivo reporte de consistencia interna (alfa de cronbach) según corresponda.
 
-- No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, pero es importante mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e **interpretar** estas tablas/gráficos.
+- No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 1. El objetivo de este trabajo 2 es que sean capaces de operacionalizar variables, estimar y visualizar su grado de asociación y construir índices y/o escalas.
 
 
 Entrega:
 
-- Jueves 18 de Abril a través de Teams.
-- Se debe enviar el link al repositorio de github
+- Miércoles 14 de mayo a través de Teams.
 - No más de 5000 palabras
 - Se deben mantener las referencias de la literatura / bases de datos revisadas
 - atrasos, 0,5 por día de atraso.
@@ -32,9 +31,9 @@ Rúbrica de evaluación:
 
 | Ítem | Objetivo | Puntaje |
 |------|----------|---------|
-|1. Cargar base de datos        | L-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R         |    2pts         |
-|2. Selección de variables      | L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación   | 2pts        |
-|3. Operacionalización de variables   | L-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)          |     5pts    |
-|4. Visualización de resultados       | L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)         |   6ptos      |
+|1. Carga y Selección de variables | L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación   | 2pts        |
+|2. Operacionalización de variables   | L-s estudiantes son capaces de operacionalizar correctamente las variables de interés.      |     3pts    |
+|3. Asociación de variables  | L-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico        |   5ptos      |
+|4. Construcción de índices y escalas | L-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna | 5ptos |
 |5. Interpretación de resultados      | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados       |  3pts       |
 | Total|- |18puntos|

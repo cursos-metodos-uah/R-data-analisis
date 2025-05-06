@@ -8,7 +8,7 @@
 
 <meta name="description" content="R para Análisis estadístico">
 
-<title>Trabajo 2. Procesamiento y visualización de análisis descriptivo – R para Análisis estadístico</title>
+<title>Trabajo 2. Asociación de variables y construcción de índices – R para Análisis estadístico</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,19 +71,19 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Trabajo 2. Procesamiento y visualización de análisis descriptivo – R para Análisis estadístico">
+<meta property="og:title" content="Trabajo 2. Asociación de variables y construcción de índices – R para Análisis estadístico">
 <meta property="og:description" content="R para análisis estadístico">
 <meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta property="og:site_name" content="R para Análisis estadístico">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="Trabajo 2. Procesamiento y visualización de análisis descriptivo – R para Análisis estadístico">
+<meta name="twitter:title" content="Trabajo 2. Asociación de variables y construcción de índices – R para Análisis estadístico">
 <meta name="twitter:description" content="R para análisis estadístico">
 <meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Herramientas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignment/index.html"> 
+    <a class="nav-link active" href="../assignment/index.html" aria-current="page"> 
 <span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item compact">
@@ -135,10 +135,67 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-trabajo.html">Trabajos</a></li><li class="breadcrumb-item"><a href="../assignment/02-trabajo.html">Trabajo 2</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Información general</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trabajos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Trabajos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/01-trabajo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trabajo 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/02-trabajo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Trabajo 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -154,31 +211,30 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7">Trabajo 2. Procesamiento y visualización de análisis descriptivo</h1>
+<h1 class="title display-7">Trabajo 2. Asociación de variables y construcción de índices</h1>
 <p class="subtitle lead">R para análisis estadístico</p>
 
 <div class="date-block bg-assignment text-white p-2">
-  <p class="date">Due by 11:59 PM on martes, 9 de abril de 2024</p>
+  <p class="date">Due by 11:59 PM on martes, 6 de mayo de 2025</p>
 </div>
 </header>
 
 
 <section id="objetivos-del-trabajo" class="level2">
 <h2 class="anchored" data-anchor-id="objetivos-del-trabajo">Objetivos del trabajo</h2>
-<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
+<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 1) del problema de investigación y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
 </section>
 <section id="instrucciones-generales" class="level2">
 <h2 class="anchored" data-anchor-id="instrucciones-generales">Instrucciones generales</h2>
 <ul>
 <li><p>Descargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)</p></li>
 <li><p>Operacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.</p></li>
-<li><p>Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.</p></li>
-<li><p>No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, pero es importante mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e <strong>interpretar</strong> estas tablas/gráficos.</p></li>
+<li><p>Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta segunda entrega se espera que sean capaces de generar una tabla de correlaciones que muestre el grado de asociación de las variables utilizadas en la investigación. También se espera que sean capaces de elaborar al menos un índice ponderado y/o una escalados con su respectivo reporte de consistencia interna (alfa de cronbach) según corresponda.</p></li>
+<li><p>No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 1. El objetivo de este trabajo 2 es que sean capaces de operacionalizar variables, estimar y visualizar su grado de asociación y construir índices y/o escalas.</p></li>
 </ul>
 <p>Entrega:</p>
 <ul>
-<li>Jueves 18 de Abril a través de Teams.</li>
-<li>Se debe enviar el link al repositorio de github</li>
+<li>Miércoles 14 de mayo a través de Teams.</li>
 <li>No más de 5000 palabras</li>
 <li>Se deben mantener las referencias de la literatura / bases de datos revisadas</li>
 <li>atrasos, 0,5 por día de atraso.</li>
@@ -199,24 +255,24 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>1. Cargar base de datos</td>
-<td>L-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R</td>
-<td>2pts</td>
-</tr>
-<tr class="even">
-<td>2. Selección de variables</td>
+<td>1. Carga y Selección de variables</td>
 <td>L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación</td>
 <td>2pts</td>
 </tr>
+<tr class="even">
+<td>2. Operacionalización de variables</td>
+<td>L-s estudiantes son capaces de operacionalizar correctamente las variables de interés.</td>
+<td>3pts</td>
+</tr>
 <tr class="odd">
-<td>3. Operacionalización de variables</td>
-<td>L-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)</td>
-<td>5pts</td>
+<td>3. Asociación de variables</td>
+<td>L-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico</td>
+<td>5ptos</td>
 </tr>
 <tr class="even">
-<td>4. Visualización de resultados</td>
-<td>L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)</td>
-<td>6ptos</td>
+<td>4. Construcción de índices y escalas</td>
+<td>L-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna</td>
+<td>5ptos</td>
 </tr>
 <tr class="odd">
 <td>5. Interpretación de resultados</td>
