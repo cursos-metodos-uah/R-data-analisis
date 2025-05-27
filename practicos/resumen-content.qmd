@@ -2,7 +2,7 @@
 title: "Resumen"
 subtitle: "R data analisis"
 linktitle: "Resumen"
-date: "2024-05-07"
+date: "2025-05-07"
 lang: es
 ---
 
@@ -51,7 +51,7 @@ El documento de **código de preparación** posee 5 partes, más una sección de
 
 5. Generación de base de datos preparada para el análisis.
 
-<div class="alert alert-info">
+::: {callout-note}
 **De rutas, estructura de carpetas y otros **
 
 - **Encontrando la ruta a carpeta local**: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar "Propiedades", en la ventana emergente debería aparecer la ruta hacia la carpeta en "Ubicación". Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)
@@ -65,7 +65,7 @@ El documento de **código de preparación** posee 5 partes, más una sección de
 ![](../files/img/ipo-hex.png)
 
 
-<div>
+:::
 
 Nuestras carpetas se deberían ver así:
 

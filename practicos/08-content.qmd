@@ -2,7 +2,7 @@
 title: "08: Regresión lineal múltiple"
 subtitle: "R data analisis"
 linktitle: "Resumen"
-date: "2024-05-07"
+date: "2025-05-27"
 lang: es
 ---
 

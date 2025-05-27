@@ -1,7 +1,7 @@
 ---
 title: "R para análisis de datos"
 author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2024"
+date: "1er Sem 2025"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -62,7 +62,7 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 # R para el análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024 
+## 1er Sem 2025
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
 
@@ -217,9 +217,11 @@ data
 .pull-right-wide[
 ```{r}
 ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point()+
-  xlim(1,8)+
-  ylim(0,700)
+  geom_point(size=3)+
+  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 700, by = 100))+
+  ylim(0,700)+
+  xlim(0,8)
 ```
 ]
 
@@ -229,13 +231,13 @@ ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
 ### Ejemplo ]
 
 .pull-right-wide[
-```{r}
+```{r warning=FALSE, message=FALSE}
 ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
   geom_point(size=3)+
   geom_smooth(method = "lm", se=FALSE)+
   scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
+  scale_y_continuous(breaks = seq(0, 700, by = 100))+
+  ylim(0,700)+
   xlim(0,8)
 ```
 ]
@@ -300,13 +302,13 @@ $$b_{0}=200-0\bar{X}$$
 ]
 
 .pull-right-wide[
-```{r}
+```{r warning=FALSE, message=FALSE}
 ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
   geom_point(size=3)+
   geom_smooth(method = "lm", se=FALSE)+
   scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
+  scale_y_continuous(breaks = seq(0, 700, by = 100))+
+  ylim(0,700)+
   xlim(0,8)
 ```
 ]
@@ -348,13 +350,13 @@ El ajuste del modelo a los datos se relaciona con la proporción de residuos gen
 ]
 
 .pull-right-wide[
-```{r}
+```{r warning=FALSE, message=FALSE}
 ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
   geom_point(size=3)+
   geom_smooth(method = "lm", se=FALSE)+
   scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
+  scale_y_continuous(breaks = seq(0, 700, by = 100))+
+  ylim(0,700)+
   xlim(0,8)
 ```
 ]
@@ -433,7 +435,7 @@ class: front
 # R para el análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024 
+## 1er Sem 2025
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
 
@@ -441,7 +443,7 @@ class: front
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 6: Índices y escalas]
+## .yellow[Sesión 7: Regresión lineal]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 

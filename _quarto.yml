@@ -84,8 +84,8 @@ website:
               file: content/05-content.qmd
             - text: "06: Clase 6"
               file: content/06-content.qmd
-            # - text: "07: Clase 7"
-            #   file: content/07-content.qmd
+            - text: "07: Clase 7"
+              file: content/07-content.qmd
             # - text: "08: Clase 8"
             #   file: content/08-content.qmd
 
@@ -117,10 +117,10 @@ website:
               file: practicos/06-content.qmd
             - text: "Práctico 7: Índices y escalas"
               file: practicos/07-content.qmd
-            # - text: "08: Resumen"
-            #   file: practicos/resumen-content.qmd
-            # - text: "09: Práctico 8"
-            #   file: practicos/08-content.qmd
+            - text: "Resumen"
+              file: practicos/resumen-content.qmd
+            - text: "Práctico 8: Regresión lineal"
+              file: practicos/08-content.qmd
             # - text: "10: Práctico 9"
             #   file: practicos/09-content.qmd
             # - text: "11: Práctico 10"
