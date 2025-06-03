@@ -2,7 +2,7 @@
 title: "09: Regresión lineal y valores predichos"
 subtitle: "R data analisis"
 linktitle: "Resumen"
-date: "2024-05-07"
+date: "2025-06-03"
 lang: es
 ---
 

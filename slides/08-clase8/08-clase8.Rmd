@@ -1,7 +1,7 @@
 ---
 title: "R para análisis de datos"
 author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2024"
+date: "1er Sem 2025"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -62,7 +62,7 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 # R para el análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024 
+## 1er Sem 2025 
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
 
@@ -141,7 +141,8 @@ data <- as.data.frame(data)
 
 
 .pull-left-narrow[
-### Ejemplo ]
+### Ejemplo 
+]
 
 .pull-right-wide[
 ```{r}
@@ -151,33 +152,29 @@ data
 ]
 
 ---
+
 .pull-left-narrow[
-### Ejemplo ]
+### Ejemplo 
+]
 
 .pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  xlim(0,8)+
-  ylim(100,400)
-```
+
+![:scale 85%](../../files/img/plot1.png)
+
 ]
 
 ---
 
 .pull-left-narrow[
-### Ejemplo ]
+
+### Ejemplo 
+
+]
 
 .pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  geom_smooth(method = "lm", se=FALSE)+
-  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
-  xlim(0,8)
-```
+
+![:scale 85%](../../files/img/plot2.png)
+
 ]
 
 ---
@@ -239,16 +236,7 @@ $$b_{0}=200-0\bar{X}$$
 *Por cada unidad que aumenta educación, ingreso aumenta en 25 unidades*
 ]
 
-.pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  geom_smooth(method = "lm", se=FALSE)+
-  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
-  xlim(0,8)
-```
+.pull-right-wide[![:scale 85%](../../files/img/plot2.png)
 ]
 
 ---
@@ -269,16 +257,7 @@ ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
 El ajuste del modelo a los datos se relaciona con la proporción de residuos generados por el modelo respecto de la varianza total de Y (R2)
 ]
 
-.pull-right-wide[
-```{r}
-ggplot2::ggplot(data, aes(x=Educacion, y=Ingreso))+
-  geom_point(size=3)+
-  geom_smooth(method = "lm", se=FALSE)+
-  scale_x_continuous(breaks = seq(0, 8, by = 1)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100))+
-  ylim(100,400)+
-  xlim(0,8)
-```
+.pull-right-wide[![:scale 85%](../../files/img/plot2.png)
 ]
 
 ---
@@ -394,17 +373,26 @@ $$\bar{Y}=366$$
 ]
 
 ---
+.pull-left-narrow[
 ## Graficando
+]
 
 ```{r}
-ggeffects::ggpredict(reg3, terms = c("Educacion_rec")) %>%
+plot3 <- ggeffects::ggpredict(reg3, terms = c("Educacion_rec")) %>%
   ggplot(aes(x=x, y=predicted)) +
   geom_bar(stat="identity", color="grey", fill="grey")+
   geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width=.1) +
   labs(title="Educación", x = "", y = "") +
   theme_bw()
+
+ggsave(plot3, file="../../files/img/plot3.png")
+
 ```
 
+.pull-right-wide[
+
+![:scale 85%](../../files/img/plot3.png)
+]
 
 ---
 ## Variables numéricas
@@ -417,13 +405,18 @@ texreg::htmlreg(reg4, caption="")
 ---
 .pull-left[
 ```{r}
-ggeffects::ggpredict(reg2, terms="edad") %>%
+plot4 <- ggeffects::ggpredict(reg2, terms="edad") %>%
   ggplot(mapping=aes(x = x, y=predicted)) +
   labs(title="Edad", x = "", y = "")+
   theme_bw() +
   geom_smooth()+
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .2, fill = "black")
+
+ggsave(plot4, file="../../files/img/plot4.png")
 ```
+
+![:scale 100%](../../files/img/plot4.png)
+
 ]
 
 
@@ -448,7 +441,7 @@ class: front
 # R para el análisis de datos
 ## **Kevin Carrasco**
 ## Sociología - UAH
-## 1er Sem 2024 
+## 1er Sem 2025
 ## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
 
@@ -456,7 +449,7 @@ class: front
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 6: Índices y escalas]
+## .yellow[Sesión 8: Regresión lineal y valores predichos]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 

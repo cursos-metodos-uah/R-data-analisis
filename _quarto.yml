@@ -86,8 +86,8 @@ website:
               file: content/06-content.qmd
             - text: "07: Clase 7"
               file: content/07-content.qmd
-            # - text: "08: Clase 8"
-            #   file: content/08-content.qmd
+            - text: "08: Clase 8"
+              file: content/08-content.qmd
 
     - title: "Prácticos"
       style: "docked"
@@ -121,8 +121,8 @@ website:
               file: practicos/resumen-content.qmd
             - text: "Práctico 8: Regresión lineal"
               file: practicos/08-content.qmd
-            # - text: "10: Práctico 9"
-            #   file: practicos/09-content.qmd
+            - text: "Práctico 9: Valores predichos"
+              file: practicos/09-content.qmd
             # - text: "11: Práctico 10"
             #   file: practicos/10-content.qmd
 
@@ -153,8 +153,8 @@ website:
               file: assignment/01-trabajo.qmd
             - text: "Trabajo 2"
               file: assignment/02-trabajo.qmd
-            # - text: "Trabajo 3"
-            #   file: assignment/03-trabajo.qmd
+            - text: "Trabajo 3"
+              file: assignment/03-trabajo.qmd
             # - text: "Trabajo 4"
             #   file: assignment/04-trabajo.qmd
             # - text: "Presentaciones"
