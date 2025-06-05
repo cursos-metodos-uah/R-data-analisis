@@ -23,7 +23,7 @@ El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto
 Entrega:
 
 - Viernes 13 de junio a través de U-campus
-- Si se entrega solo el repositorio de github (sin pages ni html) se otorgarán 0,3 décimas adicionales
+- Si se entrega solo el repositorio de github (sin pages ni html) se descontarán 0,3 décimas adicionales
 - No más de 5000 palabras
 - Se deben mantener las referencias de la literatura / bases de datos revisadas
 - atrasos, 0,5 por día de atraso.
