@@ -2,7 +2,7 @@
 title: "10: Presentaciones en Quarto"
 subtitle: "R data analisis"
 linktitle: "Presentaciones"
-date: "2024-06-10"
+date: "2025-06-17"
 lang: es
 ---
 
@@ -12,7 +12,7 @@ El objetivo de esta práctica es revisar el proceso de elaboración de una prese
 
 ::: callout-note
 
-Para presentar resultados de una investigación, lo más fácil es anteriormente haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output.
+Para presentar resultados de una investigación, podemos incluir imágenes en la presentación, por lo que anteriormente debemos haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output. O de la misma forma, si renderizamos nuestro .qmd, los gráficos se crean automáticamente en una carpeta _files.
 
 Si recordamos de los prácticos anteriores, suponiendo que estamos trabajando en nuestro archivo de análisis, dentro de la carpeta de procesamiento, el código estándar para exportar gráficos es el siguiente:
 
@@ -24,6 +24,8 @@ ggsave(graph1, file="output/graphs/graph1.png")
 ```
 
 De esta forma guardamos nuestro gráfico en la carpeta output, dentro de una segunda subcarpeta 'graphs'.
+
+De todas formas, también es posible ejecutar los códigos que crean los gráficos directamente en el documento de presentación.
 
 :::
 
@@ -65,10 +67,6 @@ Al igual que al trabajar en un documento de Quarto, cada sección se puede separ
 4- Probemos creando dos slides para una presentación académica. Primero, una slide que tenga por título 'Introducción' y una segunda slide que tenga por título 'Descriptivos'.
 
 ![](images/present3.png)
-
-5- Ya podemos renderizar el documento para ver cómo está quedando. Posiblemente nos pedirá guardar y lo almacenamos en la misma carpeta que tiene nuestro proyecto .Rproject y nuestra carpeta output con las imágenes que hemos exportado. Se debería ver más o menos así:
-
-<iframe src="https://kevin-carrasco.github.io/ipo/ejemplo.html" height="550" width="100%" allowfullscreen="true"></iframe>
 
 ### Personalización de slides
 

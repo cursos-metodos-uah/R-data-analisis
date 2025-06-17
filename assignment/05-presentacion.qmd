@@ -2,7 +2,7 @@
 title: "Presentación"
 subtitle: "R para análisis estadístico"
 linktitle: "Presentación"
-date: "2024-06-18"
+date: "2025-06-24"
 lang: es
 ---
 
