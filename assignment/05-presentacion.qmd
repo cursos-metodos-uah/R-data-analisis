@@ -6,6 +6,20 @@ date: "2025-06-24"
 lang: es
 ---
 
+## Instrucciones
+
+- Realizar una presentación en Quarto que resuma de manera general los tres trabajos realizados. La idea es que en una presentación de **no más de 15minutos** puedan contar qué investigaron, qué datos utilizaron y los principales resultados y conclusiones que obtuvieron.
+
+- La presentación hecha en Quarto debe ser renderizada en su respectivo documento .html
+
+- Es de suma importancia que esta vez las presentaciones sean subidas a un repositorio de Github y que tengan activado Github pages.
+
+- El link a la presentación debe ser subido a u-campus
+
+- Cualquier duda, me escriben.
+
+- Presentación de ejemplo [acá](https://kevin-carrasco.github.io/ipo/presentacion.html#/title-slide)
+
 ## Rúbrica de Evaluación Presentaciones
 
 | Nota máxima | Criterios |
