@@ -3,7 +3,7 @@ author: Kevin Carrasco (Fork from Andrew Heiss)
 instructor:
   name: Kevin Carrasco
   name_no_title: Kevin Carrasco
-  email: kevin.carrasco@ug.uchile.cl
+  email: kevin.carrasco@uchile.cl
   url: "https://coes.cl/integrantes/kevin-carrasco-quintanilla/"
   twitter: kevincarrascoq1
  # github: andrewheiss
@@ -14,14 +14,14 @@ instructor:
 
 course:
   number: "CSSOCIAL 6607-SOC1(1052)"
-  semester: "Primer semestre 2025"
+  semester: "Primer semestre 2026"
   days: "Martes"
-  time: "16:00 a 17:20 y 17:30 a 18:50"
+  time: "16:15 a 17:20 y 17:30 a 18:50"
   location: "Sala E62"
-  dates: "Marzo 11 - Julio 08 2025"
+  dates: "Marzo 10 - Junio 30 2026"
   github: "https://github.com/cursos-metodos-uah/R-data-analisis"
   url: "https://R-Data-Analisis.netlify.app"
-  copyright_year: "2025"
+  copyright_year: "2026"
   slack: ""
 
 university:
