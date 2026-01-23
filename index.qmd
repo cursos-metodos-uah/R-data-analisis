@@ -51,4 +51,6 @@ withr::with_dir(here::here(), {
 
 ### Versiones anteriores
 
+- [versión 2025](https://version2025--r-data-analisis.netlify.app/)
+
 - [versión 2024](https://version2024--r-data-analisis.netlify.app/)
