@@ -51,7 +51,7 @@ Se espera que al término del curso los y las estudiantes puedan elaborar y anal
 
 1.1 R enviroment: interfaz de RStudio, elementos de script, workspace
 
-1.2 Herramientas para la colaboración y comunicación: Rproject, GitHub, Zotero y Slack
+1.2 Herramientas para la colaboración y comunicación: Rproject, GitHub y Zotero
 
 1.3 Protocolo IPO para la reproducibilidad de investigaciones sociales
 
@@ -95,7 +95,7 @@ Se tendrán tres espacios principales de aprendizaje:
 
 2.  Prácticas guiadas: cada tema de las sesiones se acompaña de una guía práctica de aplicación de contenidos. Estas guías están diseñadas para ser desarrolladas de manera autónoma por cada estudiante semana a semana. También serán desarrolladas y revisadas cada semana por el profesor y/o ayudantes para dar mayor oportunidad de participación y resolver las dudas respectivas. Estas se desarrollan en el segundo bloque del martes.
 
-3.  Evaluaciones: se desarrollarán trabajos periódicos que permitirán a las/os estudiantes aplicar contenidos y replicar lo aprendido en los prácticos en base a una base de datos seleccionada por ellas/os a inicio de semestre. Esto permitirá no solo recibir retroalimentación constante, sino que aprender con datos que puedan ser útiles para otros proyectos de investigación. Al finalizar el curso, el/la estudiante deberá entregar un proyecto de investigación que incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones. Además, el/la estudiante deberá realizar una presentación de resultados en formato académico/conferencia.
+3.  Evaluaciones: se desarrollarán tareas periódicas que permitirán a las/os estudiantes aplicar contenidos y replicar lo aprendido en los prácticos en base a una base de datos seleccionada por ellas/os a inicio de semestre. Esto permitirá no solo recibir retroalimentación constante, sino que aprender con datos que puedan ser útiles para otros proyectos de investigación. Al finalizar el curso, el/la estudiante deberá entregar un **proyecto de investigación** que incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones. Además, el/la estudiante deberá realizar una presentación de resultados en formato académico/conferencia.
 
 Las instrucciones de las tareas serán publicadas con una semana de anticipación a su entrega.
 
@@ -117,35 +117,41 @@ Github es una plataforma online que permite depositar archivos y el control de v
 
 Las evaluaciones del curso se componen de tareas (60% de la nota final), la entrega de una investigación (30% de la nota final) y una presentación (10% de la nota final), en dónde en todos los casos la/el estudiante deberá seleccionar datos y temas de interés de modo de acercar la aplicación del software a contextos de investigación propios de la/el estudiante. En concreto, cada evaluación consiste en:
 
-1.  Trabajos (60% de la nota final): consisten en evaluaciones parciales temáticas que buscan poner en práctica los aprendizajes expuestos en la sesión de clases y herramientas reforzadas en los prácticos. Durante el semestre se realizarán 3 tareas (20% c/u).
+1.  Trabajos (60% de la nota final): consisten en evaluaciones parciales temáticas que buscan poner en práctica los aprendizajes expuestos en la sesión de clases y herramientas reforzadas en los prácticos. Durante el semestre se realizarán 4 tareas (15% c/u).
 
 2.  Presentación final (10% de la nota final): Consiste en una presentación final individual que resuma el trabajo realizado en el proyecto de investigación. Al tratarse de un curso metodológico, más que los fundamentos teóricos de la investigación, el foco de la presentación debe estar centrado en los resultados de la investigación (visualización de resultados) y en reflexiones de toma de decisiones metodológicas en términos de apertura y reproducibilidad.
 
 3.  Investigación final (examen) (30% de la nota final): consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo de estas tareas, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones.
 
-+------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
-| Evaluación                         | Unidades por evaluar                                                                                    | Fecha | \%   |
-+====================================+=========================================================================================================+=======+======+
-| Trabajo 1                          | 1.  Procesamiento y visualización de análisis descriptivo                                               | 16/04 | 20%  |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
-| Trabajo 2                          | 2.  Análisis bivariado en R                                                                             | 07/05 | 20%  |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
-| Trabajo 3                          | 3.  Regresión lineal y logística                                                                        | 04/06 | 20%  |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
-| Presentación final                 | Consiste en una presentación individual que resuma el trabajo realizado en el proyecto de investigación | 17/06 | 10%  |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
-| Investigación final (examen final) | Contenido general del curso                                                                             | 08/07 | 30%  |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
-|                                    |                                                                                                         |       | 100% |
-+------------------------------------+---------------------------------------------------------------------------------------------------------+-------+------+
+
+| Evaluación         | Unidades por evaluar | Fecha | % |
+|--------------------|----------------------|-------|---|
+| Tarea   1          | 1.  Elementos y herramientas de R | 30/03 | 15% |
+| Tarea   2          | 2.  Procesamiento y visualización de análisis descriptivo | 20/04 | 15% |
+| Tarea   3          | 3.  Análisis bivariado en R | 11/05 | 15% |
+| Tarea   4          | 4.  Regresión lineal y logística | 15/06 | 15% |
+| Presentación final | Consiste en una presentación individual que resuma el trabajo realizado en el proyecto de investigación | 23/06 | 10% |
+| Investigación final (examen final) | Contenido general del curso | 07/07 | 30% |
+|  |  |  | 100% |
 
 ## Información general
 
-Los/as alumnas/os que no se presenten o entreguen una evaluación por enfermedad deben hacer llegar el certificado médico a coordinación en el plazo establecido por el reglamento. Quienes no lo hagan serán evaluados con nota 1,0. Las pruebas atrasadas serán reprogramadas la primera semana de junio.
+Los/as alumnas/os que no se presenten o entreguen una evaluación por enfermedad deben hacer llegar el certificado médico a coordinación en el plazo establecido por el reglamento. Quienes no lo hagan serán evaluados con nota 1,0. Las pruebas recuperativas serán reprogramadas la primera o segunda semana de junio.
 
-Ningún curso podrá ser aprobado si no cuenta con el mínimo del 70% de asistencia. Tendrán derecho a rendir los exámenes todos los/as estudiantes que hayan cumplido con la exigencia de asistencia mínima al curso y cuyo promedio de notas sea igual o superior a 3,5.
+**Para presentarse a examen se requiere una nota promedio igual o superior a 3,5 y un 70% de asistencia al curso. Esta regla solo podrá alterarse en caso de inasistencias por causas serias y justificadas de acuerdo con el criterio de la carrera.**
 
-Los/as estudiantes podrán eximirse de la obligación de rendir los exámenes finales de cada curso. Al iniciarse el semestre académico, cada profesor/a deberá indicar a los/as estudiantes en el programa del curso si existe la posibilidad de eximirse y bajo qué condiciones. Con todo, no será posible eximirse de examen alguno si el/a estudiante no tiene una nota promedio igual o superior a 5,5 y una asistencia igual o superior al 70% de las clases efectivamente realizadas en el respectivo curso.
+En caso de eximición, la nota mínima es igual o superior a 5,5, el docente es quien decidirá si el curso tendrá alumnos que se eximen o no y si los tuviera deberá repetir la nota promedio del curso en el examen.
+
+El uso de herramientas de inteligencia artificial (IA) en trabajos y evaluaciones académicas deberá ser siempre declarado explícitamente por el o la estudiante, indicando la herramienta utilizada, su función en el proceso de elaboración y el tipo de aporte realizado.
+
+Se permitirá el uso de IA en las actividades evaluativas siempre y cuando dicho uso:
+
+-	No contravenga los principios éticos de la Universidad ni de la disciplina,
+-	No sustituya las competencias y habilidades que el curso busca desarrollar, ni afecte la autoría intelectual del estudiante,
+-	No vulnere los objetivos de aprendizaje establecidos en el programa del curso.
+
+El incumplimiento de esta cláusula se considerará una falta académica y será considerado como plagio, según el reglamento vigente, aplicando las mismas consecuencias disciplinarias.
+
 
 ## Reglamento Académico del Estudiante de Pregrado.
 
@@ -155,4 +161,4 @@ Asimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificult
 
 Art. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.
 
-\*\*\*Para evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) http://www.apastyle.org o MLA (Modern Language Association) http://www.mla.org/.
+* Para evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema [APA](http://www.apastyle.org) (American Psychological Association)  o [MLA](http://www.mla.org/) (Modern Language Association).

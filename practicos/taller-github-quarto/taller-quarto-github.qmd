@@ -433,11 +433,11 @@ La @fig-ctr muestra la relación que existe entre el producto interno bruto y la
 
 
 
-y se debería ver así:
+y se debería ver así (igual que esta página):
 
 
 ```{=html}
-<iframe src="https://kevin-carrasco.github.io/ipo/trabajo.html" width="1000" height="800"></iframe>
+<iframe src="https://version2025--r-data-analisis.netlify.app/practicos/practico5" width="1000" height="800"></iframe>
 
 ```
 
