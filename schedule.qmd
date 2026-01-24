@@ -17,23 +17,23 @@ Los tres componentes centrales del curso son las clases teóricas, los práctico
 |------------------|------------------|------------------|------------------|
 | <font color="orange"> **Marzo** </font> |                         |                    |                                                            |
 | Martes 10   | Unidad 1: Elementos y herramientas de R                      | Práctico 01   | - Leer detalladamente [programa del curso](syllabus.html) |
-| Martes 17   | Unidad 1: Elementos y herramientas de R                      | Práctico 02     |                                                      |
-| Martes 24   | Unidad 1: Elementos y herramientas de R                      | Práctico 03     |  Tarea 1 (30/03)                                     |
-| Martes 31   | Unidad 2: Operacionalización y análisis descriptivo de datos | Práctico 04     |                                                      |
+| Martes 17   | Unidad 1: Elementos y herramientas de R                      | Práctico 02   | [Guía quarto](https://quarto.org/docs/guide/)                                                   |
+| Martes 24   | Unidad 1: Elementos y herramientas de R                      | Práctico 03     | [Guía Git/github](https://davidrsch.github.io/hggh4r-es/) Tarea 1 (30/03)                                     |
+| Martes 31   | Unidad 2: Operacionalización y análisis descriptivo de datos | Práctico 04     | [Boccardo, G., & Ruiz, F. (2019). Rstudio para Estadística Descriptiva en Ciencias Sociales](https://bookdown.org/gboccardo/manual-ED-UCH/)                                                     |
 | <font color="orange"> **Abril** </font> |                         |                          |                                                      |
-| Martes 07   | Unidad 2: Operacionalización y análisis descriptivo de datos | Práctico 05     |                                                      |
+| Martes 07   | Unidad 2: Visualización y análisis descriptivo de datos      | Práctico 05     | [Guía visualización en R](https://rkabacoff.github.io/datavis/)                                                     |
 | Martes 14   | Sesión de apoyo Tarea N°2                                    |                 |  Tarea 2 (20/04)                                     |
 | Martes 21   | Unidad 3: Asociación de variables en R                       | Práctico 06     |                                                      |
 | Martes 28   | Unidad 3: Indices y escalas                                  | Práctico 07     |                                                      |
 | <font color="orange"> **Mayo** </font>  |                         |                    |                                                            |
 | Martes 05   | Sesión de apoyo Tarea N°3                                    |                 |  Tarea 3 (11/05)                                     |
-| Martes 12   | Unidad 4: Regresión lineal simple                            | Práctico 08     |                                                      |
+| Martes 12   | Unidad 4: Regresión lineal simple                            | Práctico 08     | [Modelos de regresión](https://editorial.unrn.edu.ar/media/data/lecturas/garibaldi_lenguajeR_eunrn.pdf)                                                     |
 | Martes 19   | *Semana de receso*                                           |                 |                                                      |
-| Martes 26   | Unidad 4: Regresión lineal múltiple                          | Práctico 09     |                                                      |
+| Martes 26   | Unidad 4: Regresión lineal múltiple                          | Práctico 09     | [Regresión múltiple](https://matematicas.unex.es/~jmf/Archivos/ANALISIS_MULTIVARIANTE.pdf)                                                     |
 | <font color="orange"> **Junio** </font> |                         |                    |                                                            |
-| Martes 02   | Unidad 4: Regresión logística                                | Práctico 10     |                                                      |
+| Martes 02   | Unidad 4: Regresión logística                                | Práctico 10     | [Regresión logística](https://www.academia.edu/33318024/Regresi%C3%B3n_Log%C3%ADstica_Fundamentos_y_aplicaci%C3%B3n_a_la_investigaci%C3%B3n_sociol%C3%B3gica_An%C3%A1lisis_Multivariante)                                                     |
 | Martes 09   | Sesión de apoyo Tarea N°4                                    |                 |  Tarea 4 (15/06)                                     |
-| Martes 16   | Trabajo de investigación                                     | Práctico 11     |                                                      |
+| Martes 16   | Trabajo de investigación                                     | Práctico 11     |  [Presentaciones](https://quarto.org/docs/presentations/)                                                    |
 | Martes 23   | Trabajo de investigación                                     |                 |  Presentaciones (23/06)                              |
 | Martes 30   | Sesión de apoyo evaluación final                             |                 |                                                      |
 | <font color="orange"> **Julio** </font> |                         |                    |                                                            |
