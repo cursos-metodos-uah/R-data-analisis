@@ -2,7 +2,7 @@
 title: "Práctico 1. Aproximación inicial a R"
 subtitle: "R para análisis estadístico"
 linktitle: "Práctico 1: Aproximación R"
-date: "2025-03-11"
+date: "2026-03-10"
 lang: es
 ---
 
@@ -10,7 +10,11 @@ lang: es
 
 ## Objetivos de la práctica
 
-Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
+Esta práctica tiene dos objetivos: 
+
+1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades 
+
+2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
 
 
 ## Recomendaciones generales:
@@ -92,7 +96,7 @@ Para esta sesión las librerías que vamos a utilizar son:
 
 - `dplyr`: ajuste general de datos
 
-- `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
+- `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación. Paquete de R creado por [Riva Quiroga](https://rivaquiroga.cl/), más información [acá](https://github.com/rivaquiroga/guaguas)
 
 - `ggplot2`: Visualización de datos
 
@@ -153,7 +157,7 @@ E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que
 
 ```{r}
 d <- filter(base, nombre=="Kevin" & anio==1996)
-sum(d$n)
+d$n
 ```
 
 Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo

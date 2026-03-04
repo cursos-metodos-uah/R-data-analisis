@@ -298,7 +298,7 @@
     "href": "practicos/01-content.html",
     "title": "Práctico 1. Aproximación inicial a R",
     "section": "",
-    "text": "Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.\n\n\n\n\nevitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables\nal momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:\n\n\nCódigo completo hasta que se produce el problema\nIndicar línea del código donde se produce el problema\nAdjuntar el resultado del output de la información de la sesión (sessionInfo())\n\n\n\n\nEn primer lugar vamos a abrir un archivo de R (script). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N\nEsta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.\n\n\nR puede ser una calculadora\n\n\nCódigo\n10 + 5 # ¿cuánto es 10 + 5?\n\n\n[1] 15\n\n\n\n\nCódigo\n10 * 5 # ¿cuánto es 10 * 5?\n\n\n[1] 50\n\n\nSe pueden crear objetos y asignarles valores\n\n\nCódigo\na &lt;- 28\nb &lt;- 8\n\na + b\n\n\n[1] 36\n\n\nO asignar operaciones a un objeto\n\n\nCódigo\nc &lt;- a + b\n\n\nSin embargo, la mayor parte del tiempo usamos funciones que ya existen en R\n\n\nCódigo\nsum(28,8)\n\n\n[1] 36\n\n\n\n\nCódigo\nround(10.14536) #aproximar\n\n\n[1] 10\n\n\nY muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)\n\n\n\nLa lógica de R es instalar librerías (solo 1 vez, con install.packages(\"librería\")), y luego cargarlas cada vez que es necesario usarlas (con library(librería)). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama pacman (package manager). Lo que hace pacman es cargar la librería, y si no está instalada, la instala y la carga:\nPara utilizar la primera vez (si es que no está instalada):\n\n\nCódigo\ninstall.packages(\"pacman\")\n\n\nY en adelante, las librerías se cargan así  pacman::p_load(libreria1,libreria2,libreriaX) :\n\n\nCódigo\npacman::p_load(dplyr, guaguas, ggplot2)\n\n\nPara esta sesión las librerías que vamos a utilizar son:\n\ndplyr: ajuste general de datos\nguaguas: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación\nggplot2: Visualización de datos\n\n\n\n\nAjustar espacio de trabajo\nPrevio a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:\n\n\nCódigo\nrm(list=ls())       # borrar todos los objetos en el espacio de trabajo\noptions(scipen=999) # valores sin notación científica\n\n\nLa función rm(list=ls()) permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función options(scipen=999) desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.\nDatos\nCargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)\n\n\nCódigo\nbase &lt;- guaguas\n\n\nConocemos las dimensiones de la base de datos\n\n\nCódigo\ndim(base)\n\n\n[1] 858782      5\n\n\nSon 858782 casos y 5 variables. Los nombres de estas variables son:\n\n\nCódigo\nnames(base)\n\n\n[1] \"anio\"       \"nombre\"     \"sexo\"       \"n\"          \"proporcion\"\n\n\nY la base se ve así:\n\n\nCódigo\nhead(base)\n\n\n# A tibble: 6 × 5\n   anio nombre sexo      n proporcion\n  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n1  1920 María  F      2130     0.104 \n2  1920 José   M       984     0.0483\n3  1920 Juan   M       636     0.0312\n4  1920 Luis   M       631     0.0310\n5  1920 Rosa   F       426     0.0209\n6  1920 Ana    F       340     0.0167\n\n\nAhora probemos algunas funciones para seguir explorando la base\n\n\nCódigo\ntable(base$sexo)\n\n\n\n     F      I      M \n531038    318 327426 \n\n\nPodemos ver la cantidad de nombres “F” (femenino), “M” (masculino) e “I” (indefinido) inscritos entre 1920 y 2021.\nPueden buscar sus nombres y probar, utilizamos la funcion filter del paquete dplyr\n\n\nCódigo\nfilter(base, nombre==\"Kevin\")\n\n\n# A tibble: 63 × 5\n    anio nombre sexo      n proporcion\n   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n 1  1931 Kevin  M         1 0.0000120 \n 2  1963 Kevin  M         1 0.0000035 \n 3  1964 Kevin  M         1 0.00000344\n 4  1967 Kevin  M         4 0.0000131 \n 5  1970 Kevin  M         6 0.0000210 \n 6  1971 Kevin  M         3 0.00000936\n 7  1972 Kevin  M         3 0.00000945\n 8  1973 Kevin  M         2 0.00000633\n 9  1974 Kevin  M         5 0.0000163 \n10  1976 Kevin  M         2 0.00000724\n# ℹ 53 more rows\n\n\nE incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron\n\n\nCódigo\nd &lt;- filter(base, nombre==\"Kevin\" & anio==1996)\nsum(d$n)\n\n\n[1] 1312\n\n\nAvanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo\n\n\nCódigo\ndatos &lt;- filter(base, nombre==\"Kevin\")\nggplot(datos, aes(x = anio, y = n)) +\n  geom_line() + \n  labs(x = \"Año\", y = \"Número de personas\", title = \"Número de personas llamadas Kevin por año\")\n\n\n\n\n\n\n\n\n\n¿Qué puede explicar el peak de “Kevins” previo a los 2000?\nspoiler: link\n\n\n\n\n\n\nCódigo\nguaguas %&gt;% \n  filter(nombre %in% c(\"Salvador\", \"Augusto\"), anio &gt;= 1960 & anio &lt;= 1979) %&gt;% \n  ggplot(aes(anio, n, color = nombre)) + \n  geom_line() +\n  labs(x = \"año\", y = \"total inscripciones\", color = \"nombre\", \n       title = \"Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979\")",
+    "text": "Esta práctica tiene dos objetivos:\n\nGenerar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades\nrevisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.\n\n\n\n\n\nevitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables\nal momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:\n\n\nCódigo completo hasta que se produce el problema\nIndicar línea del código donde se produce el problema\nAdjuntar el resultado del output de la información de la sesión (sessionInfo())\n\n\n\n\nEn primer lugar vamos a abrir un archivo de R (script). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N\nEsta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.\n\n\nR puede ser una calculadora\n\n\nCódigo\n10 + 5 # ¿cuánto es 10 + 5?\n\n\n[1] 15\n\n\n\n\nCódigo\n10 * 5 # ¿cuánto es 10 * 5?\n\n\n[1] 50\n\n\nSe pueden crear objetos y asignarles valores\n\n\nCódigo\na &lt;- 28\nb &lt;- 8\n\na + b\n\n\n[1] 36\n\n\nO asignar operaciones a un objeto\n\n\nCódigo\nc &lt;- a + b\n\n\nSin embargo, la mayor parte del tiempo usamos funciones que ya existen en R\n\n\nCódigo\nsum(28,8)\n\n\n[1] 36\n\n\n\n\nCódigo\nround(10.14536) #aproximar\n\n\n[1] 10\n\n\nY muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)\n\n\n\nLa lógica de R es instalar librerías (solo 1 vez, con install.packages(\"librería\")), y luego cargarlas cada vez que es necesario usarlas (con library(librería)). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama pacman (package manager). Lo que hace pacman es cargar la librería, y si no está instalada, la instala y la carga:\nPara utilizar la primera vez (si es que no está instalada):\n\n\nCódigo\ninstall.packages(\"pacman\")\n\n\nY en adelante, las librerías se cargan así  pacman::p_load(libreria1,libreria2,libreriaX) :\n\n\nCódigo\npacman::p_load(dplyr, guaguas, ggplot2)\n\n\nPara esta sesión las librerías que vamos a utilizar son:\n\ndplyr: ajuste general de datos\nguaguas: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación. Paquete de R creado por Riva Quiroga, más información acá\nggplot2: Visualización de datos\n\n\n\n\nAjustar espacio de trabajo\nPrevio a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:\n\n\nCódigo\nrm(list=ls())       # borrar todos los objetos en el espacio de trabajo\noptions(scipen=999) # valores sin notación científica\n\n\nLa función rm(list=ls()) permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función options(scipen=999) desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.\nDatos\nCargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)\n\n\nCódigo\nbase &lt;- guaguas\n\n\nConocemos las dimensiones de la base de datos\n\n\nCódigo\ndim(base)\n\n\n[1] 858782      5\n\n\nSon 858782 casos y 5 variables. Los nombres de estas variables son:\n\n\nCódigo\nnames(base)\n\n\n[1] \"anio\"       \"nombre\"     \"sexo\"       \"n\"          \"proporcion\"\n\n\nY la base se ve así:\n\n\nCódigo\nhead(base)\n\n\n# A tibble: 6 × 5\n   anio nombre sexo      n proporcion\n  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n1  1920 María  F      2130     0.104 \n2  1920 José   M       984     0.0483\n3  1920 Juan   M       636     0.0312\n4  1920 Luis   M       631     0.0310\n5  1920 Rosa   F       426     0.0209\n6  1920 Ana    F       340     0.0167\n\n\nAhora probemos algunas funciones para seguir explorando la base\n\n\nCódigo\ntable(base$sexo)\n\n\n\n     F      I      M \n531038    318 327426 \n\n\nPodemos ver la cantidad de nombres “F” (femenino), “M” (masculino) e “I” (indefinido) inscritos entre 1920 y 2021.\nPueden buscar sus nombres y probar, utilizamos la funcion filter del paquete dplyr\n\n\nCódigo\nfilter(base, nombre==\"Kevin\")\n\n\n# A tibble: 63 × 5\n    anio nombre sexo      n proporcion\n   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n 1  1931 Kevin  M         1 0.0000120 \n 2  1963 Kevin  M         1 0.0000035 \n 3  1964 Kevin  M         1 0.00000344\n 4  1967 Kevin  M         4 0.0000131 \n 5  1970 Kevin  M         6 0.0000210 \n 6  1971 Kevin  M         3 0.00000936\n 7  1972 Kevin  M         3 0.00000945\n 8  1973 Kevin  M         2 0.00000633\n 9  1974 Kevin  M         5 0.0000163 \n10  1976 Kevin  M         2 0.00000724\n# ℹ 53 more rows\n\n\nE incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron\n\n\nCódigo\nd &lt;- filter(base, nombre==\"Kevin\" & anio==1996)\nd$n\n\n\n[1] 1312\n\n\nAvanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo\n\n\nCódigo\ndatos &lt;- filter(base, nombre==\"Kevin\")\nggplot(datos, aes(x = anio, y = n)) +\n  geom_line() + \n  labs(x = \"Año\", y = \"Número de personas\", title = \"Número de personas llamadas Kevin por año\")\n\n\n\n\n\n\n\n\n\n¿Qué puede explicar el peak de “Kevins” previo a los 2000?\nspoiler: link\n\n\n\n\n\n\nCódigo\nguaguas %&gt;% \n  filter(nombre %in% c(\"Salvador\", \"Augusto\"), anio &gt;= 1960 & anio &lt;= 1979) %&gt;% \n  ggplot(aes(anio, n, color = nombre)) + \n  geom_line() +\n  labs(x = \"año\", y = \"total inscripciones\", color = \"nombre\", \n       title = \"Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979\")",
     "crumbs": [
       "Prácticos",
       "Talleres",
@@ -310,7 +310,7 @@
     "href": "practicos/01-content.html#objetivos-de-la-práctica",
     "title": "Práctico 1. Aproximación inicial a R",
     "section": "",
-    "text": "Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.",
+    "text": "Esta práctica tiene dos objetivos:\n\nGenerar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades\nrevisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.",
     "crumbs": [
       "Prácticos",
       "Talleres",
@@ -334,7 +334,7 @@
     "href": "practicos/01-content.html#primeros-pasos",
     "title": "Práctico 1. Aproximación inicial a R",
     "section": "",
-    "text": "En primer lugar vamos a abrir un archivo de R (script). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N\nEsta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.\n\n\nR puede ser una calculadora\n\n\nCódigo\n10 + 5 # ¿cuánto es 10 + 5?\n\n\n[1] 15\n\n\n\n\nCódigo\n10 * 5 # ¿cuánto es 10 * 5?\n\n\n[1] 50\n\n\nSe pueden crear objetos y asignarles valores\n\n\nCódigo\na &lt;- 28\nb &lt;- 8\n\na + b\n\n\n[1] 36\n\n\nO asignar operaciones a un objeto\n\n\nCódigo\nc &lt;- a + b\n\n\nSin embargo, la mayor parte del tiempo usamos funciones que ya existen en R\n\n\nCódigo\nsum(28,8)\n\n\n[1] 36\n\n\n\n\nCódigo\nround(10.14536) #aproximar\n\n\n[1] 10\n\n\nY muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)\n\n\n\nLa lógica de R es instalar librerías (solo 1 vez, con install.packages(\"librería\")), y luego cargarlas cada vez que es necesario usarlas (con library(librería)). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama pacman (package manager). Lo que hace pacman es cargar la librería, y si no está instalada, la instala y la carga:\nPara utilizar la primera vez (si es que no está instalada):\n\n\nCódigo\ninstall.packages(\"pacman\")\n\n\nY en adelante, las librerías se cargan así  pacman::p_load(libreria1,libreria2,libreriaX) :\n\n\nCódigo\npacman::p_load(dplyr, guaguas, ggplot2)\n\n\nPara esta sesión las librerías que vamos a utilizar son:\n\ndplyr: ajuste general de datos\nguaguas: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación\nggplot2: Visualización de datos\n\n\n\n\nAjustar espacio de trabajo\nPrevio a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:\n\n\nCódigo\nrm(list=ls())       # borrar todos los objetos en el espacio de trabajo\noptions(scipen=999) # valores sin notación científica\n\n\nLa función rm(list=ls()) permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función options(scipen=999) desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.\nDatos\nCargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)\n\n\nCódigo\nbase &lt;- guaguas\n\n\nConocemos las dimensiones de la base de datos\n\n\nCódigo\ndim(base)\n\n\n[1] 858782      5\n\n\nSon 858782 casos y 5 variables. Los nombres de estas variables son:\n\n\nCódigo\nnames(base)\n\n\n[1] \"anio\"       \"nombre\"     \"sexo\"       \"n\"          \"proporcion\"\n\n\nY la base se ve así:\n\n\nCódigo\nhead(base)\n\n\n# A tibble: 6 × 5\n   anio nombre sexo      n proporcion\n  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n1  1920 María  F      2130     0.104 \n2  1920 José   M       984     0.0483\n3  1920 Juan   M       636     0.0312\n4  1920 Luis   M       631     0.0310\n5  1920 Rosa   F       426     0.0209\n6  1920 Ana    F       340     0.0167\n\n\nAhora probemos algunas funciones para seguir explorando la base\n\n\nCódigo\ntable(base$sexo)\n\n\n\n     F      I      M \n531038    318 327426 \n\n\nPodemos ver la cantidad de nombres “F” (femenino), “M” (masculino) e “I” (indefinido) inscritos entre 1920 y 2021.\nPueden buscar sus nombres y probar, utilizamos la funcion filter del paquete dplyr\n\n\nCódigo\nfilter(base, nombre==\"Kevin\")\n\n\n# A tibble: 63 × 5\n    anio nombre sexo      n proporcion\n   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n 1  1931 Kevin  M         1 0.0000120 \n 2  1963 Kevin  M         1 0.0000035 \n 3  1964 Kevin  M         1 0.00000344\n 4  1967 Kevin  M         4 0.0000131 \n 5  1970 Kevin  M         6 0.0000210 \n 6  1971 Kevin  M         3 0.00000936\n 7  1972 Kevin  M         3 0.00000945\n 8  1973 Kevin  M         2 0.00000633\n 9  1974 Kevin  M         5 0.0000163 \n10  1976 Kevin  M         2 0.00000724\n# ℹ 53 more rows\n\n\nE incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron\n\n\nCódigo\nd &lt;- filter(base, nombre==\"Kevin\" & anio==1996)\nsum(d$n)\n\n\n[1] 1312\n\n\nAvanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo\n\n\nCódigo\ndatos &lt;- filter(base, nombre==\"Kevin\")\nggplot(datos, aes(x = anio, y = n)) +\n  geom_line() + \n  labs(x = \"Año\", y = \"Número de personas\", title = \"Número de personas llamadas Kevin por año\")\n\n\n\n\n\n\n\n\n\n¿Qué puede explicar el peak de “Kevins” previo a los 2000?\nspoiler: link",
+    "text": "En primer lugar vamos a abrir un archivo de R (script). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N\nEsta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.\n\n\nR puede ser una calculadora\n\n\nCódigo\n10 + 5 # ¿cuánto es 10 + 5?\n\n\n[1] 15\n\n\n\n\nCódigo\n10 * 5 # ¿cuánto es 10 * 5?\n\n\n[1] 50\n\n\nSe pueden crear objetos y asignarles valores\n\n\nCódigo\na &lt;- 28\nb &lt;- 8\n\na + b\n\n\n[1] 36\n\n\nO asignar operaciones a un objeto\n\n\nCódigo\nc &lt;- a + b\n\n\nSin embargo, la mayor parte del tiempo usamos funciones que ya existen en R\n\n\nCódigo\nsum(28,8)\n\n\n[1] 36\n\n\n\n\nCódigo\nround(10.14536) #aproximar\n\n\n[1] 10\n\n\nY muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)\n\n\n\nLa lógica de R es instalar librerías (solo 1 vez, con install.packages(\"librería\")), y luego cargarlas cada vez que es necesario usarlas (con library(librería)). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama pacman (package manager). Lo que hace pacman es cargar la librería, y si no está instalada, la instala y la carga:\nPara utilizar la primera vez (si es que no está instalada):\n\n\nCódigo\ninstall.packages(\"pacman\")\n\n\nY en adelante, las librerías se cargan así  pacman::p_load(libreria1,libreria2,libreriaX) :\n\n\nCódigo\npacman::p_load(dplyr, guaguas, ggplot2)\n\n\nPara esta sesión las librerías que vamos a utilizar son:\n\ndplyr: ajuste general de datos\nguaguas: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación. Paquete de R creado por Riva Quiroga, más información acá\nggplot2: Visualización de datos\n\n\n\n\nAjustar espacio de trabajo\nPrevio a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:\n\n\nCódigo\nrm(list=ls())       # borrar todos los objetos en el espacio de trabajo\noptions(scipen=999) # valores sin notación científica\n\n\nLa función rm(list=ls()) permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función options(scipen=999) desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.\nDatos\nCargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)\n\n\nCódigo\nbase &lt;- guaguas\n\n\nConocemos las dimensiones de la base de datos\n\n\nCódigo\ndim(base)\n\n\n[1] 858782      5\n\n\nSon 858782 casos y 5 variables. Los nombres de estas variables son:\n\n\nCódigo\nnames(base)\n\n\n[1] \"anio\"       \"nombre\"     \"sexo\"       \"n\"          \"proporcion\"\n\n\nY la base se ve así:\n\n\nCódigo\nhead(base)\n\n\n# A tibble: 6 × 5\n   anio nombre sexo      n proporcion\n  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n1  1920 María  F      2130     0.104 \n2  1920 José   M       984     0.0483\n3  1920 Juan   M       636     0.0312\n4  1920 Luis   M       631     0.0310\n5  1920 Rosa   F       426     0.0209\n6  1920 Ana    F       340     0.0167\n\n\nAhora probemos algunas funciones para seguir explorando la base\n\n\nCódigo\ntable(base$sexo)\n\n\n\n     F      I      M \n531038    318 327426 \n\n\nPodemos ver la cantidad de nombres “F” (femenino), “M” (masculino) e “I” (indefinido) inscritos entre 1920 y 2021.\nPueden buscar sus nombres y probar, utilizamos la funcion filter del paquete dplyr\n\n\nCódigo\nfilter(base, nombre==\"Kevin\")\n\n\n# A tibble: 63 × 5\n    anio nombre sexo      n proporcion\n   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;\n 1  1931 Kevin  M         1 0.0000120 \n 2  1963 Kevin  M         1 0.0000035 \n 3  1964 Kevin  M         1 0.00000344\n 4  1967 Kevin  M         4 0.0000131 \n 5  1970 Kevin  M         6 0.0000210 \n 6  1971 Kevin  M         3 0.00000936\n 7  1972 Kevin  M         3 0.00000945\n 8  1973 Kevin  M         2 0.00000633\n 9  1974 Kevin  M         5 0.0000163 \n10  1976 Kevin  M         2 0.00000724\n# ℹ 53 more rows\n\n\nE incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron\n\n\nCódigo\nd &lt;- filter(base, nombre==\"Kevin\" & anio==1996)\nd$n\n\n\n[1] 1312\n\n\nAvanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo\n\n\nCódigo\ndatos &lt;- filter(base, nombre==\"Kevin\")\nggplot(datos, aes(x = anio, y = n)) +\n  geom_line() + \n  labs(x = \"Año\", y = \"Número de personas\", title = \"Número de personas llamadas Kevin por año\")\n\n\n\n\n\n\n\n\n\n¿Qué puede explicar el peak de “Kevins” previo a los 2000?\nspoiler: link",
     "crumbs": [
       "Prácticos",
       "Talleres",
@@ -1251,7 +1251,7 @@
     "href": "slides/01-clase1/01-clase1.html#section",
     "title": "R para Análisis estadístico",
     "section": "",
-    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2024\nR-data-analisis.netlify.com"
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   },
   {
     "objectID": "slides/01-clase1/01-clase1.html#este-curso",
@@ -1265,7 +1265,7 @@
     "href": "slides/01-clase1/01-clase1.html#evaluación",
     "title": "R para Análisis estadístico",
     "section": "Evaluación",
-    "text": "Evaluación\n\n3 trabajos (20% c/u). En parejas\nPresentación final de investigación (10%)\nExamen Final (30%)\nFoco en reproducibilidad, reporte, visualización y análisis de resultados."
+    "text": "Evaluación\n\nPara presentarse a examen se requiere una nota promedio igual o superior a 3,5 y un 70% de asistencia al curso. Esta regla solo podrá alterarse en caso de inasistencias por causas serias y justificadas de acuerdo con el criterio de la carrera.\n4 trabajos (15% c/u). En parejas\nPresentación final de investigación (10%)\nExamen Final (30%)\nFoco en reproducibilidad, reporte, visualización y análisis de resultados."
   },
   {
     "objectID": "slides/01-clase1/01-clase1.html#sitio-web-del-curso",
@@ -1352,11 +1352,11 @@
     "text": "Así se ve Rstudio"
   },
   {
-    "objectID": "slides/01-clase1/01-clase1.html#section-3",
-    "href": "slides/01-clase1/01-clase1.html#section-3",
+    "objectID": "slides/01-clase1/01-clase1.html#section-2",
+    "href": "slides/01-clase1/01-clase1.html#section-2",
     "title": "R para Análisis estadístico",
     "section": "",
-    "text": ".small[.right[fuente: Guía de campo de R]]"
+    "text": "fuente: Guía de campo de R"
   },
   {
     "objectID": "slides/01-clase1/01-clase1.html#por-qué-usar-r",
@@ -1366,32 +1366,109 @@
     "text": "¿Por qué usar R?\n\nGratis: No es necesario pagar licencias\nMultiplataforma (Windows, Mac-OS, Linux): Los códigos de análisis pueden ser usados en distintas plataformas\nInvestigación reproducible: Permite documentar los resultados obtenidos paso a paso, mostrando el flujo completo de procesamiento de los datos por medio de scripts\nIntegración con otros softwares"
   },
   {
-    "objectID": "slides/01-clase1/01-clase1.html#section-4",
-    "href": "slides/01-clase1/01-clase1.html#section-4",
+    "objectID": "slides/01-clase1/01-clase1.html#qué-es-markdown",
+    "href": "slides/01-clase1/01-clase1.html#qué-es-markdown",
     "title": "R para Análisis estadístico",
-    "section": "",
-    "text": "Independiente de programa comercial\nIndependiente de plataformas específicas\nPermite combinar texto y análisis en un mismo documento\nFoco en los contenidos en lugar del formato\nPermite distintas opciones de formato final"
+    "section": "¿Qué es markdown?",
+    "text": "¿Qué es markdown?\n\nForma de escritura simple con pocas marcas de formato\nConversión a distintos formatos de salida (html, pdf)\nSoporta encabezados, tablas, imágenes, tablas de contenidos, ecuaciones, links…\nFilosofía: foco en contenido primero, el formato después."
   },
   {
-    "objectID": "slides/01-clase1/01-clase1.html#así-se-ve-quarto",
-    "href": "slides/01-clase1/01-clase1.html#así-se-ve-quarto",
+    "objectID": "slides/01-clase1/01-clase1.html#qué-es-quarto",
+    "href": "slides/01-clase1/01-clase1.html#qué-es-quarto",
     "title": "R para Análisis estadístico",
-    "section": "Así se ve Quarto",
-    "text": "Así se ve Quarto\n)"
+    "section": "¿Qué es Quarto?",
+    "text": "¿Qué es Quarto?\n\nQuarto es un sistema moderno de creación de documentos dinámicos, informes, presentaciones, libros, sitios web y más, a partir de archivos de texto plano y por medio del conversor universal de documentos Pandoc.\nEvolución de los sistemas de autoría como Jupyter, R Markdown, todo dentro del mismo documento."
   },
   {
-    "objectID": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-1",
-    "href": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-1",
+    "objectID": "slides/01-clase1/01-clase1.html#características-principales",
+    "href": "slides/01-clase1/01-clase1.html#características-principales",
     "title": "R para Análisis estadístico",
-    "section": "Así se ve Quarto",
-    "text": "Así se ve Quarto"
+    "section": "Características Principales",
+    "text": "Características Principales\n\nMultiplataforma\nBasado en Markdown\nSoporte para múltiples lenguajes\nMultitud de formatos de salida\nSoporte para publicación científica\nIntegración entornos de desarrollo (RStudio, VSC, etc)\nExtensible"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#características-principales-1",
+    "href": "slides/01-clase1/01-clase1.html#características-principales-1",
+    "title": "R para Análisis estadístico",
+    "section": "Características principales",
+    "text": "Características principales\n\nLenguaje que combina código (R) y texto (Markdown): Al igual que RMarkdown (.Rmd), Quarto permite combinar texto plano markdown y código de análisis R.\nProvee una serie de herramientas para generar documentos dinámicos y publicarlos"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#estructura-de-un-documento",
+    "href": "slides/01-clase1/01-clase1.html#estructura-de-un-documento",
+    "title": "R para Análisis estadístico",
+    "section": "Estructura de un documento",
+    "text": "Estructura de un documento\n\nArchivo .qmd\nEncabezado YAML:\ntitle: \"Mi documento\"\nauthor: \"Kevin Carrasco\"\ndate: today\nformat: html\nCuerpo:\n\nMarkdown para secciones, énfasis, listas, etc.\nBloques de código\nBibliografía"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ejemplo",
+    "href": "slides/01-clase1/01-clase1.html#ejemplo",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n---\ntitle: \"Tutorial Quarto\"\nauthor: \"Kevin Carrasco\"\ndate: \"2026-03-10\"\nformat: html\nlang: es\n---\n\n# Bienvenidos a este tutorial de **Quarto**.\n\nQuarto está especialmente diseñado para elaborar documentos\ncientíficos y técnicos reproducibles"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#base-de-escritura-markdown",
+    "href": "slides/01-clase1/01-clase1.html#base-de-escritura-markdown",
+    "title": "R para Análisis estadístico",
+    "section": "Base de escritura: Markdown",
+    "text": "Base de escritura: Markdown\n\n\n\nEncabezados: #, ##, ###\nListas:\n\nViñetas: - o *\nNumeradas: 1., 2.\n\nÉnfasis: *cursiva*, **negrita**\nCódigo en línea: `código`\nEnlaces: [texto](url)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ejemplo-1",
+    "href": "slides/01-clase1/01-clase1.html#ejemplo-1",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n---\ntitle: \"Tutorial Quarto\"\nauthor: \"Kevin Carrasco\"\ndate: \"2026-03-10\"\nformat: html\nlang: es\n---\n\n# Bienvenidos a este tutorial de **Quarto**.\n\nQuarto está especialmente diseñado para elaborar documentos\ncientíficos y técnicos reproducibles\n\n## Este es un subtítulo\n\nAhora vamos a ensayar **negritas** y _cursivas_\n\n### Y un título de tercer orden\n\nY una lista\n\n- con viñetas\n- ...\n- ...\n\nY otra numerada:\n\n1. punto 1\n2. punto 2\n3. ...\n\n## Links e imágenes\n\n[Este es un link a Github](https://github.com/)  \n\n![Imagen online](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/330px-Gutenberg.jpg)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#personalización-visual-del-html",
+    "href": "slides/01-clase1/01-clase1.html#personalización-visual-del-html",
+    "title": "R para Análisis estadístico",
+    "section": "Personalización visual del HTML",
+    "text": "Personalización visual del HTML\n\nTemas: cosmo, flatly, lux, darkly, etc.\nOpciones comunes en YAML:\ntoc: true\nnumber-sections: true\ncode-fold: true\nPersonalización con CSS externo:\ncss: estilos.css"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ejemplo-2",
+    "href": "slides/01-clase1/01-clase1.html#ejemplo-2",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n---\ntitle: \"Tutorial Quarto\"\nauthor: \"Kevin Carrasco\"\ndate: \"2026-03-10\"\nformat: html\nlang: es\ntoc: true\nnumber-sections: true\ntheme: darkly\ncss: estilos.css\n---\n\n# Bienvenidos a este tutorial de **Quarto**.\n\nQuarto está especialmente diseñado para elaborar documentos\ncientíficos y técnicos reproducibles\n\n## Este es un subtítulo\n\nAhora vamos a ensayar **negritas** y _cursivas_\n\n### Y un título de tercer orden\n\nY una lista\n\n- con viñetas\n- ...\n- ...\n\nY otra numerada:\n\n1. punto 1\n2. punto 2\n3. ..."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#extensiones",
+    "href": "slides/01-clase1/01-clase1.html#extensiones",
+    "title": "R para Análisis estadístico",
+    "section": "Extensiones",
+    "text": "Extensiones\n\nIntegración con R\nReferencias bibliográficas\nRenderizado a pdf, word\nSitios web\nPresentaciones"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#recursos",
+    "href": "slides/01-clase1/01-clase1.html#recursos",
+    "title": "R para Análisis estadístico",
+    "section": "Recursos",
+    "text": "Recursos\n\nRecursos para seguir aprendiendo:\nhttps://quarto.org\nCreación de documentos científicos con Quarto\nTutorial Quarto for academics"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-en-rstudio",
+    "href": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-en-rstudio",
+    "title": "R para Análisis estadístico",
+    "section": "Así se ve Quarto en Rstudio",
+    "text": "Así se ve Quarto en Rstudio"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-renderizado",
+    "href": "slides/01-clase1/01-clase1.html#así-se-ve-quarto-renderizado",
+    "title": "R para Análisis estadístico",
+    "section": "Así se ve Quarto renderizado",
+    "text": "Así se ve Quarto renderizado"
   },
   {
     "objectID": "slides/01-clase1/01-clase1.html#alternativas",
     "href": "slides/01-clase1/01-clase1.html#alternativas",
     "title": "R para Análisis estadístico",
     "section": "Alternativas",
-    "text": "Alternativas\n\n\n\nA. ad-hoc\n\ncada investigador define numero de archivos, nombres, carpetas y organización\nexplicar al resto cómo se organiza\ndocumentar en un archivo cómo se organiza\n\n–&gt; reproducibilidad y transparencia LIMITADA\n\n\n\nB. Protocolo reproducible\n\nestructura de carpetas y archivos interconectados que refieren a reglas conocidas (estándares)\nautocontenido: toda la información necesaria para la reproducibilidad se encuentra en la carpeta raíz o directorio de trabajo."
+    "text": "Alternativas\n\n\n\nA. ad-hoc\n\ncada investigador define numero de archivos, nombres, carpetas y organización\nexplicar al resto cómo se organiza\ndocumentar en un archivo cómo se organiza\n–&gt; reproducibilidad y transparencia LIMITADA\n\n\n\n\n\n\nB. Protocolo reproducible\n\nestructura de carpetas y archivos interconectados que refieren a reglas conocidas (estándares)\nautocontenido: toda la información necesaria para la reproducibilidad se encuentra en la carpeta raíz o directorio de trabajo."
   },
   {
     "objectID": "slides/01-clase1/01-clase1.html#propuesta-protocolo-ipo",
@@ -1412,7 +1489,7 @@
     "href": "slides/01-clase1/01-clase1.html#mayores-detalles-y-plantilla-de-carpetas",
     "title": "R para Análisis estadístico",
     "section": "Mayores detalles y plantilla de carpetas:",
-    "text": "Mayores detalles y plantilla de carpetas:\n\nhttps://lisa-coes.com/ipo-repro/\nhttps://github.com/lisa-coes/ipo"
+    "text": "Mayores detalles y plantilla de carpetas:\n\nhttps://lisacoes.com/ipo-repro/\nhttps://github.com/lisa-coes/ipo"
   },
   {
     "objectID": "slides/01-clase1/01-clase1.html#carpeta-autocontenida",
@@ -1436,8 +1513,8 @@
     "text": "RStudio Projects\n\nLa funcionalidad Projects de RStudio permite establecer claramente un directorio de trabajo de manera eficiente\nPara ello, genera un archivo de extensión .Rproj en el directorio raiz de la carpeta del proyecto\nLuego se facilita acceder a la carpeta del proyecto en RStudio ejecutando desde el administrador de archivos del computador (file manager) el archivo .Rproj\npara comprobar, ejecutar getwd() y debería dar la ruta hacia la carpeta del proyecto"
   },
   {
-    "objectID": "slides/01-clase1/01-clase1.html#section-5",
-    "href": "slides/01-clase1/01-clase1.html#section-5",
+    "objectID": "slides/01-clase1/01-clase1.html#section-3",
+    "href": "slides/01-clase1/01-clase1.html#section-3",
     "title": "R para Análisis estadístico",
     "section": "",
     "text": "La escritura en texto simple (como Markdown o Quarto) permite implementar un sistema de control de versiones, además de herramientas de respaldo, colaboración y comunicación"
@@ -1464,8 +1541,8 @@
     "text": "Git/github\n\nactualmente, Git / Github posee más de 100 millones de repositorios\nmayor fuente de código en el mundo\nha transitado desde el mundo de desarrollo de software hacia distintos ámbitos de trabajo colaborativo y abierto\nentorno de trabajo que favorece la ciencia abierta"
   },
   {
-    "objectID": "slides/01-clase1/01-clase1.html#section-6",
-    "href": "slides/01-clase1/01-clase1.html#section-6",
+    "objectID": "slides/01-clase1/01-clase1.html#section-4",
+    "href": "slides/01-clase1/01-clase1.html#section-4",
     "title": "R para Análisis estadístico",
     "section": "",
     "text": "Git no es un registro de versiones de archivos específicos, sino de una carpeta completa\nGuarda “fotos” de momentos específicos de la carpeta, y esta foto se saca mediante un commit"
@@ -1485,11 +1562,25 @@
     "text": "¿Cuándo hacer un commit?\n\nsegún conveniencia\nsugerencias:\n\nque sea un momento que requiera registro (momento de foto)\nno para cambios menores\nno esperar muchos cambios distintos que puedan hacer perder el sentido del commit"
   },
   {
-    "objectID": "slides/01-clase1/01-clase1.html#section-8",
-    "href": "slides/01-clase1/01-clase1.html#section-8",
+    "objectID": "slides/01-clase1/01-clase1.html#inteligencia-artificial",
+    "href": "slides/01-clase1/01-clase1.html#inteligencia-artificial",
+    "title": "R para Análisis estadístico",
+    "section": "Inteligencia artificial",
+    "text": "Inteligencia artificial\n\nSe puede usar inteligencia artificial para generar código, pero es importante revisar y entender el código generado, ya que puede contener errores o no ser óptimo.\nSe recomienda usar inteligencia artificial como una herramienta de apoyo, pero no como un sustituto del aprendizaje y la comprensión de los conceptos fundamentales de R y el análisis de datos.\nSe pueden usar herramientas como ChatGPT, pero es importante ser crítico con las respuestas generadas y verificar su precisión."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ejemplo-de-uso-de-inteligencia-artificial",
+    "href": "slides/01-clase1/01-clase1.html#ejemplo-de-uso-de-inteligencia-artificial",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo de uso de inteligencia artificial",
+    "text": "Ejemplo de uso de inteligencia artificial\n\nIngresa a la aplicación o web de IA generativa de tu preferencia (ej. ChatGPT, Gemini, Claude, Grok, etc.)\nUtiliza el siguiente prompt:\n\nCompleta la siguiente frase y entrega un solo resultado: Un hombre utilizó…\n\ny luego…\n\nCompleta la siguiente frase y entrega un solo resultado: Una mujer se vistió de…"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-6",
+    "href": "slides/01-clase1/01-clase1.html#section-6",
     "title": "R para Análisis estadístico",
     "section": "",
-    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2024\nR-data-analisis.netlify.com"
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   },
   {
     "objectID": "syllabus.html",

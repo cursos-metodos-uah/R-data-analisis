@@ -1,0 +1,724 @@
+/* ====== PALETA ESMERALDA VIBRANTE ====== */
+$emerald-50:  #e6fff6;
+$emerald-100: #c3ffeb;
+$emerald-200: #8fffe0;
+$emerald-300: #53f9c8;
+$emerald-400: #1ff0ab;
+$emerald-500: #00d68f;   /* tono principal (vivo) */
+$emerald-600: #00b07a;   /* para botones/enlaces accesibles */
+$emerald-700: #009366;   /* titulares sobre fondo claro */
+$emerald-800: #006e4c;
+$emerald-900: #004f37;
+$emerald-950: #003426;
+
+/* ====== FUENTES ====== */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("./fonts/league-gothic/league-gothic.css");
+@import url("./fonts/source-sans-pro/source-sans-pro.css"); /* <- aquí */
+
+/*-- scss:defaults --*/
+$backgroundColor: #ffffff;
+
+/* Texto base */
+$mainFont: 'Noto Serif', sans-serif;
+$mainFontSize: 27px;
+$mainColor: #272828;
+$blockMargin: 20px;
+
+/* Titulares */
+$presentation-heading-font: "Montserrat", sans-serif !default;
+$headingColor: $emerald-900;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$headingFontWeight: 700;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 1.70em;
+$heading2Size: 1.70em;
+$heading3Size: 1.00em;
+$heading4Size: 0.5em;
+
+$codeFont: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+/* Enlaces */
+$linkColor: $emerald-500;
+$linkColorHover: $emerald-700;
+
+/* Selección de texto */
+$selectionBackgroundColor: $emerald-300;
+$selectionColor: #fff;
+
+/* ====== PORTADA (gradiente + layout centrado) ====== */
+#title-slide {
+  top: 0 !important;
+  background: linear-gradient(135deg, $emerald-700 0%, $emerald-500 100%);
+  color: #fff;
+}
+#title-slide > h1,
+#title-slide .author { color: #ffffff; }
+
+/* Contenedor reutilizable para portada o slides con logo */
+.reveal section.has-logo { position: relative; }
+.reveal section.has-logo .title-hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: .5rem;
+}
+.reveal section.has-logo h1,
+.reveal section.has-logo h2 {
+  text-align: center;
+  margin-left: auto; margin-right: auto;
+}
+
+/* Separador centrado y sutil */
+.reveal section.has-logo .title-divider,
+#title-slide hr, /* por si usas <hr> en la portada */
+.title-divider {
+  border: 0; height: 2px;
+  background: rgba(255,255,255,.25);
+  max-width: 760px;
+  margin: .7rem auto 1.1rem;
+}
+
+/* Logo arriba-derecha (si lo insertas manualmente en la slide) */
+.reveal section.has-logo .slide-logo-uchile {
+  position: absolute;
+  top: 1.0rem; right: 1.0rem;
+  width: 180px; /* ⇦ ajusta tamaño */
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.15));
+}
+
+/* Logo arriba-derecha (si usas YAML: format: revealjs: logo:) */
+.reveal .slide-logo{
+  position: absolute !important;
+  top: 1rem; right: 1rem;
+  width: 180px; height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.15));
+}
+
+/* ====== LAYOUT UTIL ====== */
+.v-center-container { display: flex; justify-content: center; align-items: center; height: 90%; }
+.column-right { text-align: right; }
+
+.pull-left  { float: left;  width: 47%; }
+.pull-right { float: right; width: 47%; }
+.pull-left-narrow  { float: left;  width: 33%; }
+.pull-right-narrow { float: right; width: 33%; }
+.pull-left-wide  { float: left;  width: 66%; }
+.pull-right-wide { float: right; width: 66%; }
+
+.reveal section h1 { font-weight: 800; }
+
+/* ====== CONTENIDO (Reveal + Xaringan) ====== */
+.remark-slide-content {
+  background-color: #FFF;
+  font-size: 28px;
+  padding: 1em 2em;
+}
+
+/* Tamaños de titulares en contenido */
+.remark-slide-content h1 { font-size: 70px; }
+.remark-slide-content h2 { font-size: 48px; }
+.remark-slide-content h3 { font-size: 40px; }
+.remark-slide-content h4 { font-size: 35px; }
+
+/* ====== JUSTIFICADO + LONGITUD DE LÍNEA ====== */
+.reveal section p,
+.reveal section li {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  line-height: 1.45;
+}
+.reveal section p,
+.reveal section ul,
+.reveal section ol,
+.reveal section blockquote {
+  max-width: 88ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.remark-slide-content p,
+.remark-slide-content li {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.45;
+}
+.reveal section li + li { margin-top: .25em; }
+
+/* ====== ENLACES ACCESIBLES ====== */
+.reveal a {
+  color: $linkColor;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.reveal a:hover,
+.reveal a:focus {
+  color: $linkColorHover;
+  text-decoration: underline;
+}
+.reveal a:focus-visible {
+  outline: 3px solid rgba($emerald-500,.55);
+  border-radius: 6px;
+}
+
+/* ====== FRAGMENTOS ====== */
+.highlight-last  { color: #a3aaae;
+  .current-fragment { color: #272828; }
+}
+.highlight-last2 { color: #a3aaae;
+  .current-fragment { color: #ffffff; }
+}
+.reveal .fragment.current-fragment {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba($emerald-500,.35);
+  border-radius: 6px;
+}
+
+/* ====== CÓDIGO ====== */
+.reveal pre code, .reveal code {
+  background: #f7faf9;
+  border: 1px solid rgba($emerald-700,.15);
+  border-radius: 8px;
+  padding: .15em .35em;
+  font-family: $codeFont;
+}
+.reveal pre {
+  padding: .9em 1.1em;
+  background: #f7faf9;
+  border: 1px solid rgba($emerald-700,.15);
+  border-radius: 10px;
+  max-width: 96%;
+  margin: 0.6em auto;
+}
+
+/* ====== TABLAS ====== */
+.table {
+  margin: 1em auto;
+  border-collapse: collapse;
+  border: 1px solid rgba($emerald-900,.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.table thead th {
+  background: $emerald-50;
+  border-bottom: 1px solid rgba($emerald-900,.15);
+  color: $emerald-900;
+}
+th, td { padding: 8px 10px; }
+.table tbody tr:nth-child(odd) { background: rgba($emerald-50,.55); }
+
+/* ====== BLOQUE DE CITA ====== */
+blockquote {
+  border-left: solid 5px $emerald-600;
+  padding-left: 1em;
+  color: #183636;
+  background: #f7fcfa;
+  border-radius: 6px;
+}
+
+/* ====== NÚMERO Y BARRA DE PROGRESO ====== */
+.reveal .slide-number {
+  background: rgba($emerald-900,.08);
+  color: $emerald-900;
+  border: 1px solid rgba($emerald-900,.18);
+  padding: .2em .5em;
+  border-radius: 6px;
+}
+.reveal .progress span { background: $emerald-500; }
+
+/* ====== FIGURAS/IMÁGENES ====== */
+img, video, iframe { max-width: 100%; border-radius: 8px; }
+iframe { border: 1px solid rgba(0,0,0,.2); width: 100%; }
+.reveal figure { margin: 0.5em auto; text-align: center; }
+.reveal figure figcaption {
+  font-size: .8em; color: #4b5563; margin-top: .35em;
+}
+.full-bleed img, .full-bleed video, .full-bleed iframe {
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0;
+}
+
+/* ====== DIAPOSITIVA OSCURA (opcional por slide) ====== */
+.slide-invert {
+  background: $emerald-900 !important;
+  color: #fff !important;
+}
+.slide-invert a { color: $emerald-300; }
+.slide-invert h1, .slide-invert h2, .slide-invert h3 { color: #fff; }
+
+/* ====== CLASES DE ANCHO DE TEXTO ====== */
+.text-narrow > * { max-width: 70ch !important; }
+.text-wide   > * { max-width: 110ch !important; }
+
+/* ====== UTILIDADES DE TIPO ====== */
+.reveal section .small  { font-size: 75% }
+.reveal section .medium { font-size: 85% }
+.reveal section .large  { font-size: 95% }
+.reveal section .xlarge { font-size: 115% }
+.reveal section .slarge { font-size: 150% }
+.reveal section .tiny   { font-size: 60%; line-height: 1.2em; }
+
+/* ====== CAJAS Y ACENTOS ====== */
+.content-box-red    { background-color: #e8ebeb; }
+.content-box-yellow { background-color: #fef5c4; }
+
+.box-4, .section-title-4 { background-color: $emerald-500; color: #fff; }
+.box-inv-4, .section-title-inv-4 { background-color: $emerald-100; }
+.box-inv-4, .title-inv-4 h1, .section-title-inv-4 h1 { color: $emerald-900; }
+
+.box-inv-5, .section-title-inv-5 { background-color: $emerald-800; }
+.box-inv-5, .title-inv-5 h1, .section-title-inv-5 h1 { color: #FFFFFF; }
+
+/* Grupo de cajas */
+.box-7, .box-inv-7, .box-6, .box-inv-6, .box-5, .box-inv-5,
+.box-4, .box-inv-4, .box-3, .box-inv-3, .box-2, .box-inv-2, .box-1, .box-inv-1 {
+  margin: 0em auto; overflow: hidden; padding: 0.1em 0.6em;
+  font-weight: 600; display: table; text-align: center;
+  border-radius: 10px;
+}
+
+/* ====== SLIDE DESTACADA EN VERDE ====== */
+.gris { /* renombrada para mantener compatibilidad con tu código */
+  background-color: $emerald-700;
+  color: $emerald-50;
+}
+.gris h1 {
+  color: #FFFFFF; font-size: 80px; font-weight: bold; text-align: right;
+}
+.gris h2 {
+  color: $emerald-100; font-size: 60px; text-align: right;
+}
+.gris h3 { color: #FFFFFF; font-size: 50px; }
+
+/* ====== PORTADA: ancho común, ALINEADO A LA IZQUIERDA + logo a la DERECHA ====== */
+
+/* por si quedó un logo overlay del YAML, ocúltalo */
+.reveal .slide-logo { display: none !important; }
+
+/* soporta .title-cover en <section> o en un div interno */
+.reveal section.title-cover,
+.reveal section .title-cover { position: relative; }
+
+/* LOGO como imagen normal (no overlay), alineado a la DERECHA */
+.reveal section.title-cover .logo-inline,
+.reveal section .title-cover .logo-inline {
+  position: static !important;   /* imagen corriente */
+  display: block;
+  margin: 0 1rem 0 auto;         /* <-- derecha */
+  width: clamp(150px, 13vw, 260px);
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.08));
+}
+
+/* contenedor del título: IZQUIERDA y más ARRIBA */
+.reveal section.title-cover .title-hero,
+.reveal section .title-cover .title-hero {
+  --title-text-width: clamp(44ch, 72vw, 68ch); /* ancho único p/ H1, H2 y línea */
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;                              /* <— clave para alinear borde izquierdo */
+  margin-top: clamp(6vh, 9vh, 12vh);            /* súbelo/bájalo a gusto */
+  padding: 0 1rem;
+}
+
+/* aplica el mismo ancho y MARGEN IZQ a H1, H2 y la línea */
+.reveal section.title-cover h1,
+.reveal section .title-cover h1,
+.reveal section.title-cover h2,
+.reveal section .title-cover h2,
+.reveal section.title-cover .title-divider,
+.reveal section .title-cover .title-divider {
+  max-width: var(--title-text-width);
+  margin-left: 0;                /* <— todos parten en el mismo punto */
+  margin-right: auto;
+}
+
+/* H1 grande y “estirado” */
+.reveal section.title-cover h1,
+.reveal section .title-cover h1 {
+  font-weight: 800;
+  font-size: clamp(64px, 8vw, 96px);
+  line-height: 1.06;
+  letter-spacing: 0.02em;
+  word-spacing: 0.08em;
+  margin: 0 0 .35em 0;
+  text-wrap: balance;
+}
+
+/* H2 con MÁS aire para que no se vea apretado */
+.reveal section.title-cover h2,
+.reveal section .title-cover h2 {
+  font-weight: 700;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.22;
+  letter-spacing: 0.04em;  /* ↑ estirado */
+  word-spacing: 0.12em;    /* ↑ aire entre palabras */
+  margin: 0 0 1rem 0;
+  text-wrap: balance;
+}
+
+/* línea alineada al mismo ancho (borde izquierdo) */
+.reveal section.title-cover .title-divider,
+.reveal section .title-cover .title-divider {
+  height: 2px;
+  width: 100%;                   /* limitada por max-width de arriba */
+  background: rgba(0,0,0,.12);
+  border: 0;
+  border-radius: 2px;
+}
+
+.reveal section.title-cover .cover-subtitle{
+  display:block;
+  font-weight:700;
+  font-size:clamp(30px,4vw,44px);
+  line-height:1.22;
+  letter-spacing:.04em;
+  word-spacing:.12em;
+  margin:0 0 1rem 0;
+  color: lighten($emerald-500,22%); /* letras más claras */
+}
+.reveal section.title-cover .title-meta{
+  margin-top:.6rem;
+  font-size:1.05rem;
+}
+
+/* ====== Antecedentes: tarjetas elegantes ====== */
+.antecedentes-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(10px,1.4vw,18px);
+  max-width:90ch;
+  margin:0 auto;
+}
+@media (min-width: 1000px){
+  .antecedentes-grid{ grid-template-columns:1fr 1fr; }
+}
+
+.antecedente-card{
+  position:relative;
+  padding:1rem 1.1rem 1rem 1.2rem;
+  background:linear-gradient(180deg, rgba($emerald-50,.88), rgba(#fff,.95));
+  border:1px solid rgba($emerald-900,.12);
+  border-left:6px solid $emerald-700;
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(0,0,0,.05);
+  font-size:110%;
+  color:$mainColor;
+}
+.antecedente-card .badge{
+  position:absolute; top:-12px; left:-12px;
+  width:28px; height:28px; border-radius:999px;
+  display:grid; place-items:center;
+  font-weight:800; font-size:.95rem; line-height:1;
+  background:$emerald-600; color:#fff;
+  box-shadow:0 6px 14px rgba($emerald-500,.25);
+}
+.antecedente-card .refs{
+  margin-top:.35rem;
+  font-size:85%;
+  color:mix(#000,$emerald-900,40%);
+  opacity:.85;
+}
+
+/* animación suave al aparecer con Reveal */
+.reveal .fragment.fx-rise{ opacity:0; transform:translateY(8px); transition:.45s ease; }
+.reveal .fragment.fx-rise.visible{ opacity:1; transform:translateY(0); }
+
+/* === Timeline elegante (usa tu paleta esmeralda) === */
+.timeline{
+  margin: 0 auto;
+  max-width: 1100px;
+  position: relative;
+  padding-left: clamp(5.5rem, 10vw, 7rem);
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left: clamp(2.2rem, 6vw, 3rem);
+  top: .25rem; bottom: .25rem;
+  width: 3px;
+  background: linear-gradient(180deg, rgba($emerald-600,.9), rgba($emerald-400,.6));
+  border-radius: 2px;
+}
+
+.tl-item{ position: relative; margin: 0 0 1.1rem 0; }
+.tl-dot{
+  position: absolute;
+  left: calc(clamp(2.2rem, 6vw, 3rem) - .4rem);
+  top: .25rem;
+  transform: translateX(-100%);
+  background: $emerald-600;
+  color: #fff;
+  font-weight: 700;
+  font-size: .82rem;
+  padding: .32rem .6rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  white-space: nowrap;
+}
+
+.tl-card{
+  background: #fff;
+  border: 1px solid rgba($emerald-900,.10);
+  border-left: 4px solid $emerald-600;
+  border-radius: 12px;
+  padding: .95rem 1.15rem;
+  box-shadow: 0 8px 26px rgba(0,0,0,.06);
+}
+.tl-card h4{
+  margin: 0 0 .35rem 0;
+  color: $emerald-800;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+.tl-card ul{ margin: 0 0 .45rem 1.1rem; }
+.tl-card li{ margin: .12rem 0; line-height: 1.35; }
+
+.tl-sources{
+  font-size: .82rem;
+  color: #4b5563;
+}
+.badge{
+  display: inline-block;
+  margin-left: .35rem;
+  padding: .1rem .55rem;
+  border-radius: 999px;
+  background: $emerald-50;
+  color: $emerald-800;
+  border: 1px solid rgba($emerald-900,.12);
+}
+
+/* opcional: separa la slide un poco del borde superior */
+.reveal section .timeline{ margin-top: .4rem; }
+
+/* ====== Título un poco más compacto (opcional) ====== */
+.reveal section.tight-title > h2:first-child{
+  font-size: clamp(38px, 4.6vw, 58px);
+  line-height: 1.06;
+  margin: .2rem 0 .55rem;
+}
+
+/* ====== MISMO ESTILO, PERO MÁS PEQUEÑO ====== */
+.timeline.mini{
+  max-width: 940px;                          /* antes ~1100px */
+  padding-left: clamp(4.8rem, 8vw, 5.6rem);  /* misma proporción, menos sangría */
+  margin-top: .2rem;
+}
+.timeline.mini::before{
+  left: clamp(2.0rem, 5.2vw, 2.6rem);        /* mueve la línea vertical con la misma proporción */
+  width: 3px;
+  top: .15rem; bottom: .15rem;
+}
+
+.timeline.mini .tl-item{ margin: 0 0 .85rem; }
+
+.timeline.mini .tl-dot{
+  left: calc(clamp(2.0rem, 5.2vw, 2.6rem) - .34rem);
+  padding: .22rem .5rem;
+  font-size: clamp(.7rem, .95vw, .8rem);
+  box-shadow: 0 3px 10px rgba(0,0,0,.10);
+}
+
+.timeline.mini .tl-card{
+  padding: .78rem .95rem;                    /* menos padding */
+  border-left-width: 3px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.05);
+  line-height: 1.28;                         /* compacidad suave */
+}
+
+.timeline.mini .tl-card h4{
+  font-size: clamp(1.02rem, 1.7vw, 1.18rem); /* subtítulos más chicos, pero legibles */
+  margin: 0 0 .25rem;
+  letter-spacing: .006em;
+}
+
+.timeline.mini .tl-card p,
+.timeline.mini .tl-card li{
+  font-size: clamp(.94rem, 1.34vw, 1.05rem); /* texto y viñetas proporcionados */
+  margin: .08rem 0;
+  line-height: 1.28;
+}
+.timeline.mini .tl-card ul{ margin: 0 0 .3rem 1rem; }
+
+.timeline.mini .tl-sources{
+  margin-top: .25rem;
+  font-size: clamp(.76rem, 1vw, .84rem);
+}
+.timeline.mini .badge{
+  font-size: clamp(.72rem, .95vw, .8rem);
+  padding: .06rem .46rem;
+  border-radius: 999px;
+}
+
+/* Si aún te queda grande en algún proyector, puedes “micro-escalar” el bloque:
+.timeline.mini{ transform: scale(.98); transform-origin: top left; }
+*/
+
+/* título un poco más compacto (opcional) */
+.reveal section.tight-title > h2:first-child{
+  font-size: clamp(36px, 4.1vw, 52px);
+  line-height: 1.05;
+  margin: .15rem 0 .45rem;
+}
+
+/* ===== Timeline XS (misma estética, todo más chico y proporcionado) ===== */
+.timeline.xs{
+  max-width: 820px;                         /* antes 1100px */
+  padding-left: clamp(3.9rem, 6.2vw, 4.8rem);
+  margin-top: .1rem;
+  font-size: 0.92em;                        /* baja la base dentro del bloque */
+}
+.timeline.xs::before{
+  left: clamp(1.7rem, 4.6vw, 2.25rem);
+  top: .12rem; bottom: .12rem;
+  width: 3px;
+}
+
+.timeline.xs .tl-item{ margin: 0 0 .68rem; }
+
+.timeline.xs .tl-dot{
+  left: calc(clamp(1.7rem, 4.6vw, 2.25rem) - .30rem);
+  padding: .16rem .42rem;
+  font-size: clamp(.66rem, .9vw, .74rem);
+  box-shadow: 0 3px 9px rgba(0,0,0,.10);
+}
+
+.timeline.xs .tl-card{
+  padding: .62rem .80rem;
+  border-left-width: 3px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  line-height: 1.26;
+}
+
+.timeline.xs .tl-card h4{
+  /* forzamos tamaño relativo para que sí se achique */
+  font-size: 1.02em !important;             /* ~16–17px según tu base */
+  margin: 0 0 .20rem;
+  letter-spacing: .004em;
+}
+
+.timeline.xs .tl-card p,
+.timeline.xs .tl-card li{
+  font-size: .92em !important;              /* ~15px */
+  margin: .06rem 0;
+  line-height: 1.26;
+}
+.timeline.xs .tl-card ul{ margin: 0 0 .26rem .9rem; }
+
+.timeline.xs .tl-sources{
+  margin-top: .20rem;
+  font-size: .78em;                         /* ~12–13px */
+}
+
+.timeline.xs .badge{
+  font-size: .76em;
+  padding: .04rem .38rem;
+  border-radius: 999px;
+}
+
+/* Si aún lo ves grande en proyector, activa este micro-escala:
+.timeline.xs{ transform: scale(.94); transform-origin: top left; }
+*/
+
+/* Objetivos: mejorar lectura */
+.reveal .obj-list,
+.reveal .obj-list p,
+.reveal .obj-list li {
+  hyphens: none !important;
+  text-align: left !important;
+  line-height: 1.35;
+}
+.reveal .obj-list li { margin: .18rem 0; }
+.reveal .obj-list strong { color: #004f37; } /* tu verde oscuro */
+/* ================================
+   Zoom proporcional para slides RevealJS (Quarto)
+   Úsalo con clases: .zoom-98 .zoom-96 .zoom-94 .zoom-92 .zoom-90
+   ================================ */
+
+/* Evita recortes cuando se escala */
+.reveal .slides section {
+  overflow: visible;
+}
+
+/* Opción principal (Chromium/Edge/Opera): 'zoom' */
+.reveal section.zoom-98 { zoom: .98; }
+.reveal section.zoom-96 { zoom: .96; }
+.reveal section.zoom-94 { zoom: .94; }
+.reveal section.zoom-92 { zoom: .92; }
+.reveal section.zoom-90 { zoom: .90; }
+
+/* Fallback para navegadores sin 'zoom' (Firefox/Safari): usa transform */
+@supports not (zoom: 1) {
+  .reveal section.zoom-98 { transform: scale(.98); width: calc(100%/.98); transform-origin: top left; }
+  .reveal section.zoom-96 { transform: scale(.96); width: calc(100%/.96); transform-origin: top left; }
+  .reveal section.zoom-94 { transform: scale(.94); width: calc(100%/.94); transform-origin: top left; }
+  .reveal section.zoom-92 { transform: scale(.92); width: calc(100%/.92); transform-origin: top left; }
+  .reveal section.zoom-90 { transform: scale(.90); width: calc(100%/.90); transform-origin: top left; }
+}
+
+/* Opcional: compacidad suave al reducir bastante */
+.reveal section.compact p,
+.reveal section.compact li { line-height: 1.30; }
+
+.reveal section.compact ul {
+  margin: .45rem 0 .45rem 1.15rem;
+}
+
+/* Lista en dos columnas, evita cortes feos */
+.two-cols-list { column-count: 2; column-gap: 2.2rem; }
+.two-cols-list li { break-inside: avoid; margin-bottom: .35rem; }
+
+/* --- Slide de Referencias: scroll + columnas + sangría colgante --- */
+.reveal .slides section#refs .refsbox {
+  max-height: 72vh;           /* alto útil de la caja */
+  overflow-y: auto;           /* scroll vertical */
+  padding-right: 0.9rem;      /* espacio para la barra */
+}
+
+/* Dos columnas en pantallas anchas; una en móviles */
+@media (min-width: 1100px) {
+  .reveal .slides section#refs .refsbox {
+    column-count: 2;
+    column-gap: 2.2rem;
+    column-fill: auto;
+  }
+}
+
+/* Párrafos con sangría colgante tipo APA/Chicago */
+.reveal .slides section#refs .refsbox p {
+  margin: 0 0 0.55rem 0;
+  line-height: 1.28;
+  text-indent: -1.4em;   /* primera línea hacia la izquierda */
+  padding-left: 1.4em;   /* resto de líneas alineadas */
+  break-inside: avoid;   /* evita que una referencia se rompa entre columnas */
+}
+
+/* URLs largas: que corten bonito */
+.reveal .slides section#refs .refsbox a {
+  overflow-wrap: anywhere;     /* permite corte en cualquier punto seguro */
+  word-break: normal;          /* evita cortes “feos” tipo /htt */
+}
+
+/* Título fijo arriba mientras haces scroll (opcional) */
+.reveal .slides section#refs h2 {
+  position: sticky;
+  top: 0;
+  background: inherit;
+  padding: 0.25rem 0;
+  z-index: 1;
+}
+
+/* Texto un poco más compacto en esa slide (ya marcaste .smaller) */
+.reveal .slides section#refs { font-size: 0.95rem; }

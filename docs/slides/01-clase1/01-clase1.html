@@ -29,8 +29,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-c15ad3c3a806d1d68b09596ff239c32b.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-cc08ae45b4772acf65a273c00aefcc82.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -140,19 +206,19 @@
 <h2></h2>
 <div class="columns v-center-container">
 <div class="column" style="width:20%;">
-<div class="quarto-figure quarto-figure-right">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-right" style="width:80.0%"></p>
+<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div><div class="column" style="width:80%;">
-<div class="rojo">
-<p>R para el análisis de datos</p>
-</div>
+<section id="r-para-el-análisis-de-datos" class="rojo">
+<h3>R para el análisis de datos</h3>
+</section>
 <hr>
 <h3 id="kevin-carrasco"><strong>Kevin Carrasco</strong></h3>
 <h3 id="sociología---uah">Sociología - UAH</h3>
-<h3 id="er-sem-2024">1er Sem 2024</h3>
+<h3 id="er-sem-2026">1er Sem 2026</h3>
 <h3 id="r-data-analisis.netlify.com"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
 </div></div>
 </section>
@@ -164,19 +230,20 @@
 <section id="este-curso" class="slide level2">
 <h2>Este curso</h2>
 <ul>
-<li><p>Unidad 1: Elementos y herramientas de R</p></li>
-<li><p>Unidad 2: Operacionalización y análisis descriptivo de datos</p></li>
-<li><p>Unidad 3: Análisis estadístico inferencial en R</p></li>
-<li><p>Unidad 4: Regresión lineal y regresión logística</p></li>
+<li class="fragment"><p>Unidad 1: Elementos y herramientas de R</p></li>
+<li class="fragment"><p>Unidad 2: Operacionalización y análisis descriptivo de datos</p></li>
+<li class="fragment"><p>Unidad 3: Análisis estadístico inferencial en R</p></li>
+<li class="fragment"><p>Unidad 4: Regresión lineal y regresión logística</p></li>
 </ul>
 </section>
 <section id="evaluación" class="slide level2">
 <h2>Evaluación</h2>
 <ul>
-<li><p>3 trabajos (20% c/u). En parejas</p></li>
-<li><p>Presentación final de investigación (10%)</p></li>
-<li><p>Examen Final (30%)</p></li>
-<li><p>Foco en reproducibilidad, reporte, visualización y análisis de resultados.</p></li>
+<li class="fragment"><p><strong>Para presentarse a examen se requiere una nota promedio igual o superior a 3,5 y un 70% de asistencia al curso. Esta regla solo podrá alterarse en caso de inasistencias por causas serias y justificadas de acuerdo con el criterio de la carrera.</strong></p></li>
+<li class="fragment"><p>4 trabajos (15% c/u). En parejas</p></li>
+<li class="fragment"><p>Presentación final de investigación (10%)</p></li>
+<li class="fragment"><p>Examen Final (30%)</p></li>
+<li class="fragment"><p>Foco en reproducibilidad, reporte, visualización y análisis de resultados.</p></li>
 </ul>
 </section>
 <section id="sitio-web-del-curso" class="slide level2">
@@ -198,13 +265,13 @@
 <section>
 <section id="investigación-reproducible" class="title-slide slide level1 center" data-background-color="black">
 <h1>Investigación reproducible</h1>
-<p>¿Cómo organizamos el trabajo de investigación (en el momento del análisis y escritura)?</p>
+
 </section>
 <section id="reproducibilidad" class="slide level2">
 <h2>Reproducibilidad</h2>
 <ul>
-<li><p>Es la posibilidad de <strong>regenerar</strong> de manera independiente los resultados usando los materiales originales de una investigación ya publicada.</p></li>
-<li><p>En términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos.</p></li>
+<li class="fragment"><p>Es la posibilidad de <strong>regenerar</strong> de manera independiente los resultados usando los materiales originales de una investigación ya publicada.</p></li>
+<li class="fragment"><p>En términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos.</p></li>
 </ul>
 </section>
 <section id="qué-porcentaje-de-los-estudios-publicados-son-reproducibles" class="slide level2">
@@ -219,18 +286,18 @@
 <section id="hay-crisis-de-reproducibilidad" class="slide level2">
 <h2>¿Hay crisis de reproducibilidad?</h2>
 <div class="columns">
-<div class="column" style="width:80%;">
-<p><img data-src="images/nature-reproducibility-crisis.jpeg" style="width:70.0%"></p>
-</div><div class="column" style="width:20%;">
+<div class="column" style="width:60%;">
+<p><img data-src="images/nature-reproducibility-crisis.jpeg" style="width:80.0%"></p>
+</div><div class="column" style="width:40%;">
 <p>Fuente: <a href="https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970">Baker (2016) 1,500 scientists lift the lid on reproducibility - Nature</a></p>
 </div></div>
 </section>
 <section id="y-en-la-práctica-cómo-afecta-la-reproducibilidad" class="slide level2">
 <h2>¿y en la práctica cómo afecta la reproducibilidad?</h2>
 <div class="columns">
-<div class="column" style="width:70%;">
-<p><img data-src="images/breznau.png" style="width:70.0%"></p>
-</div><div class="column" style="width:30%;">
+<div class="column" style="width:60%;">
+<p><img data-src="images/breznau.png" style="width:80.0%"></p>
+</div><div class="column" style="width:40%;">
 <p>Breznau, et. al, (2023) coordinó una investigación con 161 investigadores de 73 equipos de investigación.</p>
 <p>Los equipos informaron tanto hallazgos numéricos como conclusiones sustanciales muy diversas</p>
 </div></div>
@@ -243,11 +310,7 @@
 </div><div class="column" style="width:50%;">
 <p><img data-src="https://www.nature.com/news/polopoly_fs/7.36727.1464174506!/image/reproducibility-graphic-online5.jpg_gen/derivatives/landscape_630/reproducibility-graphic-online5.jpg"></p>
 </div></div>
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-
-<img data-src="https://juancarloscastillo.github.io/in-socabi/images/peng_spectrum.png" class="r-stretch"></section></section>
+</section></section>
 <section>
 <section id="flujos-de-investigación-reproducible" class="title-slide slide level1 center" data-background-color="black">
 <h1>Flujos de investigación reproducible</h1>
@@ -288,19 +351,27 @@
 <h2>Introducción a R y RStudio</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="https://www.r-project.org/Rlogo.png"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.r-project.org/Rlogo.png" class="nostretch quarto-figure quarto-figure-center" width="300"></p>
+</figure>
+</div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/250px-RStudio_logo_flat.svg.png"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/250px-RStudio_logo_flat.svg.png" class="nostretch quarto-figure quarto-figure-center" width="1000"></p>
+</figure>
+</div>
 </div></div>
 </section>
 <section id="así-se-ve-rstudio" class="slide level2">
 <h2>Así se ve Rstudio</h2>
 
 <img data-src="images/installR4.png" class="r-stretch"></section>
-<section id="section-3" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Curva_de_aprendizaje.png" class="r-stretch"><p>.small[.right[fuente: <a href="http://wiki.imbiv.unc.edu.ar/index.php/Gu%C3%ADa_de_campo_de_R">Guía de campo de R</a>]]</p>
+<img data-src="images/Curva_de_aprendizaje.png" class="r-stretch"><p>fuente: <a href="http://wiki.imbiv.unc.edu.ar/index.php/Gu%C3%ADa_de_campo_de_R">Guía de campo de R</a></p>
 </section>
 <section id="por-qué-usar-r" class="slide level2">
 <h2>¿Por qué usar R?</h2>
@@ -310,28 +381,211 @@
 <li><p>Investigación reproducible: Permite documentar los resultados obtenidos paso a paso, mostrando el flujo completo de procesamiento de los datos por medio de <strong>scripts</strong></p></li>
 <li><p><strong>Integración con otros softwares</strong></p></li>
 </ul>
+</section></section>
+<section>
+<section id="documentos-en-quarto" class="title-slide slide level1 center">
+<h1>Documentos en Quarto</h1>
+
+<img data-src="images/quarto-logo.png" class="r-stretch"></section>
+<section id="qué-es-markdown" class="slide level2">
+<h2>¿Qué es markdown?</h2>
+<ul>
+<li><p>Forma de escritura simple con pocas marcas de formato</p></li>
+<li><p>Conversión a distintos formatos de salida (html, pdf)</p></li>
+<li><p>Soporta encabezados, tablas, imágenes, tablas de contenidos, ecuaciones, links…</p></li>
+<li><p>Filosofía: foco en contenido primero, el formato después.</p></li>
+</ul>
 </section>
-<section id="section-4" class="slide level2">
-<h2></h2>
+<section id="qué-es-quarto" class="slide level2">
+<h2>¿Qué es Quarto?</h2>
+<ul>
+<li><p><a href="https://quarto.org/">Quarto</a> es un sistema moderno de creación de documentos dinámicos, informes, presentaciones, libros, sitios web y más, a partir de archivos de texto plano y por medio del conversor universal de documentos <a href="https://pandoc.org/">Pandoc</a>.</p></li>
+<li><p>Evolución de los sistemas de autoría como Jupyter, R Markdown, todo dentro del mismo documento.</p></li>
+</ul>
+</section>
+<section id="características-principales" class="slide level2">
+<h2>Características Principales</h2>
+<ul>
+<li><p><strong>Multiplataforma</strong></p></li>
+<li><p><strong>Basado en Markdown</strong></p></li>
+<li><p><strong>Soporte para múltiples lenguajes</strong></p></li>
+<li><p><strong>Multitud de formatos de salida</strong></p></li>
+<li><p><strong>Soporte para publicación científica</strong></p></li>
+<li><p><strong>Integración entornos de desarrollo</strong> (RStudio, VSC, etc)</p></li>
+<li><p><strong>Extensible</strong></p></li>
+</ul>
+</section>
+<section id="características-principales-1" class="slide level2">
+<h2>Características principales</h2>
+<ul>
+<li><p>Lenguaje que combina código (R) y texto (Markdown): Al igual que RMarkdown (.Rmd), Quarto permite combinar texto plano markdown y código de análisis R.</p></li>
+<li><p>Provee una serie de herramientas para generar documentos dinámicos y publicarlos</p></li>
+</ul>
+</section>
+<section id="estructura-de-un-documento" class="slide level2">
+<h2>Estructura de un documento</h2>
+<ul>
+<li><p>Archivo <code>.qmd</code></p></li>
+<li><p>Encabezado YAML:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mi documento"</span></span>
+<span id="cb1-2"><a></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Kevin Carrasco"</span></span>
+<span id="cb1-3"><a></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
+<span id="cb1-4"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Cuerpo:</p>
+<ul>
+<li>Markdown para secciones, énfasis, listas, etc.</li>
+<li>Bloques de código</li>
+<li>Bibliografía</li>
+</ul></li>
+</ul>
+</section>
+<section id="ejemplo" class="slide level2">
+<h2>Ejemplo</h2>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource code-annotation-code number-lines code-with-copy"><code class="sourceCode"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a>---</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a>title: "Tutorial Quarto"</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a>author: "Kevin Carrasco"</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4"></a>date: "2026-03-10"</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5"></a>format: html</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6"></a>lang: es</span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7"></a>---</span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8"></a></span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9"></a># Bienvenidos a este tutorial de **Quarto**.</span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10"></a></span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11"></a>Quarto está especialmente diseñado para elaborar documentos</span>
+<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12"></a>científicos y técnicos reproducibles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="base-de-escritura-markdown" class="slide level2">
+<h2>Base de escritura: Markdown</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
-<li><p>Independiente de programa comercial</p></li>
-<li><p>Independiente de plataformas específicas</p></li>
-<li><p>Permite combinar texto y análisis en un mismo documento</p></li>
-<li><p>Foco en los contenidos en lugar del formato</p></li>
-<li><p>Permite distintas opciones de formato final</p></li>
+<li>Encabezados: <code>#</code>, <code>##</code>, <code>###</code></li>
+<li>Listas:
+<ul>
+<li>Viñetas: <code>-</code> o <code>*</code></li>
+<li>Numeradas: <code>1.</code>, <code>2.</code></li>
+</ul></li>
+<li>Énfasis: <code>*cursiva*</code>, <code>**negrita**</code></li>
+<li>Código en línea: <code>`código`</code></li>
+<li>Enlaces: <code>[texto](url)</code></li>
 </ul>
 </div><div class="column" style="width:40%;">
-<p><img data-src="images/quarto.png"></p>
+<p><img data-src="images/markdown-syntax.png"></p>
 </div></div>
 </section>
-<section id="así-se-ve-quarto" class="slide level2">
-<h2>Así se ve Quarto</h2>
-<p><img data-src="images/quarto3.png">)</p>
+<section id="ejemplo-1" class="slide level2">
+<h2>Ejemplo</h2>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource code-annotation-code number-lines code-with-copy"><code class="sourceCode"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a>---</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a>title: "Tutorial Quarto"</span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a>author: "Kevin Carrasco"</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4"></a>date: "2026-03-10"</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5"></a>format: html</span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6"></a>lang: es</span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7"></a>---</span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8"></a></span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9"></a># Bienvenidos a este tutorial de **Quarto**.</span>
+<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10"></a></span>
+<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11"></a>Quarto está especialmente diseñado para elaborar documentos</span>
+<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12"></a>científicos y técnicos reproducibles</span>
+<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13"></a></span>
+<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14"></a>## Este es un subtítulo</span>
+<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15"></a></span>
+<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16"></a>Ahora vamos a ensayar **negritas** y _cursivas_</span>
+<span id="annotated-cell-2-17"><a href="#annotated-cell-2-17"></a></span>
+<span id="annotated-cell-2-18"><a href="#annotated-cell-2-18"></a>### Y un título de tercer orden</span>
+<span id="annotated-cell-2-19"><a href="#annotated-cell-2-19"></a></span>
+<span id="annotated-cell-2-20"><a href="#annotated-cell-2-20"></a>Y una lista</span>
+<span id="annotated-cell-2-21"><a href="#annotated-cell-2-21"></a></span>
+<span id="annotated-cell-2-22"><a href="#annotated-cell-2-22"></a>- con viñetas</span>
+<span id="annotated-cell-2-23"><a href="#annotated-cell-2-23"></a>- ...</span>
+<span id="annotated-cell-2-24"><a href="#annotated-cell-2-24"></a>- ...</span>
+<span id="annotated-cell-2-25"><a href="#annotated-cell-2-25"></a></span>
+<span id="annotated-cell-2-26"><a href="#annotated-cell-2-26"></a>Y otra numerada:</span>
+<span id="annotated-cell-2-27"><a href="#annotated-cell-2-27"></a></span>
+<span id="annotated-cell-2-28"><a href="#annotated-cell-2-28"></a>1. punto 1</span>
+<span id="annotated-cell-2-29"><a href="#annotated-cell-2-29"></a>2. punto 2</span>
+<span id="annotated-cell-2-30"><a href="#annotated-cell-2-30"></a>3. ...</span>
+<span id="annotated-cell-2-31"><a href="#annotated-cell-2-31"></a></span>
+<span id="annotated-cell-2-32"><a href="#annotated-cell-2-32"></a>## Links e imágenes</span>
+<span id="annotated-cell-2-33"><a href="#annotated-cell-2-33"></a></span>
+<span id="annotated-cell-2-34"><a href="#annotated-cell-2-34"></a>[Este es un link a Github](https://github.com/)  </span>
+<span id="annotated-cell-2-35"><a href="#annotated-cell-2-35"></a></span>
+<span id="annotated-cell-2-36"><a href="#annotated-cell-2-36"></a>![Imagen online](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/330px-Gutenberg.jpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="así-se-ve-quarto-1" class="slide level2">
-<h2>Así se ve Quarto</h2>
+<section id="personalización-visual-del-html" class="slide level2">
+<h2>Personalización visual del HTML</h2>
+<ul>
+<li><p>Temas: <code>cosmo</code>, <code>flatly</code>, <code>lux</code>, <code>darkly</code>, etc.</p></li>
+<li><p>Opciones comunes en YAML:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-2"><a></a><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-3"><a></a><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Personalización con CSS externo:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a></a><span class="fu">css</span><span class="kw">:</span><span class="at"> estilos.css</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="ejemplo-2" class="slide level2">
+<h2>Ejemplo</h2>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource code-annotation-code number-lines code-with-copy"><code class="sourceCode"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a>---</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>title: "Tutorial Quarto"</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a>author: "Kevin Carrasco"</span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4"></a>date: "2026-03-10"</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a>format: html</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a>lang: es</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7"></a>toc: true</span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8"></a>number-sections: true</span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9"></a>theme: darkly</span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10"></a>css: estilos.css</span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11"></a>---</span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12"></a></span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13"></a># Bienvenidos a este tutorial de **Quarto**.</span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14"></a></span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15"></a>Quarto está especialmente diseñado para elaborar documentos</span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16"></a>científicos y técnicos reproducibles</span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17"></a></span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18"></a>## Este es un subtítulo</span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19"></a></span>
+<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20"></a>Ahora vamos a ensayar **negritas** y _cursivas_</span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21"></a></span>
+<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22"></a>### Y un título de tercer orden</span>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23"></a></span>
+<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24"></a>Y una lista</span>
+<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25"></a></span>
+<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26"></a>- con viñetas</span>
+<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27"></a>- ...</span>
+<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28"></a>- ...</span>
+<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29"></a></span>
+<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30"></a>Y otra numerada:</span>
+<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31"></a></span>
+<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32"></a>1. punto 1</span>
+<span id="annotated-cell-3-33"><a href="#annotated-cell-3-33"></a>2. punto 2</span>
+<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34"></a>3. ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="extensiones" class="slide level2">
+<h2>Extensiones</h2>
+<ul>
+<li>Integración con R</li>
+<li>Referencias bibliográficas</li>
+<li>Renderizado a pdf, word</li>
+<li>Sitios web</li>
+<li>Presentaciones</li>
+</ul>
+</section>
+<section id="recursos" class="slide level2">
+<h2>Recursos</h2>
+<ul>
+<li>Recursos para seguir aprendiendo:</li>
+<li><a href="https://quarto.org">https://quarto.org</a></li>
+<li><a href="https://aprendeconalf.es/quarto-textos-cientificos/">Creación de documentos científicos con Quarto</a></li>
+<li><a href="https://youtu.be/EbAAmrB0luA">Tutorial Quarto for academics</a></li>
+</ul>
+</section>
+<section id="así-se-ve-quarto-en-rstudio" class="slide level2">
+<h2>Así se ve Quarto en Rstudio</h2>
+
+<img data-src="images/quarto3.png" class="r-stretch"></section>
+<section id="así-se-ve-quarto-renderizado" class="slide level2">
+<h2>Así se ve Quarto renderizado</h2>
 
 <img data-src="images/quarto2.png" class="r-stretch"></section></section>
 <section>
@@ -343,17 +597,19 @@
 <h2>Alternativas</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<div class="content-box-red">
+<div class="fragment fade-up">
 <p>A. ad-hoc</p>
 <ul>
 <li><p>cada investigador define numero de archivos, nombres, carpetas y organización</p></li>
 <li><p>explicar al resto cómo se organiza</p></li>
 <li><p>documentar en un archivo cómo se organiza</p></li>
+<li><p>–&gt; reproducibilidad y transparencia <strong>LIMITADA</strong></p></li>
 </ul>
-<p>–&gt; reproducibilidad y transparencia <strong>LIMITADA</strong></p>
 </div>
+</div><div class="column" style="width:5%;">
+
 </div><div class="column" style="width:45%;">
-<div class="content-box-blue">
+<div class="fragment fade-up">
 <p>B. <em>Protocolo</em> reproducible</p>
 <ul>
 <li><p><strong>estructura</strong> de carpetas y archivos interconectados que refieren a reglas conocidas (estándares)</p></li>
@@ -373,7 +629,7 @@
 <section id="mayores-detalles-y-plantilla-de-carpetas" class="slide level2">
 <h2>Mayores detalles y plantilla de carpetas:</h2>
 <ul>
-<li><p><a href="https://lisa-coes.com/ipo-repro/">https://lisa-coes.com/ipo-repro/</a></p></li>
+<li><p><a href="https://lisacoes.com/ipo-repro/">https://lisacoes.com/ipo-repro/</a></p></li>
 <li><p><a href="https://github.com/lisa-coes/ipo">https://github.com/lisa-coes/ipo</a></p></li>
 </ul>
 </section>
@@ -413,7 +669,7 @@
 <h1>Repositorios y apertura</h1>
 
 </section>
-<section id="section-5" class="slide level2" data-background-color="black">
+<section id="section-3" class="slide level2" data-background-color="black">
 <h2></h2>
 <h3 id="la-escritura-en-texto-simple-como-markdown-o-quarto-permite-implementar-un-sistema-de-control-de-versiones-además-de-herramientas-de-respaldo-colaboración-y-comunicación">La escritura en texto simple (como Markdown o Quarto) permite implementar un sistema de control de versiones, además de herramientas de respaldo, colaboración y comunicación</h3>
 </section>
@@ -460,12 +716,12 @@
 <li><p>entorno de trabajo que favorece la ciencia abierta</p></li>
 </ul>
 </section>
-<section id="section-6" class="slide level2" data-background-color="black">
+<section id="section-4" class="slide level2" data-background-color="black">
 <h2></h2>
 <h3 id="git-no-es-un-registro-de-versiones-de-archivos-específicos-sino-de-una-carpeta-completa"><span class="red">Git no es un registro de versiones de archivos específicos, sino de una carpeta completa</span></h3>
 <h3 id="guarda-fotos-de-momentos-específicos-de-la-carpeta-y-esta-foto-se-saca-mediante-un-commit"><span class="red">Guarda <em>“fotos”</em> de momentos específicos de la carpeta, y esta foto se <em>saca</em> mediante un</span> <strong>commit</strong></h3>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
 
 <img data-src="images/gitflow.jpeg" class="r-stretch"></section>
@@ -494,11 +750,38 @@
 </ul>
 </section></section>
 <section>
+<section id="uso-de-inteligencia-artificial-en-el-curso" class="title-slide slide level1 center" data-background-color="black">
+<h1>Uso de inteligencia artificial en el curso</h1>
+
+</section>
+<section id="inteligencia-artificial" class="slide level2">
+<h2>Inteligencia artificial</h2>
+<ul>
+<li><p>Se puede usar inteligencia artificial para generar código, pero es importante revisar y entender el código generado, ya que puede contener errores o no ser óptimo.</p></li>
+<li><p>Se recomienda usar inteligencia artificial como una herramienta de apoyo, pero no como un sustituto del aprendizaje y la comprensión de los conceptos fundamentales de R y el análisis de datos.</p></li>
+<li><p>Se pueden usar herramientas como ChatGPT, pero es importante ser crítico con las respuestas generadas y verificar su precisión.</p></li>
+</ul>
+</section>
+<section id="ejemplo-de-uso-de-inteligencia-artificial" class="slide level2">
+<h2>Ejemplo de uso de inteligencia artificial</h2>
+<ul>
+<li><p>Ingresa a la aplicación o web de IA generativa de tu preferencia (ej. ChatGPT, Gemini, Claude, Grok, etc.)</p></li>
+<li><p>Utiliza el siguiente prompt:</p>
+<ul>
+<li>Completa la siguiente frase y entrega un solo resultado: Un hombre utilizó…</li>
+</ul></li>
+<li><p>y luego…</p>
+<ul>
+<li>Completa la siguiente frase y entrega un solo resultado: Una mujer se vistió de…</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
 <section id="taller-práctico" class="title-slide slide level1 center" data-background-color="black">
 <h1>Taller práctico</h1>
 <p><a href="https://r-data-analisis.netlify.app/practicos/01-content">https://r-data-analisis.netlify.app/practicos/01-content</a></p>
 </section>
-<section id="section-8" class="slide level2" data-background-color="black">
+<section id="section-6" class="slide level2" data-background-color="black">
 <h2></h2>
 <div class="columns v-center-container">
 <div class="column" style="width:20%;">
@@ -514,7 +797,7 @@
 <hr>
 <h3 id="kevin-carrasco-1"><strong>Kevin Carrasco</strong></h3>
 <h3 id="sociología---uah-1">Sociología - UAH</h3>
-<h3 id="er-sem-2024-1">1er Sem 2024</h3>
+<h3 id="er-sem-2026-1">1er Sem 2026</h3>
 <h3 id="r-data-analisis.netlify.com-1"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
 </div></div>
 
@@ -682,7 +965,7 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
