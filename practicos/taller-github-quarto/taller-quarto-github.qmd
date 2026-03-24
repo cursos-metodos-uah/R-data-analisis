@@ -8,14 +8,31 @@ format:
 editor: source
 ---
 
-
-# Introducción al flujo de investigación reproducible
+::: callout-note
 
 ## Prerequisitos
 
 - Crear cuenta en [www.github.com](www.github.com)
 
+### Si usa computador personal
+
 - Descargar Github Desktop
+
+### Si es computador del laboratorio
+
+La primera vez que utilicemos Git, tenemos que especificar las credenciales. Si no lo hacemos, probablemente las pida más adelante.
+
+Para esto, hay que usar la Terminal. Para acceder a ella en RStudio:
+
+Tools → Terminal → New Terminal (Alt+Shift+R)
+
+Aquí escribir las credenciales de su cuenta de Github.
+
+    --- # <1>
+    git config --global user.email "usuario2026@gmail.com" 
+    git config --global user.name "nombreusuario"
+    --- # <1>
+:::
 
 # Github
 
@@ -110,8 +127,6 @@ Para todas las siguientes veces, las instrucciones son estas:
 ::: callout-note
 
 La aplicación de escritorio de Github es un poco más intuitiva y fácil de usar. Sin embargo, RStudio también tiene una extensión para utilizar github de manera directa dentro de la plataforma. 
-
-Mientras tanto utilicen Github Desktop en sus computadores personales. Las siguientes clases en el laboratorio de computación de la UAH utilizaremos Rstudio para clonar sus repositorios y hacer las modificaciones correspondientes.
 
 :::
 
@@ -226,15 +241,14 @@ YAML: Lenguaje de programación. Es un formato de serialización de datos que pr
 
 :::
 
-```
----
-title: "Mi Documento"
-format:
-  html:
-    toc: true
-    number-sections: true
----
-```
+    --- # <1>
+    title: "Mi Documento"
+    format:
+      html:
+      toc: true
+      number-sections: true
+    --- # <1>
+
 Luego, podemos escribir en el documento, separando por títulos (#) cada sección. La jerarquía de los títulos se establece según la cantidad de '#'. 
 
 A continuación, en esta guía combinaremos el paso-a-paso de crear un documento dinámico con quarto, a la vez que vamos viendo distintas funciones de este proceso.
@@ -266,69 +280,11 @@ pacman::p_load(sjlabelled,
 
 ## Cargar bases de datos
 
-Cargamos ambas bases de datos desde internet
+Cargamos base de datos desde internet
 
 ```{r}
 load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData")) #Cargar base de datos
-load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/data_wvs.RData")) #Cargar base de datos
-```
-
-Para trabajar con ambas bases, agruparemos las variables de interés por país, por lo que ya no trabajaremos directamente con individuos.
-
-```{r}
-context_data <- wvs %>% group_by(B_COUNTRY) %>% # Agrupar por país
-  summarise(gdp = mean(GDPpercap1, na.rm = TRUE), # Promedio de GDP per capita
-         life_exp = mean(lifeexpect, na.rm = TRUE), # Promedio esperanza de vida
-         gini = mean(giniWB, na.rm = TRUE)) %>%  # Promedio gini
-  rename(idenpa=B_COUNTRY) # Para poder vincular ambas bases, es necesario que la variable de identificación se llamen igual
-context_data$idenpa <- as.numeric(context_data$idenpa) # Como era categórica, la dejamos numérica
-
-proc_data <- proc_data %>% group_by(idenpa) %>%  # agrupamos por país
-  summarise(promedio = mean(conf_inst, na.rm = TRUE)) # promedio de confianza en instituciones por país
-```
-
-## Unir bases de datos
-
-Para vincular nuestras bases de datos existen múltiples opciones, la primera es 'merge' de R base y las siguientes tres vienen desde dplyr: 'right_join', 'full_join' y 'left_join'. Cada una tiene sus propias potencialidades y limitaciones y dependerá de cada caso cuál usemos
-
-### Probemos merge
-
-```{r}
-data <- merge(proc_data, context_data, by="idenpa")
-```
-
-```{r}
-data <- data %>%
-  mutate(idenpa = as.character(idenpa)) %>%
-  mutate(idenpa = case_when(
-    idenpa == "32" ~ "Argentina",
-    idenpa == "68" ~ "Bolivia",
-    idenpa == "76" ~ "Brasil",
-    idenpa == "152" ~ "Chile",
-    idenpa == "170" ~ "Colombia",
-    idenpa == "188" ~ "Costa Rica",
-    idenpa == "214" ~ "Cuba",
-    idenpa == "218" ~ "República Dominicana",
-    idenpa == "222" ~ "Ecuador",
-    idenpa == "320" ~ "El Salvador",
-    idenpa == "340" ~ "Guatemala",
-    idenpa == "484" ~ "Honduras",
-    idenpa == "558" ~ "México",
-    idenpa == "591" ~ "Nicaragua",
-    idenpa == "600" ~ "Panamá",
-    idenpa == "604" ~ "Paraguay",
-    idenpa == "858" ~ "Uruguay",
-    idenpa == "862" ~ "Venezuela"))
-
-data$gdp <- as.numeric(data$gdp)
-data$gdp[data$gdp==0] <- NA
-data <- na.omit(data)
-```
-
-### Guardamos esta nueva base en nuestra carpeta input
-
-```{r eval=FALSE}
-save(data, file="input/data/proc/data.RData")
+proc_data$idenpa <- as_factor(proc_data$idenpa)
 ```
 
 
@@ -344,21 +300,21 @@ Podemos establecer referencias cruzadas para las tablas y gráficos dentro del t
 
 El Chunk se debería ver así:
 
-#| label: tbl-sjmisc
+    --- # <1>
 
-#| tbl-cap: "Descriptivos con sjmisc"
+    #| label: tbl-sjmisc
+    #| tbl-cap: "Descriptivos con sjmisc"
 
-sjmisc::descr(data,
-
-      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>% # Selecciona estadísticos
-
-      kable(.,"markdown") # Esto es para que se vea bien en quarto
+    sjmisc::descr(proc_data,
+            show = c("label","range", "mean", "sd", "NA.prc", "n"))%>% # Selecciona estadísticos
+            kable(.,"markdown") # Esto es para que se vea bien en quarto
+    --- # <1>
 
 ```{r}
 #| label: tbl-sjmisc
 #| tbl-cap: "Descriptivos con sjmisc"
 
-sjmisc::descr(data,
+sjmisc::descr(proc_data,
       show = c("label","range", "mean", "sd", "NA.prc", "n"))%>% # Selecciona estadísticos
       kable(.,"markdown") # Esto es para que se vea bien en quarto
 ```
@@ -369,62 +325,29 @@ Luego de establecer el link y el nombre de la tabla, podemos referenciar acá co
 
 Y para los gráficos se hace de la misma forma:
 
-#| label: fig-gdp
+#| label: fig-graph
 
 #| fig-cap: "Plots" 
 
 ```{r}
 #| label: fig-gdp
-#| fig-cap: "Producto interno bruto por país" 
+#| fig-cap: "confianza en instituciones según país" 
 
-graph1<-ggplot(data, aes(x = idenpa, y = gdp)) +
-  geom_point() +
-  labs(x = "País", y = "Gdp") +
+graph1<-ggplot(proc_data, aes(x = idenpa, y = conf_inst)) +
+  geom_boxplot() +
+  labs(x = "País", y = "Confianza en instituciones") +
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 graph1
 ```
 
-Sin embargo la @fig-gdp entrega información desordenada. Mejor ordenar por tamaño de PIB que por orden alfabético de los países. Para eso
-
-```{r}
-#| label: fig-gdp-order
-#| fig-cap: "Producto interno bruto por país ordenado" 
-data_sorted <- data %>% arrange(desc(gdp))
-graph2<-ggplot(data_sorted, aes(x = factor(idenpa, levels = idenpa), y = gdp)) +
-  geom_point() +
-  labs(x = "País", y = "GDP") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-graph2
-```
-
-Ahora sí la @fig-gdp-order muestra un gráfico más ordenado.
-
 ### Guardamos este nuevo gráfico en la carpeta output
 
 ```{r eval=FALSE}
-ggsave(graph2, file="output/graphs/graph2.png")
+ggsave(graph1, file="output/graphs/graph1.png")
 ```
 
-
-Y comparar el promedio de confianza en instituciones según producto interno bruto por país?
-
-```{r}
-#| label: fig-ctr
-#| fig-cap: "Confianza en instituciones según el producto interno bruto por país" 
-data %>%
-  ggplot(aes(x = gdp, y = promedio, label = idenpa)) +
-  geom_point() +
-  geom_text(vjust = -0.5) +
-  labs(x = "GDP", y = "Promedio") +
-  theme_bw()
-
-```
-
-La @fig-ctr muestra la relación que existe entre el producto interno bruto y la confianza en instituciones para los 18 países analizados. Es interesante comparar los casos de Chile y urugay, que al tener similar GDP, tienen un nivel de confianza en instituciones muy diferente.
 
 
 5. Luego renderizamos 
@@ -471,25 +394,23 @@ kevin-carrasco.github.io/ipo/trabajo.html
 ![](images/url-pages.png)
 
 
-# Tarea (+5 décimas trabajo 1)
+# Tarea
 
-El objetivo de esta tarea es que exploren una base de datos que pueda ser utilizada en su trabajo 1. La idea es que puedan realizar los 5 pasos del proceso de operacionalización/recodificación de variables y luego generar al menos una tabla descriptiva y al menos un gráfico. 
+El objetivo de esta tarea es que exploren la elaboración de documentos dinámicos. 
 
-La tarea debe ser subida a github y debe ser posible de visualizar con github pages, siguiende las instrucciones de este mismo taller.
+La tarea debe ser subida a github y debe ser posible de visualizar con github pages, siguiendo las instrucciones de este mismo taller.
 
 Entonces:
 
-1- Pensar en un tema de investigación de interés sociológico y que sea investigable cuantitativamente en el contexto del curso.
+1- Seleccionar algún trabajo o taller de R ya realizado con anterioridad.
 
-2- Elegir una base de datos de acceso abierto que permita investigar el tema elegido
+2- Crear un documento .qmd que reproduzca el trabajo seleccionado
 
-3- Crear un documento .qmd que operacionalice las variables de interés en el tema de investigación escogido (dos o tres variables en esta tarea)
+3- Debe haber al menos una tabla descriptiva y al menos un gráfico
 
-4- Crear al menos una tabla descriptiva y al menos un gráfico
+4- renderizar el documento (que se cree el archivo .html), almacenarlo en un repositorio de github y visualizarlo a través de github pages.
 
-5- renderizar el documento (que se cree el archivo .html), almacenarlo en un repositorio de github y visualizarlo a través de github pages.
 
-* La fecha de entrega es el próximo martes 1 de abril, hasta antes de la clase. Se revisará solo el envío del enlace al documento subido a github pages (ej. kevin-carrasco.github.io/tareas/tarea1.html)
 
 
 

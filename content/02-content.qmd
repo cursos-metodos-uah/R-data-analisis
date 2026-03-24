@@ -1,10 +1,11 @@
 ---
 title: "Clase 2"
-date: "2025-03-25"
+date: "2026-03-24"
 lang: es
 ---
 
 
-## Video presentación
-
-{{< video https://youtu.be/-pPmtz29vZ8?si=jMu95O54wcZoWchs >}}
+## Documento de presentación
+ 
+<iframe src=/slides/02-clase2/02-clase2.html height="550" width=100% allowfullscreen="true">
+</iframe> 
