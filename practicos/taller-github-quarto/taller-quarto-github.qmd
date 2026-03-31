@@ -394,34 +394,3 @@ kevin-carrasco.github.io/ipo/trabajo.html
 ![](images/url-pages.png)
 
 
-# Tarea
-
-El objetivo de esta tarea es que exploren la elaboración de documentos dinámicos. 
-
-La tarea debe ser subida a github y debe ser posible de visualizar con github pages, siguiendo las instrucciones de este mismo taller.
-
-Entonces:
-
-1- Seleccionar algún trabajo o taller de R ya realizado con anterioridad.
-
-2- Crear un documento .qmd que reproduzca el trabajo seleccionado
-
-3- Debe haber al menos una tabla descriptiva y al menos un gráfico
-
-4- renderizar el documento (que se cree el archivo .html), almacenarlo en un repositorio de github y visualizarlo a través de github pages.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -527,12 +527,10 @@ Diferentes formas, pero lo más fácil:
 
 -   visual mode
 -   presionar \@ y se despliegan las referencias del .bib
--   insert -\> citations
+-   insert -> citations
 
-
-
-# Taller práctico {data-background-color="black"}
-[https://r-data-analisis.netlify.app/practicos/taller-github-quarto/taller-github-quarto](https://r-data-analisis.netlify.app/practicos/taller-github-quarto/taller-github-quarto)
+# Tutorial de Zotero {data-background-color="black"}
+[https://r-data-analisis.netlify.app/practicos/02-content-zotero](https://r-data-analisis.netlify.app/practicos/02-content-zotero)
 
 
 ##  {data-background-color="black"}
