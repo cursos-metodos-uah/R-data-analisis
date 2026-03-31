@@ -1,760 +1,1142 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
-  <head>
-    <title>R para análisis de datos</title>
-    <meta charset="utf-8" />
-    <meta name="author" content=".small[Kevin Carrasco    Departamento de Sociología - UCH / COES   ]" />
-    <script src="libs/header-attrs/header-attrs.js"></script>
-    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
-    <script src="libs/tile-view/tile-view.js"></script>
-    <link href="libs/animate.css/animate.xaringan.css" rel="stylesheet" />
-    <script src="libs/fabric/fabric.min.js"></script>
-    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
-    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
-    <link rel="stylesheet" href="../../files/css/custom_2020.css" type="text/css" />
-  </head>
-  <body>
-    <textarea id="source">
+<html lang="en"><head>
+<link href="../..//files/icon-512.png" rel="icon" type="image/png">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
 
-class: front
+  <meta name="author" content="Kevin Carrasco">
+  <title>R para Análisis estadístico – R para análisis de datos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-cc08ae45b4772acf65a273c00aefcc82.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="R para análisis de datos">
+<meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta property="og:site_name" content="R para Análisis estadístico">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="R para análisis de datos">
+<meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta name="twitter:creator" content="@KevinCarrascoQ1">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
 
+<section id="section" class="slide level2" data-background-color="black">
+<h2></h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<section id="r-para-el-análisis-de-datos" class="rojo">
+<h3>R para el análisis de datos</h3>
+<p><strong>Sesión 3</strong>: Citando en texto plano</p>
+</section>
+<hr>
+<h3 id="kevin-carrasco"><strong>Kevin Carrasco</strong></h3>
+<h3 id="sociología---uah">Sociología - UAH</h3>
+<h3 id="er-sem-2026">1er Sem 2026</h3>
+<h3 id="r-data-analisis.netlify.com"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
+</div></div>
+</section>
+<section>
+<section id="investigación-reproducible" class="title-slide slide level1 center" data-background-color="black">
+<h1>Investigación reproducible</h1>
 
+</section>
+<section id="reproducibilidad" class="slide level2">
+<h2>Reproducibilidad</h2>
+<ul>
+<li class="fragment"><p>Es la posibilidad de <strong>regenerar</strong> de manera independiente los resultados usando los materiales originales de una investigación ya publicada.</p></li>
+<li class="fragment"><p>En términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="flujos-de-investigación-reproducible" class="title-slide slide level1 center" data-background-color="black">
+<h1>Flujos de investigación reproducible</h1>
+<ul>
+<li>Texto plano</li>
+<li>Carpetas y archivos</li>
+<li>Autocontenido</li>
+<li>Abierto</li>
+</ul>
+</section>
+<section id="ejemplo-con-procesador-de-texto-tradicional" class="slide level2">
+<h2>Ejemplo con procesador de texto tradicional</h2>
 
+<img data-src="images/W_workflow.png" class="r-stretch"></section>
+<section id="ejemplo-con-procesador-de-texto-tradicional-1" class="slide level2">
+<h2>Ejemplo con procesador de texto tradicional</h2>
 
+<img data-src="images/realWord.png" class="r-stretch"></section></section>
+<section>
+<section id="propuesta-escritura-libre-y-abierta" class="title-slide slide level1 center">
+<h1>Propuesta: escritura libre y abierta</h1>
 
+</section>
+<section id="introducción-a-r-y-rstudio" class="slide level2">
+<h2>Introducción a R y RStudio</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.r-project.org/Rlogo.png" class="nostretch quarto-figure quarto-figure-center" width="300"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/250px-RStudio_logo_flat.svg.png" class="nostretch quarto-figure quarto-figure-center" width="1000"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="por-qué-usar-r" class="slide level2">
+<h2>¿Por qué usar R?</h2>
+<ul>
+<li><p>Gratis: No es necesario pagar licencias</p></li>
+<li><p>Multiplataforma (Windows, Mac-OS, Linux): Los códigos de análisis pueden ser usados en distintas plataformas</p></li>
+<li><p>Investigación reproducible: Permite documentar los resultados obtenidos paso a paso, mostrando el flujo completo de procesamiento de los datos por medio de <strong>scripts</strong></p></li>
+<li><p><strong>Integración con otros softwares</strong></p></li>
+</ul>
+</section></section>
+<section>
+<section id="documentos-en-quarto" class="title-slide slide level1 center">
+<h1>Documentos en Quarto</h1>
 
+<img data-src="images/quarto-logo.png" class="r-stretch"></section>
+<section id="qué-es-markdown" class="slide level2">
+<h2>¿Qué es markdown?</h2>
+<ul>
+<li><p>Forma de escritura simple con pocas marcas de formato</p></li>
+<li><p>Conversión a distintos formatos de salida (html, pdf)</p></li>
+<li><p>Soporta encabezados, tablas, imágenes, tablas de contenidos, ecuaciones, links…</p></li>
+<li><p>Filosofía: foco en contenido primero, el formato después.</p></li>
+</ul>
+</section>
+<section id="qué-es-quarto" class="slide level2">
+<h2>¿Qué es Quarto?</h2>
+<ul>
+<li><p><a href="https://quarto.org/">Quarto</a> es un sistema moderno de creación de documentos dinámicos, informes, presentaciones, libros, sitios web y más, a partir de archivos de texto plano y por medio del conversor universal de documentos <a href="https://pandoc.org/">Pandoc</a>.</p></li>
+<li><p>Evolución de los sistemas de autoría como Jupyter, R Markdown, todo dentro del mismo documento.</p></li>
+</ul>
+</section>
+<section id="características-principales" class="slide level2">
+<h2>Características principales</h2>
+<ul>
+<li><p>Lenguaje que combina código (R) y texto (Markdown): Al igual que RMarkdown (.Rmd), Quarto permite combinar texto plano markdown y código de análisis R.</p></li>
+<li><p>Provee una serie de herramientas para generar documentos dinámicos y publicarlos</p></li>
+</ul>
+</section>
+<section id="extensiones" class="slide level2">
+<h2>Extensiones</h2>
+<ul>
+<li>Integración con R</li>
+<li>Referencias bibliográficas</li>
+<li>Renderizado a pdf, word</li>
+<li>Sitios web</li>
+<li>Presentaciones</li>
+</ul>
+</section>
+<section id="recursos" class="slide level2">
+<h2>Recursos</h2>
+<ul>
+<li>Recursos para seguir aprendiendo:</li>
+<li><a href="https://quarto.org">https://quarto.org</a></li>
+<li><a href="https://aprendeconalf.es/quarto-textos-cientificos/">Creación de documentos científicos con Quarto</a></li>
+<li><a href="https://youtu.be/EbAAmrB0luA">Tutorial Quarto for academics</a></li>
+</ul>
+</section></section>
+<section>
+<section id="protocolo-de-flujo-de-investigación-reproducible" class="title-slide slide level1 center" data-background-color="black">
+<h1>Protocolo de flujo de investigación reproducible</h1>
 
+</section>
+<section id="alternativas" class="slide level2">
+<h2>Alternativas</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="fragment fade-up">
+<p>A. ad-hoc</p>
+<ul>
+<li><p>cada investigador define numero de archivos, nombres, carpetas y organización</p></li>
+<li><p>explicar al resto cómo se organiza</p></li>
+<li><p>documentar en un archivo cómo se organiza</p></li>
+<li><p>–&gt; reproducibilidad y transparencia <strong>LIMITADA</strong></p></li>
+</ul>
+</div>
+</div><div class="column" style="width:5%;">
 
-&lt;!---
-Para correr en ATOM
-- open terminal, abrir R (simplemente, R y enter)
-- rmarkdown::render('static/docpres/07_interacciones/7interacciones.Rmd', 'xaringan::moon_reader')
+</div><div class="column" style="width:45%;">
+<div class="fragment fade-up">
+<p>B. <em>Protocolo</em> reproducible</p>
+<ul>
+<li><p><strong>estructura</strong> de carpetas y archivos interconectados que refieren a reglas conocidas (estándares)</p></li>
+<li><p><strong>autocontenido</strong>: toda la información necesaria para la reproducibilidad se encuentra en la carpeta raíz o directorio de trabajo.</p></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="propuesta-protocolo-ipo" class="slide level2">
+<h2>Propuesta: <strong>Protocolo IPO</strong></h2>
 
-About macros.js: permite escalar las imágenes como [scale 50%](path to image), hay si que grabar ese archivo js en el directorio.
----&gt;
+<img data-src="images/ipo-hex.png" class="r-stretch"></section>
+<section id="estructura-ipo" class="slide level2">
+<h2>Estructura IPO</h2>
 
+<img data-src="images/ipofolder.png" class="r-stretch"></section>
+<section id="mayores-detalles-y-plantilla-de-carpetas" class="slide level2">
+<h2>Mayores detalles y plantilla de carpetas:</h2>
+<ul>
+<li><p><a href="https://lisacoes.com/ipo-repro/">https://lisacoes.com/ipo-repro/</a></p></li>
+<li><p><a href="https://github.com/lisa-coes/ipo">https://github.com/lisa-coes/ipo</a></p></li>
+</ul>
+</section>
+<section id="carpeta-autocontenida" class="slide level2">
+<h2>Carpeta autocontenida</h2>
+<ul>
+<li><p>proyecto <strong>autocontenido</strong>: reproducible sin necesidad de archivos externos</p></li>
+<li><p>requisito: establecer <strong>directorio de trabajo</strong></p>
+<ul>
+<li><p>posición de referencia de todas las operaciones al interior del proyecto</p></li>
+<li><p>también llamado <strong>directorio raíz</strong></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="directorio-de-trabajo" class="slide level2">
+<h2>Directorio de trabajo</h2>
+<ul>
+<li><p>ej. forma tradicional en hoja de código R:</p>
+<ul>
+<li><p><code>setwd(ruta-a-carpeta-de-proyecto)</code></p></li>
+<li><p>problemas: hace referencia a ruta local en el computador donde se está trabajando, por lo tanto no es reproducible y <strong>se debe evitar</strong></p></li>
+</ul></li>
+<li><p>alternativa sugerida en R: <strong>RStudio Projects</strong></p></li>
+</ul>
+</section>
+<section id="rstudio-projects" class="slide level2">
+<h2>RStudio Projects</h2>
+<ul>
+<li><p>La funcionalidad <strong>Projects</strong> de RStudio permite establecer claramente un directorio de trabajo de manera eficiente</p></li>
+<li><p>Para ello, genera un archivo de extensión <strong>.Rproj</strong> en el directorio raiz de la carpeta del proyecto</p></li>
+<li><p>Luego se facilita acceder a la carpeta del proyecto en RStudio ejecutando desde el administrador de archivos del computador (file manager) el archivo <strong>.Rproj</strong></p></li>
+<li><p>para comprobar, ejecutar <code>getwd()</code> y debería dar la ruta hacia la carpeta del proyecto</p></li>
+</ul>
+</section></section>
+<section>
+<section id="repositorios-y-apertura" class="title-slide slide level1 center" data-background-color="black">
+<h1>Repositorios y apertura</h1>
 
-.pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
-## Sociología - UAH
-## 1er Sem 2025
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
-] 
+</section>
+<section id="git" class="slide level2">
+<h2>Git</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="images/git.png"></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><p>es una especie de memoria o registro local que guarda información sobre:</p>
+<ul>
+<li>quién hizo un cambio</li>
+<li>cuándo lo hizo</li>
+<li>qué hizo</li>
+</ul></li>
+<li><p>mantiene la información de todos los cambios en la historia de la carpeta / repositorio local</p></li>
+<li><p>se puede sincronizar con un repositorio remoto (ej. Github)</p></li>
+</ul>
+</div></div>
+</section>
+<section id="gitgithub" class="slide level2">
+<h2>Git/github</h2>
+<ul>
+<li><p>actualmente, Git / Github posee más de 100 millones de repositorios</p></li>
+<li><p>mayor fuente de código en el mundo</p></li>
+<li><p>ha transitado desde el mundo de desarrollo de software hacia distintos ámbitos de trabajo colaborativo y abierto</p></li>
+<li><p>entorno de trabajo que favorece la ciencia abierta</p></li>
+</ul>
+</section>
+<section id="section-1" class="slide level2" data-background-color="black">
+<h2></h2>
+<h3 id="git-no-es-un-registro-de-versiones-de-archivos-específicos-sino-de-una-carpeta-completa"><span class="red">Git no es un registro de versiones de archivos específicos, sino de una carpeta completa</span></h3>
+<h3 id="guarda-fotos-de-momentos-específicos-de-la-carpeta-y-esta-foto-se-saca-mediante-un-commit"><span class="red">Guarda <em>“fotos”</em> de momentos específicos de la carpeta, y esta foto se <em>saca</em> mediante un</span> <strong>commit</strong></h3>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
 
+<img data-src="images/gitflow.jpeg" class="r-stretch"></section>
+<section id="commits" class="slide level2">
+<h2>Commits</h2>
+<ul>
+<li><p>El <strong>commit</strong> es el procedimiento fundamental del control de versiones</p></li>
+<li><p>Git no registra cualquier cambio que se “guarda”, sino los que se “comprometen” (commit).</p></li>
+<li><p>En un <strong>commit</strong></p>
+<ul>
+<li>se seleccionan los archivos cuyo cambio se desea registrar (<em>stage</em>)</li>
+<li>se registra lo que se está comprometiendo en el cambio (mensaje de commit)</li>
+</ul></li>
+</ul>
+</section>
+<section id="cuándo-hacer-un-commit" class="slide level2">
+<h2>¿Cuándo hacer un commit?</h2>
+<ul>
+<li><p>según conveniencia</p></li>
+<li><p>sugerencias:</p>
+<ul>
+<li><p>que sea un momento que requiera registro (momento de foto)</p></li>
+<li><p>no para cambios menores</p></li>
+<li><p>no esperar muchos cambios distintos que puedan hacer perder el sentido del commit</p></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="citas-reproducibles" class="title-slide slide level1 center" data-background-color="black">
+<h1>Citas reproducibles</h1>
 
-.pull-right[
-.right[
-&lt;br&gt;
-## .yellow[Sesión 4: Planteando una investigación cuantitativa]
-![:scale 70%](../../files/img/eval-hires.png)
+</section>
+<section id="cómo-trabajar-con-citas-cuando-se-escribe-en-texto-plano" class="slide level2">
+<h2>¿Cómo trabajar con citas cuando se escribe en texto plano?</h2>
+<p>3 cosas a considerar:</p>
+<ol type="1">
+<li><p>Almacenamiento de referencias: Bibtex</p></li>
+<li><p>Generación de archivo de referencias: Zotero / BetterBibTex</p></li>
+<li><p>Citando en texto plano (markdown, Rmarkdown, Quarto y csl)</p></li>
+</ol>
+</section>
+<section id="almacenamiento-de-referencias" class="slide level2">
+<h2>1. Almacenamiento de referencias</h2>
+<div class="v-center-container">
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="images/BibTeX_logo.svg.png"></p>
+</div><div class="column" style="width:10%;">
 
-]
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>formato de almacenamiento de citas en texto plano (no es un programa)</p></li>
+<li><p>Un archivo Bibtex tiene extensión <strong>.bib</strong>, donde deben estar almacenadas todas las referencias citadas en el texto</p></li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="ejemplo-referencia-en-bibtex" class="slide level2">
+<h2>Ejemplo referencia en Bibtex</h2>
 
-]
+<img data-src="images/bibtex-record.png" class="r-stretch"></section>
+<section id="archivo-bibtex-.bib" class="slide level2">
+<h2>Archivo Bibtex (.bib)</h2>
+<ul>
+<li><p>un archivo bibtex tiene múltiples referencias una después de la otra, el orden no es relevante.</p></li>
+<li><p>lo central en cada referencia es la llave de referencia o <strong>citation key</strong>, que está al principio e identifica cada referencia</p></li>
+<li><p>cada referencia posee una serie de campos con información necesaria para poder citar</p></li>
+<li><p>este formato se puede ingresar manualmente, copiar y pegar de otras fuentes, o automatizar desde software de gestión de referencias (detalles más adelante)</p></li>
+</ul>
+</section>
+<section id="generación-de-archivo-de-referencias" class="slide level2">
+<h2>2. Generación de archivo de referencias</h2>
+<h3 id="utilizando-bibtex-en-escritura-en-texto-simple">Utilizando Bibtex en escritura en texto simple</h3>
+<ul>
+<li><p>es claro que tanto la generación manual de registros Bibtex como la incorporación manual de citas es un gran desincentivo a su uso.</p></li>
+<li><p>la simplificación y automatización de esto pasa por dos procesos:</p>
+<ul>
+<li><p>Automatizar la <strong>generación</strong> de un archivo .bib desde un software de gestión de referencias (Zotero - BetterBibTex)</p></li>
+<li><p>Automatizar la <strong>incorporación</strong> de citas al documento</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+
+<img data-src="images/refman.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="software-de-gestión-de-referencias" class="slide level2">
+<h2>Software de gestión de referencias</h2>
+<ul>
+<li><p>los software de gestión de referencias bibliográficas permiten almacenar, organizar y luego utilizar las referencias</p></li>
+<li><p>diferentes alternativas de software de gestión de referencias bibliográficas: Endnote, Mendeley, Refworks, Zotero</p></li>
+<li><p>en adelante vamos a ejemplificar con <strong>Zotero</strong>, que es un software libre y de código abierto</p></li>
+</ul>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="slarge v-center-container red">
+<p>Vamos a usar Zotero para guardar y organizar nuestras referencias bibliográficas, y como <em>bot</em> para generar un archivo .bib</p>
+</div>
+</section>
+<section id="zotero" class="slide level2">
+<h2>Zotero</h2>
+<div class="v-center-container">
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/zotero.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>instalar <a href="zotero.org">https://www.zotero.org</a></p></li>
+<li><p>además del programa, es recomendable que es sus computadores personales puedan instalar “conector” para el navegador ( extensión que permite almacenar directamente con 1 click)</p></li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="zotero-vista-general" class="slide level2">
+<h2>Zotero: vista general</h2>
+<h3 id="section-5"><img data-src="https://www.zotero.org/static/images/home/screenshot-1.4.png"></h3>
+</section>
+<section id="almacenamiento-1-vía-conector-navegador" class="slide level2">
+<h2>Almacenamiento 1: vía conector navegador</h2>
+<p>Cuando hay una referencia presente en la página, ir al botón del conector y se guarda (Zotero debe estar abierto)</p>
+<p>(la referencia se almacena en la carpeta que está activa en Zotero, se puede cambiar al momento de guardar)</p>
+
+<img data-src="images/conector.png" class="r-stretch"></section>
+<section id="almacenamiento-2-vía-identificador-doi-isbn-issn" class="slide level2">
+<h2>Almacenamiento 2: vía identificador DOI / ISBN / ISSN ]</h2>
+<p><img data-src="images/doizotero.png">]</p>
+</section>
+<section id="almacenamiento-3-manual" class="slide level2">
+<h2>Almacenamiento 3: manual</h2>
+<p>Llenando los campos uno por uno:</p>
+
+<img data-src="images/zoteromanual.png" class="r-stretch"></section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div class="slarge highlight-container-red v-center-container">
+<p>Al almacenar fijarse que los campos necesarios están completos y que los nombres de los mismos autores coinciden entre citas</p>
+</div>
+</section>
+<section id="zotero-1" class="slide level2">
+<h2>Zotero</h2>
+<ul>
+<li>más información sobre manejo y capacidades:</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=Uxv3aE4XoNY" class="uri">https://www.youtube.com/watch?v=Uxv3aE4XoNY</a></p>
+<p>… y tutoriales y guías varios en la red</p>
+</section>
+<section id="zotero-bibtex" class="slide level2">
+<h2>Zotero-Bibtex</h2>
+<ul>
+<li><p>Zotero permite exportar las referencias en formato Bibtex</p></li>
+<li><p>Puede ser toda la colección o una parte (carpeta)</p></li>
+<li><p>2 alternativas:</p>
+<ul>
+<li>manual</li>
+<li>automatizada</li>
+</ul></li>
+</ul>
+</section>
+<section id="zotero-bibtex-exportación-manual" class="slide level2">
+<h2>Zotero-Bibtex: exportación manual</h2>
+<p><br></p>
+
+<img data-src="images/zoteroexport.png" class="r-stretch"><ul>
+<li><p>Carpeta -&gt; boton derecho -&gt; export -&gt; formato Bibtex</p></li>
+<li><p>guardar archivo .bib en carpeta del proyecto</p></li>
+</ul>
+</section>
+<section id="zotero--bibtex-exportando-referencias" class="slide level2">
+<h2>Zotero- Bibtex: Exportando referencias</h2>
+<ul>
+<li><p>puede ser colección completa o carpetas específicas</p></li>
+<li><p>posicionarse sobre carpeta, botón derecho y <code>Export collection</code></p>
+<pre><code>- Formato: BibTex
+- dar ruta hacia carpeta del proyecto</code></pre></li>
+<li><p>precaución: no caracteres especiales ni espacios en el nombre del archivo .bib</p></li>
+</ul>
+</section></section>
+<section>
+<section id="citando-en-texto-plano" class="title-slide slide level1 center">
+<h1>3. Citando en texto plano</h1>
+
+</section>
+<section id="para-citar-en-texto-plano" class="slide level2">
+<h2>Para citar en texto plano:</h2>
+<ol type="a">
+<li>Agregar el archivo .bib al preámbulo del documento (YAML)</li>
+<li>Agregar archivo de formato de bibliografía (csl)</li>
+<li>Insertar citas</li>
+</ol>
+</section>
+<section id="bib-y-csl-en-yaml" class="slide level2">
+<h2>bib y csl en YAML</h2>
+<pre><code>```
+---
+title: "My document"
+bibliography: input/bib/merit-factorial.bib
+csl: "input/bib/apa6.csl"
 ---
 
-layout: true
-class: animated, fadeIn
-
-
----
-class: inverse, bottom, right, animated, slideInRight
-
-
-# .red[Sesión 4]
-&lt;br&gt;
-
-Introducción y bases de la investigación cuantitativa
-
-Datos y variables
-
-Niveles de medición
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-
----
-class: inverse, bottom, right
-
-# .red[Sesión 4]
-&lt;br&gt;
-
-.yellow[Introducción y bases de la investigación cuantitativa]
-
-Datos y variables
-
-Niveles de medición
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
----
-
-# Introducción y bases de la investigación cuantitativa
-
-* En la investigación cuantitativa se asume que hay una realidad "allá afuera" que quien investiga puede conocer a través de su **cuantificación**
-
---
-
-* Permite lidiar con la **incertidumbre**
-
---
-
-* Foco en la teoría (*generalmente* se enfatiza el **método hipotético-deductivo**, buscando probar hipótesis de teorías previamente estudiadas)
-
----
-
-# Introducción y bases de la investigación cuantitativa
-
-* Explicar lo que es, no lo que debería ser
-
---
-
-* Conocer y explicar grupos de personas de manera general, no individuos por sí solos
-
----
-
-# Proceso de investigación cuantitativo (D'Ancona 2001)
-
-1. Formulación de un problema de investigación
-2. Operacionalización del problema
-  - Hipótesis
-  - Operacionalización de conceptos teóricos
-  - Delimitación de unidad de análisis
-3. Diseño de la investigación: cómo se realizará la investigación (diseños transversales, longitudinales, experimentales)
-4. Factibilidad de la investigación: Cronología de tareas; recursos disponibles (materiales y humanos); etc.
-
----
-
-# Proceso de investigación cuantitativo (D'Ancona 2001)
-
-1. Formulación de un problema de investigación
-2. Operacionalización del problema
-  - Hipótesis
-  - .red[Operacionalización de conceptos teóricos]
-  - Delimitación de unidad de análisis
-3. Diseño de la investigación: cómo se realizará la investigación (diseños transversales, longitudinales, experimentales)
-4. Factibilidad de la investigación: Cronología de tareas; recursos disponibles (materiales y humanos); etc.
-
----
-class: roja, center, middle
-
-# Medición y operacionalización
-
----
-
-# Medición y operacionalización
-
-- Operacionalización = "codificación" de un fenómeno con el fin de hacerlo **medible**
-
-- Hay muchas formas de "codificar" un mismo concepto
-
-- ¿Por qué es importante definir operacionalmente los conceptos?
-
----
-
-# Medición y operacionalización
-
-.center[¿Qué concepto se pretende medir con esta pregunta?]
-
-.center[![:scale 95%](../../files/img/iden_pol.png)]
-
----
-
-# Medición y operacionalización
-
-.center[¿Y con estas preguntas?]
-
-.center[![:scale 60%](../../files/img/ejemplos_variables.png)]
-
----
-
-# Medición y operacionalización
-
-.center[y si quisiéramos medir un concepto más complejo?]
-
---
-
-.center[¿cómo se puede medir cohesión social?]
-
----
-
-# Medición y operacionalización
-
-- Cohesión social según CEPAL (2021)
-
-.center[![:scale 75%](../../files/img/cohesion-cepal.png)]
-
----
-
-# Medición y operacionalización
-
-- Cohesión social según Observatorio de cohesión social (ocs-coes) (2020)
-
-.center[![:scale 75%](../../files/img/cohesion.png)]
-
----
-
-# Introducción y bases de la investigación cuantitativa
-
-* Diseños de investigación transversal
-
-* Diseños de investigación longitudinal
-
-* Diseños de investigación experimentales
-
----
-* Diseños de investigación transversal
-
-.center[
-![:scale 75%](../../files/img/transversal.png)
-]
----
-* Diseños de investigación longitudinal
-
-.center[
-![:scale 64%](../../files/img/longitudinal.png)
-]
-
----
-* Diseños de investigación experimentales
-.center[
-![:scale 53%](../../files/img/experiment.png)
-]
-
----
-class: inverse, bottom, right
-
-# .red[Sesión 4]
-&lt;br&gt;
-
-Repaso sesión anterior
-
-Introducción y bases de la investigación cuantitativa
-
-.yellow[Datos y variables]
-
-Medidas de tendencia central
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-
----
-##.yellow[Datos] y variables
-
-* Los datos miden al menos una *característica* de a los menos una *unidad*  en a lo menos *un punto en el tiempo*
-
---
- + Ejemplo: La esperanza de vida en Chile el 2017 fue de 79,9 años
-
-   - Característica (variable) : esperanza de vida
-
-   - Unidad: Años
-
-   - Punto en el tiempo: 2017
-
----
-##.yellow[Datos] y variables
-
-* Base de Datos
-
-* Forma "rectangular" de almacenamiento de datos:
-
-.center[![:scale 60%](../../files/img/ObservacionesyVariables.png)]
-
----
-##.yellow[Datos] y variables
-
-  - cada .blue[fila] representa una unidad o caso (ej: un entrevistad_)
-
-  - cada .orange[columna] una variable (ej: edad)
-
-  - cada .purple[variable] posee valores numéricos
-
-  - los valores numéricos pueden estar asociados a una etiqueta (ej: 1=Mujer)
+ Y aquí comienza el documento ...
+```</code></pre>
+</section>
+<section id="sobre-.csl" class="slide level2">
+<h2>Sobre .csl</h2>
+<ul>
+<li><p>además de las referencias en .bib, necesitamos poder dar el estilo de formato deseado a citas y bibliografía, mediante archivos <strong>csl</strong> (citation style language)</p></li>
+<li><p>existen múltiples estilos de citación (alrededor de 10.000)</p></li>
+<li><p>los más usados: APA, ASA, Chicago</p></li>
+<li><p>estos estilos (en archivos csl) se pueden bajar desde repositorios, se recomienda el siguiente: <a href="https://www.zotero.org/styles" class="uri">https://www.zotero.org/styles</a></p></li>
+</ul>
+</section>
+<section id="citando" class="slide level2">
+<h2>Citando</h2>
+<p>La forma de citar es a través de la .red[clave que identifica la referencia], que es la que aparece al principio de cada una, y se agrega una @. Ej:</p>
+<div class="slarge">
+<pre><code>- Tal como señala @sabbagh_dimension_2003, los principales resultados ...</code></pre>
+</div>
+<p>Al renderizar, esto genera:</p>
+<ul>
+<li><strong>Tal como señala Sabbagh (2003), los principales resultados …</strong></li>
+</ul>
+<p>Y además, agrega la bibliografía al final del documento.</p>
+</section>
+<section id="opciones-de-citación" class="slide level2">
+<h2>Opciones de citación</h2>
+<p><br></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Se escribe</th>
+<th>Renderiza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Como dice @sabbagh_dimension_2003</code></td>
+<td>Como dice Sabbagh (2003)</td>
+</tr>
+<tr class="even">
+<td><code>Evidencia señala [@sabbagh_dimension_2003]</code></td>
+<td>Evidencia señala (Sabbagh, 2020)</td>
+</tr>
+<tr class="odd">
+<td><code>Sabbagh [@sabbagh_dimension_2003, pp.35] dice ...</code></td>
+<td>Sabbagh (2020, p.35) dice …</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Más de una cita: separadas por <strong>;</strong></li>
+</ul>
+</section>
+<section id="citando-en-documentos-markdownquarto-en-r" class="slide level2">
+<h2>Citando en documentos Markdown/Quarto en R</h2>
+<p>Diferentes formas, pero lo más fácil:</p>
+<ul>
+<li>visual mode</li>
+<li>presionar @ y se despliegan las referencias del .bib</li>
+<li>insert -&gt; citations</li>
+</ul>
+</section></section>
+<section>
+<section id="taller-práctico" class="title-slide slide level1 center" data-background-color="black">
+<h1>Taller práctico</h1>
+<p><a href="https://r-data-analisis.netlify.app/practicos/taller-github-quarto/taller-github-quarto">https://r-data-analisis.netlify.app/practicos/taller-github-quarto/taller-github-quarto</a></p>
+</section>
+<section id="section-7" class="slide level2" data-background-color="black">
+<h2></h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-right" style="width:80.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<div class="rojo">
+<p>R para el análisis de datos</p>
+</div>
+<hr>
+<h3 id="kevin-carrasco-1"><strong>Kevin Carrasco</strong></h3>
+<h3 id="sociología---uah-1">Sociología - UAH</h3>
+<h3 id="er-sem-2026-1">1er Sem 2026</h3>
+<h3 id="r-data-analisis.netlify.com-1"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
+</div></div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/icon-512.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
----
-##.yellow[Datos] y variables
 
-### Ejemplos de estudios / bases de datos
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
-1. [Encuesta Centro de Estudios Públicos](https://www.cepchile.cl/encuesta/encuesta-cep-n-90/)
+  <script>
 
-2. [Encuesta CASEN 2022](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022)
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
 
-3. [Encuesta Latinobarómetro](https://www.latinobarometro.org/lat.jsp) 
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
 
-4. [ELSOC](https://coes.cl/encuesta-panel/)
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
 
-5. [Banco de datos MINEDUC](https://datosabiertos.mineduc.cl/)
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
 
----
-## Datos y .yellow[variables]
+        // Display a presentation progress bar
+        progress: true,
 
-- Una variable representa cualquier cosa o propiedad que varía y a la cuál se le asigna un valor. Es decir:
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
 
-- `\(Variable \neq Constante\)`
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
 
----
-## Datos y .yellow[variables]
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
 
-- discretas (Rango finito de valores):
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
 
-      - Dicotómicas
-      - Politómicas
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
 
-- continuas:
+        // Push each slide change to the browser history
+        history: true,
 
-      - Rango (teóricamente) infinito de valores.
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
 
----
-## Escalas de medición de variables
+        // Enable the slide overview mode
+        overview: true,
 
-- NOIR: Nominal, Ordinal, Intervalar, Razón
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
 
-.small[
-| Tipo       	| Características                     	        | Propiedad de números 	| Ejemplo|
-|------------	|----------------------------------------------|---------------	|-----------	|
-| *Nominal*    	| Uso de números en lugar de palabras 	| Identidad            	| Nacionalidad      	|
-| *Ordinal*    	| Números se usan para ordenar series 	| + ranking            	| Nivel educacional 	|
-| *Intervalar* 	| Intervalos iguales entre números    	| + igualdad           	| Temperatura       	|
-| *Razón*      	| Cero real                           	| + aditividad         	| Distancia         	|
-]
+        // Vertical centering of slides
+        center: false,
 
+        // Enables touch navigation on devices with touch input
+        touch: true,
 
----
-class: inverse, bottom, right
+        // Loop the presentation
+        loop: false,
 
-# .red[Sesión 4]
-&lt;br&gt;
+        // Change the presentation direction to be RTL
+        rtl: false,
 
-Repaso sesión anterior
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
 
-Introducción y bases de la investigación cuantitativa
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
 
-Datos y variables
+        // Turns fragments on and off globally
+        fragments: true,
 
-.yellow[Medidas de tendencia central]
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
 
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
 
----
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
 
-## Medidas de tendencia Central
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
 
-* **Moda**: valor que ocurre más frecuentemente
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
 
---
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: true,
 
-* **Mediana**: valor medio de la distribución ordenada. Si N es par, entonces es el promedio de los valores medios
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
 
---
-* **Media** o promedio aritmético: suma de los valores dividido por el total de casos
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
 
----
-## Medidas de tendencia Central
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
 
-### Dispersión:
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
 
-* **Varianza**: promedio de la suma de las diferencias del promedio al cuadrado
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
 
-* **Desviación Estándar**:
-  - Raiz Cuadrada de la varianza.
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
 
-  - Expresada  en la mismas unidades que los puntajes de la escala original
+        // The display mode that will be used to show slides
+        display: 'block',
 
----
-class: middle, center
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
 
-# Más sobre datos, variables y varianza en:
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
 
-##-  [Moore: 1.Comprensión de los datos (1-54)](https://multivariada.netlify.app/docs/lecturas/moore_comprensiondelosdatos.pdf)
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
 
----
-class: inverse, bottom, right
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
 
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
 
-# .red[Sesión 4]
-&lt;br&gt;
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
 
-Introducción y bases de la investigación cuantitativa
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
 
-Datos y variables
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
 
-Niveles de medición
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
 
-.yellow[Trabajo 1]
+        height: 700,
 
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
 
----
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
-# Estructura de carpetas
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-![](../../files/img/carpetas.png)
----
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
 
-# Repositorio
+    <script>
 
-![](../../files/img/repositorio.png)
----
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
 
-# Github pages
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
 
-![](../../files/img/url-pages.png)
+      // slide changes (different for each slide format).
 
+      (function () {
 
----
-class: center
+        // dispatch for htmlwidgets
 
-## Protocolo de trabajo reproducible
+        function fireSlideEnter() {
 
-![:scale 41%](../../files/img/ipo-hex.png)
+          const event = window.document.createEvent("Event");
 
-.small[.right[fuente: [lisa-coes.com/ipo-repro](https://lisa-coes.com/ipo-repro)]]
+          event.initEvent("slideenter", true, true);
 
+          window.document.dispatchEvent(event);
 
----
-class: inverse, middle, center
+        }
 
-# .red[Repositorios y apertura]
+    
 
-### La escritura en texto simple (como Markdown o Quarto) permite implementar un sistema de control de versiones, además de herramientas de respaldo, colaboración y comunicación
+        function fireSlideChanged(previousSlide, currentSlide) {
 
----
+          fireSlideEnter();
 
-# El origen: Abriendo un sistema operativo
+    
 
-.pull-left[
-![](../../practicos/taller-github-quarto/images/torvalds.png)
-- [TED talk](https://www.youtube.com/watch?v=o8NPllzkFhE&amp;ab_channel=TED)
+          // dispatch for shiny
 
-]
+          if (window.jQuery) {
 
-.pull-right[
-- Linus Torvalds, 1991 (21 años)  
-- Crea sistema operativo libre **Linux** y lo abre a la colaboración. Postea:  
-&gt; "I'm doing a (free) operating system (just a hobby, won't be big and professional...)"
+            if (previousSlide) {
 
-]
+              window.jQuery(previousSlide).trigger("hidden");
 
----
+            }
 
-# Git
+            if (currentSlide) {
 
-.pull-left[
-![](../../practicos/taller-github-quarto/images/git.png)
-]
+              window.jQuery(currentSlide).trigger("shown");
 
-.pull-right[
-- Es una especie de memoria o registro local que guarda información sobre:
-  - quién hizo un cambio  
-  - cuándo lo hizo  
-  - qué hizo  
-- Mantiene el historial completo del repositorio  
-- Se puede sincronizar con un repositorio remoto (ej. GitHub)  
-]
+            }
 
----
+          }
 
-# Git / GitHub
-
-.pull-left[
-![](../../practicos/taller-github-quarto/images/github.png)
-]
-
-.pull-right[
-- Git / GitHub tiene más de 100 millones de repositorios  
-- Mayor fuente de código en el mundo  
-- Desde el desarrollo de software, se ha expandido a otros ámbitos  
-- Favorece la ciencia abierta  
-- En 2018, Microsoft compró GitHub por USD 7500 millones  
-- Aunque generó preocupación, sigue siendo la principal plataforma de colaboración  
-]
-
----
-
-# Git ≠ archivos individuales
-
-
-### Git no es un registro de archivos específicos, sino de la carpeta completa  
-- Guarda *"fotos"* de momentos específicos del proyecto  
-- Cada "foto" se toma mediante un .red[commit]  
-
-
----
-
-![](../../practicos/taller-github-quarto/images/gitflow.jpeg)
-
----
-
-# Commits
-
-- El **commit** es la base del control de versiones  
-- Git no registra automáticamente, sino que requiere el paso de "comprometer" cambios  
-- Un commit:
-  - selecciona los archivos (stage)
-  - registra un mensaje explicativo
-
----
-
-# ¿Cuándo hacer un commit?
-
-- Cuando haya un cambio que valga la pena registrar
-- No para cambios triviales
-- No esperar a tener demasiados cambios distintos
-- Que cada commit tenga sentido como “foto” del estado del proyecto
-
----
-
-### Algunos términos
-
-.font50[
-
-| Término       | Definición |
-|--------------|------------|
-| Remote       | Repositorio en GitHub, no en tu equipo local |
-| Clonar       | Descargar una copia completa del repositorio |
-| Branch       | Versión paralela de los archivos del repositorio |
-| Fork         | Copia personal de un repositorio para modificarlo |
-| Upstream     | Rama del repositorio original desde el cual se hizo fork |
-| Merge        | Aplicar cambios de una rama en otra |
-| Pull request | Solicitud para integrar cambios de una rama en otra |
-
-]
-
----
-
-# Branch
-
-- Una **branch** es una copia paralela del repositorio  
-- Permite trabajar en nuevas ideas sin modificar la rama principal  
-
----
-
-![](../../practicos/taller-github-quarto/images/branches.png)
-
----
-
-# Conflicted branch
-
-- Si dos personas modifican el mismo archivo, puede haber **conflictos de versiones**
-
----
-
-![](../../practicos/taller-github-quarto/images/conflicted-branch.png)
-
----
-
-# ¿Cómo evitar conflictos?
-
-- Trabajar en archivos o momentos diferentes  
-- Usar *pull request* para que una persona coordine los cambios  
----
-## Guía de trabajo en:
-
-# .center[[**https://r-data-analisis.netlify.app/practicos/taller-github-collab**](https://r-data-analisis.netlify.app/practicos/taller-github-collab)]
-
----
-
-class: front
-
-.pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
-## Sociología - UAH
-## 1er Sem 2025
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
-] 
-
-
-.pull-right[
-.right[
-&lt;br&gt;
-## .yellow[Sesión 4: Planteando una Investigación cuantitativa]
-![:scale 70%](../../files/img/eval-hires.png)
-
-
-
-]
-
-]
-    </textarea>
-<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="https://multinivel.netlify.app/docpres/xaringan_custom/macros.js"></script>
-<script>var slideshow = remark.create({
-"ratio": "16:9",
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
-});
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function(d) {
-  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})(document);
-
-(function(d) {
-  var el = d.getElementsByClassName("remark-slides-area");
-  if (!el) return;
-  var slide, slides = slideshow.getSlides(), els = el[0].children;
-  for (var i = 1; i < slides.length; i++) {
-    slide = slides[i];
-    if (slide.properties.continued === "true" || slide.properties.count === "false") {
-      els[i - 1].className += ' has-continuation';
-    }
-  }
-  var s = d.createElement("style");
-  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
-  d.head.appendChild(s);
-})(document);
-// delete the temporary CSS (for displaying all slides initially) when the user
-// starts to view slides
-(function() {
-  var deleted = false;
-  slideshow.on('beforeShowSlide', function(slide) {
-    if (deleted) return;
-    var sheets = document.styleSheets, node;
-    for (var i = 0; i < sheets.length; i++) {
-      node = sheets[i].ownerNode;
-      if (node.dataset["target"] !== "print-only") continue;
-      node.parentNode.removeChild(node);
-    }
-    deleted = true;
-  });
-})();
-// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
-// screen reader (see PR #262)
-(function(d) {
-  let res = {};
-  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
-    const t = tr.querySelector('td:nth-child(2)').innerText;
-    tr.querySelectorAll('td:first-child .key').forEach(key => {
-      const k = key.innerText;
-      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
-    });
-  });
-  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
-})(document);
-(function() {
-  "use strict"
-  // Replace <script> tags in slides area to make them executable
-  var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container script'
-  );
-  if (!scripts.length) return;
-  for (var i = 0; i < scripts.length; i++) {
-    var s = document.createElement('script');
-    var code = document.createTextNode(scripts[i].textContent);
-    s.appendChild(code);
-    var scriptAttrs = scripts[i].attributes;
-    for (var j = 0; j < scriptAttrs.length; j++) {
-      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
-    }
-    scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-})();
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-// adds .remark-code-has-line-highlighted class to <pre> parent elements
-// of code chunks containing highlighted lines with class .remark-code-line-highlighted
-(function(d) {
-  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
-  const preParents = [];
-  const findPreParent = function(line, p = 0) {
-    if (p > 1) return null; // traverse up no further than grandparent
-    const el = line.parentElement;
-    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
-  };
-
-  for (let line of hlines) {
-    let pre = findPreParent(line);
-    if (pre && !preParents.includes(pre)) preParents.push(pre);
-  }
-  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
-})(document);</script>
-<style>
-.logo {
-  background-image: url("../hex_multiva_white.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 16.3em;
-  right: 31em;
-  width: 110px;
-  height: 70px;
-  z-index: 0;
-}
-</style>
-
-<script>
-document
-  .querySelectorAll(
-    '.remark-slide-content' +
-    ':not(.title-slide)' +
-    // add additional classes to exclude here, e.g.
-    // ':not(.inverse)' +
-    ':not(.hide-logo)'
-  )
-  .forEach(el => {
-    el.innerHTML += '<div class="logo"></div>';
-  });
-</script>
-
-<script>
-slideshow._releaseMath = function(el) {
-  var i, text, code, codes = el.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
-  }
-};
-slideshow._releaseMath(document);
-</script>
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-(function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
-  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
-    script.src  = script.src.replace(/^https?:/, '');
-  document.getElementsByTagName('head')[0].appendChild(script);
-})();
-</script>
-  </body>
-</html>
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/R-analisis-datos\.netlify\.app");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

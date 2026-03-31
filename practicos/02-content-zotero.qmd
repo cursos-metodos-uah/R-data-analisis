@@ -1,6 +1,6 @@
 ---
-title: "Práctico 5. Vinculación R y Zotero"
-date: "2025-04-01"
+title: "Práctico 3. Vinculación R y Zotero"
+date: "2026-03-31"
 lang: es
 website:
   comments:
@@ -19,7 +19,9 @@ opts_chunk$set(warning=FALSE,
 
 # Presentación
 
-Este práctico tiene como objetivo retomar los contenidos vistos en la sesión anterior (Quarto + Github) y complementarlos con Zotero y ResearchRabbit.
+Este práctico tiene como objetivo retomar los contenidos vistos en la sesión anterior (Quarto + Github) y complementarlos con Zotero.
+
+::: callout-note
 
 ¿Cómo obtener los repositorios que fueron creados en nuestros computadores personales?
 
@@ -32,6 +34,8 @@ Podemos hacerlo desde RStudio
 2. Seleccionamos URL y lugar para almacenar el repositorio
 
 y listo!
+
+:::
 
 ## Zotero
 
@@ -88,47 +92,13 @@ En este caso mi biblioteca se llama "percepcion-desigualdad".
 
 ¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?
 
-## Researchrabbit
 
-Research Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero
-
-1. Ingresar a la página [https://researchrabbitapp.com/](https://researchrabbitapp.com/).
-
-2. Crear cuenta
-
-![](images/research.png)
-
-3. Una vez dentro apretamos "Import Zotero Collection" y seleccionamos nuestra biblioteca
-
-![](images/research2.png)
-
-4. Así se ve research rabbit
-
-![](images/research3.png)
-
-5. Podemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca
-
-![](images/research4.png)
-
-6. Después volvemos a Zotero, actualizamos y aparece nuestro nuevo paper
-
-![](images/zotero7.png)
-
-Ahora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R
-
-7. Vamos a este [link](https://github.com/retorquere/zotero-better-bibtex/releases/tag/v6.7.169) y descargamos zotero-better-bibtex-6.7.169.xpi
-
-8. Volvemos a Zotero --> Herramientas --> Complementos --> La tuerca en la esquina superior derecha --> Instalar Add-on desde archivo --> Seleccionamos el archivo que acabamos de descargar
-
-![](images/zotero9.png)
 
 9. Paso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca --> Exportar colección
 
 ![](images/zotero8.png)
 
-10. Seleccionamos formato: Better BibTeX y marcamos la casilla "Keep updated". Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía
-
-![](images/zotero10.png)
+10. Seleccionamos formato: BibTeX.
 
 11. Guardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo
 
@@ -222,6 +192,8 @@ Con referencias automáticas!
 
 6. Ahora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop o de RStudio, dependiendo del programa que estemos usando.
 
+::: callout-note
+
 En RStudio:
 
 7. Vamos a la sección de 'Git' nuevamente en nuestro panel de la derecha.
@@ -241,3 +213,5 @@ En RStudio:
 ![](images/version4.png)
 
 y listo!
+
+:::
