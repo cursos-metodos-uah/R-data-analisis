@@ -1,12 +1,12 @@
 ---
 title: "Clase 4"
-date: "2024-04-02"
+date: "2026-04-07"
 lang: es
 ---
 
 ## Documento de presentación
  
-<iframe src=/slides/03-clase3/03-clase3.html height="550" width=100% allowfullscreen="true">
+<iframe src=/slides/04-clase4/04-clase4.html height="550" width=100% allowfullscreen="true">
 </iframe> 
 
 

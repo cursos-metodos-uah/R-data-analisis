@@ -1,538 +1,534 @@
 ---
-title: "Práctico 4. Visualización de variables"
-subtitle: "R data analisis"
-linktitle: "Práctico 4: Visualización"
-date: "2024-03-18"
+title: "Práctico 4. Operacionalización de variables"
+subtitle: "R para análisis de datos en ciencias sociales"
+linktitle: "Práctico 4: Operacionalización"
+date: "2026-04-07"
 lang: es
 ---
 
 # Presentación
 
-# Objetivo de la práctica
+## Objetivo de la práctica
 
-Esta práctica asume como base el desarrollo de la [Práctica anterior](https://r-data-analisis.netlify.app/practicos/03-content), a la cual se hará referencia permanente. Sin embargo, en esta oportunidad la base de datos contiene los datos de los 18 países participantes en la encuesta, no solo Chile. El código específico que crea esta base está disponible [acá](https://github.com/Kevin-carrasco/R-data-analisis/blob/main/practicos/latin_proc.R)
+El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder analizar e interpretar los datos.
 
-En la [Práctica anterior](https://r-data-analisis.netlify.app/practicos/03-content) se desarrolló un código de preparación de datos que generó una base de datos procesada para el análisis. En esta **Práctica** comenzamos con el segundo momento de procesamiento de datos, que es el análisis propiamente tal. El análisis se divide en descripción de variables y contraste de hipótesis. En esta práctica nos enfocaremos en la primera fase, que llega hasta el punto 3 del código de análisis:
+Por temas de orden y reproducibilidad, en este curso vamos a separar en **dos momentos** el trabajo con datos, y dos archivos de código correspondientes:
 
-![](images/produccion2.png)
+  - **Preparación** corresponde a lo que se conoce generalmente como "limpieza", es decir, realizar las modificaciones necesarias para poder efectuar los análisis. Estas modificaciones previas al análisis son necesarias ya que los datos originales con los que se va a trabajar en general no vienen perfectamente adaptados a los análisis que se quieren hacer. Por lo tanto, en cuanto a datos también hacemos la distinción entre datos originales y datos preparados (o procesados).
 
-Al igual que el Código de Preparación, el Código de Análisis posee una estructura definida. En este caso son 4 partes, donde las primeras son similares al código de preparación:
+  - **Análisis**: se relaciona tanto con análisis descriptivos asociados a las preguntas de investigación y como también modelamiento de datos para contrastar hipótesis de investigación.
 
-0.  Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento
-1.  **Librerías** principales (de R) a utilizar en el análisis
-2.  **Datos** (que provienen de los preparados en la fase anterior)
-3.  **Descripción de variables**
-    -   Tabla general de variables para la sección metodológica del reporte
-    -   Exploración descriptiva de relaciones entre variables
-4.  **Contraste de hipótesis** / inferencia estadística según la técnica que corresponda
+#### Los procesos de preparación y análisis vinculados a datos y resultados se presentan en el siguiente esquema:{#flujo}
 
-Al final de esta práctica la idea es que cada un\_ pueda avanzar hasta el **punto 3** del Código de Análisis. El punto 4 (contraste de hipótesis) se desarrollará más adelante en este curso con énfasis en la técnica de regresión.
+![](images/produccion.png)
 
-# Código de análisis
+Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada uno en un _archivo de código_.
 
-## 1. Librerías
+<span class="sidenote">**Archivo de código R**: archivo con extensión .R donde se almacena el código de análisis. Para generarlo desde RStudio: _File > New File > R Script_ (o ctrl+shift+N), y para grabarlo  _File > Save (o ctrl+s)_, y darle nombre la primera vez (recordar: sin tilde ni ñ, y evitar espacios) </span>
 
-```{r,message=FALSE,warning=FALSE}
-pacman::p_load(sjlabelled,
-               dplyr, #Manipulacion de datos
-              stargazer, #Tablas
-              sjmisc, # Tablas
-              summarytools, # Tablas
-              kableExtra, #Tablas
-              sjPlot, #Tablas y gráficos
-              corrplot, # Correlaciones
-              sessioninfo, # Información de la sesión de trabajo
-              ggplot2) # Para la mayoría de los gráficos
+El documento de **código de preparación** posee 5 partes, más una sección de identificación inicial:
+
+0. Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento
+1. Librerías: cargar librerías a utilizar
+2. Datos: carga de datos
+3. Selección de variables a utilizar
+4. Procesamiento de variables: en este punto, por cada variable se realiza lo siguiente:
+    a. Descriptivo básico
+    b. Recodificación: datos perdidos y valores (en caso de ser necesario)
+    c. Etiquetamiento: de variable y valores (en caso de ser necesario)
+    e. Otros ajustes
+
+
+5. Generación de base de datos preparada para el análisis.
+
+<div class="alert alert-info">
+**De rutas, estructura de carpetas y otros **
+
+- **Encontrando la ruta a carpeta local**: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar "Propiedades", en la ventana emergente debería aparecer la ruta hacia la carpeta en "Ubicación". Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)
+
+- **Sobre los "slashes" (`\` o `/`)**: en la ruta las carpetas y el archivo final aparecen separados por slashes, que según el sistema utilizado pueden ser _slash_ (`/`) o _backslash_ (`\`). En R por defecto se usa _slash_, pero en Windows _backslash_, por lo que si se usa Windows hay que reemplazarlos por _backslash_ o también puede ser por un doble _slash_ (`//`).
+
+- Por temas de compatibilidad general, en las rutas se recomienda evitar tildes, eñes, espacios, mayúsculas y guiones bajos (_).
+
+- **Estructura de carpetas**: para mantener el orden se sugiere seguir un protocolo de estructura de carpetas de proyecto, para lo que recomendamos el protocolo [IPO](https://lisa-coes.com/ipo-protocol/), y que se adapta al flujo de trabajo presentado anteriormente. Básicamente son tres carpetas: **input**, **procesamiento**, **output**. En la carpeta input crear la subcarpeta data-orig para guardar datos originales, y data-proc para los procesados. En procesamiento se guardan los archivos de código y en output las tablas y los gráficos.
+
+![](../files/img/ipo-hex.png)
+
+
+</div>
+
+
+
+
+Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos.
+
+En el ejemplo vamos a procesar variables de confianza en instituciones políticas y variables de caracterización sociodemográfica utilizando los datos de la encuesta [Latinobarómetro](https://www.latinobarometro.org/lat.jsp) .
+
+## Antecedentes de los datos a utilizar
+
+Latinobarómetro es un estudio de opinión pública que aplica anualmente alrededor de 20.000 entrevistas en 18 países de América Latina representando a más de 600 millones de habitantes
+
+  "Los gobiernos latinoamericanos, que venían en declive junto con sus democracias desde inicios de la década de 2010, como reflejan los datos de Latinobarómetro, llegaron a fines de 2018 al annus horribilis con la caída de Nicaragua y Venezuela desde su condición de democracias para entrar en la categoría de autocracias y dictadura. 
+
+  De los hiperpresidentes de la primera década del siglo con altos niveles de crecimiento en todos los países y altos niveles de aprobación, la región pasó en la segunda década a los subpresidentes, con una baja en aprobación de gobierno a la mitad, en menos de 10 años. Este rechazo al desempeño de las elites gobernantes, indica su fracaso a fines de 2019 en varios países de la región." (Latinobarómetro, informe 2021, p. 7)
+
+
+El presente ejercicio tiene por objetivo el procesar los datos para obtener las variables relevantes para el estudio de la **Confianza en instituciones políticas**, entendida como el grado en que los individuos confian en distintas instituciones políticas a nivel nacional, como el gobierno, la justicia, los partidos políticos, etc. Para ello, junto con variables de confianza, consideraremos también variables de estatus (educación), y variables de caracterización sociodemográfica (sexo y edad).
+
+# Preparación de datos Latinobarómetro 2020
+
+## 1. Librerías principales (de R) a utilizar en el análisis{#librerias}
+
+Como sabemos, la lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
+
+
+Para utilizar la primera vez (si es que no está instalada):
+
+```{r eval=FALSE}
+install.packages("pacman")
 ```
+
+Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:
+
+
+```{r}
+pacman::p_load(dplyr, sjmisc, car, sjlabelled, stargazer, haven)
+```
+
+
+Para esta sesión vamos a utilizar Las librerías que vamos a utilizar son:
+
+- `dplyr`: ajuste general de datos
+- `sjmisc`: descripción y exploración de base de datos
+- `car`: principalmente la función `recode` para recodificar/agrupar valores de variable
+- `stargazer`: para tabla descriptiva
+
 
 ## 2. Cargar base de datos
 
-Vamos a cargar la base de datos **latinobarometro_proc.Rdata**, que generamos durante la práctica anterior. Se puede llamar desde el directorio en que se guardó anteriormente dando la ruta completa:
+**Ajustar espacio de trabajo**
 
-```{r eval=FALSE, message=FALSE, warning=FALSE}
-load("ruta-hacia-carpeta-local/latinobarometro_proc.RData") #Cargar base de datos
-```
-
-O también para esta práctica la podemos llamar directamente desde nuestro sitio web:
+Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:
 
 ```{r}
-load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData")) #Cargar base de datos
+rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
+options(scipen=999) # valores sin notación científica
 ```
 
--   Exploración inicial general de la base de datos
+La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
+
+**Datos**
+
+Las bases de datos se pueden cargar de un archivo local o en línea. Para este caso utilizaremos un archivo en línea que viene en formato RData: **latinobarometro2020.RData**. <span class="sidenote">**Abrir bases de datos en otros formatos**: Los formatos mas comunes en que se almacenan las bases de datos son .dta (Stata),  .sav (Spss) y RData (R). Para abrir desde R utlilizamos la librería `haven` y sus funciones read_dta y read_sav según corresponda. Ej: `datos <- read_dta("base_casen.dta")`. Recordar antes instalar/cargar la librería: `pacman::p_load(haven)`   </span>
+
+```{r eval=FALSE, }
+#cargamos la base de datos desde internet
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"))
+```
+
+o de manera local:
 
 ```{r}
-names(proc_data) # Muestra los nombres de las variables de la base de datos
-dim(proc_data) # Dimensiones
+latinobarometro2020 <- read_dta("../files/data/external_data/latinobarometro2020.dta", encoding = "UTF-8")
 ```
 
-En el caso de esta base, `r dim(proc_data)[1]` casos y `r dim(proc_data)[2]` variables
 
-Recordando el contenido de cada variable preparada en la práctica anterior:
+La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (latinobarometro2020):
 
--   [`conf_gob`] = Confianza en el gobierno.
+![](images/basecargada.png)
 
--   [`conf_cong`] = Confianza en el congreso.
-
--   [`conf_jud`] = Confianza en el poder judicial.
-
--   [`conf_partpol`] = Confianza en los partidos políticos.
-
--   [`conf_inst`] = Indice sumativo de confianza en instituciones políticas.
-
--   [`educacion`] = Nivel educacional(1 = Educacion básica, 2 = Educacion media, 3 = superior)
-
--   [`sexo`] = Sexo (O = Hombre; 1 = Mujer)
-
--   [`edad`] = ¿Cuáles su edad? 
-
-## 3. Descripción de variables
-
-Los resultados referidos a descripción de variables se presentan en dos momentos del reporte de investigación:
-
--   en la sección de *metodología*, cuando se presentan las variables del estudio en una **tabla descriptiva** de variables.
-
--   en la sección de *análisis*, que en general comienza con una exploración de **asociaciones entre variables**, también conocido como análisis descriptivo.
-
-### 3.1 Tabla descriptiva de variables para sección metodológica
-
-A continuación se presentan dos opciones de generar esta tabla descriptiva de variables con distintas librerías de R.
-
-**a. Tabla descriptiva con `stargazer`**[stargazer]{.sidenote}
-
-La función `stargazer` (de la librería del mismo nombre) permitirá mostrar los principales estadísticos descriptivos univariados de las variables: medidas de tendencia central (media), de dispersión (desviación estándar) y posición (mínimo, máximo, percentiles).
+Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, `r dim(latinobarometro2020)` ).
 
 ```{r}
-stargazer(proc_data,type = "text")
+dim(latinobarometro2020) # dimension de la base
 ```
-
-Algunas observaciones sobre esta tabla:
-
--   La opción `type="text"` permite que podamos ver los resultados directamente en la consola, de manera bastante rudimentaria. Con otras opciones que veremos más adelante se puede estilizar para su publicación.
-
--   Una distinción relevante a considerar cuando se describen variables es si estas son **categóricas** o **continuas**. La definición de si una variables es tratada como categórica o continua es algo que hace el/la autor/a del reporte, sin embargo hay variables nominales como sexo que claramente corresponden a categóricas, y por lo tanto no corresponde hacer un promedio entre ambas. Sin embargo, como esta variable está codificada 0 (hombre) y 1 (mujer), en este caso lo que indica el valor de la columna promedio (Mean=0.537) es la proporción de mujeres vs hombres. En otras palabras, hay un 54% de mujeres y 46% de hombres en la muestra.
-
-**b. Tablas descriptivas con `descr`, librería sjmisc**[sjmisc::descr]{.sidenote}
-
-La opción básica de `descr` es la siguiente:
+Y si se quiere revisar en formato de planilla de datos:
 
 ```{r}
-sjmisc::descr(proc_data)
+View(latinobarometro2020)
 ```
 
-En este caso utilizamos la forma `librería::función` (`sjmisc::descr`), ya que la función `descr` también existe en otras librerías y así nos aseguramos que la función utilizada es de esa librería específica.
+## 3. Selección de variables a utilizar
 
-Seleccionamos algunas columnas específicas con información más relevante con la opción `show`. Además, agregamos la función `kable` para obtener una tabla que luego sea fácilmente publicable en distintos formatos (a profundizar en ejercicios posteriores):
+Este paso consiste en crear un subset reducido de datos que contenga solo las variables de interés. Para ello:
+
+1. Se identifica el nombre de las variables que registran la información de preguntas o items del instrumento: esto aparece en el libro de códigos y/o en el cuestionario, o también se puede hacer buscando en la base de datos mediante alguna palabra clave asociada a la pregunta. Por ejemplo, si queremos buscar variables asociadas a educación, utilizamos la función `find_var` (de `sjmisc`, librería que cargamos en el paso 1), que nos entrega nombre de la variable en columna var.name. Por ejemplo, si buscamos alguna variable asociada al concepto _Confianza_:
 
 ```{r}
-sjmisc::descr(proc_data,
-      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
-      kable(.,"markdown")
+find_var(data = latinobarometro2020,"Confianza")
 ```
 
-**c. Tabla descriptiva con `summarytools::dfSummary`**[summarytools::dfSummary]{.sidenote}
+Nos informa que hay una serie de variables relacionadas con confianza interpersonal y con instituciones. Probemos con la variable `p13st_e`.
 
-Esta tercera opción nos ofrece una tabla aún más detallada, con gráficos para cada variable, las frecuencias para cada valor, y las etiquetas de las variables, por lo que es muy recomendable.
 
-Se específica de la siguiente manera:
+Mediante la función `select` de `dplyr`, seleccionamos cada una de nuestras variables de interés y creamos una nueva base con el nombre `proc_data`, donde "proc" hace referencia a base procesada:
 
 ```{r}
-summarytools::dfSummary(proc_data, plain.ascii = FALSE)
+proc_data <- latinobarometro2020 %>% select(p13st_e, # Confianza en el Gobierno
+                          p13st_d, # Confianza en el congreso
+                          p13st_f, # Confianza en el Poder Judicial
+                          p13st_g, # Confianza en los partidos políticos
+                          reeduc_1,# nivel educacional
+                          sexo,# sexo
+                          edad,# edad
+                          idenpa) # pais 
+
+# Comprobar
+names(proc_data)
 ```
 
-Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva de publicación se verá así:
+Mediante el comando `get_label` obtenemos el atributo label de las variables.
 
-```{r eval=FALSE }
-view(dfSummary(proc_data, headings=FALSE))
+```{r}
+sjlabelled::get_label(proc_data)
 ```
+
+Podemos ver que son largas o con códigos poco informativos, por lo tanto, es necesario cambiarlas por etiquetas más cortas y de fácil identificación.
 
 ```{r echo=FALSE}
-print(dfSummary(proc_data, headings = FALSE), method = "render")
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"))
+proc_data <- latinobarometro2020 %>% select(p13st_e, # Confianza en el Gobierno
+                          p13st_d, # Confianza en el congreso
+                          p13st_f, # Confianza en el Poder Judicial
+                          p13st_g, # Confianza en los partidos políticos
+                          reeduc_1,# nivel educacional
+                          sexo,# sexo
+                          edad,# edad
+                          idenpa) # pais 
 ```
 
-#### Nota sobre casos perdidos (NAs) [na.omit(data)]{.sidenote}
 
-Hasta ahora hemos mantenido los casos perdidos en la base de datos, ya que son importantes de reportar en la tabla general de variables. Sin embargo, de aquí en adelante se recomienda trabajar solo con casos completos, es decir, **sacar los casos perdidos**. El quitar los casos perdidos de una base de datos es muy simple con la función `na.omit`, pero para tomar precauciones y asegurarse que funciona se recomienda el siguiente procedimiento:
-
--   respaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos), la dejaremos con el nombre proc_data_original.
--   contamos el número de casos con el comando `dim`
--   contamos el número de casos perdidos con `sum(is.na(proc_data))`
--   borramos los casos perdidos con `proc_data <-na.omit(proc_data)`
--   contamos nuevamente con `dim` para asegurarnos que se borraron
--   y por temas de funcionamiento de R, al realizar la operación de sacar casos perdidos, se borra toda la información de las etiquetas (labels), así que las recuperamos de la base original con el comando `copy_labels`, de la librería `sjlabelled`.
+Para facilitar el análisis, vamos a filtrar la base de datos para quedarnos solo con los casos de Chile. Para esto utilizamos la función `filter` de `dplyr`. Si revisamos el libro de códigos, el identificador de Chile es 152
 
 ```{r}
-proc_data_original <-proc_data
-dim(proc_data)
-sum(is.na(proc_data))
-proc_data <-na.omit(proc_data)
-dim(proc_data)
-proc_data <-sjlabelled::copy_labels(proc_data,proc_data_original)
+proc_data <- proc_data %>% dplyr::filter(idenpa==152)
 ```
 
-### 3.2 Visualización de variables
+## 4. Procesamiento de variables
 
-Para visualizar variables mediante gráficos, en R el paquete más comúnmente usado es ggplot2. La lógica detrás de este paquete es que funciona por capas. 
+Para el procesamiento de cada variable se seguirá el siguiente flujo de trabajo:
+
+a. Descriptivo general
+b. Recodificación: de casos perdidos y otros valores (en caso necesario)
+c. Etiquetado: cambio de nombres de variables y valores (en caso necesario)
+d. Otros ajustes
+
+Y se recomienda también un descriptivo final para revisar que el procesamiento de cada variable está ok.
+
+### 4.1 Confianza en el Gobierno
+
+En Latinobarómetro, lass variables que permiten medir la Confianza en instituciones políticas en Chile son las siguientes:
+
+* [`p13st_e`]: "P13ST.E Confianza en el Gobierno" (1 = Mucha; 4 = Ninguna)
+* [`p13st_d`]: "P13ST.D Confianza en el Congreso" (1 = Mucha; 4 = Ninguna)
+* [`p13st_f`]: "P13ST.F Confianza en el Poder Judicial" (1 = Mucha; 4 = Ninguna)
+* [`p13st_g`]: "P13ST.G Confianza en los Partidos Políticos" (1 = Mucha; 4 = Ninguna) 
+
+_a. Descriptivo_
+
+Para los descriptivos se utilizará la función `frq`, de la librería `sjmisc`:
 
 ```{r}
-ggplot()
+frq(proc_data$p13st_e)
+```
+
+En esta variable vemos valores asociados a la opción "No contesta" (-2) y "No sabe" (-1), que corresponde definirlos como casos perdidos (en el caso de R, como casos NA). El resto de los valores y etiquetas se encuentran en un orden contraintuitivo (mayor valor indica menos confianza), así que en la recodificiación nos haremos cargo de los casos perdidos y de reordenar las categorías.
+
+_b. Recodificación_
+
+Para recodificar utilizamos la función `recode`, de la librería `car`
+
+```{r}
+proc_data$p13st_e <- recode(proc_data$p13st_e, "c(-2,-1)=NA")
+proc_data$p13st_d <- recode(proc_data$p13st_d, "c(-2,-1)=NA")
+proc_data$p13st_f <- recode(proc_data$p13st_f, "c(-2,-1)=NA")
+proc_data$p13st_g <- recode(proc_data$p13st_g, "c(-2,-1)=NA")
+```
+
+**nota**: con la función `set_na` de la librería `sjmisc` podemos recodificar toda la base de datos con un solo código, pero debemos estar completamente segur-s de que estos valores no tienen otra categoría asociada en otra variable.
+
+```{r eval=FALSE}
+proc_data <- proc_data %>% set_na(., na = c(-2, -1))
+```
+
+Para reordenar las categorías volvemos a utilizar la función `recode`, de la librería `car`
+
+```{r}
+proc_data$p13st_e <- recode(proc_data$p13st_e, "1=3; 2=2; 3=1; 4=0")
+proc_data$p13st_d <- recode(proc_data$p13st_d, "1=3; 2=2; 3=1; 4=0")
+proc_data$p13st_f <- recode(proc_data$p13st_f, "1=3; 2=2; 3=1; 4=0")
+proc_data$p13st_g <- recode(proc_data$p13st_g, "1=3; 2=2; 3=1; 4=0")
+```
+
+_c - Etiquetado_
+
+Vamos a dar un nombre más sustantivo a las variables con la función `rename`, de la librería `dplyr`:
+
+```{r}
+proc_data <- proc_data %>% rename("conf_gob"=p13st_e, # Confianza en el gobierno
+                                  "conf_cong"=p13st_d, # Confianza en el congreso
+                                  "conf_jud"=p13st_f, # Confianza en el Poder Judicial
+                                  "conf_partpol"=p13st_g) # Confianza en los partidos políticos 
+
+```
+
+
+Además de cambiar el nombre, queremos cambiar las etiquetas de las variables.
+
+```{r}
+proc_data$conf_gob <- set_label(x = proc_data$conf_gob,label = "Confianza: Gobierno")
+get_label(proc_data$conf_gob)
+
+proc_data$conf_cong  <- set_label(x = proc_data$conf_cong, label = "Confianza: Congreso")
+get_label(proc_data$conf_cong)
+
+proc_data$conf_jud  <- set_label(x = proc_data$conf_jud, label = "Confianza: Poder judicial")
+get_label(proc_data$conf_jud)
+
+proc_data$conf_partpol  <- set_label(x = proc_data$conf_partpol, label = "Confianza: Partidos politicos")
+get_label(proc_data$conf_partpol)
+```
+
+_d. Otros ajustes_
+
+Para este caso vamos a crear una variable que sea la suma de los cuatro items de confianza.
+
+```{r}
+proc_data$conf_inst <- (proc_data$conf_gob+proc_data$conf_cong+proc_data$conf_jud+proc_data$conf_partpol)
+summary(proc_data$conf_inst)
 ```
 
 ```{r}
-ggplot(proc_data, aes(x = conf_inst))
+get_label(proc_data$conf_inst)
 ```
+
+Vemos que una etiqueta de la variable anterior.
 
 ```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar()
+proc_data$conf_inst  <- set_label(x = proc_data$conf_inst, label = "Confianza en instituciones")
 ```
+
+
+_Revisión final_
+
+Nuevamente un descriptivo de cada variable para confirmar que el procesamiento está ok:
 
 ```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar(fill = "coral")
+frq(proc_data$conf_gob)
+frq(proc_data$conf_cong)
+frq(proc_data$conf_inst)
 ```
+
+Vemos que los valores (labels) de cada categoría de las primeras variables que recodificamos no se corresponden con el nuevo valor. Para re-etiquetar valores usamos la función `set_labels`, de la librería `sjlabelled`
 
 ```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar(fill = "coral")+
-  labs(title = "Confianza en instituciones",
-       x = "Confianza en instituciones",
-       y = "Frecuencia")
+proc_data$conf_gob <- set_labels(proc_data$conf_gob,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
+
+proc_data$conf_cong <- set_labels(proc_data$conf_cong,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
+
+proc_data$conf_jud <- set_labels(proc_data$conf_jud,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
+
+proc_data$conf_partpol <- set_labels(proc_data$conf_partpol,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
 ```
+
+y volvemos a revisar
+
+```{r}
+frq(proc_data$conf_gob)
+frq(proc_data$conf_cong)
+```
+
+#### 4.2. Educación
+
+* [`reeduc_1`] = REEDUC.1 Nivel de estudios alcanzado - Entrevistado (recodificado)
+
+_a. Descriptivo_
+
+```{r}
+frq(proc_data$reeduc_1)
+```
+
+_b. Recodificación_
+
+- Vemos que no hay datos perdidos
+
+- Valores
+
+Para hacer más fácil el análisis, recodificamos en tres categorías (en este caso decisión arbitraria. Se debería tener una razón teórica para recodificar)
+
+```
+1.  Analfabeto                                =   Educacion basica    =   1
+2   Básica incompleta                         =   Educacion basica    =   1
+3.  Básica completa                           =   Educacion basica    =   1
+4.  Secundaria, media, técnica incompleta     =   Educacion media     =   2
+5.  Secundaria, media, técnica completa       =   Educacion media     =   2
+6.  Superior incompleta                       =   Educacion superior  =   3
+7.  Superior completa                         =   Educacion superior  =   3
+
+```
+```{r}
+# recodificacion usando funcion 'recode' de la libreria car
+proc_data$reeduc_1 <- car::recode(proc_data$reeduc_1, "c(1,2,3)=1; c(4,5)=2; c(6,7)=3")
+```
+
+Comprobar con un nuevo descriptivo:
+
+```{r}
+frq(proc_data$reeduc_1)
+```
+
+Se observa que los valores coinciden con la recodificación (los casos se acumulan entre las categorías 1 y 3), pero las etiquetas ahora no coinciden; se soluciona en el siguiente paso.
+
+_c. Etiquetado_
+
+Para re-etiquetar valores usamos la función `factor`, de R base. Con esta función aprovechamos de transformar la variable educación en una variable categórica, que es lo que corresponde para una variable ordinal.
+
+```{r}
+proc_data$reeduc_1 <- factor(proc_data$reeduc_1,
+                             labels = c("Educacion basica", "Educacion media", "Educacion superior"),
+                             levels = c(1, 2, 3))
+```
+
+Luego renombramos la variable con un nombre más sustantivo
+
+```{r}
+proc_data <- rename(proc_data,"educacion"=reeduc_1)
+```
+
+Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.
+
+```{r}
+get_label(proc_data$educacion)
+proc_data$educacion <- set_label(x = proc_data$educacion,label = "Educación")
+```
+
+
+### 4.3. Sexo
+
+* [`sexo`]	=	SEXO Sexo
+
+_a. Descriptivo_
+
+```{r}
+frq(proc_data$sexo)
+```
+
+_b. Recodificación_
+
+En general esta variable no tiene problemas de casos perdidos ni de etiquetas, pero de todas maneras vamos a hacer un cambio de acuerdo a convenciones en análisis de datos, donde por lo general hombres tienen valor 0 y mujeres 1:
+
+```{r}
+proc_data$sexo <- car::recode(proc_data$sexo, "1=0;2=1")
+```
+
+_c. Etiquetado_
+
+Y ahora cambiamos las etiquetas de acuerdo a la recodificación anterior:
+
+```{r}
+proc_data$sexo <- factor(proc_data$sexo,
+            labels=c( "Hombre",
+                      "Mujer"),
+            levels=c(0,1))
+```
+
+
+También queremos cambiar la etiqueta de la variable.
+
+```{r}
+get_label(proc_data$sexo)
+proc_data$sexo <- set_label(x = proc_data$sexo,label = "Sexo")
+```
+
+Revisar con un nuevo descriptivo:
+
+```{r}
+frq(proc_data$sexo)
+```
+
+### 4.4 Edad
+
+* [`edad`]	=	EDAD Edad.
+
+
+_a. Descriptivo_
+
+```{r}
+frq(proc_data$edad)
+```
+
+_b. Recodificación_: no es necesario en este caso
+
+_c. Etiquetado_
+
+Cambio la etiqueta de la variable.
+
+```{r}
+get_label(proc_data$edad)
+proc_data$edad <- set_label(x = proc_data$edad,label = "Edad")
+```
+
+## 5. Generación de base de datos procesada para el análisis
+
+Antes de guardar la base procesada, revisamos nuevamente todas las variables con una tabla descriptiva general mediante la función `stargazer` (de la librería homónima)
+
+Primero vamos a reformatear el objeto proc_data como base de datos (as.data.frame), paso necesario para que sea reconocido como tal por `stargazer`
 
 
 ```{r}
-# Crear el gráfico usando ggplot2
-graph1 <- proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar(fill = "coral")+
-  labs(title = "Confianza en instituciones",
-       x = "Confianza en instituciones",
-       y = "Frecuencia") +
-  theme_bw()
+proc_data <-as.data.frame(proc_data)
+stargazer(proc_data, type="text")
+```
+<div class="alert alert-info">
+Si se desea modificar las columnas que aparecen en la tabla se puede ocupar la opción `summary.stat`, donde se pueden especificar:
 
-graph1
+- "max" maximum
+- "mean" mean
+- "median" median
+- "min" minimum
+- "n" number of observations
+- "p25" 25th percentile
+- "p75" 75th percentile
+- "sd" standard deviation
 
-# y lo podemos guardar:
+Por ejemplo, si quiero una tabla solo con promedio, n, sd y p75: `stargazer(data, type="text", summary.stat = c("mean", "n", "sd", "p75"))`
 
-ggsave(graph1, file="files/img/graph1.png")
+</div>
 
+- Guardar base de datos procesada: en carpeta local <span class="sidenote">La ruta hacia su carpeta local si está trabajando en windows debería ser algo como "C:/Users/Lenovo/Clases/y aquí nombre del archivo a grabar</span>
+
+El comando para guardar es `save`:
+
+```{r eval=FALSE}
+save(proc_data,file = "[ruta hacia carpeta local en su computador]/ELSOC_ess_merit2016.RData")
+```
+
+En este caso, seguimos una estructura de carpetas de datos, separando en una carpeta los datos originales, y en otra (proc) los datos procesados:
+
+```{r eval=FALSE}
+save(proc_data, file = "input/data/proc/data_proc.RData")
 ```
 
 
-### 3.3 Exploración de asociación entre variables
-
-Dado que las hipótesis de investigación corresponden a asociación entre variables, antes de realizar el contraste de hipótesis se suele presentar un análisis descriptivo que explora las asociaciones entre variables.
-
-La forma de explorar las asociaciones entre variables dependen de la naturaleza de las variables que se asocian:
-
--   Variables categóricas: tabla de contingencia
--   Variable categórica y continua: tabla de promedios por cada categoría
-
-En esta sección también es muy relevante la visualización de datos mediante gráficos, por lo que incluiremos algunos.
-
-El uso tanto de tablas como de gráficos en el reporte queda a discreción del/a autor/a. La pregunta que orienta esta decisión es: *¿Me permite enriquecer la discusión de los resultados en relación a las hipótesis planteadas?*
-
-#### Tablas de contingencia para variables categóricas
-
-Para tablas de contingencia categóricas utilizaremos la función sjt.xtab, de la librería `sjPlot`. Veamos primero una especificación simple: [sjPlot::sjt.xtab]{.sidenote}
-
-```{r}
-sjt.xtab(proc_data$educacion, proc_data$sexo)
+```{r echo=FALSE}
+save(proc_data,file = "../files/data/latinobarometro_proc.RData")
 ```
-
-Al ejecutar el comando, el resultado aparece automáticamente en el visor de RStudio. A esta tabla podemos también agregar porcentajes de filas y/o columnas, según sea lo más relevante analizar. En general se recomienda agregar solo un porcentaje, de otra manera la tabla se satura de información. Además, vamos a quitar el pie de la tabla (conviene dejarlo solo si hay hipótesis asociadas al cruce simple entre las dos variables).
-
-```{r}
-sjt.xtab(proc_data$educacion, proc_data$sexo,
-        show.col.prc=TRUE,
-        show.summary=FALSE,
-        encoding = "UTF-8"
-)
-```
-
-#### Tablas de promedio de variable continua por una categóricas
-
-En ejemplo vamos a explorar datos de nuestra variable de confianza en instituciones *conf_inst* por los niveles educacionales *educacion*.
-
-Una forma rápida de explorar esto es mediante la función `tapply`, que nos entrega de manera simple el promedio de una variable por otra:
-
-```{r}
-tapply(proc_data$conf_inst, proc_data$educacion, mean)
-```
-
-Aquí vemos en promedio de *conf_inst* para cada uno de los 3 niveles de la variable educación *educacion*. Si se estima conveniente este tipo de cruces se puede representar también en una tabla con más opciones de información y también de publicación. Para esto utilizaremos una función algo más compleja de la librería `dplyr`.[dplyr]{.sidenote} Esta librería permite aplicar una serie de funciones concatenadas y enlazadas mediante el operador `%>%`. El sentido de cada función aparece comentado abajo:
-
-```{r}
-proc_data %>% # se especifica la base de datos
-  select(conf_inst,educacion) %>% # se seleccionan las variables
-  dplyr::group_by(Educación=sjlabelled::as_label(educacion)) %>% # se agrupan por la variable categórica y se usan sus etiquetas con as_label
-  dplyr::summarise(Obs.=n(),Promedio=mean(conf_inst),SD=sd(conf_inst)) %>% # se agregan las operaciones a presentar en la tabla
-  kable(., format = "markdown") # se genera la tabla
-```
-
-Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `geom_boxplot` de `gplot2`:
-
-```{r}
-graph <- ggplot(proc_data, aes(x =educacion, y = conf_inst)) +
-  geom_boxplot() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_minimal()
-
-graph
-
-# y lo podemos guardar:
-
-ggsave(graph, file="files/img/graph.png")
-```
-
-Sin embargo, al ser los promedios similares no permite ver demasiadas diferencias... Probemos otro
-
-```{r}
-ggplot(proc_data, aes(x =educacion, y = conf_inst)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_minimal()
-
-```
-
-En este gráfico cada punto representa una observación para cada categoría. Por lo tanto, al existir tantos valores difernetes en cada categoría, el gráfico tampoco nos presenta información sustantiva ¿Qué necesitamos hacer? Necesitamos obtener exactamente los datos que queremos graficar, esto es, el promedio por cada categoría. Volvamos a `group_by`
-
-```{r}
-datos <- proc_data %>% group_by(educacion) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_minimal()+
-  ylim(0, 12)
-```
-
-Este gráfico entrega un poco más de información, pero al ver pocas diferencias en el promedio de cada categoría no se logran evidenciar
-
-```{r warning=FALSE}
-proc_data$idenpa <- factor(proc_data$idenpa,
-            labels=c("Argentina",
-         "Bolivia",
-         "Brasil",
-         "Chile",
-         "Colombia",
-         "Costa Rica",
-         "Cuba",
-         "República Dominicana",
-         "Ecuador",
-         "El Salvador",
-         "Guatemala",
-         "Honduras",
-         "México",
-         "Nicaragua",
-         "Panamá",
-         "Paraguay",
-         "Uruguay",
-         "Venezuela"),
-            levels=c("32",
-         "68",
-         "76",
-         "152",
-         "170",
-         "188",
-         "214",
-         "218",
-         "222",
-         "320",
-         "340",
-         "484",
-         "558",
-         "591",
-         "600",
-         "604",
-         "858",
-         "862"))
-
-
-graph_box <- ggplot(proc_data, aes(x = idenpa, y = conf_inst)) +
-  geom_boxplot() +
-  labs(x = "País", y = "Confianza en instituciones") +
-  theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotar las etiquetas del eje x
-
-graph_box
-
-# y lo podemos guardar:
-
-ggsave(graph_box, file="files/img/graph.png")
-```
-
-De manera alternativa, podemos seguir explorando nuestros datos con otros gráficos
-
-Para varias variables univariadas, tipo escala likert, una buena alternativa es el paquete sjPlot, en este caso la función plot_stackfrq:
-
-```{r}
-graph2 <- sjPlot::plot_stackfrq(dplyr::select(proc_data, conf_gob,
-                                 conf_cong,
-                                 conf_jud,
-                                 conf_partpol),
-                                 title = "Confianza en instituciones políticas") +
-  theme(legend.position="bottom")
-
-graph2
-
-# Guardamos
-
-ggsave(graph2, file="files/img/graph2.png")
-```
-
-Para asociación de dos variables, retomemos el primer gráfico:
-
-```{r}
-graph3 <- proc_data %>% ggplot(aes(x = conf_inst, fill = sexo)) + 
-  geom_bar() +
-  xlab("Confianza en instituciones") +
-  ylab("Cantidad") + 
-  labs(fill="Sexo")+
-  scale_fill_discrete(labels = c('Hombre','Mujer'))
-
-graph3
-
-# Guardamos
-
-ggsave(graph3, file="files/img/graph3.png")
-```
-
-una forma alternativa:
-
-```{r}
-proc_data %>% ggplot(aes(x = conf_inst)) + 
-  geom_bar() +
-  xlab("Confianza en instituciones") +
-  ylab("Cantidad")+
-  facet_wrap(~sexo)
-```
-
-
-Para variables continuas
-
-```{r}
-graph4 <- ggplot(proc_data, aes(x = as.numeric(edad))) +
-  geom_histogram(binwidth=0.6, colour="black", fill="yellow") +
-  theme_bw() +
-  xlab("Edad") +
-  ylab("Cantidad")
-
-graph4 
-
-
-
-# Guardamos
-
-ggsave(graph4, file="files/img/graph4.png")
-```
-
-y lo podemos complicar un poco más...
-
-### Asociación entre tres variables
-
-con facet_wrap dividimos el gráfico en distintos paneles, según la cantidad de categorías que tenga una variable
-
-```{r}
-datos <- proc_data %>% group_by(educacion, sexo) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 12)+
-  facet_wrap(~sexo)
-```
-
-o alternativamente...
-
-```{r}
-ggplot(datos, aes(x =sexo, y = promedio)) +
-  geom_point() +
-  labs(x = "Sexo", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 12)+
-  facet_wrap(~educacion)
-```
-
-Probemos otras agrupaciones. Por ejemplo, categorizar edad en grupos para estimar promedios grupales. Una función clave para lograr esto puede ser case_when de dplyr, combinándolo con mutate. Es decir, crear una nueva variable a partir de un condicional
-
-```{r}
-summary(proc_data$edad)
-
-proc_data <- proc_data %>% 
-  mutate(edad_groups = case_when(edad >=16 & edad<=25 ~ "Entre 16 y 25 años",
-                                 edad >=26 & edad<=39 ~ "Entre 26 y 39 años",
-                                 edad >=40 & edad<=65 ~ "Entre 40 y 65 años",
-                                 edad >65 ~ "Más de 65 años"))
-
-table(proc_data$edad_groups)
-```
-
-Ahora creamos este gráfico
-
-```{r}
-datos <- proc_data %>% group_by(educacion, edad_groups) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 7)+
-  facet_wrap(~edad_groups)
-```
-
-y lo podemos seguir complicando, por ejemplo, agregando otra variable en el gráfico
-
-```{r}
-datos <- proc_data %>% group_by(educacion, sexo, edad_groups) %>% 
-  summarise(promedio = mean(conf_inst))
-
-ggplot(datos, aes(x =educacion, y = promedio, color=sexo)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 7)+
-  facet_wrap(~edad_groups)
-```
-
-Con 'color' (gráfico anterior) solo se diferencia la variable según color. Con 'shape' (gráfico siguiente) también se diferencia según la forma de la representación
-
-```{r}
-ggplot(datos, aes(x =educacion, y = promedio, color=sexo, shape=sexo)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw()+
-  ylim(0, 7)+
-  facet_wrap(~edad_groups)
-```
-
-Y tenemos aún un problema... las categorías del eje x se están solapando. Eso lo podemos corregir modificando el ángulo del eje x.
-
-```{r}
-ggplot(datos, aes(x = educacion, y = promedio, color = sexo, shape = sexo)) +
-  geom_point() +
-  labs(x = "Educación", y = "Confianza en instituciones") +
-  theme_bw() +
-  ylim(0, 7) +
-  facet_wrap(~edad_groups) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
