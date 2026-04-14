@@ -1,7 +1,7 @@
 ---
-title: "Trabajo 1. Herramientas y extensiones de R"
+title: "Trabajo 2. Operacionalización y visualización de datos"
 subtitle: "R para análisis estadístico"
-linktitle: "Trabajo 1. Reporte en Quarto"
+linktitle: "Trabajo 2. Operacionalización y visualización"
 date: "2025-4-27"
 lang: es
 ---
