@@ -2,7 +2,7 @@
 title: "Trabajo 2. Operacionalización y visualización de datos"
 subtitle: "R para análisis estadístico"
 linktitle: "Trabajo 2. Operacionalización y visualización"
-date: "2025-4-27"
+date: "2026-4-27"
 lang: es
 ---
 
