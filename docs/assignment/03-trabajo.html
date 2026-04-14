@@ -8,7 +8,7 @@
 
 <meta name="description" content="R para Análisis estadístico">
 
-<title>Trabajo 3. Regresión lineal – R para Análisis estadístico</title>
+<title>Trabajo 2. Asociación de variables y construcción de índices – R para Análisis estadístico</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,12 +72,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Trabajo 3. Regresión lineal – R para Análisis estadístico">
+<meta property="og:title" content="Trabajo 2. Asociación de variables y construcción de índices – R para Análisis estadístico">
 <meta property="og:description" content="R para análisis estadístico">
 <meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta property="og:site_name" content="R para Análisis estadístico">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="Trabajo 3. Regresión lineal – R para Análisis estadístico">
+<meta name="twitter:title" content="Trabajo 2. Asociación de variables y construcción de índices – R para Análisis estadístico">
 <meta name="twitter:description" content="R para análisis estadístico">
 <meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
@@ -152,34 +152,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Trabajo 3. Regresión lineal</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Trabajo 2. Asociación de variables y construcción de índices</h1></header>
 
 <header id="title-block-header">
 
 <p class="subtitle lead">R para análisis estadístico</p>
 
 <div class="date-block bg-assignment text-white p-2">
-  <p class="date">Due by 11:59 PM on martes, 3 de junio de 2025</p>
+  <p class="date">Due by 11:59 PM on martes, 6 de mayo de 2025</p>
 </div>
 </header>
 
 
 <section id="objetivos-del-trabajo" class="level2">
 <h2 class="anchored" data-anchor-id="objetivos-del-trabajo">Objetivos del trabajo</h2>
-<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 1) del problema de investigación propuesto, la visualización e interpretación de la asociación de estas variables (trabajo 2) y la estimación e interpretación de modelos de regresión lineal. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
+<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 1) del problema de investigación y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
 </section>
 <section id="instrucciones-generales" class="level2">
 <h2 class="anchored" data-anchor-id="instrucciones-generales">Instrucciones generales</h2>
 <ul>
 <li><p>Descargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)</p></li>
 <li><p>Operacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.</p></li>
-<li><p>Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta cuarta entrega se espera que sean capaces de generar una tabla de regresiones que muestre distintos modelos de regresión asociados a las hipótesis propuestas. También se espera que sean capaces de elaborar al menos un gráfico que muestre los valores predichos de algún coeficiente de regresión.</p></li>
-<li><p>No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 2. En la tercera sección debe ir el análisis bivariado del trabajo 3. El objetivo de este trabajo 4 es que sean capaces de operacionalizar variables, estimar y visualizar coeficientes de regresión.</p></li>
+<li><p>Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta segunda entrega se espera que sean capaces de generar una tabla de correlaciones que muestre el grado de asociación de las variables utilizadas en la investigación. También se espera que sean capaces de elaborar al menos un índice ponderado y/o una escalados con su respectivo reporte de consistencia interna (alfa de cronbach) según corresponda.</p></li>
+<li><p>No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, mencionando la fuente de datos utilizada. En la segunda sección debe ir el reporte descriptivo del trabajo 1. El objetivo de este trabajo 2 es que sean capaces de operacionalizar variables, estimar y visualizar su grado de asociación y construir índices y/o escalas.</p></li>
 </ul>
 <p>Entrega:</p>
 <ul>
-<li>Viernes 13 de junio a través de U-campus</li>
-<li>Si se entrega solo el repositorio de github (sin pages ni html) se descontarán 0,3 décimas adicionales</li>
+<li>Miércoles 14 de mayo a través de Teams.</li>
 <li>No más de 5000 palabras</li>
 <li>Se deben mantener las referencias de la literatura / bases de datos revisadas</li>
 <li>atrasos, 0,5 por día de atraso.</li>
@@ -202,27 +201,27 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>1. Carga y Selección de variables</td>
 <td>L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación</td>
-<td>1pts</td>
+<td>2pts</td>
 </tr>
 <tr class="even">
 <td>2. Operacionalización de variables</td>
 <td>L-s estudiantes son capaces de operacionalizar correctamente las variables de interés.</td>
-<td>2pts</td>
+<td>3pts</td>
 </tr>
 <tr class="odd">
-<td>3. Estimación de modelos de regresión</td>
-<td>L-s estudiantes son capaces de reportar y visualizar correctamente distintos modelos de regresión</td>
+<td>3. Asociación de variables</td>
+<td>L-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico</td>
 <td>5ptos</td>
 </tr>
 <tr class="even">
-<td>4. Visualización valores predichos</td>
-<td>L-s estudiantes son capaces de construir al menos un gráfico que muestre los valores predichos de un coeficiente de regresión</td>
+<td>4. Construcción de índices y escalas</td>
+<td>L-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna</td>
 <td>5ptos</td>
 </tr>
 <tr class="odd">
 <td>5. Interpretación de resultados</td>
 <td>L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados</td>
-<td>5pts</td>
+<td>3pts</td>
 </tr>
 <tr class="even">
 <td>Total</td>
