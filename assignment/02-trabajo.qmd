@@ -41,3 +41,11 @@ Rúbrica de evaluación:
 |4. Visualización de resultados       | L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)         |   6ptos      |
 |5. Interpretación de resultados      | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados       |  3pts       |
 | Total|- |18puntos|
+
+## Recomendaciones
+
+- Para elaboración de tablas: [https://correlacional.netlify.app/assignment/06-practico](https://correlacional.netlify.app/assignment/06-practico)
+
+- Para elaboración de gráficos: [https://correlacional.netlify.app/assignment/08-practico](https://correlacional.netlify.app/assignment/08-practico)
+
+- Resumen unidad 1: [https://youtu.be/-pPmtz29vZ8?si=X4d1AvrSRe0UAs07](https://youtu.be/-pPmtz29vZ8?si=X4d1AvrSRe0UAs07)
