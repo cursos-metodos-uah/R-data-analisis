@@ -1,0 +1,320 @@
+---
+pagetitle: R para análisis de datos
+author: Kevin Carrasco
+#bibliography: ../../input/bib/merit-edjust.bib 
+#csl: ../../input/bib/apa7-singlespace.csl
+
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+      
+format: 
+  revealjs:
+    logo: images/icon-512.png
+    slide-number: true
+    theme: presentaciones
+    navigationMode: linear
+    transition: fade    
+    title-slide-attributes:
+      visibility: false
+#      data-background-image: images/portada.jpg
+#      data-background-size: cover
+    auto-play-media: true
+
+
+editor:
+  render-on-save: true
+---
+
+##  {data-background-color="black"}
+
+::: {.columns .v-center-container}
+::: {.column width="20%"}
+![](../../files/img/eval-hires.png){width="100%" fig-align="center"}
+:::
+
+::: {.column width="80%"}
+::: rojo
+### R para el análisis de datos
+**Sesión 5**: Visualización de datos
+:::
+
+------------------------------------------------------------------------
+
+### **Kevin Carrasco**
+### Sociología - UAH
+### 1er Sem 2026 
+### [R-data-analisis.netlify.com](https://R-data-analisis.netlify.com)
+:::
+:::
+
+# Planteando una investigación cuantitativa
+
+## Proceso de investigación cuantitativo (D'Ancona 2001)
+
+1. Formulación del problema  
+2. Diseño  
+   - Hipótesis
+
+   ::: {.fragment}
+   - Operacionalización de conceptos
+   :::
+
+   - Unidad de análisis  
+3. Metodología
+4. Factibilidad  
+
+# Medición y operacionalización
+
+## Medición y operacionalización
+
+::: {.incremental}
+
+- Operacionalización = **codificación** para hacer medible  
+
+- Múltiples formas de medir un concepto  
+
+- Importancia de definir conceptos  
+
+:::
+
+## Medición y operacionalización
+
+::: {.center}
+¿Qué concepto se mide?
+:::
+
+![](../../files/img/iden_pol.png){width=95%}
+
+
+## Medición y operacionalización
+
+::: {.center}
+¿Y con estas preguntas?
+:::
+
+![](../../files/img/ejemplos_variables.png){width=80%}
+
+## Medición y operacionalización
+
+::: {.center}
+¿Conceptos complejos?
+:::
+
+::: {.fragment}
+::: {.center}
+¿Cómo medir cohesión social?
+:::
+:::
+
+## Medición y operacionalización
+
+- Cohesión social (CEPAL, 2021)
+
+![](../../files/img/cohesion-cepal.png){width=75%}
+
+
+## Medición y operacionalización
+
+- Cohesión social (OCS-COES, 2020)
+
+![](../../files/img/cohesion.png){width=75%}
+
+## Visualización de datos
+
+La visualización de datos refiere a la forma que utilizamos para conocer y comunicar mediciones y resultados de análisis.
+
+::: {.fragment}
+Cumple tres objetivos principales:
+
+- **Exploración**: conocer descriptivos básicos o asociaciones entre variables
+- **Modelamiento**: comparar estimaciones, determinar diferencias o explicaciones
+- **Comunicación**: presentar resultados y atraer audiencias
+:::
+
+---
+
+## Visualización de datos
+
+La mejor visualización de datos es la que no requiere un esfuerzo para ser comprendida.
+
+Se debe evitar saturar con información. Todo lo que se visualiza debe servir para explicar lo que queremos.
+
+Para comparar tablas o gráficos se deben utilizar las mismas escalas de medición y los mismos límites de los ejes.
+
+---
+
+
+## Tipos de tablas y tipos de gráficos
+
+- Descriptivos según tipo de variable
+
+::: {.small}
+|               | Categórica | Continua | Categ.(y)/Categ.(x) | Cont.(y)/Categ.(x) |
+|---------------|------------|----------|---------------------|--------------------|
+| **Ejemplo** | **Estatus Ocupacional** | **Ingreso** | **Estatus Ocupacional (Y) / Género (X)** | **Ingreso (Y) / Género (X)** |
+| Tabla | Frecuencias / porcentajes | $\bar{X}$/sd o categorías | Tabla de contingencia | Clasificar Y |
+| Gráfico | Barras | Histograma / boxplot | Gráfico de barras condicionado | Histograma o boxplot condicionado |
+:::
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+Importancia de buenos gráficos
+
+![](../../files/img/pinera.jpg){width=70%}
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+Importancia de buenos gráficos
+
+![](../../files/img/aprob_pres.jpg){width=70%}
+
+---
+
+### Tipos de tablas y tipos de gráficos
+
+::: {.center}
+![](../../files/img/presidenciales-cadem.jpg){width=40%}
+:::
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+Importancia de buenos gráficos
+
+::: {.center}
+![](../../files/img/bad_graph.png){width=55%}
+:::
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+::: {.small}
+Ejemplo tabla de descriptiva:
+:::
+
+```{r}
+#| echo: false
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/latinobarometro_proc.RData"))
+pacman::p_load(dplyr, stargazer, ggplot2, summarytools, kableExtra, sjPlot)
+proc_data <- as.data.frame(proc_data)
+```
+
+::: {.small}
+```{r}
+sjmisc::descr(proc_data,
+      show = c("label","range", "mean", "sd", "n")) %>%
+      kbl(format = "markdown")
+```
+:::
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+::: {.small}
+Ejemplo tabla de contingencia:
+:::
+
+```{r}
+sjPlot::sjt.xtab(proc_data$conf_gob, proc_data$sexo)
+```
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico de barras:
+
+![](../../files/img/graph1.png){width=40% fig-align="center"}
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico de barras condicionado:
+
+![](../../files/img/graph3.png){width=40% fig-align="center"}
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo Histograma:
+
+![](../../files/img/graph4.png){width=40% fig-align="center"}
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+::: {.small}
+Ejemplo gráfico de cajas:
+:::
+
+![](../../files/img/graph.png){width=40% fig-align="center"}
+
+---
+
+... pero ojo! esto también avanza muy rápido
+
+---
+
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico alternativo de [twitter](https://twitter.com/RosanaFerrero/status/1635536429957758977):
+
+![](../../files/img/alternative_boxplot.png){width=60% fig-align="center"}
+
+
+---
+
+## Recodificación de datos en R
+
+![](../../files/img/produccion2.png)
+
+---
+
+## Recodificación de datos en R
+
+![](../../files/img/carpetas.png)
+
+---
+
+## Recodificación de datos en R
+
+![](../../files/img/processing.png){width=100%}
+
+
+---
+
+
+##  {data-background-color="black"}
+
+::: {.columns .v-center-container}
+::: {.column width="20%"}
+![](../../files/img/eval-hires.png){width="80%" fig-align="right"}
+:::
+
+::: {.column width="80%"}
+::: rojo
+R para el análisis de datos
+:::
+
+------------------------------------------------------------------------
+
+### **Kevin Carrasco**
+### Sociología - UAH
+### 1er Sem 2026
+### [R-data-analisis.netlify.com](https://R-data-analisis.netlify.com)
+:::
+:::

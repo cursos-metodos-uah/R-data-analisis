@@ -2639,5 +2639,201 @@
     "title": "Programa",
     "section": "Reglamento Académico del Estudiante de Pregrado.",
     "text": "Reglamento Académico del Estudiante de Pregrado.\nArt. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.\nAsimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.\nArt. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.\n\nPara evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) o MLA (Modern Language Association)."
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#section",
+    "href": "slides/05-clase5/05-clase5.html#section",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 5: Visualización de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#proceso-de-investigación-cuantitativo-dancona-2001",
+    "href": "slides/05-clase5/05-clase5.html#proceso-de-investigación-cuantitativo-dancona-2001",
+    "title": "R para Análisis estadístico",
+    "section": "Proceso de investigación cuantitativo (D’Ancona 2001)",
+    "text": "Proceso de investigación cuantitativo (D’Ancona 2001)\n\nFormulación del problema\n\nDiseño\n\nHipótesis\n\n\n\nOperacionalización de conceptos\n\n\n\nUnidad de análisis\n\n\nMetodología\nFactibilidad"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-1",
+    "href": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-1",
+    "title": "R para Análisis estadístico",
+    "section": "Medición y operacionalización",
+    "text": "Medición y operacionalización\n\nOperacionalización = codificación para hacer medible\nMúltiples formas de medir un concepto\nImportancia de definir conceptos"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-2",
+    "href": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-2",
+    "title": "R para Análisis estadístico",
+    "section": "Medición y operacionalización",
+    "text": "Medición y operacionalización\n\n¿Qué concepto se mide?"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-3",
+    "href": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-3",
+    "title": "R para Análisis estadístico",
+    "section": "Medición y operacionalización",
+    "text": "Medición y operacionalización\n\n¿Y con estas preguntas?"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-4",
+    "href": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-4",
+    "title": "R para Análisis estadístico",
+    "section": "Medición y operacionalización",
+    "text": "Medición y operacionalización\n\n¿Conceptos complejos?\n\n\n\n¿Cómo medir cohesión social?"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-5",
+    "href": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-5",
+    "title": "R para Análisis estadístico",
+    "section": "Medición y operacionalización",
+    "text": "Medición y operacionalización\n\nCohesión social (CEPAL, 2021)"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-6",
+    "href": "slides/05-clase5/05-clase5.html#medición-y-operacionalización-6",
+    "title": "R para Análisis estadístico",
+    "section": "Medición y operacionalización",
+    "text": "Medición y operacionalización\n\nCohesión social (OCS-COES, 2020)"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#visualización-de-datos",
+    "href": "slides/05-clase5/05-clase5.html#visualización-de-datos",
+    "title": "R para Análisis estadístico",
+    "section": "Visualización de datos",
+    "text": "Visualización de datos\nLa visualización de datos refiere a la forma que utilizamos para conocer y comunicar mediciones y resultados de análisis.\n\nCumple tres objetivos principales:\n\nExploración: conocer descriptivos básicos o asociaciones entre variables\nModelamiento: comparar estimaciones, determinar diferencias o explicaciones\nComunicación: presentar resultados y atraer audiencias"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#visualización-de-datos-1",
+    "href": "slides/05-clase5/05-clase5.html#visualización-de-datos-1",
+    "title": "R para Análisis estadístico",
+    "section": "Visualización de datos",
+    "text": "Visualización de datos\nLa mejor visualización de datos es la que no requiere un esfuerzo para ser comprendida.\nSe debe evitar saturar con información. Todo lo que se visualiza debe servir para explicar lo que queremos.\nPara comparar tablas o gráficos se deben utilizar las mismas escalas de medición y los mismos límites de los ejes."
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#sesión-4",
+    "href": "slides/05-clase5/05-clase5.html#sesión-4",
+    "title": "R para Análisis estadístico",
+    "section": "Sesión 4",
+    "text": "Sesión 4\n\nRepaso sesión anterior\nVisualización de datos\nTipos de tablas y tipos de gráficos\nVisualización de datos en R"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\n\nDescriptivos según tipo de variable\n\n\n\n\n\n\n\n\n\n\n\n\n\nCategórica\nContinua\nCateg.(y)/Categ.(x)\nCont.(y)/Categ.(x)\n\n\n\n\nEjemplo\nEstatus Ocupacional\nIngreso\nEstatus Ocupacional (Y) / Género (X)\nIngreso (Y) / Género (X)\n\n\nTabla\nFrecuencias / porcentajes\n\\(\\bar{X}\\)/sd o categorías\nTabla de contingencia\nClasificar Y\n\n\nGráfico\nBarras\nHistograma / boxplot\nGráfico de barras condicionado\nHistograma o boxplot condicionado"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-1",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-1",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\nImportancia de buenos gráficos"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-2",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-2",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\nImportancia de buenos gráficos"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-4",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-4",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\nImportancia de buenos gráficos"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-5",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-5",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\n\nEjemplo tabla de descriptiva:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar\nlabel\nn\nmean\nsd\nrange\n\n\n\n\n2\nconf_gob\nConfianza: Gobierno\n1181\n0.6596105\n0.7999806\n3 (0-3)\n\n\n1\nconf_cong\nConfianza: Congreso\n1178\n0.5942275\n0.7140065\n3 (0-3)\n\n\n4\nconf_jud\nConfianza: Poder judicial\n1186\n0.7166948\n0.7885304\n3 (0-3)\n\n\n5\nconf_partpol\nConfianza: Partidos politicos\n1178\n0.4507640\n0.6733451\n3 (0-3)\n\n\n7\neducacion\nEducación\n1200\n2.1683333\n0.5494684\n2 (1-3)\n\n\n9\nsexo\nSexo\n1200\n1.5375000\n0.4987996\n1 (1-2)\n\n\n6\nedad\nEdad\n1200\n44.4908333\n17.0076738\n71 (18-89)\n\n\n8\nidenpa\nidenpa\n1200\n152.0000000\n0.0000000\n0 (152-152)\n\n\n3\nconf_inst\nConfianza en instituciones\n1162\n2.4199656\n2.4887441\n12 (0-12)"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-6",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-6",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\n\nEjemplo tabla de contingencia:\n\n\n\n\n \n Confianza: Gobierno\n Sexo\n Total\n \n \n\n Hombre\n Mujer\n \n \n \nNinguna\n280\n344\n624 \n\n \n \nPoca\n167\n191\n358 \n\n \n \nAlgo\n93\n83\n176 \n\n \n \nMucha\n9\n14\n23 \n\n \n \nTotal\n549\n632\n1181 \n\nχ2=4.015 · df=3 · Cramer's V=0.058 · p=0.260"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-7",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-7",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\nEjemplo gráfico de barras:"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-8",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-8",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\nEjemplo gráfico de barras condicionado:"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-9",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-9",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\nEjemplo Histograma:"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-10",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-10",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\n\nEjemplo gráfico de cajas:"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-11",
+    "href": "slides/05-clase5/05-clase5.html#tipos-de-tablas-y-tipos-de-gráficos-11",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de tablas y tipos de gráficos",
+    "text": "Tipos de tablas y tipos de gráficos\nEjemplo gráfico alternativo de twitter:"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#sesión-4-1",
+    "href": "slides/05-clase5/05-clase5.html#sesión-4-1",
+    "title": "R para Análisis estadístico",
+    "section": "Sesión 4",
+    "text": "Sesión 4\n\nRepaso sesión anterior\nVisualización de datos\nTipos de tablas y tipos de gráficos\nVisualización de datos en R"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r",
+    "href": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r",
+    "title": "R para Análisis estadístico",
+    "section": "Recodificación de datos en R",
+    "text": "Recodificación de datos en R"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r-1",
+    "href": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r-1",
+    "title": "R para Análisis estadístico",
+    "section": "Recodificación de datos en R",
+    "text": "Recodificación de datos en R"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r-2",
+    "href": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r-2",
+    "title": "R para Análisis estadístico",
+    "section": "Recodificación de datos en R",
+    "text": "Recodificación de datos en R"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r-3",
+    "href": "slides/05-clase5/05-clase5.html#recodificación-de-datos-en-r-3",
+    "title": "R para Análisis estadístico",
+    "section": "Recodificación de datos en R",
+    "text": "Recodificación de datos en R\nGuía de trabajo en:"
+  },
+  {
+    "objectID": "slides/05-clase5/05-clase5.html#section-1",
+    "href": "slides/05-clase5/05-clase5.html#section-1",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   }
 ]

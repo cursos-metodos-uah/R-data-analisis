@@ -1,518 +1,1033 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
-  <head>
-    <title>R para análisis de datos</title>
-    <meta charset="utf-8" />
-    <meta name="author" content=".small[Kevin Carrasco    Departamento de Sociología - UCH / COES   ]" />
-    <script src="libs/header-attrs/header-attrs.js"></script>
-    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
-    <script src="libs/tile-view/tile-view.js"></script>
-    <link href="libs/animate.css/animate.xaringan.css" rel="stylesheet" />
-    <script src="libs/fabric/fabric.min.js"></script>
-    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
-    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
-    <link rel="stylesheet" href="../../files/css/custom_2020.css" type="text/css" />
-  </head>
-  <body>
-    <textarea id="source">
-
-class: front
-
-
-
-
-
-
-
-
-
-&lt;!---
-Para correr en ATOM
-- open terminal, abrir R (simplemente, R y enter)
-- rmarkdown::render('static/docpres/07_interacciones/7interacciones.Rmd', 'xaringan::moon_reader')
-
-About macros.js: permite escalar las imágenes como [scale 50%](path to image), hay si que grabar ese archivo js en el directorio.
----&gt;
-
-
-.pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
-## Sociología - UAH
-## 1er Sem 2025
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
-] 
-
-
-.pull-right[
-.right[
-&lt;br&gt;
-## .yellow[Sesión 5: Inferencia y asociación de variables]
-![:scale 70%](../../files/img/eval-hires.png)
-
-]
-
-]
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 5]
-&lt;br&gt;
-
-.yellow[Trabajo 1]
-
-Repaso sesión anterior
-
-Inferencia
-
-Asociación entre variables
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
----
-
-layout: true
-class: animated, fadeIn
-
----
-
-class: center
-
-## Protocolo de trabajo reproducible
-
-![:scale 41%](../../files/img/ipo-hex.png)
-
-.small[.right[fuente: [lisa-coes.com/ipo-repro](https://lisa-coes.com/ipo-repro)]]
-
----
-
-# Estructura de carpetas
-
-![](../../files/img/carpetas.png)
----
-
-# Repositorio
-
-![](../../files/img/repositorio.png)
-
----
-
-# Github pages
-
-![](../../files/img/url-pages.png)
-
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 5]
-&lt;br&gt;
-
-Trabajo 1
-
-.yellow[Repaso sesión anterior]
-
-Inferencia
-
-Asociación entre variables
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-
----
-
-# Medición y operacionalización
-
-- Operacionalización = "codificación" de un fenómeno con el fin de hacerlo **medible**
-
-- Hay muchas formas de "codificar" un mismo concepto
-
-- ¿Por qué es importante definir operacionalmente los conceptos?
-
----
-
-# Medición y operacionalización
-
-.center[¿cómo se puede medir cohesión social?]
-
----
-
-# Medición y operacionalización
-
-- Cohesión social según CEPAL (2021)
-
-.center[![:scale 75%](../../files/img/cohesion-cepal.png)]
-
----
-
-# Medición y operacionalización
-
-- Cohesión social según Observatorio de cohesión social (ocs-coes) (2020)
-
-.center[![:scale 75%](../../files/img/cohesion.png)]
-
----
-## Tipos de análisis estadístico bivariado
-
-- Variable dependiente (y) : lo que quiero explicar
-
-- Variable independiente (x): lo que me permite explicar la dependiente
-
-.small[
-| Variable independiente x 	| Variable dependiente Categórica   	| Variable dependiente Continua        	|
-|--------------------------	|-----------------------------------	|--------------------------------------	|
-| Categórica               	| Análisis de tabla de Contigencia, Chi2	| Análisis de Varianza ANOVA, Prueba T 	|
-| Continua                 	| Regresión Logística 	| Correlación / Regresión Lineal                     	|
-]
-
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 5]
-&lt;br&gt;
-
-Trabajo 1
-
-Repaso sesión anterior
-
-.yellow[Inferencia]
-
-Asociación entre variables
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
----
-class: inverse, center
-
-## ¿Qué es la inferencia estadística?
-
----
-
-# Inferencia
-
-La **inferencia** en estadística se refiere a la relación que existe entre los resultados obtenidos basados en nuestra muestra y la población
-
-- ¿En qué medida podemos hacer inferencias desde nuestra muestra a la población?
-
-Lo central es el concepto de probabilidad de **error**
-
----
-## Inferencia
-
-.pull-left-narrow[
-
-.center[![:scale 75%](inference1.png)]
-]
-
-.pull-right-wide[
-
-- Más que el promedio de la variable de nuestra *muestra*, en inferencia lo que interesa es estimar en qué medida ese promedio da cuenta del promedio de la *población*
-
-- Si seleccionamos una muestra aleatoria, sabemos que podría haberse seleccionado otro grupo de personas (que probablemente tendrían un promedio distinto)
-
-]
-
----
-
-.pull-left-narrow[
-# Distribución y curva normal
-]
-
-.pull-right-wide[
-.center[![:scale 100%](image3.png)]
-]
-
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 5]
-&lt;br&gt;
-
-Trabajo 1
-
-Repaso sesión anterior
-
-Inferencia
-
-.yellow[Asociación entre variables]
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
----
-class: inverse, center
-
-&lt;br&gt;
-
-## ¿Cómo puedo saber si una variable se encuentra asociada a otra variable?
-
---
-
-### Si ambas varían de manera **similar** (covarían)
-
----
-# Asociación: covarianza / correlación
-
-.pull-left[
-  _¿Se relaciona la variación de una variable, con la variación de otra variable?_
-]
-.pull-right[
-.center[![:scale 100%](../../files/img/ingresoeduc.png)]
-]
-
----
-# Correlación
-
-- Medida de co-variación lineal estandarizada
-
---
-
-&lt;br&gt;
-&lt;br&gt;
-.center[¿En qué rango varía una correlación?]
-
---
-
-- Varía entre -1 y +1
-
----
-
-## Correlación
-
-- Da cuenta de:
-
-  - *Intesidad*: mientras más cercana a |1|, más intensa
-  - *Sentido*: positiva o negativa
-
---
-
-- Gráficamente se expresa en *nubes de puntos*
-
----
-
-.center[![:scale 80%](../../files/img/correlacion2.png)]
-
-
----
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-
-
-## Adivina la correlación - [http://guessthecorrelation.com/](guessthecorrelation.com)
-
-
-
-
----
-class: inverse
-
-# RESUMEN
-
-- Inferencia
-
-
-- Introducción a correlación
-
----
-
-class: front
-
-.pull-left[
-# R para el análisis de datos
-## **Kevin Carrasco**
-## Sociología - UAH
-## 1er Sem 2025
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
-] 
-
-
-.pull-right[
-.right[
-&lt;br&gt;
-## .yellow[Sesión 5: Asociación de variables]
-![:scale 70%](../../files/img/eval-hires.png)
-
-
-
-]
-
-]
-
-    </textarea>
-<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="https://multinivel.netlify.app/docpres/xaringan_custom/macros.js"></script>
-<script>var slideshow = remark.create({
-"ratio": "16:9",
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
-});
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function(d) {
-  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})(document);
-
-(function(d) {
-  var el = d.getElementsByClassName("remark-slides-area");
-  if (!el) return;
-  var slide, slides = slideshow.getSlides(), els = el[0].children;
-  for (var i = 1; i < slides.length; i++) {
-    slide = slides[i];
-    if (slide.properties.continued === "true" || slide.properties.count === "false") {
-      els[i - 1].className += ' has-continuation';
+<html lang="en"><head>
+<link href="../..//files/icon-512.png" rel="icon" type="image/png">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
+
+  <meta name="author" content="Kevin Carrasco">
+  <title>R para Análisis estadístico – R para análisis de datos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
     }
-  }
-  var s = d.createElement("style");
-  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
-  d.head.appendChild(s);
-})(document);
-// delete the temporary CSS (for displaying all slides initially) when the user
-// starts to view slides
-(function() {
-  var deleted = false;
-  slideshow.on('beforeShowSlide', function(slide) {
-    if (deleted) return;
-    var sheets = document.styleSheets, node;
-    for (var i = 0; i < sheets.length; i++) {
-      node = sheets[i].ownerNode;
-      if (node.dataset["target"] !== "print-only") continue;
-      node.parentNode.removeChild(node);
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-cc08ae45b4772acf65a273c00aefcc82.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
     }
-    deleted = true;
-  });
-})();
-// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
-// screen reader (see PR #262)
-(function(d) {
-  let res = {};
-  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
-    const t = tr.querySelector('td:nth-child(2)').innerText;
-    tr.querySelectorAll('td:first-child .key').forEach(key => {
-      const k = key.innerText;
-      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
-    });
-  });
-  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
-})(document);
-(function() {
-  "use strict"
-  // Replace <script> tags in slides area to make them executable
-  var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container script'
-  );
-  if (!scripts.length) return;
-  for (var i = 0; i < scripts.length; i++) {
-    var s = document.createElement('script');
-    var code = document.createTextNode(scripts[i].textContent);
-    s.appendChild(code);
-    var scriptAttrs = scripts[i].attributes;
-    for (var j = 0; j < scriptAttrs.length; j++) {
-      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
     }
-    scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-})();
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
+    .reveal .slide:not(.center) {
+      height: 100%;
     }
-  }
-})();
-// adds .remark-code-has-line-highlighted class to <pre> parent elements
-// of code chunks containing highlighted lines with class .remark-code-line-highlighted
-(function(d) {
-  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
-  const preParents = [];
-  const findPreParent = function(line, p = 0) {
-    if (p > 1) return null; // traverse up no further than grandparent
-    const el = line.parentElement;
-    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
-  };
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="R para análisis de datos">
+<meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta property="og:site_name" content="R para Análisis estadístico">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="R para análisis de datos">
+<meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta name="twitter:creator" content="@KevinCarrascoQ1">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
-  for (let line of hlines) {
-    let pre = findPreParent(line);
-    if (pre && !preParents.includes(pre)) preParents.push(pre);
-  }
-  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
-})(document);</script>
-<style>
-.logo {
-  background-image: url("../hex_multiva_white.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 16.3em;
-  right: 31em;
-  width: 110px;
-  height: 70px;
-  z-index: 0;
-}
-</style>
 
-<script>
-document
-  .querySelectorAll(
-    '.remark-slide-content' +
-    ':not(.title-slide)' +
-    // add additional classes to exclude here, e.g.
-    // ':not(.inverse)' +
-    ':not(.hide-logo)'
-  )
-  .forEach(el => {
-    el.innerHTML += '<div class="logo"></div>';
-  });
-</script>
+<section id="section" class="slide level2" data-background-color="black">
+<h2></h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<section id="r-para-el-análisis-de-datos" class="rojo">
+<h3>R para el análisis de datos</h3>
+<p><strong>Sesión 5</strong>: Visualización de datos</p>
+</section>
+<hr>
+<h3 id="kevin-carrasco"><strong>Kevin Carrasco</strong></h3>
+<h3 id="sociología---uah">Sociología - UAH</h3>
+<h3 id="er-sem-2026">1er Sem 2026</h3>
+<h3 id="r-data-analisis.netlify.com"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
+</div></div>
+</section>
+<section>
+<section id="planteando-una-investigación-cuantitativa" class="title-slide slide level1 center">
+<h1>Planteando una investigación cuantitativa</h1>
 
-<script>
-slideshow._releaseMath = function(el) {
-  var i, text, code, codes = el.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
-  }
-};
-slideshow._releaseMath(document);
-</script>
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-(function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
-  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
-    script.src  = script.src.replace(/^https?:/, '');
-  document.getElementsByTagName('head')[0].appendChild(script);
-})();
-</script>
-  </body>
-</html>
+</section>
+<section id="proceso-de-investigación-cuantitativo-dancona-2001" class="slide level2">
+<h2>Proceso de investigación cuantitativo (D’Ancona 2001)</h2>
+<ol type="1">
+<li>Formulación del problema<br>
+</li>
+<li>Diseño
+<ul>
+<li>Hipótesis</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Operacionalización de conceptos</li>
+</ul>
+</div>
+<ul>
+<li>Unidad de análisis<br>
+</li>
+</ul></li>
+<li>Metodología</li>
+<li>Factibilidad</li>
+</ol>
+</section></section>
+<section>
+<section id="medición-y-operacionalización" class="title-slide slide level1 center">
+<h1>Medición y operacionalización</h1>
+
+</section>
+<section id="medición-y-operacionalización-1" class="slide level2">
+<h2>Medición y operacionalización</h2>
+<ul>
+<li class="fragment"><p>Operacionalización = <strong>codificación</strong> para hacer medible</p></li>
+<li class="fragment"><p>Múltiples formas de medir un concepto</p></li>
+<li class="fragment"><p>Importancia de definir conceptos</p></li>
+</ul>
+</section>
+<section id="medición-y-operacionalización-2" class="slide level2">
+<h2>Medición y operacionalización</h2>
+<div class="center">
+<p>¿Qué concepto se mide?</p>
+</div>
+
+<img data-src="../../files/img/iden_pol.png" style="width:95.0%" class="r-stretch"></section>
+<section id="medición-y-operacionalización-3" class="slide level2">
+<h2>Medición y operacionalización</h2>
+<div class="center">
+<p>¿Y con estas preguntas?</p>
+</div>
+
+<img data-src="../../files/img/ejemplos_variables.png" style="width:80.0%" class="r-stretch"></section>
+<section id="medición-y-operacionalización-4" class="slide level2">
+<h2>Medición y operacionalización</h2>
+<div class="center">
+<p>¿Conceptos complejos?</p>
+</div>
+<div class="fragment">
+<div class="center">
+<p>¿Cómo medir cohesión social?</p>
+</div>
+</div>
+</section>
+<section id="medición-y-operacionalización-5" class="slide level2">
+<h2>Medición y operacionalización</h2>
+<ul>
+<li>Cohesión social (CEPAL, 2021)</li>
+</ul>
+
+<img data-src="../../files/img/cohesion-cepal.png" style="width:75.0%" class="r-stretch"></section>
+<section id="medición-y-operacionalización-6" class="slide level2">
+<h2>Medición y operacionalización</h2>
+<ul>
+<li>Cohesión social (OCS-COES, 2020)</li>
+</ul>
+
+<img data-src="../../files/img/cohesion.png" style="width:75.0%" class="r-stretch"></section>
+<section id="visualización-de-datos" class="slide level2">
+<h2>Visualización de datos</h2>
+<p>La visualización de datos refiere a la forma que utilizamos para conocer y comunicar mediciones y resultados de análisis.</p>
+<div class="fragment">
+<p>Cumple tres objetivos principales:</p>
+<ul>
+<li><strong>Exploración</strong>: conocer descriptivos básicos o asociaciones entre variables</li>
+<li><strong>Modelamiento</strong>: comparar estimaciones, determinar diferencias o explicaciones</li>
+<li><strong>Comunicación</strong>: presentar resultados y atraer audiencias</li>
+</ul>
+</div>
+</section>
+<section id="visualización-de-datos-1" class="slide level2">
+<h2>Visualización de datos</h2>
+<p>La mejor visualización de datos es la que no requiere un esfuerzo para ser comprendida.</p>
+<p>Se debe evitar saturar con información. Todo lo que se visualiza debe servir para explicar lo que queremos.</p>
+<p>Para comparar tablas o gráficos se deben utilizar las mismas escalas de medición y los mismos límites de los ejes.</p>
+</section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<ul>
+<li>Descriptivos según tipo de variable</li>
+</ul>
+<div class="small">
+<table class="caption-top">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 26%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Categórica</th>
+<th>Continua</th>
+<th>Categ.(y)/Categ.(x)</th>
+<th>Cont.(y)/Categ.(x)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Ejemplo</strong></td>
+<td><strong>Estatus Ocupacional</strong></td>
+<td><strong>Ingreso</strong></td>
+<td><strong>Estatus Ocupacional (Y) / Género (X)</strong></td>
+<td><strong>Ingreso (Y) / Género (X)</strong></td>
+</tr>
+<tr class="even">
+<td>Tabla</td>
+<td>Frecuencias / porcentajes</td>
+<td><span class="math inline">\(\bar{X}\)</span>/sd o categorías</td>
+<td>Tabla de contingencia</td>
+<td>Clasificar Y</td>
+</tr>
+<tr class="odd">
+<td>Gráfico</td>
+<td>Barras</td>
+<td>Histograma / boxplot</td>
+<td>Gráfico de barras condicionado</td>
+<td>Histograma o boxplot condicionado</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-1" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<p>Importancia de buenos gráficos</p>
+
+<img data-src="../../files/img/pinera.jpg" style="width:70.0%" class="r-stretch"></section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-2" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<p>Importancia de buenos gráficos</p>
+
+<img data-src="../../files/img/aprob_pres.jpg" style="width:70.0%" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="tipos-de-tablas-y-tipos-de-gráficos-3">Tipos de tablas y tipos de gráficos</h3>
+<div class="center">
+<p><img data-src="../../files/img/presidenciales-cadem.jpg" style="width:40.0%"></p>
+</div>
+</section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-4" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<p>Importancia de buenos gráficos</p>
+<div class="center">
+<p><img data-src="../../files/img/bad_graph.png" style="width:55.0%"></p>
+</div>
+</section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-5" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<div class="small">
+<p>Ejemplo tabla de descriptiva:</p>
+</div>
+<div class="small">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 15%">
+<col style="width: 34%">
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">var</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: left;">range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">conf_gob</td>
+<td style="text-align: left;">Confianza: Gobierno</td>
+<td style="text-align: right;">1181</td>
+<td style="text-align: right;">0.6596105</td>
+<td style="text-align: right;">0.7999806</td>
+<td style="text-align: left;">3 (0-3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">conf_cong</td>
+<td style="text-align: left;">Confianza: Congreso</td>
+<td style="text-align: right;">1178</td>
+<td style="text-align: right;">0.5942275</td>
+<td style="text-align: right;">0.7140065</td>
+<td style="text-align: left;">3 (0-3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">conf_jud</td>
+<td style="text-align: left;">Confianza: Poder judicial</td>
+<td style="text-align: right;">1186</td>
+<td style="text-align: right;">0.7166948</td>
+<td style="text-align: right;">0.7885304</td>
+<td style="text-align: left;">3 (0-3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">conf_partpol</td>
+<td style="text-align: left;">Confianza: Partidos politicos</td>
+<td style="text-align: right;">1178</td>
+<td style="text-align: right;">0.4507640</td>
+<td style="text-align: right;">0.6733451</td>
+<td style="text-align: left;">3 (0-3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">educacion</td>
+<td style="text-align: left;">Educación</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: right;">2.1683333</td>
+<td style="text-align: right;">0.5494684</td>
+<td style="text-align: left;">2 (1-3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">sexo</td>
+<td style="text-align: left;">Sexo</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: right;">1.5375000</td>
+<td style="text-align: right;">0.4987996</td>
+<td style="text-align: left;">1 (1-2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">edad</td>
+<td style="text-align: left;">Edad</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: right;">44.4908333</td>
+<td style="text-align: right;">17.0076738</td>
+<td style="text-align: left;">71 (18-89)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">idenpa</td>
+<td style="text-align: left;">idenpa</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: right;">152.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">0 (152-152)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">conf_inst</td>
+<td style="text-align: left;">Confianza en instituciones</td>
+<td style="text-align: right;">1162</td>
+<td style="text-align: right;">2.4199656</td>
+<td style="text-align: right;">2.4887441</td>
+<td style="text-align: left;">12 (0-12)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-6" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<div class="small">
+<p>Ejemplo tabla de contingencia:</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table style="border-collapse:collapse; border:none;">
+ <tbody><tr>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">Confianza: Gobierno</th>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="2">Sexo</th>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">Total</th>
+ </tr>
+ 
+<tr>
+ <td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">Hombre</td>
+ <td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">Mujer</td>
+ </tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">Ninguna</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">280</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">344</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">624</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">Poca</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">167</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">191</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">358</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">Algo</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">93</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">83</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">176</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">Mucha</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">9</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">14</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">23</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">Total</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">549</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">632</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">1181</span></td> 
+</tr>
+<tr><td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="4">χ<sup>2</sup>=4.015 · df=3 · Cramer's V=0.058 · p=0.260</td> 
+</tr>
+ 
+</tbody></table>
+</div>
+</div>
+</section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-7" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<p>Ejemplo gráfico de barras:</p>
+
+<img data-src="../../files/img/graph1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-8" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<p>Ejemplo gráfico de barras condicionado:</p>
+
+<img data-src="../../files/img/graph3.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-9" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<p>Ejemplo Histograma:</p>
+
+<img data-src="../../files/img/graph4.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-10" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<div class="small">
+<p>Ejemplo gráfico de cajas:</p>
+</div>
+
+<img data-src="../../files/img/graph.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section>
+<section class="slide level2">
+
+<p>… pero ojo! esto también avanza muy rápido</p>
+</section>
+<section id="tipos-de-tablas-y-tipos-de-gráficos-11" class="slide level2">
+<h2>Tipos de tablas y tipos de gráficos</h2>
+<p>Ejemplo gráfico alternativo de <a href="https://twitter.com/RosanaFerrero/status/1635536429957758977">twitter</a>:</p>
+
+<img data-src="../../files/img/alternative_boxplot.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<section id="recodificación-de-datos-en-r" class="slide level2">
+<h2>Recodificación de datos en R</h2>
+
+<img data-src="../../files/img/produccion2.png" class="r-stretch"></section>
+<section id="recodificación-de-datos-en-r-1" class="slide level2">
+<h2>Recodificación de datos en R</h2>
+
+<img data-src="../../files/img/carpetas.png" class="r-stretch"></section>
+<section id="recodificación-de-datos-en-r-2" class="slide level2">
+<h2>Recodificación de datos en R</h2>
+
+<img data-src="../../files/img/processing.png" style="width:100.0%" class="r-stretch"></section>
+<section id="section-1" class="slide level2" data-background-color="black">
+<h2></h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-right" style="width:80.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<div class="rojo">
+<p>R para el análisis de datos</p>
+</div>
+<hr>
+<h3 id="kevin-carrasco-1"><strong>Kevin Carrasco</strong></h3>
+<h3 id="sociología---uah-1">Sociología - UAH</h3>
+<h3 id="er-sem-2026-1">1er Sem 2026</h3>
+<h3 id="r-data-analisis.netlify.com-1"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
+</div></div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/icon-512.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: true,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/R-analisis-datos\.netlify\.app");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
