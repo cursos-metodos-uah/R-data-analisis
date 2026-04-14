@@ -38,8 +38,9 @@ Rúbrica de evaluación:
 |1. Cargar base de datos        | L-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R         |    2pts         |
 |2. Selección de variables      | L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación   | 2pts        |
 |3. Operacionalización de variables   | L-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)          |     5pts    |
-|4. Visualización de resultados       | L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)         |   6ptos      |
-|5. Interpretación de resultados      | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados       |  3pts       |
+|4. Visualización de resultados       | L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (2ptos) y dos gráficos univariados (3ptos)         |   5ptos      |
+|5. Interpretación de resultados      | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados       |  2pts       |
+|6. Correcciones trabajo 1 | L-s estudiantes son capaces de incorporar las correcciones sugeridas en el trabajo 1         | 2pts        |
 | Total|- |18puntos|
 
 ## Recomendaciones
