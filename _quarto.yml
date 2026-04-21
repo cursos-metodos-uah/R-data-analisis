@@ -109,10 +109,11 @@ website:
               file: practicos/04-content.qmd
             - text: "Práctico 5: Visualización"
               file: practicos/05-content.qmd
+            - text: "Taller Github Colaborativo"
+              file: practicos/taller-github-collab.qmd              
 #            - text: "Taller Github y Quarto"
 #              file: practicos/taller-github-quarto/taller-quarto-github.qmd
-#            - text: "Taller Github Colaborativo"
-#              file: practicos/taller-github-collab.qmd
+
 #            - text: "Práctico 6: Inferencia y correlación"
 #              file: practicos/06-content.qmd
 #            - text: "Práctico 7: Índices y escalas"

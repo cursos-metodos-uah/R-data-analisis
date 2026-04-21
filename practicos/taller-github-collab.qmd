@@ -31,7 +31,7 @@ Para este práctico, y también como recomendación para el trabajo, vamos a com
 
 1- Entramos a Github y nos aseguramos de tener iniciada nuestra sesión
 
-2- Vamos al siguiente repositorio [https://github.com/cursos-metodos-uah/plantilla_trabajo](https://github.com/cursos-metodos-uah/plantilla_trabajo)
+2- Vamos al siguiente repositorio [https://github.com/cursos-metodos-uah/plantilla_informe](https://github.com/cursos-metodos-uah/plantilla_informe)
 
 3- Hacemos un *fork* de este repositorio, que es básicamente crear una copia en nuestra cuenta.
 
@@ -46,7 +46,7 @@ Para este práctico, y también como recomendación para el trabajo, vamos a com
 
 ![](images/collaborators.png)
 
-6- Añadimos la cuenta de nuestro compañero de trabajos
+6- Añadimos la cuenta de nuestro compañer-s de trabajo
 
 7- Ambos descargar el repositorio en sus computadores
 
