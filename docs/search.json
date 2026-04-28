@@ -28,6 +28,20 @@
     "text": "Conclusión\n\nEn esta investigación quisimos demostrar…\nNuestros principales resultados indican que…"
   },
   {
+    "objectID": "slides/06-clase6/06-clase6..html#section",
+    "href": "slides/06-clase6/06-clase6..html#section",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 6: Inferencia y asociación entre variables\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#section-1",
+    "href": "slides/06-clase6/06-clase6..html#section-1",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 6: Inferencia y asociación entre variables\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
     "objectID": "slides/04-clase4/04-clase4.html#section",
     "href": "slides/04-clase4/04-clase4.html#section",
     "title": "R para Análisis estadístico",
@@ -670,21 +684,36 @@
     "href": "practicos/06-content.html#recursos-de-la-práctica",
     "title": "Práctico 6. Asociación de variables",
     "section": "Recursos de la práctica",
-    "text": "Recursos de la práctica\nEn esta práctica trabajaremos con la ola 2021 Estudio Longitudinal Social de Chile (ELSOC), elaborado por COES. Para este ejercicio, obtendremos directamente esta base desde internet.\n\n\nCódigo\nload(url((\"https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData\")))\n\n\n\n\n\n\n\n\nNota\n\n\n\nPara importar los datos en R debemos tener en consideración tres cosas:\n\nCómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)\nEl formato de nuestros datos (en nuestro caso .sav)\nEl lugar de donde están alojados nuestros datos"
+    "text": "Recursos de la práctica\nEn esta práctica trabajaremos con la ola 2021 Estudio Longitudinal Social de Chile (ELSOC), elaborado por COES. Para este ejercicio, obtendremos directamente esta base desde internet.\n\n\nCódigo\nload(url((\"https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData\")))\n\n\n\n\n\n\n\n\nNota\n\n\n\nPara importar los datos en R debemos tener en consideración tres cosas:\n\nCómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)\nEl formato de nuestros datos (en nuestro caso .sav)\nEl lugar de donde están alojados nuestros datos",
+    "crumbs": [
+      "Prácticos",
+      "Talleres",
+      "Práctico 6: Inferencia y correlación"
+    ]
   },
   {
     "objectID": "practicos/06-content.html#preparación-datos",
     "href": "practicos/06-content.html#preparación-datos",
     "title": "Práctico 6. Asociación de variables",
     "section": "Preparación datos",
-    "text": "Preparación datos\nComencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.\n\n\nCódigo\npacman::p_load(dplyr, # Manipulacion datos\n               sjmisc, # Descriptivos\n               sjPlot, # Tablas\n               sjlabelled, #etiquetas\n               kableExtra, #Tablas\n               GGally, # Correlaciones\n               corrplot) # Correlaciones\n\noptions(scipen = 999) # para desactivar notacion cientifica\n\n\nA continuación, exploramos la base de datos elsoc_2021.\n\n\nCódigo\ndim(elsoc_2021) # Dimensiones\n\n\n[1] 2740  311\n\n\nContamos con 311 variables (columnas) y 2740 observaciones (filas).\nPara este ejemplo, vamos a utilizar dos variables numéricas (ingresos y edad) y cuatro variables categóricas (Educación, percepción de desigualdad y 2 de percepción de meritocracia).\n\n\nCódigo\nproc_elsoc &lt;- elsoc_2021 %&gt;% select(edad=m0_edad, ingreso=m13, educacion=m01, desigualdad=c18_11, esfuerzo=c18_09, inteligencia=c18_10)\n\n\nAhora, profundicemos un poco más y observemos algunos estadísticos descriptivos de resumen de nuestra base de datos. Utilizaremos la función descr del paquete sjmisc.\n\n\nCódigo\nsjmisc::descr(proc_elsoc,\n      show = c(\"label\",\"range\", \"mean\", \"sd\", \"NA.prc\", \"n\")) %&gt;%\n      kable(.,\"markdown\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar\nlabel\nn\nNA.prc\nmean\nsd\nrange\n\n\n\n\n2\nedad\nEdad del entrevistado\n2740\n0.00000\n49.411314\n15.12879\n66 (20-86)\n\n\n5\ningreso\nIngreso mensual entrevistado (monto)\n1641\n40.10949\n579621.962827\n616203.06223\n9000999 (-999-9000000)\n\n\n3\neducacion\nNivel educacional\n2740\n0.00000\n5.455109\n2.22973\n9 (1-10)\n\n\n1\ndesigualdad\nGrado de acuerdo: Las diferencias de ingreso son demasiado grandes\n2740\n0.00000\n-1.036496\n64.56727\n1004 (-999-5)\n\n\n4\nesfuerzo\nGrado de acuerdo: Las personas son recompensadas por sus esfuerzos\n2740\n0.00000\n-5.887591\n84.14409\n1004 (-999-5)\n\n\n6\ninteligencia\nGrado de acuerdo: Las personas son recompensada por su inteligencia\n2740\n0.00000\n-5.097810\n80.70845\n1004 (-999-5)\n\n\n\n\n\n¡ALTO! Tenemos algunos valores o casos perdidos en ciertas variables. ¿Cómo lidiar con los casos perdidos?"
+    "text": "Preparación datos\nComencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.\n\n\nCódigo\npacman::p_load(dplyr, # Manipulacion datos\n               sjmisc, # Descriptivos\n               sjPlot, # Tablas\n               sjlabelled, #etiquetas\n               kableExtra, #Tablas\n               GGally, # Correlaciones\n               corrplot) # Correlaciones\n\noptions(scipen = 999) # para desactivar notacion cientifica\n\n\nA continuación, exploramos la base de datos elsoc_2021.\n\n\nCódigo\ndim(elsoc_2021) # Dimensiones\n\n\n[1] 2740  311\n\n\nContamos con 311 variables (columnas) y 2740 observaciones (filas).\nPara este ejemplo, vamos a utilizar dos variables numéricas (ingresos y edad) y cuatro variables categóricas (Educación, percepción de desigualdad y 2 de percepción de meritocracia).\n\n\nCódigo\nproc_elsoc &lt;- elsoc_2021 %&gt;% select(edad=m0_edad, ingreso=m13, educacion=m01, desigualdad=c18_11, esfuerzo=c18_09, inteligencia=c18_10)\n\n\nAhora, profundicemos un poco más y observemos algunos estadísticos descriptivos de resumen de nuestra base de datos. Utilizaremos la función descr del paquete sjmisc.\n\n\nCódigo\nsjmisc::descr(proc_elsoc,\n      show = c(\"label\",\"range\", \"mean\", \"sd\", \"NA.prc\", \"n\")) %&gt;%\n      kable(.,\"markdown\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar\nlabel\nn\nNA.prc\nmean\nsd\nrange\n\n\n\n\n2\nedad\nEdad del entrevistado\n2740\n0.00000\n49.411314\n15.12879\n66 (20-86)\n\n\n5\ningreso\nIngreso mensual entrevistado (monto)\n1641\n40.10949\n579621.962827\n616203.06223\n9000999 (-999-9000000)\n\n\n3\neducacion\nNivel educacional\n2740\n0.00000\n5.455109\n2.22973\n9 (1-10)\n\n\n1\ndesigualdad\nGrado de acuerdo: Las diferencias de ingreso son demasiado grandes\n2740\n0.00000\n-1.036496\n64.56727\n1004 (-999-5)\n\n\n4\nesfuerzo\nGrado de acuerdo: Las personas son recompensadas por sus esfuerzos\n2740\n0.00000\n-5.887591\n84.14409\n1004 (-999-5)\n\n\n6\ninteligencia\nGrado de acuerdo: Las personas son recompensada por su inteligencia\n2740\n0.00000\n-5.097810\n80.70845\n1004 (-999-5)\n\n\n\n\n\n¡ALTO! Tenemos algunos valores o casos perdidos en ciertas variables. ¿Cómo lidiar con los casos perdidos?",
+    "crumbs": [
+      "Prácticos",
+      "Talleres",
+      "Práctico 6: Inferencia y correlación"
+    ]
   },
   {
     "objectID": "practicos/06-content.html#tratamiento-de-casos-perdidos",
     "href": "practicos/06-content.html#tratamiento-de-casos-perdidos",
     "title": "Práctico 6. Asociación de variables",
     "section": "Tratamiento de casos perdidos",
-    "text": "Tratamiento de casos perdidos\nTrabajar con datos a menudo implica enfrentar valores perdidos (NA), lo que puede ser un gran desafío. Estos valores indican la ausencia de un valor en una base de datos. Los valores perdidos pueden originarse por diversas razones, como el sesgo de no respuesta en encuestas, errores en la entrada de datos o simplemente la falta de información para ciertas variables.\n\n\nCódigo\nfrq(proc_elsoc$esfuerzo)\n\n\nGrado de acuerdo: Las personas son recompensadas por sus esfuerzos (x) &lt;numeric&gt; \n# total N=2740 valid N=2740 mean=-5.89 sd=84.14\n\nValue |                                 Label |    N | Raw % | Valid % | Cum. %\n-------------------------------------------------------------------------------\n -999 |                 No Responde (no leer) |    4 |  0.15 |    0.15 |   0.15\n -888 |                     No Sabe (no leer) |   14 |  0.51 |    0.51 |   0.66\n -777 |       Valor perdido por error tecnico |    0 |  0.00 |    0.00 |   0.66\n -666 | Valor perdido por encuesta incompleta |   10 |  0.36 |    0.36 |   1.02\n    1 |              Totalmente en desacuerdo |  237 |  8.65 |    8.65 |   9.67\n    2 |                         En desacuerdo | 1415 | 51.64 |   51.64 |  61.31\n    3 |        Ni en desacuerdo ni de acuerdo |  422 | 15.40 |   15.40 |  76.72\n    4 |                            De acuerdo |  567 | 20.69 |   20.69 |  97.41\n    5 |                 Totalmente de acuerdo |   71 |  2.59 |    2.59 | 100.00\n &lt;NA&gt; |                                  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;\n\n\nCódigo\nproc_elsoc &lt;- proc_elsoc %&gt;% set_na(., na = c(-999, -888, -777, -666))\n\nfrq(proc_elsoc$esfuerzo)\n\n\nGrado de acuerdo: Las personas son recompensadas por sus esfuerzos (x) &lt;numeric&gt; \n# total N=2740 valid N=2712 mean=2.56 sd=1.00\n\nValue |                          Label |    N | Raw % | Valid % | Cum. %\n------------------------------------------------------------------------\n    1 |       Totalmente en desacuerdo |  237 |  8.65 |    8.74 |   8.74\n    2 |                  En desacuerdo | 1415 | 51.64 |   52.18 |  60.91\n    3 | Ni en desacuerdo ni de acuerdo |  422 | 15.40 |   15.56 |  76.47\n    4 |                     De acuerdo |  567 | 20.69 |   20.91 |  97.38\n    5 |          Totalmente de acuerdo |   71 |  2.59 |    2.62 | 100.00\n &lt;NA&gt; |                           &lt;NA&gt; |   28 |  1.02 |    &lt;NA&gt; |   &lt;NA&gt;\n\n\n\n\nCódigo\nfrq(proc_elsoc$educacion)\n\n\nNivel educacional (x) &lt;numeric&gt; \n# total N=2740 valid N=2740 mean=5.46 sd=2.23\n\nValue |                                       Label |   N | Raw % | Valid % | Cum. %\n------------------------------------------------------------------------------------\n    1 |                                Sin estudios |  18 |  0.66 |    0.66 |   0.66\n    2 |  Educacion Basica o Preparatoria incompleta | 280 | 10.22 |   10.22 |  10.88\n    3 |    Educacion Basica o Preparatoria completa | 243 |  8.87 |    8.87 |  19.74\n    4 |    Educacion Media o Humanidades incompleta | 354 | 12.92 |   12.92 |  32.66\n    5 |      Educacion Media o Humanidades completa | 819 | 29.89 |   29.89 |  62.55\n    6 |                 Tecnica Superior incompleta |  93 |  3.39 |    3.39 |  65.95\n    7 |                   Tecnica Superior completa | 355 | 12.96 |   12.96 |  78.91\n    8 |                    Universitaria incompleta | 167 |  6.09 |    6.09 |  85.00\n    9 |                      Universitaria completa | 360 | 13.14 |   13.14 |  98.14\n   10 | Estudios de posgrado (magister o doctorado) |  51 |  1.86 |    1.86 | 100.00\n &lt;NA&gt; |                                        &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;\n\n\nLa presencia de valores perdidos puede tener un impacto considerable en la precisión y confiabilidad de los análisis estadísticos, lo que a su vez puede conducir a resultados sesgados y conclusiones incorrectas.\nExisten varias formas de tratar valores perdidos, que van desde enfoques simples hasta métodos más complejos, como la imputación. En esta ocasión, nos centraremos en las dos estrategias más comunes:\n\ntrabajar exclusivamente con casos completos (listwise) o\nretener los casos con valores perdidos, pero excluyéndolos al calcular estadísticas (pairwise).\n\n\na) Analísis con casos completos: listwise deletion\nEste enfoque es uno de los más conocidos: implica remover completamente las observaciones que tienen valores perdidos en cualquier variable de interés. En otras palabras, si una fila/caso en un conjunto de datos tiene al menos un valor faltante en alguna de las variables que estás considerando, se eliminará por completo.\nEn R, esto podemos hacerlo con la función na.omit. Para hacer esto, sigamos estos pasos:\n\nrespaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos)-\ncontamos el número de casos con el comando dim.\ncontamos cuántos y en dónde tenemos casos perdidos.\nborramos los casos perdidos con na.omit.\ncontamos nuevamente con dim para asegurarnos que se borraron.\n\n\n\nCódigo\nproc_elsoc_original &lt;- proc_elsoc\ndim(proc_elsoc)\n\n\n[1] 2740    6\n\n\n\n\nCódigo\nsum(is.na(proc_elsoc))\n\n\n[1] 1251\n\n\n\n\nCódigo\ncolSums(is.na(proc_elsoc))\n\n\n        edad      ingreso    educacion  desigualdad     esfuerzo inteligencia \n           0         1179            0           18           28           26 \n\n\n\n\nCódigo\nproc_elsoc &lt;- na.omit(proc_elsoc)\ndim(proc_elsoc)\n\n\n[1] 1545    6\n\n\nAhora nos quedamos con 1545 observaciones sin casos perdidos.\nAunque es simple de implementar, con este enfoque podemos perder información importante, especialmente si los valores perdidos no se distribuyen aleatoriamente.\n\nSiempre hay que intentar rescatar la mayor cantidad de casos posibles. Por lo tanto, si un listwise genera más de un 10% de casos perdidos se debe detectar qué variables esta produciendo esta pérdida e intentar recuperar datos.\n\n\n\nb) Retener pero excluir: pairwise deletion\nA diferencia del anterior, este es un enfoque en el que las observaciones se utilizan para el análisis siempre que tengan datos disponibles para las variables específicas que se están analizando. En lugar de eliminar toda una fila si falta un valor, se eliminan solo los valores faltantes en las variables que se están analizando en ese momento.\nPara hacer esto en R debemos siempre verificar e indicar en nuestro código si queremos (o no) remover los NA para realizar los análisis.\n\n\nCódigo\nmean(proc_elsoc_original$esfuerzo); mean(proc_elsoc_original$edad); mean(proc_elsoc$desigualdad)\n\n\n[1] NA\n\n\n[1] 49.41131\n\n\n[1] 4.180583\n\n\nCódigo\nmean(proc_elsoc_original$esfuerzo, na.rm = TRUE); mean(proc_elsoc$edad, na.rm = TRUE); mean(proc_elsoc_original$desigualdad, na.rm = TRUE)\n\n\n[1] 2.564897\n\n\n[1] 45.09644\n\n\n[1] 4.135562\n\n\nCon ambas opciones tenemos resultados diferentes, ya que cambia la cantidad de casos analizados. La decisión final de qué método usar dependerá siempre del equipo de investigación."
+    "text": "Tratamiento de casos perdidos\nTrabajar con datos a menudo implica enfrentar valores perdidos (NA), lo que puede ser un gran desafío. Estos valores indican la ausencia de un valor en una base de datos. Los valores perdidos pueden originarse por diversas razones, como el sesgo de no respuesta en encuestas, errores en la entrada de datos o simplemente la falta de información para ciertas variables.\n\n\nCódigo\nfrq(proc_elsoc$esfuerzo)\n\n\nGrado de acuerdo: Las personas son recompensadas por sus esfuerzos (x) &lt;numeric&gt; \n# total N=2740 valid N=2740 mean=-5.89 sd=84.14\n\nValue |                                 Label |    N | Raw % | Valid % | Cum. %\n-------------------------------------------------------------------------------\n -999 |                 No Responde (no leer) |    4 |  0.15 |    0.15 |   0.15\n -888 |                     No Sabe (no leer) |   14 |  0.51 |    0.51 |   0.66\n -777 |       Valor perdido por error tecnico |    0 |  0.00 |    0.00 |   0.66\n -666 | Valor perdido por encuesta incompleta |   10 |  0.36 |    0.36 |   1.02\n    1 |              Totalmente en desacuerdo |  237 |  8.65 |    8.65 |   9.67\n    2 |                         En desacuerdo | 1415 | 51.64 |   51.64 |  61.31\n    3 |        Ni en desacuerdo ni de acuerdo |  422 | 15.40 |   15.40 |  76.72\n    4 |                            De acuerdo |  567 | 20.69 |   20.69 |  97.41\n    5 |                 Totalmente de acuerdo |   71 |  2.59 |    2.59 | 100.00\n &lt;NA&gt; |                                  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;\n\n\nCódigo\nproc_elsoc &lt;- proc_elsoc %&gt;% set_na(., na = c(-999, -888, -777, -666))\n\nfrq(proc_elsoc$esfuerzo)\n\n\nGrado de acuerdo: Las personas son recompensadas por sus esfuerzos (x) &lt;numeric&gt; \n# total N=2740 valid N=2712 mean=2.56 sd=1.00\n\nValue |                          Label |    N | Raw % | Valid % | Cum. %\n------------------------------------------------------------------------\n    1 |       Totalmente en desacuerdo |  237 |  8.65 |    8.74 |   8.74\n    2 |                  En desacuerdo | 1415 | 51.64 |   52.18 |  60.91\n    3 | Ni en desacuerdo ni de acuerdo |  422 | 15.40 |   15.56 |  76.47\n    4 |                     De acuerdo |  567 | 20.69 |   20.91 |  97.38\n    5 |          Totalmente de acuerdo |   71 |  2.59 |    2.62 | 100.00\n &lt;NA&gt; |                           &lt;NA&gt; |   28 |  1.02 |    &lt;NA&gt; |   &lt;NA&gt;\n\n\n\n\nCódigo\nfrq(proc_elsoc$educacion)\n\n\nNivel educacional (x) &lt;numeric&gt; \n# total N=2740 valid N=2740 mean=5.46 sd=2.23\n\nValue |                                       Label |   N | Raw % | Valid % | Cum. %\n------------------------------------------------------------------------------------\n    1 |                                Sin estudios |  18 |  0.66 |    0.66 |   0.66\n    2 |  Educacion Basica o Preparatoria incompleta | 280 | 10.22 |   10.22 |  10.88\n    3 |    Educacion Basica o Preparatoria completa | 243 |  8.87 |    8.87 |  19.74\n    4 |    Educacion Media o Humanidades incompleta | 354 | 12.92 |   12.92 |  32.66\n    5 |      Educacion Media o Humanidades completa | 819 | 29.89 |   29.89 |  62.55\n    6 |                 Tecnica Superior incompleta |  93 |  3.39 |    3.39 |  65.95\n    7 |                   Tecnica Superior completa | 355 | 12.96 |   12.96 |  78.91\n    8 |                    Universitaria incompleta | 167 |  6.09 |    6.09 |  85.00\n    9 |                      Universitaria completa | 360 | 13.14 |   13.14 |  98.14\n   10 | Estudios de posgrado (magister o doctorado) |  51 |  1.86 |    1.86 | 100.00\n &lt;NA&gt; |                                        &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;\n\n\nLa presencia de valores perdidos puede tener un impacto considerable en la precisión y confiabilidad de los análisis estadísticos, lo que a su vez puede conducir a resultados sesgados y conclusiones incorrectas.\nExisten varias formas de tratar valores perdidos, que van desde enfoques simples hasta métodos más complejos, como la imputación. En esta ocasión, nos centraremos en las dos estrategias más comunes:\n\ntrabajar exclusivamente con casos completos (listwise) o\nretener los casos con valores perdidos, pero excluyéndolos al calcular estadísticas (pairwise).\n\n\na) Analísis con casos completos: listwise deletion\nEste enfoque es uno de los más conocidos: implica remover completamente las observaciones que tienen valores perdidos en cualquier variable de interés. En otras palabras, si una fila/caso en un conjunto de datos tiene al menos un valor faltante en alguna de las variables que estás considerando, se eliminará por completo.\nEn R, esto podemos hacerlo con la función na.omit. Para hacer esto, sigamos estos pasos:\n\nrespaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos)-\ncontamos el número de casos con el comando dim.\ncontamos cuántos y en dónde tenemos casos perdidos.\nborramos los casos perdidos con na.omit.\ncontamos nuevamente con dim para asegurarnos que se borraron.\n\n\n\nCódigo\nproc_elsoc_original &lt;- proc_elsoc\ndim(proc_elsoc)\n\n\n[1] 2740    6\n\n\n\n\nCódigo\nsum(is.na(proc_elsoc))\n\n\n[1] 1251\n\n\n\n\nCódigo\ncolSums(is.na(proc_elsoc))\n\n\n        edad      ingreso    educacion  desigualdad     esfuerzo inteligencia \n           0         1179            0           18           28           26 \n\n\n\n\nCódigo\nproc_elsoc &lt;- na.omit(proc_elsoc)\ndim(proc_elsoc)\n\n\n[1] 1545    6\n\n\nAhora nos quedamos con 1545 observaciones sin casos perdidos.\nAunque es simple de implementar, con este enfoque podemos perder información importante, especialmente si los valores perdidos no se distribuyen aleatoriamente.\n\nSiempre hay que intentar rescatar la mayor cantidad de casos posibles. Por lo tanto, si un listwise genera más de un 10% de casos perdidos se debe detectar qué variables esta produciendo esta pérdida e intentar recuperar datos.\n\n\n\nb) Retener pero excluir: pairwise deletion\nA diferencia del anterior, este es un enfoque en el que las observaciones se utilizan para el análisis siempre que tengan datos disponibles para las variables específicas que se están analizando. En lugar de eliminar toda una fila si falta un valor, se eliminan solo los valores faltantes en las variables que se están analizando en ese momento.\nPara hacer esto en R debemos siempre verificar e indicar en nuestro código si queremos (o no) remover los NA para realizar los análisis.\n\n\nCódigo\nmean(proc_elsoc_original$esfuerzo); mean(proc_elsoc_original$edad); mean(proc_elsoc$desigualdad)\n\n\n[1] NA\n\n\n[1] 49.41131\n\n\n[1] 4.180583\n\n\nCódigo\nmean(proc_elsoc_original$esfuerzo, na.rm = TRUE); mean(proc_elsoc$edad, na.rm = TRUE); mean(proc_elsoc_original$desigualdad, na.rm = TRUE)\n\n\n[1] 2.564897\n\n\n[1] 45.09644\n\n\n[1] 4.135562\n\n\nCon ambas opciones tenemos resultados diferentes, ya que cambia la cantidad de casos analizados. La decisión final de qué método usar dependerá siempre del equipo de investigación.",
+    "crumbs": [
+      "Prácticos",
+      "Talleres",
+      "Práctico 6: Inferencia y correlación"
+    ]
   },
   {
     "objectID": "practicos/04-content.html",
@@ -1251,14 +1280,22 @@
     "href": "content/06-content.html",
     "title": "Clase 6",
     "section": "",
-    "text": "Content for martes, 6 de mayo de 2025"
+    "text": "Content for miércoles, 29 de abril de 2026",
+    "crumbs": [
+      "Clases",
+      "06: Clase 6"
+    ]
   },
   {
     "objectID": "content/06-content.html#documento-de-presentación",
     "href": "content/06-content.html#documento-de-presentación",
     "title": "Clase 6",
     "section": "Documento de presentación",
-    "text": "Documento de presentación"
+    "text": "Documento de presentación",
+    "crumbs": [
+      "Clases",
+      "06: Clase 6"
+    ]
   },
   {
     "objectID": "content/08-content.html",
@@ -2852,6 +2889,125 @@
     "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   },
   {
+    "objectID": "slides/07-clase7/06-clase6.html#kevin-carrasco",
+    "href": "slides/07-clase7/06-clase6.html#kevin-carrasco",
+    "title": "R para análisis de datos",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#sociología---uah",
+    "href": "slides/07-clase7/06-clase6.html#sociología---uah",
+    "title": "R para análisis de datos",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#er-sem-2025",
+    "href": "slides/07-clase7/06-clase6.html#er-sem-2025",
+    "title": "R para análisis de datos",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#greenr-data-analisis.netlify.com",
+    "href": "slides/07-clase7/06-clase6.html#greenr-data-analisis.netlify.com",
+    "title": "R para análisis de datos",
+    "section": ".green[R-data-analisis.netlify.com]",
+    "text": ".green[R-data-analisis.netlify.com]"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#sesión-6-índices-y-escalas",
+    "href": "slides/07-clase7/06-clase6.html#sesión-6-índices-y-escalas",
+    "title": "R para análisis de datos",
+    "section": "Sesión 6: Índices y escalas",
+    "text": "Sesión 6: Índices y escalas"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
+    "href": "slides/07-clase7/06-clase6.html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
+    "title": "R para análisis de datos",
+    "section": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?",
+    "text": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?\n\nSi ambas varían de manera similar (covarían)"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#correlación-1",
+    "href": "slides/07-clase7/06-clase6.html#correlación-1",
+    "title": "R para análisis de datos",
+    "section": "Correlación",
+    "text": "Correlación\n\nDa cuenta de:\n\nIntesidad: mientras más cercana a |1|, más intensa\nSentido: positiva o negativa\n\n\n\n\nGráficamente se expresa en nubes de puntos"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#qué-es-un-índice",
+    "href": "slides/07-clase7/06-clase6.html#qué-es-un-índice",
+    "title": "R para análisis de datos",
+    "section": "¿Qué es un índice?",
+    "text": "¿Qué es un índice?\n\n\nEs una medida estadística que permite agregar una o más variables de distinta naturaleza para sintetizar la parte esencial de la información contenida en un fenómeno.\nSe utiliza para simplificar y resumir datos complejos en una forma más manejable y comprensible"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#qué-es-un-índice-1",
+    "href": "slides/07-clase7/06-clase6.html#qué-es-un-índice-1",
+    "title": "R para análisis de datos",
+    "section": "¿Qué es un índice?",
+    "text": "¿Qué es un índice?\n\nSuelen tener un punto de referencia (por ejemplo, 100) que representa una línea base o un punto de comparación\n\n\n\nPueden ser índices ponderados (distinto peso en cada dimensión y/o variable) o no ponderados (mismo peso en cada dimensión y/o variable). Depende de si las variables individuales tienen diferente importancia.\nEjemplo: Índice de precios al consumidor; Índice de desarrollo humano"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#qué-es-una-escala",
+    "href": "slides/07-clase7/06-clase6.html#qué-es-una-escala",
+    "title": "R para análisis de datos",
+    "section": "¿Qué es una escala?",
+    "text": "¿Qué es una escala?\n\n\nMedida de una serie de categorías ordenadas que se utilizan para medir o calificar un atributo específico.\nSe construye generalmente combinando las respuestas o puntuaciones de diferentes variables en una sola medida.\nCada variable puede contribuir de forma distinta a la evaluación general de un atributo, pero el objetivo principal sigue siendo medir un atributo en específico."
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#alfa-de-chronbach",
+    "href": "slides/07-clase7/06-clase6.html#alfa-de-chronbach",
+    "title": "R para análisis de datos",
+    "section": "Alfa de Chronbach",
+    "text": "Alfa de Chronbach\n\n\nEstadístico que permite estimar la fiabilidad de una escala por consistencia interna.\nVentajas: Fácil de estimar\nDesventajas:\n\nPuede aumentar artificalmente al incorporar muchos ítems parecidos\nAsume que el constructo es unidimensional\nEs afectado por ítems, número de alternativas de respuesta y la varianza del test"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#alfa-de-chronbach-1",
+    "href": "slides/07-clase7/06-clase6.html#alfa-de-chronbach-1",
+    "title": "R para análisis de datos",
+    "section": "Alfa de Chronbach",
+    "text": "Alfa de Chronbach\n\nPara interpretarlo:\n\nMínimo para investigación básica exploratorio: &gt;.7\nMínimo para investigación asociativa: &gt;.8\nInvestigación con decisiones muy importantes: &gt;.9\n\nA mayor valor, más consistente es la escala:\n\nMínimo a considerar: &gt;0.6"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#kevin-carrasco-1",
+    "href": "slides/07-clase7/06-clase6.html#kevin-carrasco-1",
+    "title": "R para análisis de datos",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#sociología---uah-1",
+    "href": "slides/07-clase7/06-clase6.html#sociología---uah-1",
+    "title": "R para análisis de datos",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#er-sem-2025-1",
+    "href": "slides/07-clase7/06-clase6.html#er-sem-2025-1",
+    "title": "R para análisis de datos",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#greenr-data-analisis.netlify.com-1",
+    "href": "slides/07-clase7/06-clase6.html#greenr-data-analisis.netlify.com-1",
+    "title": "R para análisis de datos",
+    "section": ".green[R-data-analisis.netlify.com]",
+    "text": ".green[R-data-analisis.netlify.com]"
+  },
+  {
+    "objectID": "slides/07-clase7/06-clase6.html#sesión-6-índices-y-escalas-1",
+    "href": "slides/07-clase7/06-clase6.html#sesión-6-índices-y-escalas-1",
+    "title": "R para análisis de datos",
+    "section": "Sesión 6: Índices y escalas",
+    "text": "Sesión 6: Índices y escalas"
+  },
+  {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Programa",
@@ -2906,229 +3062,5 @@
     "title": "Programa",
     "section": "Reglamento Académico del Estudiante de Pregrado.",
     "text": "Reglamento Académico del Estudiante de Pregrado.\nArt. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.\nAsimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.\nArt. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.\n\nPara evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) o MLA (Modern Language Association)."
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#kevin-carrasco",
-    "href": "slides/06-clase6/06-clase6.html#kevin-carrasco",
-    "title": "R para análisis de datos",
-    "section": "Kevin Carrasco",
-    "text": "Kevin Carrasco"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#sociología---uah",
-    "href": "slides/06-clase6/06-clase6.html#sociología---uah",
-    "title": "R para análisis de datos",
-    "section": "Sociología - UAH",
-    "text": "Sociología - UAH"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#er-sem-2025",
-    "href": "slides/06-clase6/06-clase6.html#er-sem-2025",
-    "title": "R para análisis de datos",
-    "section": "1er Sem 2025",
-    "text": "1er Sem 2025"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com",
-    "href": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com",
-    "title": "R para análisis de datos",
-    "section": ".green[R-data-analisis.netlify.com]",
-    "text": ".green[R-data-analisis.netlify.com]"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas",
-    "href": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas",
-    "title": "R para análisis de datos",
-    "section": "Sesión 6: Índices y escalas",
-    "text": "Sesión 6: Índices y escalas"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
-    "href": "slides/06-clase6/06-clase6.html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
-    "title": "R para análisis de datos",
-    "section": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?",
-    "text": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?\n\nSi ambas varían de manera similar (covarían)"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#correlación-1",
-    "href": "slides/06-clase6/06-clase6.html#correlación-1",
-    "title": "R para análisis de datos",
-    "section": "Correlación",
-    "text": "Correlación\n\nDa cuenta de:\n\nIntesidad: mientras más cercana a |1|, más intensa\nSentido: positiva o negativa\n\n\n\n\nGráficamente se expresa en nubes de puntos"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#qué-es-un-índice",
-    "href": "slides/06-clase6/06-clase6.html#qué-es-un-índice",
-    "title": "R para análisis de datos",
-    "section": "¿Qué es un índice?",
-    "text": "¿Qué es un índice?\n\n\nEs una medida estadística que permite agregar una o más variables de distinta naturaleza para sintetizar la parte esencial de la información contenida en un fenómeno.\nSe utiliza para simplificar y resumir datos complejos en una forma más manejable y comprensible"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#qué-es-un-índice-1",
-    "href": "slides/06-clase6/06-clase6.html#qué-es-un-índice-1",
-    "title": "R para análisis de datos",
-    "section": "¿Qué es un índice?",
-    "text": "¿Qué es un índice?\n\nSuelen tener un punto de referencia (por ejemplo, 100) que representa una línea base o un punto de comparación\n\n\n\nPueden ser índices ponderados (distinto peso en cada dimensión y/o variable) o no ponderados (mismo peso en cada dimensión y/o variable). Depende de si las variables individuales tienen diferente importancia.\nEjemplo: Índice de precios al consumidor; Índice de desarrollo humano"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#qué-es-una-escala",
-    "href": "slides/06-clase6/06-clase6.html#qué-es-una-escala",
-    "title": "R para análisis de datos",
-    "section": "¿Qué es una escala?",
-    "text": "¿Qué es una escala?\n\n\nMedida de una serie de categorías ordenadas que se utilizan para medir o calificar un atributo específico.\nSe construye generalmente combinando las respuestas o puntuaciones de diferentes variables en una sola medida.\nCada variable puede contribuir de forma distinta a la evaluación general de un atributo, pero el objetivo principal sigue siendo medir un atributo en específico."
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#alfa-de-chronbach",
-    "href": "slides/06-clase6/06-clase6.html#alfa-de-chronbach",
-    "title": "R para análisis de datos",
-    "section": "Alfa de Chronbach",
-    "text": "Alfa de Chronbach\n\n\nEstadístico que permite estimar la fiabilidad de una escala por consistencia interna.\nVentajas: Fácil de estimar\nDesventajas:\n\nPuede aumentar artificalmente al incorporar muchos ítems parecidos\nAsume que el constructo es unidimensional\nEs afectado por ítems, número de alternativas de respuesta y la varianza del test"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#alfa-de-chronbach-1",
-    "href": "slides/06-clase6/06-clase6.html#alfa-de-chronbach-1",
-    "title": "R para análisis de datos",
-    "section": "Alfa de Chronbach",
-    "text": "Alfa de Chronbach\n\nPara interpretarlo:\n\nMínimo para investigación básica exploratorio: &gt;.7\nMínimo para investigación asociativa: &gt;.8\nInvestigación con decisiones muy importantes: &gt;.9\n\nA mayor valor, más consistente es la escala:\n\nMínimo a considerar: &gt;0.6"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#kevin-carrasco-1",
-    "href": "slides/06-clase6/06-clase6.html#kevin-carrasco-1",
-    "title": "R para análisis de datos",
-    "section": "Kevin Carrasco",
-    "text": "Kevin Carrasco"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#sociología---uah-1",
-    "href": "slides/06-clase6/06-clase6.html#sociología---uah-1",
-    "title": "R para análisis de datos",
-    "section": "Sociología - UAH",
-    "text": "Sociología - UAH"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#er-sem-2025-1",
-    "href": "slides/06-clase6/06-clase6.html#er-sem-2025-1",
-    "title": "R para análisis de datos",
-    "section": "1er Sem 2025",
-    "text": "1er Sem 2025"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com-1",
-    "href": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com-1",
-    "title": "R para análisis de datos",
-    "section": ".green[R-data-analisis.netlify.com]",
-    "text": ".green[R-data-analisis.netlify.com]"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas-1",
-    "href": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas-1",
-    "title": "R para análisis de datos",
-    "section": "Sesión 6: Índices y escalas",
-    "text": "Sesión 6: Índices y escalas"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#section",
-    "href": "slides/06-clase6/06-clase6..html#section",
-    "title": "R para Análisis estadístico",
-    "section": "",
-    "text": "R para el análisis de datos\nSesión 6: Inferencia y asociación entre variables\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#protocolo-de-trabajo-reproducible",
-    "href": "slides/06-clase6/06-clase6..html#protocolo-de-trabajo-reproducible",
-    "title": "R para Análisis estadístico",
-    "section": "Protocolo de trabajo reproducible",
-    "text": "Protocolo de trabajo reproducible\n\n\nfuente: lisa-coes.com/ipo-repro"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#tipos-de-análisis-estadístico-bivariado",
-    "href": "slides/06-clase6/06-clase6..html#tipos-de-análisis-estadístico-bivariado",
-    "title": "R para Análisis estadístico",
-    "section": "Tipos de análisis estadístico bivariado",
-    "text": "Tipos de análisis estadístico bivariado\n\nVariable dependiente (y) : lo que quiero explicar\nVariable independiente (x): lo que me permite explicar la dependiente\n\n\n\n\n\n\n\n\n\n\nVariable independiente x\nVariable dependiente Categórica\nVariable dependiente Continua\n\n\n\n\nCategórica\nAnálisis de tabla de Contigencia, Chi2\nAnálisis de Varianza ANOVA, Prueba T\n\n\nContinua\nRegresión Logística\nCorrelación / Regresión Lineal"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#qué-es-la-inferencia-estadística",
-    "href": "slides/06-clase6/06-clase6..html#qué-es-la-inferencia-estadística",
-    "title": "R para Análisis estadístico",
-    "section": "¿Qué es la inferencia estadística?",
-    "text": "¿Qué es la inferencia estadística?"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#inferencia-1",
-    "href": "slides/06-clase6/06-clase6..html#inferencia-1",
-    "title": "R para Análisis estadístico",
-    "section": "Inferencia",
-    "text": "Inferencia\n\n\n\n\n\n\n\nMás que el promedio de la variable de nuestra muestra, en inferencia lo que interesa es estimar en qué medida ese promedio da cuenta del promedio de la población\nSi seleccionamos una muestra aleatoria, sabemos que podría haberse seleccionado otro grupo de personas (que probablemente tendrían un promedio distinto)"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
-    "href": "slides/06-clase6/06-clase6..html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
-    "title": "R para Análisis estadístico",
-    "section": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?",
-    "text": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?\n\nSi ambas varían de manera similar (covarían)"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#correlación-1",
-    "href": "slides/06-clase6/06-clase6..html#correlación-1",
-    "title": "R para Análisis estadístico",
-    "section": "Correlación",
-    "text": "Correlación\n\nDa cuenta de:\n\nIntesidad: mientras más cercana a |1|, más intensa\nSentido: positiva o negativa\n\n\n\n\nGráficamente se expresa en nubes de puntos"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#adivina-la-correlación---httpguessthecorrelation.com",
-    "href": "slides/06-clase6/06-clase6..html#adivina-la-correlación---httpguessthecorrelation.com",
-    "title": "R para Análisis estadístico",
-    "section": "Adivina la correlación - http://guessthecorrelation.com/",
-    "text": "Adivina la correlación - http://guessthecorrelation.com/"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#kevin-carrasco-1",
-    "href": "slides/06-clase6/06-clase6..html#kevin-carrasco-1",
-    "title": "R para Análisis estadístico",
-    "section": "Kevin Carrasco",
-    "text": "Kevin Carrasco"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#sociología---uah-1",
-    "href": "slides/06-clase6/06-clase6..html#sociología---uah-1",
-    "title": "R para Análisis estadístico",
-    "section": "Sociología - UAH",
-    "text": "Sociología - UAH"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#er-sem-2025",
-    "href": "slides/06-clase6/06-clase6..html#er-sem-2025",
-    "title": "R para Análisis estadístico",
-    "section": "1er Sem 2025",
-    "text": "1er Sem 2025"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#greenr-data-analisis.netlify.com",
-    "href": "slides/06-clase6/06-clase6..html#greenr-data-analisis.netlify.com",
-    "title": "R para Análisis estadístico",
-    "section": ".green[R-data-analisis.netlify.com]",
-    "text": ".green[R-data-analisis.netlify.com]"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#sesión-5-asociación-de-variables",
-    "href": "slides/06-clase6/06-clase6..html#sesión-5-asociación-de-variables",
-    "title": "R para Análisis estadístico",
-    "section": "Sesión 5: Asociación de variables",
-    "text": "Sesión 5: Asociación de variables"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#medición-y-operacionalización",
-    "href": "slides/06-clase6/06-clase6..html#medición-y-operacionalización",
-    "title": "R para Análisis estadístico",
-    "section": "Medición y operacionalización",
-    "text": "Medición y operacionalización\n\nOperacionalización = “codificación” de un fenómeno con el fin de hacerlo medible\nHay muchas formas de “codificar” un mismo concepto\n¿Por qué es importante definir operacionalmente los conceptos?"
-  },
-  {
-    "objectID": "slides/06-clase6/06-clase6..html#section-1",
-    "href": "slides/06-clase6/06-clase6..html#section-1",
-    "title": "R para Análisis estadístico",
-    "section": "",
-    "text": "R para el análisis de datos\nSesión 6: Inferencia y asociación entre variables\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   }
 ]
