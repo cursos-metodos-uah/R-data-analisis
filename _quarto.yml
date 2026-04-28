@@ -82,8 +82,8 @@ website:
               file: content/04-content.qmd
             - text: "05: Clase 5"
               file: content/05-content.qmd
-#            - text: "06: Clase 6"
-#              file: content/06-content.qmd
+            - text: "06: Clase 6"
+              file: content/06-content.qmd
 #            - text: "07: Clase 7"
 #              file: content/07-content.qmd
 #            - text: "08: Clase 8"
@@ -111,11 +111,8 @@ website:
               file: practicos/05-content.qmd
             - text: "Taller Github Colaborativo"
               file: practicos/taller-github-collab.qmd              
-#            - text: "Taller Github y Quarto"
-#              file: practicos/taller-github-quarto/taller-quarto-github.qmd
-
-#            - text: "Práctico 6: Inferencia y correlación"
-#              file: practicos/06-content.qmd
+            - text: "Práctico 6: Inferencia y correlación"
+              file: practicos/06-content.qmd
 #            - text: "Práctico 7: Índices y escalas"
 #              file: practicos/07-content.qmd
 #            - text: "Resumen"

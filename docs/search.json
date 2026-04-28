@@ -2906,5 +2906,229 @@
     "title": "Programa",
     "section": "Reglamento Académico del Estudiante de Pregrado.",
     "text": "Reglamento Académico del Estudiante de Pregrado.\nArt. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.\nAsimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.\nArt. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.\n\nPara evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) o MLA (Modern Language Association)."
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#kevin-carrasco",
+    "href": "slides/06-clase6/06-clase6.html#kevin-carrasco",
+    "title": "R para análisis de datos",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#sociología---uah",
+    "href": "slides/06-clase6/06-clase6.html#sociología---uah",
+    "title": "R para análisis de datos",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#er-sem-2025",
+    "href": "slides/06-clase6/06-clase6.html#er-sem-2025",
+    "title": "R para análisis de datos",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com",
+    "href": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com",
+    "title": "R para análisis de datos",
+    "section": ".green[R-data-analisis.netlify.com]",
+    "text": ".green[R-data-analisis.netlify.com]"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas",
+    "href": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas",
+    "title": "R para análisis de datos",
+    "section": "Sesión 6: Índices y escalas",
+    "text": "Sesión 6: Índices y escalas"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
+    "href": "slides/06-clase6/06-clase6.html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
+    "title": "R para análisis de datos",
+    "section": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?",
+    "text": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?\n\nSi ambas varían de manera similar (covarían)"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#correlación-1",
+    "href": "slides/06-clase6/06-clase6.html#correlación-1",
+    "title": "R para análisis de datos",
+    "section": "Correlación",
+    "text": "Correlación\n\nDa cuenta de:\n\nIntesidad: mientras más cercana a |1|, más intensa\nSentido: positiva o negativa\n\n\n\n\nGráficamente se expresa en nubes de puntos"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#qué-es-un-índice",
+    "href": "slides/06-clase6/06-clase6.html#qué-es-un-índice",
+    "title": "R para análisis de datos",
+    "section": "¿Qué es un índice?",
+    "text": "¿Qué es un índice?\n\n\nEs una medida estadística que permite agregar una o más variables de distinta naturaleza para sintetizar la parte esencial de la información contenida en un fenómeno.\nSe utiliza para simplificar y resumir datos complejos en una forma más manejable y comprensible"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#qué-es-un-índice-1",
+    "href": "slides/06-clase6/06-clase6.html#qué-es-un-índice-1",
+    "title": "R para análisis de datos",
+    "section": "¿Qué es un índice?",
+    "text": "¿Qué es un índice?\n\nSuelen tener un punto de referencia (por ejemplo, 100) que representa una línea base o un punto de comparación\n\n\n\nPueden ser índices ponderados (distinto peso en cada dimensión y/o variable) o no ponderados (mismo peso en cada dimensión y/o variable). Depende de si las variables individuales tienen diferente importancia.\nEjemplo: Índice de precios al consumidor; Índice de desarrollo humano"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#qué-es-una-escala",
+    "href": "slides/06-clase6/06-clase6.html#qué-es-una-escala",
+    "title": "R para análisis de datos",
+    "section": "¿Qué es una escala?",
+    "text": "¿Qué es una escala?\n\n\nMedida de una serie de categorías ordenadas que se utilizan para medir o calificar un atributo específico.\nSe construye generalmente combinando las respuestas o puntuaciones de diferentes variables en una sola medida.\nCada variable puede contribuir de forma distinta a la evaluación general de un atributo, pero el objetivo principal sigue siendo medir un atributo en específico."
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#alfa-de-chronbach",
+    "href": "slides/06-clase6/06-clase6.html#alfa-de-chronbach",
+    "title": "R para análisis de datos",
+    "section": "Alfa de Chronbach",
+    "text": "Alfa de Chronbach\n\n\nEstadístico que permite estimar la fiabilidad de una escala por consistencia interna.\nVentajas: Fácil de estimar\nDesventajas:\n\nPuede aumentar artificalmente al incorporar muchos ítems parecidos\nAsume que el constructo es unidimensional\nEs afectado por ítems, número de alternativas de respuesta y la varianza del test"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#alfa-de-chronbach-1",
+    "href": "slides/06-clase6/06-clase6.html#alfa-de-chronbach-1",
+    "title": "R para análisis de datos",
+    "section": "Alfa de Chronbach",
+    "text": "Alfa de Chronbach\n\nPara interpretarlo:\n\nMínimo para investigación básica exploratorio: &gt;.7\nMínimo para investigación asociativa: &gt;.8\nInvestigación con decisiones muy importantes: &gt;.9\n\nA mayor valor, más consistente es la escala:\n\nMínimo a considerar: &gt;0.6"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#kevin-carrasco-1",
+    "href": "slides/06-clase6/06-clase6.html#kevin-carrasco-1",
+    "title": "R para análisis de datos",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#sociología---uah-1",
+    "href": "slides/06-clase6/06-clase6.html#sociología---uah-1",
+    "title": "R para análisis de datos",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#er-sem-2025-1",
+    "href": "slides/06-clase6/06-clase6.html#er-sem-2025-1",
+    "title": "R para análisis de datos",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com-1",
+    "href": "slides/06-clase6/06-clase6.html#greenr-data-analisis.netlify.com-1",
+    "title": "R para análisis de datos",
+    "section": ".green[R-data-analisis.netlify.com]",
+    "text": ".green[R-data-analisis.netlify.com]"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas-1",
+    "href": "slides/06-clase6/06-clase6.html#sesión-6-índices-y-escalas-1",
+    "title": "R para análisis de datos",
+    "section": "Sesión 6: Índices y escalas",
+    "text": "Sesión 6: Índices y escalas"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#section",
+    "href": "slides/06-clase6/06-clase6..html#section",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 6: Inferencia y asociación entre variables\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#protocolo-de-trabajo-reproducible",
+    "href": "slides/06-clase6/06-clase6..html#protocolo-de-trabajo-reproducible",
+    "title": "R para Análisis estadístico",
+    "section": "Protocolo de trabajo reproducible",
+    "text": "Protocolo de trabajo reproducible\n\n\nfuente: lisa-coes.com/ipo-repro"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#tipos-de-análisis-estadístico-bivariado",
+    "href": "slides/06-clase6/06-clase6..html#tipos-de-análisis-estadístico-bivariado",
+    "title": "R para Análisis estadístico",
+    "section": "Tipos de análisis estadístico bivariado",
+    "text": "Tipos de análisis estadístico bivariado\n\nVariable dependiente (y) : lo que quiero explicar\nVariable independiente (x): lo que me permite explicar la dependiente\n\n\n\n\n\n\n\n\n\n\nVariable independiente x\nVariable dependiente Categórica\nVariable dependiente Continua\n\n\n\n\nCategórica\nAnálisis de tabla de Contigencia, Chi2\nAnálisis de Varianza ANOVA, Prueba T\n\n\nContinua\nRegresión Logística\nCorrelación / Regresión Lineal"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#qué-es-la-inferencia-estadística",
+    "href": "slides/06-clase6/06-clase6..html#qué-es-la-inferencia-estadística",
+    "title": "R para Análisis estadístico",
+    "section": "¿Qué es la inferencia estadística?",
+    "text": "¿Qué es la inferencia estadística?"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#inferencia-1",
+    "href": "slides/06-clase6/06-clase6..html#inferencia-1",
+    "title": "R para Análisis estadístico",
+    "section": "Inferencia",
+    "text": "Inferencia\n\n\n\n\n\n\n\nMás que el promedio de la variable de nuestra muestra, en inferencia lo que interesa es estimar en qué medida ese promedio da cuenta del promedio de la población\nSi seleccionamos una muestra aleatoria, sabemos que podría haberse seleccionado otro grupo de personas (que probablemente tendrían un promedio distinto)"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
+    "href": "slides/06-clase6/06-clase6..html#cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable",
+    "title": "R para Análisis estadístico",
+    "section": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?",
+    "text": "¿Cómo puedo saber si una variable se encuentra asociada a otra variable?\n\nSi ambas varían de manera similar (covarían)"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#correlación-1",
+    "href": "slides/06-clase6/06-clase6..html#correlación-1",
+    "title": "R para Análisis estadístico",
+    "section": "Correlación",
+    "text": "Correlación\n\nDa cuenta de:\n\nIntesidad: mientras más cercana a |1|, más intensa\nSentido: positiva o negativa\n\n\n\n\nGráficamente se expresa en nubes de puntos"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#adivina-la-correlación---httpguessthecorrelation.com",
+    "href": "slides/06-clase6/06-clase6..html#adivina-la-correlación---httpguessthecorrelation.com",
+    "title": "R para Análisis estadístico",
+    "section": "Adivina la correlación - http://guessthecorrelation.com/",
+    "text": "Adivina la correlación - http://guessthecorrelation.com/"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#kevin-carrasco-1",
+    "href": "slides/06-clase6/06-clase6..html#kevin-carrasco-1",
+    "title": "R para Análisis estadístico",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#sociología---uah-1",
+    "href": "slides/06-clase6/06-clase6..html#sociología---uah-1",
+    "title": "R para Análisis estadístico",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#er-sem-2025",
+    "href": "slides/06-clase6/06-clase6..html#er-sem-2025",
+    "title": "R para Análisis estadístico",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#greenr-data-analisis.netlify.com",
+    "href": "slides/06-clase6/06-clase6..html#greenr-data-analisis.netlify.com",
+    "title": "R para Análisis estadístico",
+    "section": ".green[R-data-analisis.netlify.com]",
+    "text": ".green[R-data-analisis.netlify.com]"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#sesión-5-asociación-de-variables",
+    "href": "slides/06-clase6/06-clase6..html#sesión-5-asociación-de-variables",
+    "title": "R para Análisis estadístico",
+    "section": "Sesión 5: Asociación de variables",
+    "text": "Sesión 5: Asociación de variables"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#medición-y-operacionalización",
+    "href": "slides/06-clase6/06-clase6..html#medición-y-operacionalización",
+    "title": "R para Análisis estadístico",
+    "section": "Medición y operacionalización",
+    "text": "Medición y operacionalización\n\nOperacionalización = “codificación” de un fenómeno con el fin de hacerlo medible\nHay muchas formas de “codificar” un mismo concepto\n¿Por qué es importante definir operacionalmente los conceptos?"
+  },
+  {
+    "objectID": "slides/06-clase6/06-clase6..html#section-1",
+    "href": "slides/06-clase6/06-clase6..html#section-1",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 6: Inferencia y asociación entre variables\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   }
 ]

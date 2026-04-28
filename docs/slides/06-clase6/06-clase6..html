@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-cc08ae45b4772acf65a273c00aefcc82.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -122,11 +122,11 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="R para análisis de datos – R para Análisis estadístico">
+<meta property="og:title" content="R para análisis de datos">
 <meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta property="og:site_name" content="R para Análisis estadístico">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="R para análisis de datos – R para Análisis estadístico">
+<meta name="twitter:title" content="R para análisis de datos">
 <meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
@@ -135,130 +135,114 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">R para análisis de datos</h1>
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Kevin Carrasco 
+<section id="section" class="slide level2" data-background-color="black">
+<h2></h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
 </div>
-</div>
-</div>
-
-  <p class="date">Invalid Date</p>
+</div><div class="column" style="width:80%;">
+<section id="r-para-el-análisis-de-datos" class="rojo">
+<h3>R para el análisis de datos</h3>
+<p><strong>Sesión 6</strong>: Inferencia y asociación entre variables</p>
+</section>
+<hr>
+<h3 id="kevin-carrasco"><strong>Kevin Carrasco</strong></h3>
+<h3 id="sociología---uah">Sociología - UAH</h3>
+<h3 id="er-sem-2026">1er Sem 2026</h3>
+<h3 id="r-data-analisis.netlify.com"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
+</div></div>
 </section>
 <section class="slide level2">
 
-<style>
-.reveal .red { color: #d62728; }
-.reveal .yellow { color: #ffd166; }
-.reveal .green { color: #2ca25f; }
-.reveal .small { font-size: 0.75em; }
-.reveal .font50 { font-size: 0.50em; }
-.reveal .center { text-align: center; }
-.reveal .right { text-align: right; }
-.reveal .inverse {
-  background-color: #1f1f1f;
-  color: #ffffff;
-}
-.reveal .inverse h1,
-.reveal .inverse h2,
-.reveal .inverse h3,
-.reveal .inverse h4,
-.reveal .inverse a { color: #ffffff; }
-.reveal .front {
-  background-color: #1f1f1f;
-  color: #ffffff;
-}
-.reveal .front h1,
-.reveal .front h2,
-.reveal .front h3,
-.reveal .front h4,
-.reveal .front a { color: #ffffff; }
-.reveal .bottom {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.reveal .middle {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-}
-.reveal .pull-left,
-.reveal .pull-left-narrow {
-  float: left;
-  width: 45%;
-}
-.reveal .pull-right,
-.reveal .pull-right-wide {
-  float: right;
-  width: 50%;
-}
-.reveal .pull-left-narrow { width: 30%; }
-.reveal .pull-right-wide { width: 65%; }
-.reveal section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.reveal blockquote {
-  width: 90%;
-}
-</style>
+<h3 id="medición-y-operacionalización">Medición y operacionalización</h3>
+<ul>
+<li><p>Operacionalización = “codificación” de un fenómeno con el fin de hacerlo <strong>medible</strong></p></li>
+<li><p>Hay muchas formas de “codificar” un mismo concepto</p></li>
+<li><p>¿Por qué es importante definir operacionalmente los conceptos?</p></li>
+</ul>
 </section>
-<section id="section" class="slide level2 front">
-<h2></h2>
+<section class="slide level2">
+
+<h3 id="tipos-de-análisis-estadístico-bivariado">Tipos de análisis estadístico bivariado</h3>
+<ul>
+<li><p>Variable dependiente (y) : lo que quiero explicar</p></li>
+<li><p>Variable independiente (x): lo que me permite explicar la dependiente</p></li>
+</ul>
+<div class="small">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 36%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable independiente x</th>
+<th>Variable dependiente Categórica</th>
+<th>Variable dependiente Continua</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Categórica</td>
+<td>Análisis de tabla de Contigencia, Chi2</td>
+<td>Análisis de Varianza ANOVA, Prueba T</td>
+</tr>
+<tr class="even">
+<td>Continua</td>
+<td>Regresión Logística</td>
+<td>Correlación / Regresión Lineal</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
-<div class="columns">
-<div class="column" style="width:50%;">
 <section>
-<section id="r-para-el-análisis-de-datos" class="title-slide slide level1 center">
-<h1>R para el análisis de datos</h1>
+<section id="qué-es-la-inferencia-estadística" class="title-slide slide level1 center" data-background-color="black">
+<h1>¿Qué es la inferencia estadística?</h1>
 
 </section>
-<section id="kevin-carrasco" class="slide level2">
-<h2><strong>Kevin Carrasco</strong></h2>
+<section class="slide level2">
+
+<h3 id="inferencia">Inferencia</h3>
+<ul>
+<li class="fragment"><p>La <strong>inferencia</strong> en estadística se refiere a la relación que existe entre los resultados obtenidos basados en nuestra muestra y la población</p></li>
+<li class="fragment"><p>¿En qué medida podemos hacer inferencias desde nuestra muestra a la población?</p></li>
+<li class="fragment"><p>Lo central es el concepto de probabilidad de <strong>error</strong></p></li>
+</ul>
 </section>
-<section id="sociología---uah" class="slide level2">
-<h2>Sociología - UAH</h2>
-</section>
-<section id="er-sem-2025" class="slide level2">
-<h2>1er Sem 2025</h2>
-</section>
-<section id="greenr-data-analisis.netlify.com" class="slide level2">
-<h2><a href="https://R-data-analisis.netlify.com">.green[R-data-analisis.netlify.com]</a></h2>
-</section></section>
-</div><div class="column" style="width:50%;">
-<p><br></p>
-<section id="sesión-6-índices-y-escalas" class="slide level2">
-<h2><span class="yellow">Sesión 6: Índices y escalas</span></h2>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-right" style="width:70.0%"></p>
-</figure>
+<section class="slide level2">
+
+<h3 id="inferencia-1">Inferencia</h3>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="center">
+<p><img data-src="inference1.png" style="width:75.0%"></p>
 </div>
+</div><div class="column" style="width:65%;">
+<ul>
+<li><p>Más que el promedio de la variable de nuestra <em>muestra</em>, en inferencia lo que interesa es estimar en qué medida ese promedio da cuenta del promedio de la <em>población</em></p></li>
+<li><p>Si seleccionamos una muestra aleatoria, sabemos que podría haberse seleccionado otro grupo de personas (que probablemente tendrían un promedio distinto)</p></li>
+</ul>
+</div></div>
 </section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:35%;">
+<h3 id="distribución-y-curva-normal">Distribución y curva normal</h3>
+</div><div class="column" style="width:65%;">
+<div class="center">
+<p><img data-src="image3.png" style="width:100.0%"></p>
 </div>
-</div>
-<section id="section-1" class="slide level2 inverse bottom right">
-<h2></h2>
+</div></div>
 </section>
-<section>
-<section id="sesión-6" class="title-slide slide level1 center">
-<h1><span class="red">Sesión 6</span></h1>
-<p><br></p>
-<p><span class="yellow">Repaso sesión anterior</span></p>
-<p>Índices</p>
-<p>Escalas</p>
-<p><br> <br> <br> <br></p>
-</section>
-<section id="section-2" class="slide level2 inverse center">
-<h2></h2>
-<p><br></p>
-</section>
-<section id="cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable" class="slide level2">
+<section id="cómo-puedo-saber-si-una-variable-se-encuentra-asociada-a-otra-variable" class="slide level2" data-background-color="black">
 <h2>¿Cómo puedo saber si una variable se encuentra asociada a otra variable?</h2>
 <div class="fragment">
 <h3 id="si-ambas-varían-de-manera-similar-covarían">Si ambas varían de manera <strong>similar</strong> (covarían)</h3>
@@ -266,35 +250,24 @@ Kevin Carrasco
 </section>
 <section class="slide level2">
 
-</section></section>
-<section>
-<section id="asociación-covarianza-correlación" class="title-slide slide level1 center">
-<h1>Asociación: covarianza / correlación</h1>
+<h3 id="asociación-covarianza-correlación">Asociación: covarianza / correlación</h3>
 <div class="columns">
-<div class="column" style="width:45%;">
+<div class="column" style="width:50%;">
 <p><em>¿Se relaciona la variación de una variable, con la variación de otra variable?</em></p>
-</div><div class="column" style="width:55%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../files/img/ingresoeduc.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
+</div><div class="column" style="width:50%;">
+<div class="center">
+<p><img data-src="../../files/img/ingresoeduc.png" style="width:100.0%"></p>
 </div>
 </div></div>
 </section>
 <section class="slide level2">
 
-</section></section>
-<section>
-<section id="correlación" class="title-slide slide level1 center">
-<h1>Correlación</h1>
+<h3 id="correlación">Correlación</h3>
 <ul>
 <li>Medida de co-variación lineal estandarizada</li>
 </ul>
 <div class="fragment">
-<p><br> <br></p>
-<div class="center">
 <p>¿En qué rango varía una correlación?</p>
-</div>
 </div>
 <div class="fragment">
 <ul>
@@ -302,8 +275,9 @@ Kevin Carrasco
 </ul>
 </div>
 </section>
-<section id="correlación-1" class="slide level2">
-<h2>Correlación</h2>
+<section class="slide level2">
+
+<h3 id="correlación-1">Correlación</h3>
 <ul>
 <li><p>Da cuenta de:</p>
 <ul>
@@ -319,182 +293,45 @@ Kevin Carrasco
 </section>
 <section class="slide level2">
 
-
-<img data-src="../../files/img/correlacion2.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
-<section id="section-3" class="slide level2 inverse bottom right">
-<h2></h2>
-</section></section>
-<section>
-<section id="sesión-6-1" class="title-slide slide level1 center">
-<h1><span class="red">Sesión 6</span></h1>
-<p><br></p>
-<p>Repaso sesión anterior</p>
-<p><span class="yellow">Índices</span></p>
-<p>Escalas</p>
-<p><br> <br> <br> <br></p>
-</section>
-<section id="qué-es-un-índice" class="slide level2">
-<h2>¿Qué es un índice?</h2>
-<div class="fragment">
-<ul>
-<li><p>Es una medida estadística que permite agregar una o más variables de <strong>distinta</strong> naturaleza para sintetizar la parte esencial de la información contenida en un fenómeno.</p></li>
-<li><p>Se utiliza para simplificar y resumir datos complejos en una forma más manejable y comprensible</p></li>
-</ul>
-</div>
-</section>
-<section id="qué-es-un-índice-1" class="slide level2">
-<h2>¿Qué es un índice?</h2>
-<ul>
-<li>Suelen tener un punto de referencia (por ejemplo, 100) que representa una línea base o un punto de comparación</li>
-</ul>
-<div class="fragment">
-<ul>
-<li><p>Pueden ser índices ponderados (distinto <em>peso</em> en cada dimensión y/o variable) o no ponderados (mismo <em>peso</em> en cada dimensión y/o variable). Depende de si las variables individuales tienen diferente importancia.</p></li>
-<li><p>Ejemplo: Índice de precios al consumidor; Índice de desarrollo humano</p></li>
-</ul>
+<div class="center">
+<p><img data-src="../../files/img/correlacion2.png" style="width:80.0%"></p>
 </div>
 </section>
 <section class="slide level2">
 
-<div class="columns">
-<div class="column" style="width:30%;">
-<h3 id="ejemplo-índice-no-ponderado">Ejemplo índice no ponderado</h3>
-</div><div class="column" style="width:70%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../files/img/casen2009.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:30%;">
-<h3 id="ejemplo-índice-ponderado">Ejemplo índice ponderado</h3>
-</div><div class="column" style="width:70%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../files/img/casen2016.png" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
-</figure>
-</div>
-</div></div>
-</section>
-<section id="section-4" class="slide level2 inverse bottom right">
-<h2></h2>
+<p><br> <br></p>
 </section></section>
 <section>
-<section id="sesión-6-2" class="title-slide slide level1 center">
-<h1><span class="red">Sesión 6</span></h1>
-<p><br></p>
-<p>Repaso sesión anterior</p>
-<p>Índices</p>
-<p><span class="yellow">Escalas</span></p>
-<p><br> <br> <br> <br></p>
-</section>
-<section id="qué-es-una-escala" class="slide level2">
-<h2>¿Qué es una escala?</h2>
-<div class="fragment">
-<ul>
-<li><p>Medida de una serie de categorías ordenadas que se utilizan para medir o calificar un atributo específico.</p></li>
-<li><p>Se construye generalmente combinando las respuestas o puntuaciones de diferentes variables en una sola medida.</p></li>
-<li><p>Cada variable puede contribuir de forma distinta a la evaluación general de un atributo, pero el objetivo principal sigue siendo medir un atributo en específico.</p></li>
-</ul>
-</div>
-</section>
-<section class="slide level2">
+<section id="adivina-la-correlación---httpguessthecorrelation.com" class="title-slide slide level1 center">
+<h1>Adivina la correlación - <a href="http://guessthecorrelation.com/">http://guessthecorrelation.com/</a></h1>
 
-<div class="columns">
-<div class="column" style="width:30%;">
-<h3 id="ejemplo-de-escala">Ejemplo de escala</h3>
-</div><div class="column" style="width:70%;">
+</section>
+<section id="section-1" class="slide level2" data-background-color="black">
+<h2></h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../files/img/operacionalizacion2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
+</div><div class="column" style="width:80%;">
+<section id="r-para-el-análisis-de-datos-1" class="rojo">
+<h3>R para el análisis de datos</h3>
+<p><strong>Sesión 6</strong>: Inferencia y asociación entre variables</p>
+</section>
+<hr>
+<h3 id="kevin-carrasco-1"><strong>Kevin Carrasco</strong></h3>
+<h3 id="sociología---uah-1">Sociología - UAH</h3>
+<h3 id="er-sem-2026-1">1er Sem 2026</h3>
+<h3 id="r-data-analisis.netlify.com-1"><a href="https://R-data-analisis.netlify.com">R-data-analisis.netlify.com</a></h3>
 </div></div>
-</section>
-<section id="alfa-de-chronbach" class="slide level2">
-<h2>Alfa de Chronbach</h2>
-<div class="fragment">
-<ul>
-<li><p>Estadístico que permite estimar la <strong>fiabilidad</strong> de una escala por <strong>consistencia interna</strong>.</p></li>
-<li><p>Ventajas: Fácil de estimar</p></li>
-<li><p>Desventajas:</p>
-<ul>
-<li>Puede aumentar artificalmente al incorporar muchos ítems parecidos</li>
-<li>Asume que el constructo es unidimensional</li>
-<li>Es afectado por ítems, número de alternativas de respuesta y la varianza del test</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="alfa-de-chronbach-1" class="slide level2">
-<h2>Alfa de Chronbach</h2>
-<ul>
-<li><p>Para interpretarlo:</p>
-<ul>
-<li>Mínimo para investigación básica exploratorio: &gt;.7</li>
-<li>Mínimo para investigación asociativa: &gt;.8</li>
-<li>Investigación con decisiones muy importantes: &gt;.9</li>
-</ul></li>
-<li><p>A mayor valor, más consistente es la escala:</p>
-<ul>
-<li>Mínimo a considerar: &gt;0.6</li>
-</ul></li>
-</ul>
-</section>
-<section id="section-5" class="slide level2 inverse">
-<h2></h2>
-</section></section>
-<section>
-<section id="resumen" class="title-slide slide level1 center">
-<h1>RESUMEN</h1>
-<ul>
-<li><p>Correlación de Pearson</p></li>
-<li><p>Índices</p></li>
-<li><p>Escalas</p></li>
-</ul>
-</section>
-<section id="section-6" class="slide level2 front">
-<h2></h2>
-</section></section>
-<div class="columns">
-<div class="column" style="width:50%;">
-<section>
-<section id="r-para-el-análisis-de-datos-1" class="title-slide slide level1 center">
-<h1>R para el análisis de datos</h1>
-
-</section>
-<section id="kevin-carrasco-1" class="slide level2">
-<h2><strong>Kevin Carrasco</strong></h2>
-</section>
-<section id="sociología---uah-1" class="slide level2">
-<h2>Sociología - UAH</h2>
-</section>
-<section id="er-sem-2025-1" class="slide level2">
-<h2>1er Sem 2025</h2>
-</section>
-<section id="greenr-data-analisis.netlify.com-1" class="slide level2">
-<h2><a href="https://R-data-analisis.netlify.com">.green[R-data-analisis.netlify.com]</a></h2>
-</section></section>
-</div><div class="column" style="width:50%;">
-<p><br></p>
-<section id="sesión-6-índices-y-escalas-1" class="slide level2">
-<h2><span class="yellow">Sesión 6: Índices y escalas</span></h2>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="../../files/img/eval-hires.png" class="quarto-figure quarto-figure-right" style="width:70.0%"></p>
-</figure>
-</div>
-</section>
-</div>
-</div>
 
 
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/icon-512.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
 </div>
@@ -521,7 +358,7 @@ Kevin Carrasco
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': false,
+'controlsAuto': true,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -532,7 +369,7 @@ Kevin Carrasco
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: true,
+        controls: false,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -617,7 +454,7 @@ Kevin Carrasco
         showNotes: false,
 
         // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
+        autoPlayMedia: true,
 
         // Global override for preloading lazy-loaded iframes (null/true/false)
         preloadIframes: null,
@@ -654,7 +491,7 @@ Kevin Carrasco
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -674,9 +511,9 @@ Kevin Carrasco
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1280,
+        width: 1050,
 
-        height: 720,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

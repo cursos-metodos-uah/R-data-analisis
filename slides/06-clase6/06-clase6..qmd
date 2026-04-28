@@ -1,0 +1,229 @@
+---
+pagetitle: R para análisis de datos
+author: Kevin Carrasco
+#bibliography: ../../input/bib/merit-edjust.bib 
+#csl: ../../input/bib/apa7-singlespace.csl
+
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+      
+format: 
+  revealjs:
+    logo: images/icon-512.png
+    slide-number: true
+    theme: presentaciones
+    navigationMode: linear
+    transition: fade    
+    title-slide-attributes:
+      visibility: false
+#      data-background-image: images/portada.jpg
+#      data-background-size: cover
+    auto-play-media: true
+
+
+editor:
+  render-on-save: true
+---
+
+
+```{r setup}
+#| include: false
+require("knitr")
+options(htmltools.dir.version = FALSE)
+pacman::p_load(RefManageR, flipbookr, tidyverse)
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  cache = FALSE
+)
+```
+
+##  {data-background-color="black"}
+
+::: {.columns .v-center-container}
+::: {.column width="20%"}
+![](../../files/img/eval-hires.png){width="100%" fig-align="center"}
+:::
+
+::: {.column width="80%"}
+::: rojo
+### R para el análisis de datos
+**Sesión 6**: Inferencia y asociación entre variables
+:::
+
+------------------------------------------------------------------------
+
+### **Kevin Carrasco**
+### Sociología - UAH
+### 1er Sem 2026 
+### [R-data-analisis.netlify.com](https://R-data-analisis.netlify.com)
+:::
+:::
+
+---
+
+### Medición y operacionalización
+
+- Operacionalización = "codificación" de un fenómeno con el fin de hacerlo **medible**
+
+- Hay muchas formas de "codificar" un mismo concepto
+
+- ¿Por qué es importante definir operacionalmente los conceptos?
+
+---
+
+
+### Tipos de análisis estadístico bivariado
+
+- Variable dependiente (y) : lo que quiero explicar
+
+- Variable independiente (x): lo que me permite explicar la dependiente
+
+::: {.small}
+| Variable independiente x | Variable dependiente Categórica | Variable dependiente Continua |
+|--------------------------|---------------------------------|-------------------------------|
+| Categórica | Análisis de tabla de Contigencia, Chi2 | Análisis de Varianza ANOVA, Prueba T |
+| Continua | Regresión Logística | Correlación / Regresión Lineal |
+:::
+
+# ¿Qué es la inferencia estadística? {data-background-color="black"}
+
+---
+
+### Inferencia  
+
+::: {.incremental}
+
+- La **inferencia** en estadística se refiere a la relación que existe entre los resultados obtenidos basados en nuestra muestra y la población
+
+- ¿En qué medida podemos hacer inferencias desde nuestra muestra a la población?
+
+- Lo central es el concepto de probabilidad de **error**
+
+:::
+
+---
+
+### Inferencia
+
+:::: {.columns}
+::: {.column width="35%"}
+::: {.center}
+![](inference1.png){width="75%"}
+:::
+:::
+
+::: {.column width="65%"}
+- Más que el promedio de la variable de nuestra *muestra*, en inferencia lo que interesa es estimar en qué medida ese promedio da cuenta del promedio de la *población*
+
+- Si seleccionamos una muestra aleatoria, sabemos que podría haberse seleccionado otro grupo de personas (que probablemente tendrían un promedio distinto)
+:::
+::::
+
+---
+
+:::: {.columns}
+::: {.column width="35%"}
+### Distribución y curva normal
+:::
+
+::: {.column width="65%"}
+::: {.center}
+![](image3.png){width="100%"}
+:::
+:::
+::::
+
+
+---
+
+# ¿Cómo puedo saber si una variable se encuentra asociada a otra variable?  {data-background-color="black"}
+
+
+::: {.fragment}
+### Si ambas varían de manera **similar** (covarían)
+:::
+
+---
+
+### Asociación: covarianza / correlación
+
+:::: {.columns}
+::: {.column width="50%"}
+_¿Se relaciona la variación de una variable, con la variación de otra variable?_
+:::
+
+::: {.column width="50%"}
+::: {.center}
+![](../../files/img/ingresoeduc.png){width="100%"}
+:::
+:::
+::::
+
+---
+
+### Correlación
+
+- Medida de co-variación lineal estandarizada
+
+::: {.fragment}
+
+
+¿En qué rango varía una correlación?
+
+:::
+
+::: {.fragment}
+- Varía entre -1 y +1
+:::
+
+---
+
+### Correlación
+
+- Da cuenta de:
+
+  - *Intesidad*: mientras más cercana a |1|, más intensa
+  - *Sentido*: positiva o negativa
+
+::: {.fragment}
+- Gráficamente se expresa en *nubes de puntos*
+:::
+
+---
+
+::: {.center}
+![](../../files/img/correlacion2.png){width="80%"}
+:::
+
+
+# Adivina la correlación - [http://guessthecorrelation.com/](http://guessthecorrelation.com/)
+
+---
+
+##  {data-background-color="black"}
+
+::: {.columns .v-center-container}
+::: {.column width="20%"}
+![](../../files/img/eval-hires.png){width="100%" fig-align="center"}
+:::
+
+::: {.column width="80%"}
+::: rojo
+### R para el análisis de datos
+**Sesión 6**: Inferencia y asociación entre variables
+:::
+
+------------------------------------------------------------------------
+
+### **Kevin Carrasco**
+### Sociología - UAH
+### 1er Sem 2026 
+### [R-data-analisis.netlify.com](https://R-data-analisis.netlify.com)
+:::
+:::

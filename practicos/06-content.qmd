@@ -2,7 +2,7 @@
 title: "Práctico 6. Asociación de variables"
 subtitle: "R data analisis"
 linktitle: "Práctico 6: Asociación"
-date: "2025-04-22"
+date: "2026-04-28"
 lang: es
 ---
 
