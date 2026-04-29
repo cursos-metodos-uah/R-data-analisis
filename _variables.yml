@@ -4,9 +4,9 @@ instructor:
   name: Kevin Carrasco
   name_no_title: Kevin Carrasco
   email: kevin.carrasco@uchile.cl
-  url: "https://coes.cl/integrantes/kevin-carrasco-quintanilla/"
+  url: "https://kevin-carrasco.github.io/"
   twitter: kevincarrascoq1
- # github: andrewheiss
+  github: kevin-carrasco
 #  office: "Departamento de Sociología N° 319"
   contact_policy: >-
     A través de correo
@@ -17,7 +17,7 @@ course:
   semester: "Primer semestre 2026"
   days: "Martes"
   time: "16:15 a 17:20 y 17:30 a 18:50"
-  location: "Sala E62"
+  location: "Sala E66"
   dates: "Marzo 10 - Junio 30 2026"
   github: "https://github.com/cursos-metodos-uah/R-data-analisis"
   url: "https://R-Data-Analisis.netlify.app"
