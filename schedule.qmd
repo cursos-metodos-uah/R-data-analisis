@@ -26,9 +26,9 @@ Los tres componentes centrales del curso son las clases teóricas, los práctico
 | Martes 28   | Unidad 3: Asociación de variables en R                       | Práctico 06     |                                                      |
 | <font color="orange"> **Mayo** </font>  |                         |                    |                                                            |
 | Martes 05   | Unidad 3: Indices y escalas                                  | Práctico 07     |                                                      |
-| Martes 12   | Sesión de apoyo Tarea N°3                                    |                 |  Tarea 3 (18/05)                                     |
-| Martes 19   | Unidad 4: Regresión lineal                            | Práctico 08     | [Modelos de regresión](https://editorial.unrn.edu.ar/media/data/lecturas/garibaldi_lenguajeR_eunrn.pdf) [Regresión múltiple](https://matematicas.unex.es/~jmf/Archivos/ANALISIS_MULTIVARIANTE.pdf)                                                    |
-| Martes 26   | *Semana de receso*                                           |                 |                                                      |
+| Martes 12   | Sesión de apoyo Tarea N°3                                    |                 |  Tarea 3 (25/05)                                     |
+| Martes 19   | *Semana de receso*                                           |                 |                                                      |
+| Martes 26   | Unidad 4: Regresión lineal                            | Práctico 08     | [Modelos de regresión](https://editorial.unrn.edu.ar/media/data/lecturas/garibaldi_lenguajeR_eunrn.pdf) [Regresión múltiple](https://matematicas.unex.es/~jmf/Archivos/ANALISIS_MULTIVARIANTE.pdf)                                                    |
 | <font color="orange"> **Junio** </font> |                         |                    |                                                            |
 | Martes 02   | Unidad 4: Regresión logística                                | Práctico 09     | [Regresión logística](https://www.academia.edu/33318024/Regresi%C3%B3n_Log%C3%ADstica_Fundamentos_y_aplicaci%C3%B3n_a_la_investigaci%C3%B3n_sociol%C3%B3gica_An%C3%A1lisis_Multivariante)                                                     |
 | Martes 09   | Sesión de apoyo Tarea N°4                                    |                 |  Tarea 4 (15/06)                                     |
