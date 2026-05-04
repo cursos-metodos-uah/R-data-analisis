@@ -1,153 +1,75 @@
 ---
-title: "R para análisis de datos"
-author: "Kevin Carrasco"
-date: "1er Sem 2026"
-format:
+pagetitle: R para análisis de datos
+author: Kevin Carrasco
+#bibliography: ../../input/bib/merit-edjust.bib 
+#csl: ../../input/bib/apa7-singlespace.csl
+
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+      
+format: 
   revealjs:
-    theme: default
+    logo: images/icon-512.png
     slide-number: true
-    transition: slide
-    center: false
-    controls: true
-    progress: true
-    width: 1280
-    height: 720
-execute:
-  echo: false
-  warning: false
-  message: false
-  cache: false
+    theme: presentaciones
+    navigationMode: linear
+    transition: fade    
+    title-slide-attributes:
+      visibility: false
+#      data-background-image: images/portada.jpg
+#      data-background-size: cover
+    auto-play-media: true
+
+
+editor:
+  render-on-save: true
 ---
 
-<style>
-.reveal .red { color: #d62728; }
-.reveal .yellow { color: #ffd166; }
-.reveal .green { color: #2ca25f; }
-.reveal .small { font-size: 0.75em; }
-.reveal .font50 { font-size: 0.50em; }
-.reveal .center { text-align: center; }
-.reveal .right { text-align: right; }
-.reveal .inverse {
-  background-color: #1f1f1f;
-  color: #ffffff;
-}
-.reveal .inverse h1,
-.reveal .inverse h2,
-.reveal .inverse h3,
-.reveal .inverse h4,
-.reveal .inverse a { color: #ffffff; }
-.reveal .front {
-  background-color: #1f1f1f;
-  color: #ffffff;
-}
-.reveal .front h1,
-.reveal .front h2,
-.reveal .front h3,
-.reveal .front h4,
-.reveal .front a { color: #ffffff; }
-.reveal .bottom {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.reveal .middle {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-}
-.reveal .pull-left,
-.reveal .pull-left-narrow {
-  float: left;
-  width: 45%;
-}
-.reveal .pull-right,
-.reveal .pull-right-wide {
-  float: right;
-  width: 50%;
-}
-.reveal .pull-left-narrow { width: 30%; }
-.reveal .pull-right-wide { width: 65%; }
-.reveal section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.reveal blockquote {
-  width: 90%;
-}
-</style>
 
-```{r}
-#| label: setup
+```{r setup}
 #| include: false
 require("knitr")
 options(htmltools.dir.version = FALSE)
-pacman::p_load(RefManageR)
+pacman::p_load(RefManageR, flipbookr, tidyverse)
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   echo = FALSE,
   cache = FALSE
 )
-pacman::p_load(flipbookr, tidyverse)
 ```
 
-## {.front}
+##  {data-background-color="black"}
 
-:::: {.columns}
-::: {.column width="50%"}
-# R para el análisis de datos
-
-## **Kevin Carrasco**
-
-## Sociología - UAH
-
-## 1er Sem 2025
-
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+::: {.columns .v-center-container}
+::: {.column width="20%"}
+![](../../files/img/eval-hires.png){width="100%" fig-align="center"}
 :::
 
-::: {.column width="50%"}
-<br>
-
-## [Sesión 6: Índices y escalas]{.yellow}
-
-![](../../files/img/eval-hires.png){width=70% fig-align="right"}
+::: {.column width="80%"}
+::: rojo
+### R para el análisis de datos
+**Sesión 7**: Índices y escalas
 :::
-::::
 
----
+------------------------------------------------------------------------
 
-## {.inverse .bottom .right}
-
-# [Sesión 6]{.red}
-
-<br>
-
-[Repaso sesión anterior]{.yellow}
-
-Índices
-
-Escalas
-
-<br>
-<br>
-<br>
-<br>
-
----
-
-## {.inverse .center}
-
-<br>
+### **Kevin Carrasco**
+### Sociología - UAH
+### 1er Sem 2026 
+### [R-data-analisis.netlify.com](https://R-data-analisis.netlify.com)
+:::
+:::
 
 ## ¿Cómo puedo saber si una variable se encuentra asociada a otra variable?
 
 ::: {.fragment}
 ### Si ambas varían de manera **similar** (covarían)
 :::
-
----
 
 # Asociación: covarianza / correlación
 
@@ -161,16 +83,11 @@ _¿Se relaciona la variación de una variable, con la variación de otra variabl
 :::
 ::::
 
----
-
-# Correlación
+## Correlación
 
 - Medida de co-variación lineal estandarizada
 
 ::: {.fragment}
-<br>
-<br>
-
 ::: {.center}
 ¿En qué rango varía una correlación?
 :::
@@ -180,14 +97,14 @@ _¿Se relaciona la variación de una variable, con la variación de otra variabl
 - Varía entre -1 y +1
 :::
 
----
-
 ## Correlación
 
 - Da cuenta de:
 
-  - *Intesidad*: mientras más cercana a |1|, más intensa
+::: {.fragment}
+  - *Intensidad*: mientras más cercana a |1|, más intensa
   - *Sentido*: positiva o negativa
+:::
 
 ::: {.fragment}
 - Gráficamente se expresa en *nubes de puntos*
@@ -197,31 +114,17 @@ _¿Se relaciona la variación de una variable, con la variación de otra variabl
 
 ![](../../files/img/correlacion2.png){width=80% fig-align="center"}
 
----
 
-## {.inverse .bottom .right}
-
-# [Sesión 6]{.red}
-
-<br>
-
-Repaso sesión anterior
-
-[Índices]{.yellow}
-
-Escalas
-
-<br>
-<br>
-<br>
-<br>
-
----
+# Índices
 
 ## ¿Qué es un índice?
 
 ::: {.fragment}
 - Es una medida estadística que permite agregar una o más variables de **distinta** naturaleza para sintetizar la parte esencial de la información contenida en un fenómeno.
+
+:::
+
+::: {.fragment}
 
 - Se utiliza para simplificar y resumir datos complejos en una forma más manejable y comprensible
 :::
@@ -230,80 +133,50 @@ Escalas
 
 ## ¿Qué es un índice?
 
+::: {.fragment}
 - Suelen tener un punto de referencia (por ejemplo, 100) que representa una línea base o un punto de comparación
-
+:::
 ::: {.fragment}
 - Pueden ser índices ponderados (distinto *peso* en cada dimensión y/o variable) o no ponderados (mismo *peso* en cada dimensión y/o variable). Depende de si las variables individuales tienen diferente importancia.
-
+:::
+::: {.fragment}
 - Ejemplo: Índice de precios al consumidor; Índice de desarrollo humano
 :::
 
 ---
 
-:::: {.columns}
-::: {.column width="30%"}
 ### Ejemplo índice no ponderado
-:::
 
-::: {.column width="70%"}
+
 ![](../../files/img/casen2009.png){width=100% fig-align="center"}
-:::
-::::
+
 
 ---
 
-:::: {.columns}
-::: {.column width="30%"}
 ### Ejemplo índice ponderado
-:::
 
-::: {.column width="70%"}
 ![](../../files/img/casen2016.png){width=84% fig-align="center"}
-:::
-::::
 
----
-
-## {.inverse .bottom .right}
-
-# [Sesión 6]{.red}
-
-<br>
-
-Repaso sesión anterior
-
-Índices
-
-[Escalas]{.yellow}
-
-<br>
-<br>
-<br>
-<br>
-
----
+# Escalas
 
 ## ¿Qué es una escala?
 
 ::: {.fragment}
 - Medida de una serie de categorías ordenadas que se utilizan para medir o calificar un atributo específico.
-
+:::
+::: {.fragment}
 - Se construye generalmente combinando las respuestas o puntuaciones de diferentes variables en una sola medida.
-
+:::
+::: {.fragment}
 - Cada variable puede contribuir de forma distinta a la evaluación general de un atributo, pero el objetivo principal sigue siendo medir un atributo en específico.
 :::
 
 ---
 
-:::: {.columns}
-::: {.column width="30%"}
 ### Ejemplo de escala
-:::
 
-::: {.column width="70%"}
 ![](../../files/img/operacionalizacion2.png){width=100% fig-align="center"}
-:::
-::::
+
 
 ---
 
@@ -311,9 +184,11 @@ Repaso sesión anterior
 
 ::: {.fragment}
 - Estadístico que permite estimar la **fiabilidad** de una escala por **consistencia interna**.
-
+:::
+::: {.fragment}
 - Ventajas: Fácil de estimar
-
+:::
+::: {.fragment}
 - Desventajas:
   - Puede aumentar artificalmente al incorporar muchos ítems parecidos
   - Asume que el constructo es unidimensional
@@ -326,48 +201,38 @@ Repaso sesión anterior
 
 - Para interpretarlo:
 
+::: {.fragment}
   - Mínimo para investigación básica exploratorio: >.7
   - Mínimo para investigación asociativa: >.8
   - Investigación con decisiones muy importantes: >.9
+:::
 
+::: {.fragment}
 - A mayor valor, más consistente es la escala:
 
   - Mínimo a considerar: >0.6
+:::
 
 ---
 
-## {.inverse}
+##  {data-background-color="black"}
 
-# RESUMEN
-
-- Correlación de Pearson
-
-- Índices
-
-- Escalas
-
----
-
-## {.front}
-
-:::: {.columns}
-::: {.column width="50%"}
-# R para el análisis de datos
-
-## **Kevin Carrasco**
-
-## Sociología - UAH
-
-## 1er Sem 2025
-
-## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
+::: {.columns .v-center-container}
+::: {.column width="20%"}
+![](../../files/img/eval-hires.png){width="100%" fig-align="center"}
 :::
 
-::: {.column width="50%"}
-<br>
-
-## [Sesión 6: Índices y escalas]{.yellow}
-
-![](../../files/img/eval-hires.png){width=70% fig-align="right"}
+::: {.column width="80%"}
+::: rojo
+### R para el análisis de datos
+**Sesión 7**: Índices y escalas
 :::
-::::
+
+------------------------------------------------------------------------
+
+### **Kevin Carrasco**
+### Sociología - UAH
+### 1er Sem 2026 
+### [R-data-analisis.netlify.com](https://R-data-analisis.netlify.com)
+:::
+:::

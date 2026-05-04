@@ -1,6 +1,6 @@
 ---
 title: "Clase 7"
-date: "2025-05-27"
+date: "2026-05-05"
 lang: es
 ---
 
