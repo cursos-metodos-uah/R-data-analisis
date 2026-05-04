@@ -2,13 +2,13 @@
 title: "Trabajo 2. Asociación de variables y construcción de índices"
 subtitle: "R para análisis estadístico"
 linktitle: "Trabajo 3. Asociación de variables"
-date: "2025-05-06"
+date: "2025-05-25"
 lang: es
 ---
 
 ## Objetivos del trabajo
 
-El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 1) del problema de investigación y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
+El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación planteado (trabajo 1) y la visualización e interpretación de la asociación de estas variables. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
 
 
 ## Instrucciones generales
@@ -22,7 +22,7 @@ El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto
 
 Entrega:
 
-- Miércoles 14 de mayo a través de Teams.
+- Lunes 25 de mayo a través de Github pages en Ucampus.
 - No más de 5000 palabras
 - Se deben mantener las referencias de la literatura / bases de datos revisadas
 - atrasos, 0,5 por día de atraso.
@@ -31,9 +31,9 @@ Rúbrica de evaluación:
 
 | Ítem | Objetivo | Puntaje |
 |------|----------|---------|
-|1. Carga y Selección de variables | L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación   | 2pts        |
-|2. Operacionalización de variables   | L-s estudiantes son capaces de operacionalizar correctamente las variables de interés.      |     3pts    |
-|3. Asociación de variables  | L-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico        |   5ptos      |
-|4. Construcción de índices y escalas | L-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna | 5ptos |
-|5. Interpretación de resultados      | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados       |  3pts       |
+|1. Operacionalización de variables   | L-s estudiantes son capaces de operacionalizar correctamente las variables de interés.      |     3pts    |
+|2. Asociación de variables           | L-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico de una matriz de correlaciones       |   5ptos      |
+|3. Construcción de índices y escalas | L-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna | 5ptos |
+|4. Interpretación de resultados      | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados       |  3pts       |
+|5. Correcciones trabajo 2            | L-s estudiantes son capaces de incorporar las correcciones sugeridas en el trabajo 2         | 2pts        |
 | Total|- |18puntos|
