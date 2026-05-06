@@ -1,8 +1,8 @@
 ---
-title: "Trabajo 2. Asociación de variables y construcción de índices"
+title: "Trabajo 3. Asociación de variables y construcción de índices"
 subtitle: "R para análisis estadístico"
 linktitle: "Trabajo 3. Asociación de variables"
-date: "2025-05-25"
+date: "2026-05-25"
 lang: es
 ---
 
