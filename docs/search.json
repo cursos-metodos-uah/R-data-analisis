@@ -3016,5 +3016,264 @@
     "title": "Programa",
     "section": "Reglamento Académico del Estudiante de Pregrado.",
     "text": "Reglamento Académico del Estudiante de Pregrado.\nArt. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.\nAsimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.\nArt. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.\n\nPara evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) o MLA (Modern Language Association)."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#section",
+    "href": "slides/clase-resumen/clase-resumen.html#section",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#este-curso",
+    "href": "slides/clase-resumen/clase-resumen.html#este-curso",
+    "title": "R para Análisis estadístico",
+    "section": "Este curso",
+    "text": "Este curso\n\nUnidad 1: Elementos y herramientas de R\nUnidad 2: Operacionalización y análisis descriptivo de datos\nUnidad 3: Análisis estadístico bivariado en R\nUnidad 4: Regresión lineal y regresión logística"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#evaluación",
+    "href": "slides/clase-resumen/clase-resumen.html#evaluación",
+    "title": "R para Análisis estadístico",
+    "section": "Evaluación",
+    "text": "Evaluación\n\nPara presentarse a examen se requiere una nota promedio igual o superior a 3,5 y un 70% de asistencia al curso. Esta regla solo podrá alterarse en caso de inasistencias por causas serias y justificadas de acuerdo con el criterio de la carrera.\n4 trabajos (15% c/u). En parejas\nPresentación final de investigación (10%)\nExamen Final (30%)\nFoco en reproducibilidad, reporte, visualización y análisis de resultados."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#ciencia-abierta",
+    "href": "slides/clase-resumen/clase-resumen.html#ciencia-abierta",
+    "title": "R para Análisis estadístico",
+    "section": "Ciencia abierta",
+    "text": "Ciencia abierta"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#reproducibilidad",
+    "href": "slides/clase-resumen/clase-resumen.html#reproducibilidad",
+    "title": "R para Análisis estadístico",
+    "section": "Reproducibilidad",
+    "text": "Reproducibilidad\n\nEs la posibilidad de regenerar de manera independiente los resultados usando los materiales originales de una investigación ya publicada.\nEn términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#documentos-en-quarto",
+    "href": "slides/clase-resumen/clase-resumen.html#documentos-en-quarto",
+    "title": "R para Análisis estadístico",
+    "section": "Documentos en Quarto",
+    "text": "Documentos en Quarto"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#qué-es-markdown",
+    "href": "slides/clase-resumen/clase-resumen.html#qué-es-markdown",
+    "title": "R para Análisis estadístico",
+    "section": "¿Qué es markdown?",
+    "text": "¿Qué es markdown?\n\nForma de escritura simple con pocas marcas de formato\nConversión a distintos formatos de salida (html, pdf)\nSoporta encabezados, tablas, imágenes, tablas de contenidos, ecuaciones, links…\nFilosofía: foco en contenido primero, el formato después."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#qué-es-quarto",
+    "href": "slides/clase-resumen/clase-resumen.html#qué-es-quarto",
+    "title": "R para Análisis estadístico",
+    "section": "¿Qué es Quarto?",
+    "text": "¿Qué es Quarto?\n\nQuarto es un sistema moderno de creación de documentos dinámicos, informes, presentaciones, libros, sitios web y más, a partir de archivos de texto plano y por medio del conversor universal de documentos Pandoc.\nEvolución de los sistemas de autoría como Jupyter, R Markdown, todo dentro del mismo documento."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#características-principales",
+    "href": "slides/clase-resumen/clase-resumen.html#características-principales",
+    "title": "R para Análisis estadístico",
+    "section": "Características Principales",
+    "text": "Características Principales\n\nMultiplataforma\nBasado en Markdown\nSoporte para múltiples lenguajes\nMultitud de formatos de salida\nSoporte para publicación científica\nIntegración entornos de desarrollo (RStudio, VSC, etc)\nExtensible"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#características-principales-1",
+    "href": "slides/clase-resumen/clase-resumen.html#características-principales-1",
+    "title": "R para Análisis estadístico",
+    "section": "Características principales",
+    "text": "Características principales\n\nLenguaje que combina código (R) y texto (Markdown): Al igual que RMarkdown (.Rmd), Quarto permite combinar texto plano markdown y código de análisis R.\nProvee una serie de herramientas para generar documentos dinámicos y publicarlos"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#estructura-de-un-documento",
+    "href": "slides/clase-resumen/clase-resumen.html#estructura-de-un-documento",
+    "title": "R para Análisis estadístico",
+    "section": "Estructura de un documento",
+    "text": "Estructura de un documento\n\nArchivo .qmd\nEncabezado YAML:\ntitle: \"Mi documento\"\nauthor: \"Kevin Carrasco\"\ndate: today\nformat: html\nCuerpo:\n\nMarkdown para secciones, énfasis, listas, etc.\nBloques de código\nBibliografía"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#ejemplo",
+    "href": "slides/clase-resumen/clase-resumen.html#ejemplo",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n---\ntitle: \"Tutorial Quarto\"\nauthor: \"Kevin Carrasco\"\ndate: \"2026-03-10\"\nformat: html\nlang: es\ntoc: true\nnumber-sections: true\ntheme: darkly\n---\n\n# Bienvenidos a este tutorial de **Quarto**.\n\nQuarto está especialmente diseñado para elaborar documentos\ncientíficos y técnicos reproducibles\n\n## Este es un subtítulo\n\nAhora vamos a ensayar **negritas** y _cursivas_\n\n### Y un título de tercer orden\n\nY una lista\n\n- con viñetas\n- ...\n- ...\n\nY otra numerada:\n\n1. punto 1\n2. punto 2\n3. ..."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#base-de-escritura-markdown",
+    "href": "slides/clase-resumen/clase-resumen.html#base-de-escritura-markdown",
+    "title": "R para Análisis estadístico",
+    "section": "Base de escritura: Markdown",
+    "text": "Base de escritura: Markdown\n\n\n\nEncabezados: #, ##, ###\nListas:\n\nViñetas: - o *\nNumeradas: 1., 2.\n\nÉnfasis: *cursiva*, **negrita**\nCódigo en línea: `código`\nEnlaces: [texto](url)"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#ejemplo-1",
+    "href": "slides/clase-resumen/clase-resumen.html#ejemplo-1",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n---\ntitle: \"Tutorial Quarto\"\nauthor: \"Kevin Carrasco\"\ndate: \"2026-03-10\"\nformat: html\nlang: es\ntoc: true\nnumber-sections: true\ntheme: darkly\ncss: estilos.css\n---\n\n# Bienvenidos a este tutorial de **Quarto**.\n\nQuarto está especialmente diseñado para elaborar documentos\ncientíficos y técnicos reproducibles\n\n## Este es un subtítulo\n\nAhora vamos a ensayar **negritas** y _cursivas_\n\n### Y un título de tercer orden\n\nY una lista\n\n- con viñetas\n- ...\n- ...\n\nY otra numerada:\n\n1. punto 1\n2. punto 2\n3. ..."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#personalización-visual-del-html",
+    "href": "slides/clase-resumen/clase-resumen.html#personalización-visual-del-html",
+    "title": "R para Análisis estadístico",
+    "section": "Personalización visual del HTML",
+    "text": "Personalización visual del HTML\n\nTemas: cosmo, flatly, lux, darkly, etc.\nOpciones comunes en YAML:\ntoc: true\nnumber-sections: true\ncode-fold: true\ntheme: darkly\nPersonalización con CSS externo:\ncss: estilos.css"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#ejemplo-2",
+    "href": "slides/clase-resumen/clase-resumen.html#ejemplo-2",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n---\ntitle: \"Tutorial Quarto\"\nauthor: \"Kevin Carrasco\"\ndate: \"2026-03-10\"\nformat: html\nlang: es\ntoc: true\nnumber-sections: true\ntheme: darkly\ncss: estilos.css\n---\n\n# Bienvenidos a este tutorial de **Quarto**.\n\nQuarto está especialmente diseñado para elaborar documentos\ncientíficos y técnicos reproducibles\n\n## Este es un subtítulo\n\nAhora vamos a ensayar **negritas** y _cursivas_\n\n### Y un título de tercer orden\n\nY una lista\n\n- con viñetas\n- ...\n- ...\n\nY otra numerada:\n\n1. punto 1\n2. punto 2\n3. ..."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#extensiones",
+    "href": "slides/clase-resumen/clase-resumen.html#extensiones",
+    "title": "R para Análisis estadístico",
+    "section": "Extensiones",
+    "text": "Extensiones\n\nIntegración con R\nReferencias bibliográficas\nRenderizado a pdf, word\nSitios web\nPresentaciones"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#recursos",
+    "href": "slides/clase-resumen/clase-resumen.html#recursos",
+    "title": "R para Análisis estadístico",
+    "section": "Recursos",
+    "text": "Recursos\n\nRecursos para seguir aprendiendo:\nhttps://quarto.org\nCreación de documentos científicos con Quarto\nTutorial Quarto for academics"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#propuesta-protocolo-ipo",
+    "href": "slides/clase-resumen/clase-resumen.html#propuesta-protocolo-ipo",
+    "title": "R para Análisis estadístico",
+    "section": "Propuesta: Protocolo IPO",
+    "text": "Propuesta: Protocolo IPO"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#estructura-ipo",
+    "href": "slides/clase-resumen/clase-resumen.html#estructura-ipo",
+    "title": "R para Análisis estadístico",
+    "section": "Estructura IPO",
+    "text": "Estructura IPO"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#mayores-detalles-y-plantilla-de-carpetas",
+    "href": "slides/clase-resumen/clase-resumen.html#mayores-detalles-y-plantilla-de-carpetas",
+    "title": "R para Análisis estadístico",
+    "section": "Mayores detalles y plantilla de carpetas:",
+    "text": "Mayores detalles y plantilla de carpetas:\n\nhttps://lisacoes.com/ipo-repro/\nhttps://github.com/lisa-coes/ipo"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#carpeta-autocontenida",
+    "href": "slides/clase-resumen/clase-resumen.html#carpeta-autocontenida",
+    "title": "R para Análisis estadístico",
+    "section": "Carpeta autocontenida",
+    "text": "Carpeta autocontenida\n\nproyecto autocontenido: reproducible sin necesidad de archivos externos\nrequisito: establecer directorio de trabajo\n\nposición de referencia de todas las operaciones al interior del proyecto\ntambién llamado directorio raíz"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#directorio-de-trabajo",
+    "href": "slides/clase-resumen/clase-resumen.html#directorio-de-trabajo",
+    "title": "R para Análisis estadístico",
+    "section": "Directorio de trabajo",
+    "text": "Directorio de trabajo\n\nej. forma tradicional en hoja de código R:\n\nsetwd(ruta-a-carpeta-de-proyecto)\nproblemas: hace referencia a ruta local en el computador donde se está trabajando, por lo tanto no es reproducible y se debe evitar\n\nalternativa sugerida en R: RStudio Projects"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#rstudio-projects",
+    "href": "slides/clase-resumen/clase-resumen.html#rstudio-projects",
+    "title": "R para Análisis estadístico",
+    "section": "RStudio Projects",
+    "text": "RStudio Projects\n\nLa funcionalidad Projects de RStudio permite establecer claramente un directorio de trabajo de manera eficiente\nPara ello, genera un archivo de extensión .Rproj en el directorio raiz de la carpeta del proyecto\nLuego se facilita acceder a la carpeta del proyecto en RStudio ejecutando desde el administrador de archivos del computador (file manager) el archivo .Rproj\npara comprobar, ejecutar getwd() y debería dar la ruta hacia la carpeta del proyecto"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#section-1",
+    "href": "slides/clase-resumen/clase-resumen.html#section-1",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Git no es un registro de versiones de archivos específicos, sino de una carpeta completa\nGuarda “fotos” de momentos específicos de la carpeta, y esta foto se saca mediante un commit"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#git",
+    "href": "slides/clase-resumen/clase-resumen.html#git",
+    "title": "R para Análisis estadístico",
+    "section": "Git",
+    "text": "Git\n\n\n\n\n\nes una especie de memoria o registro local que guarda información sobre:\n\nquién hizo un cambio\ncuándo lo hizo\nqué hizo\n\nmantiene la información de todos los cambios en la historia de la carpeta / repositorio local\nse puede sincronizar con un repositorio remoto (ej. Github)"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#gitgithub",
+    "href": "slides/clase-resumen/clase-resumen.html#gitgithub",
+    "title": "R para Análisis estadístico",
+    "section": "Git/github",
+    "text": "Git/github\n\nactualmente, Git / Github posee más de 100 millones de repositorios\nmayor fuente de código en el mundo\nha transitado desde el mundo de desarrollo de software hacia distintos ámbitos de trabajo colaborativo y abierto\nentorno de trabajo que favorece la ciencia abierta"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#section-2",
+    "href": "slides/clase-resumen/clase-resumen.html#section-2",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Git no es un registro de versiones de archivos específicos, sino de una carpeta completa\nGuarda “fotos” de momentos específicos de la carpeta, y esta foto se saca mediante un commit"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#commits",
+    "href": "slides/clase-resumen/clase-resumen.html#commits",
+    "title": "R para Análisis estadístico",
+    "section": "Commits",
+    "text": "Commits\n\nEl commit es el procedimiento fundamental del control de versiones\nGit no registra cualquier cambio que se “guarda”, sino los que se “comprometen” (commit).\nEn un commit\n\nse seleccionan los archivos cuyo cambio se desea registrar (stage)\nse registra lo que se está comprometiendo en el cambio (mensaje de commit)"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#cuándo-hacer-un-commit",
+    "href": "slides/clase-resumen/clase-resumen.html#cuándo-hacer-un-commit",
+    "title": "R para Análisis estadístico",
+    "section": "¿Cuándo hacer un commit?",
+    "text": "¿Cuándo hacer un commit?\n\nsegún conveniencia\nsugerencias:\n\nque sea un momento que requiera registro (momento de foto)\nno para cambios menores\nno esperar muchos cambios distintos que puedan hacer perder el sentido del commit"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#inteligencia-artificial",
+    "href": "slides/clase-resumen/clase-resumen.html#inteligencia-artificial",
+    "title": "R para Análisis estadístico",
+    "section": "Inteligencia artificial",
+    "text": "Inteligencia artificial\n\nSe puede usar inteligencia artificial para generar código, pero es importante revisar y entender el código generado, ya que puede contener errores o no ser óptimo.\nSe recomienda usar inteligencia artificial como una herramienta de apoyo, pero no como un sustituto del aprendizaje y la comprensión de los conceptos fundamentales de R y el análisis de datos.\nSe pueden usar herramientas como ChatGPT, pero es importante ser crítico con las respuestas generadas y verificar su precisión."
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#estructura-de-carpetas",
+    "href": "slides/clase-resumen/clase-resumen.html#estructura-de-carpetas",
+    "title": "R para Análisis estadístico",
+    "section": "Estructura de carpetas",
+    "text": "Estructura de carpetas"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#repositorio",
+    "href": "slides/clase-resumen/clase-resumen.html#repositorio",
+    "title": "R para Análisis estadístico",
+    "section": "Repositorio",
+    "text": "Repositorio"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#github-pages",
+    "href": "slides/clase-resumen/clase-resumen.html#github-pages",
+    "title": "R para Análisis estadístico",
+    "section": "GitHub Pages",
+    "text": "GitHub Pages"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#protocolo-reproducible",
+    "href": "slides/clase-resumen/clase-resumen.html#protocolo-reproducible",
+    "title": "R para Análisis estadístico",
+    "section": "Protocolo reproducible",
+    "text": "Protocolo reproducible"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#section-4",
+    "href": "slides/clase-resumen/clase-resumen.html#section-4",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/clase-resumen/clase-resumen.html#section-3",
+    "href": "slides/clase-resumen/clase-resumen.html#section-3",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   }
 ]
