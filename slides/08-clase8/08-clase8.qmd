@@ -451,6 +451,8 @@ reg3 <-lm(Ingreso~Educacion_rec, data=data)
 
 ### ¿y la interpretación para variables categóricas?
 
+:::: {.columns}
+::: {.column}
 
 ```{r results='asis'}
 texreg::htmlreg(reg3, caption="",
@@ -459,12 +461,15 @@ texreg::htmlreg(reg3, caption="",
                                      "Educación superior"))
 ```
 
-
+:::
+::: {.column}
 ::: {.fragment}
 
 *Las personas que tienen educación media ganan $116mil más en comparación con quienes tienen educación básica, efecto que es estadísticamente significativo (p<0.01)*
 
 :::
+:::
+::::
 
 ---
 
@@ -545,7 +550,8 @@ texreg::htmlreg(reg4, caption="")
 
 ---
 
-
+:::: {.columns}
+::: {.column}
 ```{r}
 plot4 <- ggeffects::ggpredict(reg2, terms="edad") %>%
   ggplot(mapping=aes(x = x, y=predicted)) +
@@ -559,7 +565,8 @@ ggsave(plot4, file="../../files/img/plot4.png")
 
 ![](../../files/img/plot4.png){width=100%}
 
-
+:::
+::: {.column}
 $$\bar{Y}=b_{0}+b_{1}\bar{X}$$
 
 Reemplazando:
@@ -571,6 +578,10 @@ $$\bar{Y}=96.44+b_{1}*6,78$$
 $$\bar{Y}=96,44+40*6,78$$
 $$\bar{Y}=367.64$$
 
+:::
+::::
+
+---
 
 ##  {data-background-color="black"}
 
