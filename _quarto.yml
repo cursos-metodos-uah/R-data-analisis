@@ -88,8 +88,8 @@ website:
               file: content/07-content.qmd
             - text: "Resumen"
               file: content/resumen-content.qmd
-#            - text: "08: Clase 8"
-#              file: content/08-content.qmd
+            - text: "08: Clase 8"
+              file: content/08-content.qmd
 
     - title: "Prácticos"
       style: "docked"

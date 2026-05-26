@@ -2,7 +2,7 @@
 title: "08: Regresión lineal múltiple"
 subtitle: "R data analisis"
 linktitle: "Resumen"
-date: "2025-05-27"
+date: "2026-05-26"
 lang: es
 ---
 
@@ -26,13 +26,7 @@ Cohesión barrial con elsoc 2016. Código de preparación disponible en: [https:
 pacman::p_load(dplyr, car, sjmisc, sjPlot, sjlabelled, stargazer, kableExtra, corrplot, texreg, ggplot2, ggpubr)
 ```
 
-```{r echo=FALSE}
-load("files/elsoc2016_proc.RData")
-```
-
-o desde internet:
-
-```{r eval=FALSE}
+```{r}
 load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/practicos/files/elsoc2016_proc.RData"))
 ```
 
@@ -242,5 +236,53 @@ plot_model(reg8,
                               "Mujer")), #con rev porque automatico los tira en otro orden
             show.legend = FALSE) + # variables dependientes
   theme_bw()
+```
+
+## Cálculo de valores predichos
+
+* Paquete ggeffects de R: últil para estimar Valores predichos a partir de modelos de regresión
+
+* Combinado con ggplot2, se pueden generar gráficos que muestran de modo más intuitivo la relación entre variables
+
+
+```{r}
+ggeffects::ggpredict(reg8, terms = c("sexo")) %>%
+  ggplot(aes(x=x, y=predicted)) +
+  geom_bar(stat="identity", color="grey", fill="grey")+
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width=.1) +
+  labs(title="Sexo", x = "", y = "") +
+  theme_bw() +
+  scale_x_discrete(name = "",
+                     breaks = c(1,2),
+                     labels = c("Hombre", "Mujer"))+
+  scale_y_continuous(limits = c(0,16), 
+                     breaks = seq(0,16, by = 1))
+
+```
+
+
+```{r}
+ggeffects::ggpredict(reg8, terms = c("educacion")) %>%
+  ggplot(aes(x=x, y=predicted)) +
+  geom_bar(stat="identity", color="grey", fill="grey")+
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width=.1) +
+  labs(title="Educación", x = "", y = "") +
+  theme_bw() +
+  scale_x_discrete(name = "",
+                   labels = c("Educación básica", "Educación media", "Educación superior")) +
+  scale_y_continuous(limits = c(0,16), 
+                     breaks = seq(0,16, by = 1))
+```
+
+```{r}
+ggeffects::ggpredict(reg8, terms="edad") %>%
+  ggplot(mapping=aes(x = x, y=predicted)) +
+  labs(title="Edad", x = "", y = "")+
+  theme_bw() +
+  geom_smooth()+
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .2, fill = "black") +
+  scale_x_continuous(breaks = seq(0,100, by = 10))+
+  scale_y_continuous(limits = c(0,16), 
+                     breaks = seq(0,16, by = 1))
 ```
 

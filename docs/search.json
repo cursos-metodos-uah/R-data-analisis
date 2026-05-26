@@ -3227,5 +3227,222 @@
     "title": "Programa",
     "section": "Reglamento Académico del Estudiante de Pregrado.",
     "text": "Reglamento Académico del Estudiante de Pregrado.\nArt. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.\nAsimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.\nArt. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.\n\nPara evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) o MLA (Modern Language Association)."
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#section",
+    "href": "slides/08-clase8/08-clase8.html#section",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 8: Regresión lineal\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#section-1",
+    "href": "slides/08-clase8/08-clase8.html#section-1",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Sesión 8\n\nRegresión lineal\nR2\nInferencia\nValores predichos"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#varianza-explicada",
+    "href": "slides/08-clase8/08-clase8.html#varianza-explicada",
+    "title": "R para Análisis estadístico",
+    "section": "Varianza explicada",
+    "text": "Varianza explicada\n\n¿Qué porcentaje de la varianza de Y logramos explicar con X?\n\n\n\nR2 = Porcentaje de la variación de Y puede ser asociado a la variación de X"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#inferencia-estadística",
+    "href": "slides/08-clase8/08-clase8.html#inferencia-estadística",
+    "title": "R para Análisis estadístico",
+    "section": "Inferencia estadística",
+    "text": "Inferencia estadística\n\n¿Cómo sabemos si \\(b_{1}\\) es estadísticamente significativo?\n\n\n\n¿Nuestros datos se pueden extrapolar a la población?"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#inferencia-estadística-1",
+    "href": "slides/08-clase8/08-clase8.html#inferencia-estadística-1",
+    "title": "R para Análisis estadístico",
+    "section": "Inferencia estadística",
+    "text": "Inferencia estadística\n\nSegún criterios muestrales:\n\nDistribución normal\nDesviación estándar\n\nError estándar"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#parcialización",
+    "href": "slides/08-clase8/08-clase8.html#parcialización",
+    "title": "R para Análisis estadístico",
+    "section": "Parcialización",
+    "text": "Parcialización\n\n\n\n¿y la interpretación para variables categóricas?\n\n\n\n\n\n\n \n\n\nModel 1\n\n\n\n\n\n\nIntercepto\n\n\n233.33***\n\n\n\n\n \n\n\n(23.57)\n\n\n\n\nEducación media\n\n\n116.67*\n\n\n\n\n \n\n\n(37.27)\n\n\n\n\nEducación superior\n\n\n133.33*\n\n\n\n\n \n\n\n(33.33)\n\n\n\n\nR2\n\n\n0.78\n\n\n\n\nAdj. R2\n\n\n0.70\n\n\n\n\nNum. obs.\n\n\n8\n\n\n\n\n\n\n***p &lt; 0.001; **p &lt; 0.01; *p &lt; 0.05\n\n\n\n\n\n\n\n\nLas personas que tienen educación media ganan $116mil más en comparación con quienes tienen educación básica, efecto que es estadísticamente significativo (p&lt;0.01)"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#kevin-carrasco-1",
+    "href": "slides/08-clase8/08-clase8.html#kevin-carrasco-1",
+    "title": "R para Análisis estadístico",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#sociología---uah-1",
+    "href": "slides/08-clase8/08-clase8.html#sociología---uah-1",
+    "title": "R para Análisis estadístico",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#er-sem-2025",
+    "href": "slides/08-clase8/08-clase8.html#er-sem-2025",
+    "title": "R para Análisis estadístico",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#r-data-analisis.netlify.com-1",
+    "href": "slides/08-clase8/08-clase8.html#r-data-analisis.netlify.com-1",
+    "title": "R para Análisis estadístico",
+    "section": "R-data-analisis.netlify.com",
+    "text": "R-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#kevin-carrasco-2",
+    "href": "slides/08-clase8/08-clase8.html#kevin-carrasco-2",
+    "title": "R para Análisis estadístico",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#sociología---uah-2",
+    "href": "slides/08-clase8/08-clase8.html#sociología---uah-2",
+    "title": "R para Análisis estadístico",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#er-sem-2025-1",
+    "href": "slides/08-clase8/08-clase8.html#er-sem-2025-1",
+    "title": "R para Análisis estadístico",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#r-data-analisis.netlify.com-2",
+    "href": "slides/08-clase8/08-clase8.html#r-data-analisis.netlify.com-2",
+    "title": "R para Análisis estadístico",
+    "section": "R-data-analisis.netlify.com",
+    "text": "R-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#qué-es-la-regresión-lineal-3",
+    "href": "slides/08-clase8/08-clase8.html#qué-es-la-regresión-lineal-3",
+    "title": "R para Análisis estadístico",
+    "section": "¿Qué es la regresión lineal?",
+    "text": "¿Qué es la regresión lineal?\n\n\nEs un modelo estadístico que se usa para:\n\nConocer: La relación de una variable dependiente de acuerdo a una/otras independiente(s)\nPredecir: Estimar el valor de una variable dependiente de acuerdo al valor de otras\nInferir: si estas relaciones son estadísticamente significativas"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#qué-es-la-regresión-lineal-4",
+    "href": "slides/08-clase8/08-clase8.html#qué-es-la-regresión-lineal-4",
+    "title": "R para Análisis estadístico",
+    "section": "¿Qué es la regresión lineal?",
+    "text": "¿Qué es la regresión lineal?\n\nDos tipos de regresión:\n\nRegresión lineal simple (una variable independiente)\nRegresión lineal múltiple (más de una variable independiente)"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#varianza-explicada-1",
+    "href": "slides/08-clase8/08-clase8.html#varianza-explicada-1",
+    "title": "R para Análisis estadístico",
+    "section": "Varianza explicada",
+    "text": "Varianza explicada\n\n¿Qué porcentaje de la varianza de Y logramos explicar con X?\n\n\n\nR2 = Porcentaje de la variación de Y puede ser asociado a la variación de X"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#inferencia-estadística-2",
+    "href": "slides/08-clase8/08-clase8.html#inferencia-estadística-2",
+    "title": "R para Análisis estadístico",
+    "section": "Inferencia estadística",
+    "text": "Inferencia estadística\n\n¿Cómo sabemos si \\(b_{1}\\) es estadísticamente significativo?\n\n\n\n¿Nuestros datos se pueden extrapolar a la población?"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#inferencia-estadística-3",
+    "href": "slides/08-clase8/08-clase8.html#inferencia-estadística-3",
+    "title": "R para Análisis estadístico",
+    "section": "Inferencia estadística",
+    "text": "Inferencia estadística\n\nSegún criterios muestrales:\n\nDistribución normal\nDesviación estándar\n\nError estándar"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#parcialización-1",
+    "href": "slides/08-clase8/08-clase8.html#parcialización-1",
+    "title": "R para Análisis estadístico",
+    "section": "Parcialización",
+    "text": "Parcialización"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#graficando",
+    "href": "slides/08-clase8/08-clase8.html#graficando",
+    "title": "R para Análisis estadístico",
+    "section": "Graficando",
+    "text": "Graficando"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#variables-numéricas",
+    "href": "slides/08-clase8/08-clase8.html#variables-numéricas",
+    "title": "R para Análisis estadístico",
+    "section": "Variables numéricas",
+    "text": "Variables numéricas\n\n\n\n\n \n\n\nModel 1\n\n\n\n\n\n\n(Intercept)\n\n\n96.44*\n\n\n\n\n \n\n\n(33.14)\n\n\n\n\nedad\n\n\n6.78***\n\n\n\n\n \n\n\n(0.99)\n\n\n\n\nR2\n\n\n0.89\n\n\n\n\nAdj. R2\n\n\n0.87\n\n\n\n\nNum. obs.\n\n\n8\n\n\n\n\n\n\n***p &lt; 0.001; **p &lt; 0.01; *p &lt; 0.05"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#kevin-carrasco-3",
+    "href": "slides/08-clase8/08-clase8.html#kevin-carrasco-3",
+    "title": "R para Análisis estadístico",
+    "section": "Kevin Carrasco",
+    "text": "Kevin Carrasco"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#sociología---uah-3",
+    "href": "slides/08-clase8/08-clase8.html#sociología---uah-3",
+    "title": "R para Análisis estadístico",
+    "section": "Sociología - UAH",
+    "text": "Sociología - UAH"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#er-sem-2025-2",
+    "href": "slides/08-clase8/08-clase8.html#er-sem-2025-2",
+    "title": "R para Análisis estadístico",
+    "section": "1er Sem 2025",
+    "text": "1er Sem 2025"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#r-data-analisis.netlify.com-3",
+    "href": "slides/08-clase8/08-clase8.html#r-data-analisis.netlify.com-3",
+    "title": "R para Análisis estadístico",
+    "section": "R-data-analisis.netlify.com",
+    "text": "R-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#section-2",
+    "href": "slides/08-clase8/08-clase8.html#section-2",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Sesión 8\n\nRegresión lineal\nR2\nInferencia\nValores predichos"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#section-3",
+    "href": "slides/08-clase8/08-clase8.html#section-3",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Sesión 8\n\nRegresión lineal\nR2\nInferencia\nValores predichos"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#section-4",
+    "href": "slides/08-clase8/08-clase8.html#section-4",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Sesión 8\n\nRepaso sesión anterior\nRegresión lineal\nR2\nInferencia\nValores predichos"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#section-5",
+    "href": "slides/08-clase8/08-clase8.html#section-5",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Sesión 8\n\nRepaso sesión anterior\nRegresión lineal\nR2\nInferencia\nValores predichos"
+  },
+  {
+    "objectID": "slides/08-clase8/08-clase8.html#section-6",
+    "href": "slides/08-clase8/08-clase8.html#section-6",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 8: Regresión lineal\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   }
 ]
