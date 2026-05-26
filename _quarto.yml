@@ -119,8 +119,8 @@ website:
               file: practicos/07-content.qmd
 #            - text: "Resumen"
 #              file: practicos/resumen-content.qmd
-#            - text: "Práctico 8: Regresión lineal"
-#              file: practicos/08-content.qmd
+            - text: "Práctico 8: Regresión lineal"
+              file: practicos/08-content.qmd
 #            - text: "Práctico 9: Valores predichos"
 #              file: practicos/09-content.qmd
 #            - text: "Práctico 10: Presentaciones en Quarto"
