@@ -216,7 +216,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#objetivos-del-trabajo" id="toc-objetivos-del-trabajo" class="nav-link active" data-scroll-target="#objetivos-del-trabajo">Objetivos del trabajo</a></li>
-  <li><a href="#instrucciones-generales" id="toc-instrucciones-generales" class="nav-link" data-scroll-target="#instrucciones-generales">Instrucciones generales</a></li>
+  <li><a href="#instrucciones-generales" id="toc-instrucciones-generales" class="nav-link" data-scroll-target="#instrucciones-generales">Instrucciones generales</a>
+  <ul class="collapse">
+  <li><a href="#regresión-logística" id="toc-regresión-logística" class="nav-link" data-scroll-target="#regresión-logística">Regresión logística</a></li>
+  </ul></li>
+  <li><a href="#rúbrica-de-evaluación" id="toc-rúbrica-de-evaluación" class="nav-link" data-scroll-target="#rúbrica-de-evaluación">Rúbrica de evaluación:</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +239,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="objetivos-del-trabajo" class="level2">
 <h2 class="anchored" data-anchor-id="objetivos-del-trabajo">Objetivos del trabajo</h2>
-<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto, la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
+<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto (trabajo 1), la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
 </section>
 <section id="instrucciones-generales" class="level2">
 <h2 class="anchored" data-anchor-id="instrucciones-generales">Instrucciones generales</h2>
@@ -253,7 +257,14 @@ ul.task-list li input[type="checkbox"] {
 <li>Se deben mantener las referencias de la literatura / bases de datos revisadas</li>
 <li>atrasos, 0,5 por día de atraso.</li>
 </ul>
-<p>Rúbrica de evaluación:</p>
+<section id="regresión-logística" class="level3">
+<h3 class="anchored" data-anchor-id="regresión-logística">Regresión logística</h3>
+<p>No es obligación estimar modelos de regresión logística, pero se le otorgará 1pto base (10 décimas) a quienes lo hagan. Para esto, se debe estimar un modelo de regresión logística con una variable dependiente dicotómica y al menos 3 variables independientes. Se debe reportar la tabla de regresión logística y su interpretación.</p>
+<p>Para trabajar con una variable dependiente dicotómica, se pueden crear variables binarias a partir de variables continuas o categóricas. Por ejemplo, si se tiene una variable de ingreso, se puede crear una variable binaria que indique si el ingreso es alto o bajo según un umbral determinado (generalmente moda o mediana). O si se tiene una variable de confianza/satisfacción, se puede crear una variable binaria que indique si la persona confía o no en cierta institución (por ejemplo, agrupando categoría 1 de nada de confianza = 0 y de la categoría 2 en adelante de poca, algo y mucha confianza = 1).</p>
+</section>
+</section>
+<section id="rúbrica-de-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="rúbrica-de-evaluación">Rúbrica de evaluación:</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 24%">

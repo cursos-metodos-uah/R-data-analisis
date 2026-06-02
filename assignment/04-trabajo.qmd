@@ -8,7 +8,7 @@ lang: es
 
 ## Objetivos del trabajo
 
-El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto, la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
+El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto (trabajo 1), la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
 
 
 ## Instrucciones generales
@@ -28,7 +28,13 @@ Entrega:
 - Se deben mantener las referencias de la literatura / bases de datos revisadas
 - atrasos, 0,5 por día de atraso.
 
-Rúbrica de evaluación:
+### Regresión logística
+
+No es obligación estimar modelos de regresión logística, pero se le otorgará 1pto base (10 décimas) a quienes lo hagan. Para esto, se debe estimar un modelo de regresión logística con una variable dependiente dicotómica y al menos 3 variables independientes. Se debe reportar la tabla de regresión logística y su interpretación.
+
+Para trabajar con una variable dependiente dicotómica, se pueden crear variables binarias a partir de variables continuas o categóricas. Por ejemplo, si se tiene una variable de ingreso, se puede crear una variable binaria que indique si el ingreso es alto o bajo según un umbral determinado (generalmente moda o mediana). O si se tiene una variable de confianza/satisfacción, se puede crear una variable binaria que indique si la persona confía o no en cierta institución (por ejemplo, agrupando categoría 1 de nada de confianza = 0 y de la categoría 2 en adelante de poca, algo y mucha confianza = 1).
+
+## Rúbrica de evaluación:
 
 | Ítem | Objetivo | Puntaje |
 |------|----------|---------|
