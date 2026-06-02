@@ -133,21 +133,7 @@ La mejor combinación lineal de predictores no se obtiene a través de MCO, sino
 
 * A diferencia de los odds ratio, los coeficientes logit tienen valores que van de –\infty a +\infty
 
-## Modelo de probabilidad lineal
 
-Primero, solo para comparación, estimamos un modelo de probabilidad lineal.
-
-```{r}
-m1mpl <- lm(demonstr_dummy ~ Unionized + Wave, data = WVS_2005_2022_Chl)
-```
-
-
-```{r results='asis'}
-htmlreg(m1mpl,
-          custom.model.names = "Modelo de Prob Lineal",
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
-```
 
 ## Modelo de regresión logística
 
@@ -162,8 +148,8 @@ m3log <- glm(demonstr_dummy~ Unionized + Female + X003 + Educ + private_sector +
 
 
 ```{r results='asis'}
-htmlreg(list(m1mpl, m1log,m2log,m3log),
-          custom.model.names = c("M1 (m prob lineal)","M1 (log odds)","M2 (log odds)","M3 (log odds)"),
+htmlreg(list(m1log,m2log,m3log),
+          custom.model.names = c("M1 (log odds)","M2 (log odds)","M3 (log odds)"),
           digits = 3, 
           stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
 ```
@@ -339,16 +325,4 @@ htmlreg(list(m1log,m2log,m3log),
 ```
 
 
-# Ejercicio
 
-1- Estima un modelo de regresión logística que tenga como variable dependiente `petition_dummy` (Frecuence de participación: firmar una petición). Propon la mejor forma de estimar la participación en peticiones a partir de las siguientes variables: `Unionized` (afiliación sindicatos), `pol_pos_left` (dummy ser de izquierda o no), `civic_involvement` (compromiso cívico), `X003` (edad), `female` (mujer), `educ` (educación).
-
-Antes de estimar los modelos, reflexionar entorno a:
-
-  - ¿Qué variable sería el principal predictor de firmar una petición?
-  - ¿Se deben agregar primero las variables socioeconómicas o las de opinión pública?
-  - Van todas las variables independientes juntas, se agregan unas primero y otras después?
-
-2- Interpretar los coeficientes de los modelos estimados.
-
-3- Estimar y graficar las probabilidades predichas de firmar una petición para las variables independientes `pol_pos_left` y `civic_involvement`
