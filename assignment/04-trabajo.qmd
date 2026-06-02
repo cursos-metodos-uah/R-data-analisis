@@ -1,14 +1,14 @@
 ---
-title: "Trabajo 3. Regresión lineal"
+title: "Trabajo 4. Regresión lineal y regresión logística"
 subtitle: "R para análisis estadístico"
-linktitle: "Trabajo 3. Regresión lineal"
-date: "2025-06-03"
+linktitle: "Trabajo 4. Regresión lineal y regresión logística"
+date: "2026-06-15"
 lang: es
 ---
 
 ## Objetivos del trabajo
 
-El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 1) del problema de investigación propuesto, la visualización e interpretación de la asociación de estas variables (trabajo 2) y la estimación e interpretación de modelos de regresión lineal. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
+El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo (trabajo 2) del problema de investigación propuesto, la visualización e interpretación de la asociación de estas variables (trabajo 3) y la estimación e interpretación de modelos de regresión. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
 
 
 ## Instrucciones generales
@@ -22,7 +22,7 @@ El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto
 
 Entrega:
 
-- Viernes 13 de junio a través de U-campus
+- Lunes 15 de junio a través de U-campus
 - Si se entrega solo el repositorio de github (sin pages ni html) se descontarán 0,3 décimas adicionales
 - No más de 5000 palabras
 - Se deben mantener las referencias de la literatura / bases de datos revisadas
