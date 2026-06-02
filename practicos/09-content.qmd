@@ -34,15 +34,7 @@ pacman::p_load(tidyr,
 
 # Datos
 
-```{r include=FALSE}
-WVS_2005_2022_Chl<- readRDS(file = "../files/data/WVS_2005_2022_Chl.rds")
-```
-
-  * Como la universidad no permite el acceso a Github, pueden encontrar la base de datos en el canvas del curso, archivos, bajo el nombre datos-practico8.RData
-
-  * Si no están conectados mediante eduroam de la universidad, pueden usar el siguiente link:
-
-```{r eval=FALSE}
+```{r}
 #Cargamos la base de datos desde internet
 load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/WVS_2005_2022_Chl.RData"))
 ```
