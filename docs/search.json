@@ -3369,5 +3369,250 @@
     "title": "Programa",
     "section": "Reglamento Académico del Estudiante de Pregrado.",
     "text": "Reglamento Académico del Estudiante de Pregrado.\nArt. 23.- Cualquier conducta de un estudiante que tienda a viciar la evaluación de actividades académicas o que constituya fraude académico, figura que contempla irregularidades tales como copia, suplantación o alteración de evaluaciones, plagio, faltas a la ética profesional, sin que esta enumeración sea taxativa, dará origen a las siguientes sanciones, según la gravedad de la falta cometida: (i) nota mínima 1,0 (uno) en la respectiva evaluación; (ii) reprobación del curso respectivo; (iii) amonestación; (iv) permanencia condicional; (v) suspensión de actividades académicas por un período académico; (vi) expulsión de la Universidad.\nAsimismo, toda actividad de un estudiante que entorpezca gravemente y/o dificulte el normal desarrollo académico, podrá ser sancionada de conformidad a las disposiciones establecidas en el Reglamento de Conducta y Convivencia de la Universidad Alberto Hurtado.\nArt. 24.- Las dos primeras sanciones previstas en el artículo anterior, a saber (i) Nota mínima 1,0; y (ii) Reprobación del Curso respectivo, son prerrogativa del docente a cargo de la asignatura, quien deberá informarlas a la Dirección de la Carrera.\n\nPara evitar el plagio todo trabajo, composición o material documental que los estudiantes realicen debe citar adecuadamente las fuentes utilizadas, ya sea a través del sistema APA (American Psychological Association) o MLA (Modern Language Association)."
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section",
+    "href": "slides/09-clase9/09-clase9.html#section",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 9: Regresión logística\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section-1",
+    "href": "slides/09-clase9/09-clase9.html#section-1",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Contenidos\n1. Repaso de sesión anterior\n2. Estimación regresión logística\n3. Ajuste regresión logística"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section-2",
+    "href": "slides/09-clase9/09-clase9.html#section-2",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Sesión 8\n\nRegresión lineal\nR2\nInferencia\nValores predichos"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#varianza-explicada",
+    "href": "slides/09-clase9/09-clase9.html#varianza-explicada",
+    "title": "R para Análisis estadístico",
+    "section": "Varianza explicada",
+    "text": "Varianza explicada\n\n¿Qué porcentaje de la varianza de Y logramos explicar con X?\n\n\n\nR2 = Porcentaje de la variación de Y puede ser asociado a la variación de X"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section-3",
+    "href": "slides/09-clase9/09-clase9.html#section-3",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "Sesión 8\n\nRepaso sesión anterior\nRegresión lineal\nR2\nInferencia\nValores predichos"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#inferencia-estadística",
+    "href": "slides/09-clase9/09-clase9.html#inferencia-estadística",
+    "title": "R para Análisis estadístico",
+    "section": "Inferencia estadística",
+    "text": "Inferencia estadística\n\n¿Cómo sabemos si \\(b_{1}\\) es estadísticamente significativo?\n\n\n\n¿Nuestros datos se pueden extrapolar a la población?"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section-4",
+    "href": "slides/09-clase9/09-clase9.html#section-4",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 9: Regresión logística\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#se-puede-anticipar-el-final",
+    "href": "slides/09-clase9/09-clase9.html#se-puede-anticipar-el-final",
+    "title": "R para Análisis estadístico",
+    "section": "¿Se puede anticipar el final?",
+    "text": "¿Se puede anticipar el final?"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#titanic-data",
+    "href": "slides/09-clase9/09-clase9.html#titanic-data",
+    "title": "R para Análisis estadístico",
+    "section": "Titanic data",
+    "text": "Titanic data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo\nVariable\nStats / Values\nFreqs (% of Valid)\nGraph\nValid\nMissing\n\n\n\n\n1\nsurvived [factor]\n\n\n\n1. No sobrevive\n\n\n2. Sobrevive\n\n\n\n\n\n\n619\n(\n59.2%\n)\n\n\n427\n(\n40.8%\n)\n\n\n\n\n1046 (100.0%)\n0 (0.0%)\n\n\n2\nsex [factor]\n\n\n\n1. Hombre\n\n\n2. Mujer\n\n\n\n\n\n\n658\n(\n62.9%\n)\n\n\n388\n(\n37.1%\n)\n\n\n\n\n1046 (100.0%)\n0 (0.0%)\n\n\n3\nage [numeric]\n\n\n\nMean (sd) : 29.9 (14.4)\n\n\nmin ≤ med ≤ max:\n\n\n0.2 ≤ 28 ≤ 80\n\n\nIQR (CV) : 18 (0.5)\n\n\n\n98 distinct values\n\n1046 (100.0%)\n0 (0.0%)\n\n\n\n\nGenerated by summarytools 1.0.1 (R version 4.3.2)2026-06-02"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#sobrevivientes-sexo",
+    "href": "slides/09-clase9/09-clase9.html#sobrevivientes-sexo",
+    "title": "R para Análisis estadístico",
+    "section": "Sobrevivientes & Sexo",
+    "text": "Sobrevivientes & Sexo"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#sobrevivencia-sexo",
+    "href": "slides/09-clase9/09-clase9.html#sobrevivencia-sexo",
+    "title": "R para Análisis estadístico",
+    "section": "Sobrevivencia / sexo",
+    "text": "Sobrevivencia / sexo"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#limitaciones-modelo-de-regresión-lineal-para-dependientes-dicotómicas-modelo-de-probabilidad-lineal",
+    "href": "slides/09-clase9/09-clase9.html#limitaciones-modelo-de-regresión-lineal-para-dependientes-dicotómicas-modelo-de-probabilidad-lineal",
+    "title": "R para Análisis estadístico",
+    "section": "Limitaciones modelo de regresión lineal para dependientes dicotómicas (= modelo de probabilidad lineal)",
+    "text": "Limitaciones modelo de regresión lineal para dependientes dicotómicas (= modelo de probabilidad lineal)"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section-5",
+    "href": "slides/09-clase9/09-clase9.html#section-5",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "La regresión logística ofrece una solución a los problemas del rango de predicciones y de ajuste a los datos del modelo de probabilidad lineal"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#se-logra-mediante",
+    "href": "slides/09-clase9/09-clase9.html#se-logra-mediante",
+    "title": "R para Análisis estadístico",
+    "section": "Se logra mediante:",
+    "text": "Se logra mediante:\n(a) expresión de coeficientes como odds-ratio\n(b) transformación de los coeficientes a LOGIT"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#curvando-la-recta",
+    "href": "slides/09-clase9/09-clase9.html#curvando-la-recta",
+    "title": "R para Análisis estadístico",
+    "section": "Curvando la recta …",
+    "text": "Curvando la recta …"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#odds",
+    "href": "slides/09-clase9/09-clase9.html#odds",
+    "title": "R para Análisis estadístico",
+    "section": "Odds",
+    "text": "Odds\n\nodds (chances): probabilidad de que algo ocurra dividido por la probabilidad de que no ocurra\n\n\\[Odds=\\frac{p}{1-p}\\]\n\nEj. Titanic:\n\n427 sobrevivientes (41%), 619 muertos (59%)\n\n\\[Odds_{sobrevivir}=427/619=0.41/0.59=0.69\\]\nEs decir, las chances de sobrevivir son de 0.69"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#odds-ratio-or",
+    "href": "slides/09-clase9/09-clase9.html#odds-ratio-or",
+    "title": "R para Análisis estadístico",
+    "section": "Odds ratio (OR)",
+    "text": "Odds ratio (OR)\n\n\n\nlos odds-ratio (o razón de chances) permiten reflejar la asociación entre las chances de dos variables dicotómicas\n\n¿Tienen las mujeres más chances de sobrevivir que los hombres?\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurvived\nsex\nTotal\n\n\nHombre\nMujer\n\n\nNo sobrevive\n523\n79.5 %\n96\n24.7 %\n619\n59.2 %\n\n\nSobrevive\n135\n20.5 %\n292\n75.3 %\n427\n40.8 %\n\n\nTotal\n658\n100 %\n388\n100 %\n1046\n100 %"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#odds-ratio",
+    "href": "slides/09-clase9/09-clase9.html#odds-ratio",
+    "title": "R para Análisis estadístico",
+    "section": "Odds Ratio",
+    "text": "Odds Ratio\n¿Cuántas más chances de sobrevivir tienen las mujeres respecto de los hombres?\n\nOR supervivencia mujeres / OR supervivencia hombres\n\n\\[OR=\\frac{p_{m}/(1-p_{m})}{p_{h}/(1-p_{h})}=\\frac{0.753/(1-0.753)}{0.205/(1-0.205)}=\\frac{3.032}{0.257}=11.78\\]\n\nLas chances de sobrevivir de las mujeres son 11.78 veces más que las de los hombres."
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#regresión-logística-y-odds",
+    "href": "slides/09-clase9/09-clase9.html#regresión-logística-y-odds",
+    "title": "R para Análisis estadístico",
+    "section": "Regresión logística y odds",
+    "text": "Regresión logística y odds\n\n\n\n\n\n\n\n\n\n\n\n\nUna de las transformaciones que permite realizar una estimación de regresión con variables dependientes dicotómicas es el logit, que es logaritmo de los odds."
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#logit",
+    "href": "slides/09-clase9/09-clase9.html#logit",
+    "title": "R para Análisis estadístico",
+    "section": "Logit",
+    "text": "Logit\n\\[Logit=ln(Odd)=ln(\\frac{p}{1-p})\\]"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#probabilidades-odds-y-logit",
+    "href": "slides/09-clase9/09-clase9.html#probabilidades-odds-y-logit",
+    "title": "R para Análisis estadístico",
+    "section": "Probabilidades, odds y logit",
+    "text": "Probabilidades, odds y logit\n\n\n\n#&gt;    prob odds logit\n#&gt;  0.0010           \n#&gt;  0.0564           \n#&gt;  0.1119           \n#&gt;  0.1673           \n#&gt;  0.2228           \n#&gt;  0.2782           \n#&gt;  0.3337           \n#&gt;  0.3891           \n#&gt;  0.4446           \n#&gt;  0.5000           \n#&gt;  0.5554           \n#&gt;  0.6109           \n#&gt;  0.6663           \n#&gt;  0.7218           \n#&gt;  0.7772           \n#&gt;  0.8327           \n#&gt;  0.8881           \n#&gt;  0.9436           \n#&gt;  0.9990"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#probabilidades-odds-y-logit-1",
+    "href": "slides/09-clase9/09-clase9.html#probabilidades-odds-y-logit-1",
+    "title": "R para Análisis estadístico",
+    "section": "Probabilidades, odds y logit",
+    "text": "Probabilidades, odds y logit\n\n\n\ndf$odds &lt;- df$prob/(1-df$prob)\ndf$logit &lt;- log(df$odds)\n\n\n\n#&gt;    prob     odds  logit\n#&gt;  0.0010   0.0010 -6.907\n#&gt;  0.0564   0.0598 -2.816\n#&gt;  0.1119   0.1260 -2.072\n#&gt;  0.1673   0.2010 -1.605\n#&gt;  0.2228   0.2866 -1.250\n#&gt;  0.2782   0.3855 -0.953\n#&gt;  0.3337   0.5008 -0.692\n#&gt;  0.3891   0.6370 -0.451\n#&gt;  0.4446   0.8004 -0.223\n#&gt;  0.5000   1.0000  0.000\n#&gt;  0.5554   1.2494  0.223\n#&gt;  0.6109   1.5700  0.451\n#&gt;  0.6663   1.9970  0.692\n#&gt;  0.7218   2.5942  0.953\n#&gt;  0.7772   3.4888  1.250\n#&gt;  0.8327   4.9761  1.605\n#&gt;  0.8881   7.9374  2.072\n#&gt;  0.9436  16.7165  2.816\n#&gt;  0.9990 999.0000  6.907"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#probabilidades-odds-y-logit-destacado",
+    "href": "slides/09-clase9/09-clase9.html#probabilidades-odds-y-logit-destacado",
+    "title": "R para Análisis estadístico",
+    "section": "Probabilidades, odds y logit (destacado)",
+    "text": "Probabilidades, odds y logit (destacado)\n\n\n\ndf$odds &lt;- df$prob/(1-df$prob)\ndf$logit &lt;- log(df$odds)\n\n\n\n##    prob     odds  logit\n##  0.0010   0.0010 -6.907  # &lt;\n##  0.0564   0.0598 -2.816\n##  0.1119   0.1260 -2.072\n##  0.1673   0.2010 -1.605\n##  0.2228   0.2866 -1.250\n##  0.2782   0.3855 -0.953\n##  0.3337   0.5008 -0.692\n##  0.3891   0.6370 -0.451\n##  0.4446   0.8004 -0.223\n##  0.5000   1.0000  0.000  # &lt;\n##  0.5554   1.2494  0.223\n##  0.6109   1.5700  0.451\n##  0.6663   1.9970  0.692\n##  0.7218   2.5942  0.953\n##  0.7772   3.4888  1.250\n##  0.8327   4.9761  1.605\n##  0.8881   7.9374  2.072\n##  0.9436  16.7165  2.816\n##  0.9990 999.0000  6.907  # &lt;"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#estimación-en-r-glm",
+    "href": "slides/09-clase9/09-clase9.html#estimación-en-r-glm",
+    "title": "R para Análisis estadístico",
+    "section": "Estimación en R: glm",
+    "text": "Estimación en R: glm\nmodelo &lt;- glm(dependiente ~ indep1 + indep2 + ...,\n          data = datos,\n          family = \"binomial\")\n\nglm (general lineal model) es la función para variables dependientes categóricas\nfamily=\"binomial\" indica que la dependiente es dicotómica"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#ejemplo-titanic",
+    "href": "slides/09-clase9/09-clase9.html#ejemplo-titanic",
+    "title": "R para Análisis estadístico",
+    "section": "Ejemplo Titanic",
+    "text": "Ejemplo Titanic\n\n\n\nmodelo_titanic &lt;-\nglm(survived ~ sex,\ndata = tt,\nfamily = \"binomial\")\n\n\n\n\n\n\n\n\n \n\n\nLogit\n\n\nOR\n\n\n\n\n\n\nIntercepto\n\n\n-1.354***\n\n\n0.258***\n\n\n\n\n \n\n\n(0.097)\n\n\n \n\n\n\n\nMujer (Ref=Hombre)\n\n\n2.467***\n\n\n11.784***\n\n\n\n\n \n\n\n(0.152)\n\n\n \n\n\n\n\nAIC\n\n\n1106.008\n\n\n1106.008\n\n\n\n\nBIC\n\n\n1115.914\n\n\n1115.914\n\n\n\n\nLog Likelihood\n\n\n-551.004\n\n\n-551.004\n\n\n\n\nDeviance\n\n\n1102.008\n\n\n1102.008\n\n\n\n\nNum. obs.\n\n\n1046\n\n\n1046\n\n\n\n\n\n\n***p &lt; 0.001; **p &lt; 0.01; *p &lt; 0.05"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#interpretación-de-asociaciones-y-contraste-de-hipótesis",
+    "href": "slides/09-clase9/09-clase9.html#interpretación-de-asociaciones-y-contraste-de-hipótesis",
+    "title": "R para Análisis estadístico",
+    "section": "Interpretación de asociaciones y contraste de hipótesis",
+    "text": "Interpretación de asociaciones y contraste de hipótesis\nCoeficiente logit asociado a sexo (mujer) = +2.467:\n\nEl log-odds de sobrevivencia aumenta para las mujeres en 2.467 en comparación con los hombres.\n\n\nContraste de hipótesis\n\nLa diferencia de las probabilidades de sobrevivir entre hombres y mujeres son estadísticamente significativas, por lo que se rechaza la hipótesis nula (de ausencia de diferencias entre hombres y mujeres) con un nivel de probabilidad \\(p&lt;0.001\\)."
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#interpretación-de-coeficientes-logit",
+    "href": "slides/09-clase9/09-clase9.html#interpretación-de-coeficientes-logit",
+    "title": "R para Análisis estadístico",
+    "section": "Interpretación de coeficientes logit",
+    "text": "Interpretación de coeficientes logit\n\nSustantivamente no nos dice mucho, ya que el logit es una transformación de la escala original.\nPor lo tanto, para poder interpretar el sentido del coeficiente se requiere volver a la métrica de odds mediante una transformación inversa o exponenciación"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#de-logits-a-odds",
+    "href": "slides/09-clase9/09-clase9.html#de-logits-a-odds",
+    "title": "R para Análisis estadístico",
+    "section": "De logits a odds",
+    "text": "De logits a odds\n\n\n\\[logit_x=log(Odds)\\] \\[e^{logit}=Odds_X\\] \\[e^{2.467}=11.78\\]\n\n\nexp(2.467)\n#&gt; [1] 11.78703\n\nLas chances (odds) de sobrevivir siendo mujer son 11.78 veces más que las de un hombre."
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#de-logits-a-odds-1",
+    "href": "slides/09-clase9/09-clase9.html#de-logits-a-odds-1",
+    "title": "R para Análisis estadístico",
+    "section": "De logits a odds",
+    "text": "De logits a odds\n\\[Odds_X=e^{\\beta_0 + \\beta_jX_j}\\]\n\n\nPredicción para mujeres = -1.354 + (2.467 * Sexo=1) = 1.113\nPredicción para hombres = -1.354 + (2.467 * Sexo=0) = -1.354\n\n\n\n\\[Odds_{mujer}=e^{1.113}=3.032\\] \\[Odds_{hombre}=e^{-1.354}=0.257\\]"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#transformación-a-probabilidades-predichas",
+    "href": "slides/09-clase9/09-clase9.html#transformación-a-probabilidades-predichas",
+    "title": "R para Análisis estadístico",
+    "section": "Transformación a probabilidades predichas",
+    "text": "Transformación a probabilidades predichas\n\\[p_{mujeres}=\\frac{e^{1.113}}{1+e^{1.113}}=\\frac{3.04}{4.04}=0.752\\] \\[p_{hombres}=\\frac{e^{-1.354}}{1+e^{-1.354}}=\\frac{0.258}{1.258}=0.205\\]"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#regresión-logística-simple-para-independientes-continuas",
+    "href": "slides/09-clase9/09-clase9.html#regresión-logística-simple-para-independientes-continuas",
+    "title": "R para Análisis estadístico",
+    "section": "Regresión logística simple para independientes continuas",
+    "text": "Regresión logística simple para independientes continuas\n\n\n\nmodelo_titanic_age &lt;-\nglm(survived ~ age,\ndata = tt,\nfamily = \"binomial\")\n\n\n\n\n\n\n\n\n \n\n\nLogit\n\n\nOR\n\n\n\n\n\n\nIntercepto\n\n\n-0.137\n\n\n0.872\n\n\n\n\n \n\n\n(0.145)\n\n\n \n\n\n\n\nEdad\n\n\n-0.008\n\n\n0.992\n\n\n\n\n \n\n\n(0.004)\n\n\n \n\n\n\n\nAIC\n\n\n1415.383\n\n\n1415.383\n\n\n\n\nBIC\n\n\n1425.288\n\n\n1425.288\n\n\n\n\nLog Likelihood\n\n\n-705.691\n\n\n-705.691\n\n\n\n\nDeviance\n\n\n1411.383\n\n\n1411.383\n\n\n\n\nNum. obs.\n\n\n1046\n\n\n1046\n\n\n\n\n\n\n***p &lt; 0.001; **p &lt; 0.01; *p &lt; 0.05"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#plot-probabilidades-predichas",
+    "href": "slides/09-clase9/09-clase9.html#plot-probabilidades-predichas",
+    "title": "R para Análisis estadístico",
+    "section": "Plot probabilidades predichas",
+    "text": "Plot probabilidades predichas"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#regresión-logística-múltiple",
+    "href": "slides/09-clase9/09-clase9.html#regresión-logística-múltiple",
+    "title": "R para Análisis estadístico",
+    "section": "Regresión logística múltiple",
+    "text": "Regresión logística múltiple\n\n\n\nmodelo_titanic2 &lt;-\nglm(survived ~ sex + age,\ndata = tt,\nfamily = \"binomial\")\n\n\n\n\n\n\n\n\n \n\n\nLogit\n\n\nOR\n\n\n\n\n\n\nIntercepto\n\n\n-1.23***\n\n\n0.29***\n\n\n\n\n \n\n\n(0.18)\n\n\n \n\n\n\n\nMujer (Ref=Hombre)\n\n\n2.46***\n\n\n11.71***\n\n\n\n\n \n\n\n(0.15)\n\n\n \n\n\n\n\nEdad\n\n\n-0.00\n\n\n1.00\n\n\n\n\n \n\n\n(0.01)\n\n\n \n\n\n\n\nAIC\n\n\n1107.34\n\n\n1107.34\n\n\n\n\nBIC\n\n\n1122.20\n\n\n1122.20\n\n\n\n\nLog Likelihood\n\n\n-550.67\n\n\n-550.67\n\n\n\n\nDeviance\n\n\n1101.34\n\n\n1101.34\n\n\n\n\nNum. obs.\n\n\n1046\n\n\n1046\n\n\n\n\n\n\n***p &lt; 0.001; **p &lt; 0.01; *p &lt; 0.05"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section-7",
+    "href": "slides/09-clase9/09-clase9.html#section-7",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 9: Regresión logística\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
+  },
+  {
+    "objectID": "slides/09-clase9/09-clase9.html#section-6",
+    "href": "slides/09-clase9/09-clase9.html#section-6",
+    "title": "R para Análisis estadístico",
+    "section": "",
+    "text": "R para el análisis de datos\nSesión 9: Regresión logística\n\n\nKevin Carrasco\nSociología - UAH\n1er Sem 2026\nR-data-analisis.netlify.com"
   }
 ]

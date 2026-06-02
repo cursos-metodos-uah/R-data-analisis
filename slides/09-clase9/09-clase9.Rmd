@@ -1,0 +1,1019 @@
+---
+title: "Métodos estadísticos para Ciencias Sociales III"
+author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
+date: "1er Sem 2025"
+output:
+  xaringan::moon_reader:
+    css: "../../files/css/custom_2020.css"
+    includes:
+      after_body: "../insert-logo.html"     
+    lib_dir: libs
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "https://multinivel.netlify.app/docpres/xaringan_custom/macros.js"
+    seal: false # esto omite title slide automática
+---
+class: front
+
+```{r eval=FALSE, include=FALSE}
+# Correr esto para que funcione el infinite moonreader, el root folder debe ser static para si dirigir solo "bajndo" en directorios hacia el bib y otros
+
+xaringan::inf_mr('/static/docpres/02_bases/2mlmbases.Rmd')
+
+o en RStudio:
+  - abrir desde carpeta root del proyecto
+  - Addins-> infinite moon reader
+```
+
+
+```{r setup, include=FALSE, cache = FALSE}
+require("knitr")
+options(htmltools.dir.version = FALSE)
+pacman::p_load(RefManageR)
+# bib <- ReadBib("../../bib/electivomultinivel.bib", check = FALSE)
+opts_chunk$set(warning=FALSE,
+             message=FALSE,
+             echo=FALSE,
+             cache = FALSE, fig.width=7, fig.height=5.2)
+pacman::p_load(flipbookr, tidyverse)
+```
+
+
+```{r xaringanExtra, include=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css"))
+xaringanExtra::use_scribble()
+```
+
+
+<!---
+Para correr en ATOM
+- open terminal, abrir R (simplemente, R y enter)
+- rmarkdown::render('static/docpres/07_interacciones/7interacciones.Rmd', 'xaringan::moon_reader')
+
+About macros.js: permite escalar las imágenes como [scale 50%](path to image), hay si que grabar ese archivo js en el directorio.
+--->
+
+
+.pull-left[
+# Métodos estadísticos para Ciencias Sociales III
+## **Kevin Carrasco**
+## Sociología - UNAB
+## 2do semestre 2025
+## .green[[metod3-unab.netlify.app](metod3-unab.netlify.app)] 
+]
+
+.pull-right[
+.right[
+<br>
+## .yellow[Sesión 9: Regresión logística (2)]
+![:scale 70%](../../files/img/eval-hires.png)
+
+
+
+]
+
+]
+---
+
+layout: true
+class: animated, fadeIn
+
+---
+class: inverse, bottom, right, animated, slideInRight
+
+
+# .red[Contenidos]
+
+## 1. Repaso de sesión anterior 
+
+## 2. Estimación regresión logística
+
+## 3. Ajuste regresión logística
+
+
+---
+class: roja bottom right slideInRight
+
+# 1. Repaso sesión anterior
+
+---
+## Variables
+
+- discretas (Rango finito de valores):
+
+      - Dicotómicas
+      - Politómicas
+
+- continuas:
+
+      - Rango (teóricamente) infinito de valores.
+
+---
+## Tipos de análisis estadístico bivariado
+
+- Variable dependiente (y) : lo que quiero explicar
+
+- Variable independiente (x): lo que me permite explicar la dependiente
+
+.small[
+| Variable independiente x 	| Variable dependiente Categórica   	| Variable dependiente Continua        	|
+|--------------------------	|-----------------------------------	|--------------------------------------	|
+| Categórica               	| Análisis de tabla de Contigencia, Chi2	| Análisis de Varianza ANOVA, Prueba T 	|
+| Continua                 	| Regresión Logística 	| Correlación / Regresión Lineal                     	|
+]
+???
+
+
+---
+class: inverse, center, middle
+
+.pull-left[
+![:scale 80%](../images/postertitanic.jpg)
+]
+
+## ¿Se puede anticipar el final?
+
+???
+
+Si vas al cine a ver esta película, y si antes conoces los datos sobre el Titanic, puedes anticipar el final?
+
+---
+# Titanic data
+
+
+```{r echo=FALSE}
+pacman::p_load(sjmisc, descr, scales, xtable, ggmosaic, stargazer, summarytools, sjPlot, dplyr)
+
+load("titanic.Rdata")
+
+```
+
+.small[
+
+```{r echo=FALSE}
+tt2 <- tt %>% select(survived,sex,age )  
+print(dfSummary(tt2, headings = FALSE), method = "render")
+```
+]
+
+---
+# Sobrevivientes & Sexo
+
+```{r, echo=FALSE, fig.height=6}
+
+plot1 <-ggplot(tt, 
+     aes(survived, fill=survived)) + 
+  geom_bar() + 
+  geom_text(
+     aes(label = scales::percent((..count..)/sum(..count..))),
+     stat='count',size=10, vjust = 3) + 
+  theme(legend.position="none", 
+        text = element_text(size = 30),
+        axis.title=element_blank())
+
+```
+
+
+.pull-left[
+.small[
+```{r echo=FALSE, fig.height=6}
+plot1
+```
+]
+
+]
+.pull-right[
+```{r, echo=FALSE, fig.height=6}
+
+(ggplot(tt, aes(sex, fill=sex))
+ + geom_bar()
+ + geom_text(
+     aes(label = scales::percent((..count..)/sum(..count..))),
+     stat='count',
+      size=10,
+    vjust = 3)
++ theme(legend.position="none", text = element_text(size = 30),axis.title=element_blank())
+)
+
+
+```
+]
+
+---
+## Sobrevivencia / sexo
+
+.center[
+![:scale 55%](mosaic.png)
+]
+
+---
+## Limitaciones modelo de regresión lineal para dependientes dicotómicas (= modelo de probabilidad lineal) 
+
+.pull-left[
+```{r echo=FALSE, results='hide'}
+str(tt$survived)
+tt <- tt %>% mutate(survived_n=recode(survived,
+"No sobrevive"=0, "Sobrevive"=1))
+str(tt$survived_n)
+```
+
+
+
+```{r echo=FALSE,fig.height=6}
+ggplot(data = tt, aes(x = as.numeric(sex), y = survived_n)) +
+  geom_point(aes(color = as.factor(survived_n)), shape = 1) +
+  geom_smooth(method = "lm", color = "gray20", se = FALSE) +
+  theme_bw()  +
+  labs(title = "Regresión lineal por mínimos cuadrados",
+       y = "Sobrevive") +
+  theme(legend.position = "none", text = element_text(size = 20))
+```
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+tt$survived_n2 <-tt$survived_n
+tt$survived_n2[tt$age>40]<-0
+tt$survived_n2[tt$age<20]<-1
+```
+
+
+```{r echo=FALSE, fig.height=6}
+ggplot(data = tt, aes(x = age, y = survived_n2)) +
+  geom_point(aes(color = as.factor(survived_n2)), shape = 1) +
+  geom_smooth(method = "lm", color = "gray20", se = FALSE) +
+  theme_bw()  +
+  labs(title = "Regresión lineal por mínimos cuadrados",
+       y = "Sobrevive") +
+theme(legend.position = "none", text = element_text(size = 20))
+```
+]
+
+
+---
+class: roja, right
+
+## La .yellow[regresión logística] ofrece una solución a los problemas del .white[rango] de predicciones y de .orange[ajuste] a los datos del modelo de probabilidad lineal
+
+--
+
+## Se logra mediante:
+### (a) expresión de coeficientes como odds-ratio
+### (b) _transformación_ de lo(s) coeficientes a *LOGIT*
+
+---
+## Curvando la recta ...
+
+.pull-left[
+```{r echo=FALSE}
+ggplot(data = tt, aes(x = age, y = survived_n2)) +
+  geom_point(aes(color = as.factor(survived_n2)), shape = 1) +
+  geom_smooth(method = "lm", color = "gray20", se = FALSE) +
+  theme_bw()  +
+  labs(title = "Regresión lineal por mínimos cuadrados",
+       y = "Sobrevive") +
+  theme(legend.position = "none", text = element_text(size = 20))
+```
+]
+
+.pull-right[
+
+```{r, echo=FALSE}
+modelo_logistico2 <- glm(survived_n2 ~ age, data = tt, family = "binomial")
+```
+
+```{r echo=FALSE}
+ggplot(data = tt, aes(x = age, y = survived_n2)) +
+  geom_point(aes(color = as.factor(survived_n2)), shape = 1) +
+  stat_function(fun = function(x){predict(modelo_logistico2,
+                                          newdata = data.frame(age = x),
+                                          type = "response")}) +
+  theme_bw() +
+  labs(title = "Regresión logística",
+       y = "Probabilidad sobrevivir") +
+  theme(legend.position = "none", text = element_text(size = 20))
+
+```
+]
+
+
+---
+# Odds 
+
+- **odds** (chances): probabilidad de que algo ocurra dividido por la probabilidad de que no ocurra
+
+$$Odds=\frac{p}{1-p}$$
+
+--
+
+.medium[
+Ej. Titanic:
+  - 427 sobrevivientes (41%), 619 muertos (59%)
+$$Odds_{sobrevivir}=427/619=0.41/0.59=0.69$$
+
+**Es decir, las chances de sobrevivir son de 0.69**]
+
+---
+## Odds ratio (OR)
+
+.pull-left[
+- los odds-ratio (o razón de chances) permiten reflejar la asociación entre las chances de dos variables dicotómicas
+
+
+**¿Tienen las mujeres más chances de sobrevivir que los hombres?**
+]
+
+--
+.pull-right[
+.medium[
+```{r}
+sjt.xtab(tt$survived, tt$sex,
+        show.col.prc=TRUE,
+        show.summary=FALSE
+)
+```
+]
+]
+
+---
+# Odds Ratio
+ 
+**¿Cuantas más chances de sobrevivir tienen las mujeres respecto de los hombres?**
+
+- OR supervivencia mujeres / OR supervivencia hombres
+
+.medium[
+$$OR=\frac{p_{m}/(1-p_{m})}{p_{h}/(1-p_{h})}=\frac{0.753/(1-0.753)}{0.205/(1-0.205)}=\frac{3.032}{0.257}=11.78$$
+]
+
+--
+
+### Las chances de sobrevivir de las mujeres son **11.78** veces más que las de los hombres.
+
+
+---
+class: roja bottom right
+
+# 2. Regresión logística: Estimación 
+
+---
+# Regresión logística y odds
+
+
+.pull-left[
+```{r echo=FALSE}
+ggplot(data = tt, aes(x = age, y = survived_n2)) +
+  geom_point(aes(color = as.factor(survived_n2)), shape = 1) +
+  stat_function(fun = function(x){predict(modelo_logistico2,
+                                          newdata = data.frame(age = x),
+                                          type = "response")}) +
+  theme_bw() +
+  labs(title = "Regresión logística",
+       y = "Probabilidad sobrevivir") +
+  theme(legend.position = "none", text = element_text(size = 20))
+
+```
+]
+
+
+.pull-right[
+Una de las transformaciones que permite realizar una estimación de regresión con variables dependientes dicotómicas es el **logit**, que es logaritmo de los odds.
+]
+
+---
+# Logit
+
+$$Logit=ln(Odd)=ln(\frac{p}{1-p})$$
+---
+.small[
+
+.pull-left[
+## Probabilidades, odds y logit
+
+]
+
+.pull-right[
+
+
+```{r, echo=FALSE}
+
+df <- data.frame(matrix(ncol = 3, nrow = 19)) 
+x <- c("prob", "odds", "logit") 
+colnames(df) <- x
+df[is.na(df)] = " "
+df$prob <- seq(0.001,0.999, length.out = 19)
+print(df, digits = 3,row.names = FALSE)
+
+```
+
+
+]
+]
+
+---
+.small[
+
+.pull-left[
+## Probabilidades, odds y logit
+
+```{r eval=FALSE, echo=TRUE}
+
+df$odds <- df$prob/(1-df$prob)
+
+df$logit <- log(df$odds)
+```
+
+
+]
+
+.pull-right[
+
+
+```{r, echo=FALSE}
+
+df <- data.frame(matrix(ncol = 3, nrow = 19)) 
+x <- c("prob", "odds", "logit") 
+colnames(df) <- x
+df[is.na(df)] = " "
+df$prob <- seq(0.001,0.999, length.out = 19)
+df$odds <- df$prob/(1-df$prob)
+df$logit <- log(df$odds)
+print(df, digits = 3,row.names = FALSE)
+
+```
+
+
+]
+]
+
+---
+.small[
+
+.pull-left[
+## Probabilidades, odds y logit
+
+```{r eval=FALSE, echo=TRUE}
+
+df$odds <- df$prob/(1-df$prob)
+
+df$logit <- log(df$odds)
+```
+
+
+]
+
+.pull-right[
+
+
+```{r, echo=TRUE, eval=FALSE}
+##    prob     odds  logit
+##  0.0010   0.0010 -6.907
+##  0.0564   0.0598 -2.816
+##  0.1119   0.1260 -2.072
+##  0.1673   0.2010 -1.605
+##  0.2228   0.2866 -1.250
+##  0.2782   0.3855 -0.953
+##  0.3337   0.5008 -0.692
+##  0.3891   0.6370 -0.451
+##  0.4446   0.8004 -0.223
+*##  0.5000   1.0000  0.000
+##  0.5554   1.2494  0.223
+##  0.6109   1.5700  0.451
+##  0.6663   1.9970  0.692
+##  0.7218   2.5942  0.953
+##  0.7772   3.4888  1.250
+##  0.8327   4.9761  1.605
+##  0.8881   7.9374  2.072
+##  0.9436  16.7165  2.816
+##  0.9990 999.0000  6.907
+```
+
+
+]
+]
+
+---
+.small[
+
+.pull-left[
+## Probabilidades, odds y logit
+
+```{r eval=FALSE, echo=TRUE}
+
+df$odds <- df$prob/(1-df$prob)
+
+df$logit <- log(df$odds)
+```
+
+
+]
+
+.pull-right[
+
+
+```{r, echo=TRUE, eval=FALSE}
+##    prob     odds  logit
+*##  0.0010   0.0010 -6.907
+##  0.0564   0.0598 -2.816
+##  0.1119   0.1260 -2.072
+##  0.1673   0.2010 -1.605
+##  0.2228   0.2866 -1.250
+##  0.2782   0.3855 -0.953
+##  0.3337   0.5008 -0.692
+##  0.3891   0.6370 -0.451
+##  0.4446   0.8004 -0.223
+*##  0.5000   1.0000  0.000
+##  0.5554   1.2494  0.223
+##  0.6109   1.5700  0.451
+##  0.6663   1.9970  0.692
+##  0.7218   2.5942  0.953
+##  0.7772   3.4888  1.250
+##  0.8327   4.9761  1.605
+##  0.8881   7.9374  2.072
+##  0.9436  16.7165  2.816
+*##  0.9990 999.0000  6.907
+```
+
+
+]
+]
+
+
+
+---
+# Estimación en R: `glm`
+
+```
+modelo <- glm(dependiente ~ indep 1 + indep2 + ...,
+          data=datos,
+          family="binomial")
+```
+
+- `glm` (general lineal model) es la función para variables dependientes categóricas
+
+
+- `family="binomial"` indica que la dependiente es dicotómica
+
+
+
+---
+# Ejemplo Titanic
+
+.pull-left[
+
+```{r echo=TRUE}
+modelo_titanic <-
+glm(survived ~ sex,
+data = tt,
+family = "binomial")
+
+```
+
+]
+
+.pull-right[.small[
+
+```{r results='asis', echo=FALSE}
+
+# Para crear un modelo con OR y agregar a la tabla // luego no funciona (?)
+or <- texreg::extract(modelo_titanic)
+or@coef <- exp(or@coef)
+or@se <- numeric()
+
+texreg::htmlreg(list(modelo_titanic,or ), doctype = FALSE, caption=" ", custom.coef.names = c("Intercepto", "Mujer (Ref=Hombre)"), custom.model.names = c("Logit", "OR"), digits = 3)
+```
+
+]
+]
+
+
+---
+## Interpretación de asociaciones y contraste de hipótesis
+
+### - Coeficiente logit asociado a sexo (mujer) = +2.467 :
+
+  - El log-odds de sobrevivencia aumenta para las mujeres en 2.467 en comparación con los hombres. 
+
+--
+
+### Contraste de hipótesis
+
+- La diferencia de las probabilidades de sobrevivir entre hombres y mujeres son estadísticamente significativas, por lo que se rechaza la hipótesis nula (de ausencia de diferencias entre hombres y mujeres) con un nivel de probabilidad $p<0.001$.
+
+
+---
+## Interpretación de coeficientes logit
+
+
+- Sustantivamente no nos dice mucho, ya que el logit es una transformación de la escala original.
+
+- Por lo tanto, para poder interpretar el sentido del coeficiente se requiere volver a la métrica de odds mediante una transformación inversa o **exponenciación**
+
+
+---
+## De logits a odds 
+
+.pull-left[
+$$logit_x=log(Odds)$$
+$$e^{logit}=Odds_X$$
+$$e^{2.467}=11.78$$
+]
+
+.pull-right[
+```{r echo=TRUE}
+exp(2.467)
+```
+### Las chances (odds) de sobrevivir siendo mujer son **11.78** veces más que las de un hombre. 
+]
+
+---
+## De logits a odds
+
+$$Odds_X=e^{\beta_0 + \beta_jX_j}$$
+<br>
+--
+- Predicción para **mujeres**= -1.354 + (2.467 * Sexo=1) = 1.113
+
+-  Predicción para **hombres**= -1.354 + (2.467 * Sexo=0) = -1.354
+
+--
+
+<br>
+
+$$Odds_{mujer}=e^{1.113}=3.032$$
+$$Odds_{hombre}=e^{-1.354}=0.257$$
+
+---
+## Transformación a probabilidades predichas
+
+$$p_{mujeres}=\frac{e^{1.113}}{1+e^{1.113}}=\frac{3.04}{4.04}=0.752$$
+$$p_{hombres}=\frac{e^{-1.354}}{1+e^{-1.354}}=\frac{0.258}{1.258}=0.205$$
+
+---
+## Regresión logística simple para independientes continuas
+
+.pull-left[
+
+```{r echo=TRUE}
+modelo_titanic_age <-
+glm(survived ~ age,
+data = tt,
+family = "binomial")
+
+```
+
+]
+
+.pull-right[.small[
+
+```{r results='asis', echo=FALSE}
+
+# Para crear un modelo con OR y agregar a la tabla // luego no funciona (?)
+or <- texreg::extract(modelo_titanic_age)
+or@coef <- exp(or@coef)
+or@se <- numeric()
+
+texreg::htmlreg(list(modelo_titanic_age,or ), doctype = FALSE, caption=" ", custom.coef.names = c("Intercepto", "Edad"), custom.model.names = c("Logit", "OR"), digits = 3)
+```
+
+]
+]
+
+
+---
+## Plot probabilidades predichas
+
+.center[
+
+```{r}
+ggplot(tt, aes(x=age, y=survived_n2)) + 
+  geom_point(alpha=.5) +
+  stat_smooth(method="glm", se=FALSE, method.args = list(family=binomial))
+```
+
+]
+
+
+---
+# Regresión logística multiple
+
+.pull-left[
+
+```{r echo=TRUE}
+modelo_titanic2 <-
+glm(survived ~ sex + age,
+data = tt,
+family = "binomial")
+```
+
+]
+
+.pull-right[.small[
+
+```{r results='asis', echo=FALSE}
+or2 <- texreg::extract(modelo_titanic2)
+or2@coef <- exp(or2@coef)
+or2@se <- numeric()
+
+texreg::htmlreg(list(modelo_titanic2,or2 ), doctype = FALSE, caption=" ", custom.coef.names = c("Intercepto", "Mujer (Ref=Hombre)", "Edad"),        custom.model.names = c("Logit", "OR"))
+```
+
+]
+]
+
+
+
+
+
+---
+class: roja bottom right
+
+# 3. Regresión logística: Ajuste 
+
+
+---
+## Ajuste: ¿Qué tan bueno es nuestro modelo?
+
+- **DISTINTO a regresión OLS** (no hay varianza en dependiente dicotomica)
+
+--
+
+- Para evaluar ajuste se utiliza la **log-verosimilitud** (log-likelihood), que se asocia a la idea de **residuos** del modelo
+
+--
+
+- La log verosimilitud del modelo se obtiene del proceso de estimación por .red[máxima verosimilitud] (...tema para otro curso)
+
+---
+## Ajuste: ¿Qué tan bueno es nuestro modelo?
+
+```{r echo=TRUE}
+logLik(modelo_titanic) # sexo
+logLik(modelo_titanic2) # sexo + edad
+```
+
+La inclusión de un predictor adicional (edad) hace que cambie la log-verosimilitud del modelo
+
+---
+## Ajuste: ¿Qué tan bueno es nuestro modelo?
+
+- No existe una **única forma** de estimar el ajuste en regresión logística
+
+--
+
+- El ajuste de los modelos logísticos se evalúa en general en términos **.blue[comparativos]** con otros modelos 
+
+--
+
+- Estas medidas de comparación se basan en distintas fórmulas que consideran la **.red[log verosimilitud (o  LL)]** y la **devianza**
+
+---
+.pull-left-narrow[## Modelo saturado, nulo y logístico
+]
+
+![:scale 65%](deviance.png)
+
+
+---
+## Ajuste: ¿Qué tan bueno es nuestro modelo?
+
+- Entre las medidas/indicadores de ajuste usualmente se consideran:
+
+  - Devianza
+
+  - Test de razón de verosimilitud (likelihood ratio test)
+  
+  - R2s
+  
+  - Criterio de información de Akaike
+
+---
+## Devianza
+
+- Concepto: el modelo saturado es básicamente residuos, y la devianza nos indica cuánto se han reducido los residuos a medida que se introducen parámetros al modelo. Por eso también se conoce como devianza residual.
+
+
+--
+
+- Formula: **.red[Devianza =-2*log likelihood]**
+
+
+---
+## Test de razón de verosimilitud (LRT) (...o de diferencia de devianzas)
+
+.pull-left-narrow[
+.medium[]
+- Se comparan las devianzas de distintos modelos: si la devianza es significativamente menor, el modelo es mejor
+]
+
+.pull-right-wide[
+.small[
+Obtención de devianzas
+```{r echo=TRUE}
+-2*logLik(modelo_titanic)
+-2*logLik(modelo_titanic2)
+```
+O directamente:
+```{r echo=TRUE}
+modelo_titanic$deviance
+```
+]
+]
+
+---
+.pull-left-narrow[
+
+## Test de razón de verosimilitud 
+
+.medium[
+Comando .red[`anova`] en .red[`R`]
+]
+]
+
+.pull-right-wide[
+<br>
+
+.small[
+```{r echo=TRUE}
+anova(modelo_titanic, modelo_titanic2, test ="Chisq")
+```
+
+.purple[La diferencia entre los modelos no es estadísticamente significativa con una probabilidad. Por lo tanto el modelo con dos predictores (sexo + edad) no ofrece un mejor ajuste a los datos que un modelo con solo un predictor (sexo).
+]
+]
+]
+
+---
+.pull-left[
+## Test de razón de verosimilitud 
+.medium[
+Probemos ahora con otro modelo con la variable clase `pclass`:
+- alta (ref)
+- intermedia
+- baja
+]
+
+.small[
+```{r echo=TRUE}
+modelo_titanic3 <- glm(survived ~ 
+sex + pclass, 
+data = tt, 
+family = "binomial")
+```
+]
+]
+.pull-right[.small[
+
+```{r results='asis', echo=FALSE}
+or2 <- texreg::extract(modelo_titanic3)
+or2@coef <- exp(or2@coef)
+or2@se <- numeric()
+
+texreg::htmlreg(list(modelo_titanic3,or2 ), doctype = FALSE, caption=" ", custom.coef.names = c("Intercepto", "Mujer (Ref=Hombre)", "Clase Intermedia", "Clase Baja"),custom.model.names = c("Logit", "OR"))
+```
+
+]
+]
+
+---
+## Test de razón de verosimilitud 
+
+.small[
+```{r echo=TRUE}
+anova(modelo_titanic, modelo_titanic3, test ="Chisq")
+```
+]
+.medium[
+.purple[La diferencia entre los modelos es estadísticamente significativa con una probabilidad p < 0.001. Por lo tanto el modelo con dos predictores (sexo + pclass) ofrece un mejor ajuste a los datos que un modelo con solo un predictor (sexo).]
+]
+
+---
+## Test de razón de verosimilitud 
+
+.medium[
+- También se puede realizar la comparación con el modelo nulo (sin predictores), que es equivalente al promedio en el caso de variables continuas
+]
+.small[
+  
+```{r echo=TRUE}
+modelo_titanic_null <- glm(survived ~ 1, data = tt, family = "binomial")
+anova(modelo_titanic_null, modelo_titanic3, test ="Chisq")
+```
+]
+
+---
+##  McFadden (pseudo) R2
+
+Se define como: $1−[LL(LM)/LL(L0)]$, donde
+.small[
+- LL es el log likelihood del modelo
+- LM es el modelo posterior (con más predictores)
+- L0 es el modelo nulo
+
+```{r echo=TRUE}
+logLik(modelo_titanic); logLik(modelo_titanic_null)
+1-(-551/-707)
+```
+
+]
+
+---
+#  McFadden (pseudo) R2
+
+También se puede obtener con la función `PseudoR2` de la librería `DescTools`, junto a otras versiones de pseudo R2s, como "Nagelkerke", "CoxSnell" y "Effron".
+
+
+---
+## Akaike (AIC)
+.medium[
+**AIC - Akaike information criteria**, evalua la calidad del modelo a través de la comparación con otros modelos penalizando por la inclusión de predictores (análogo al R2 ajustado):
+
+$$AIC=-2(log-likelihood)+2K$$
+
+Donde K= número de parámetros del modelo (regresores + intercepto)
+
+
+
+]
+
+A menor AIC, mejor ajuste
+---
+## Akaike (AIC)
+
+```{r echo=TRUE}
+logLik(modelo_titanic)
+
+2*551
+
+```
+$$AIC=-2(-551)+2(2)=1102+4=1106$$
+
+
+---
+# Resumen Ajuste
+
+- diferentes aproximaciones
+
+- utilizar más de una forma
+
+- en general: LRT (test de razón de verosimilitud) y algún tipo de R2
+
+
+---
+class: inverse, left
+
+## RESUMEN
+
+-  Limitaciones de regresión tradicional (OLS) para variables dependientes dicotómicas
+
+- Logit permite implementar regresión (coeficientes e inferencia) con dependientes dicotómicas
+
+- En regresión logística la interpretación sustantiva de coeficientes se realiza con los odds-ratio (exponenciando los coeficientes logit)
+
+- Ajuste: medidas comparativas basadas en la log-verosimilitud de los modelos
+
+
+
+
+???
+Remember, though, just like in logistic regression, the difference in the probability isn’t equal for each 1-unit change in the predictor. The sigmoidal relationship between a predictor and probability is nearly identical in probit and logistic regression. A 1-unit difference in X will have a bigger impact on probability in the middle than near 0 or 1.
+
+---
+class: roja right middle
+
+### Próxima semana
+
+## Revisión de supuestos del modelo de regresión
+
+
+---
+
+class: front
+
+.pull-left[
+# Métodos estadísticos para ciencias sociales III
+## **Kevin Carrasco**
+## Sociología - UNAB
+## 2do Semestre 2025
+## .green[[metod3-unab.netlify.com](metod3-unab.netlify.com)]
+] 
+    
+
+
+.pull-right[
+.right[
+<br>
+## .yellow[Sesión 9: Regresión logística (2)]
+![:scale 70%](../../files/img/eval-hires.png)
+
+
+
+]
+
+]
+
+

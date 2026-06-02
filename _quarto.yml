@@ -90,6 +90,8 @@ website:
               file: content/resumen-content.qmd
             - text: "08: Clase 8"
               file: content/08-content.qmd
+            - text: "09: Clase 9"
+              file: content/09-content.qmd
 
     - title: "Prácticos"
       style: "docked"
@@ -121,8 +123,8 @@ website:
 #              file: practicos/resumen-content.qmd
             - text: "Práctico 8: Regresión lineal"
               file: practicos/08-content.qmd
-#            - text: "Práctico 9: Valores predichos"
-#              file: practicos/09-content.qmd
+            - text: "Práctico 9: Regresión logística"
+              file: practicos/09-content.qmd
 #            - text: "Práctico 10: Presentaciones en Quarto"
 #              file: practicos/10-content.qmd
 
