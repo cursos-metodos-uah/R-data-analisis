@@ -20,3 +20,5 @@ projects/*.zip
 files/incomplete-reports.zip
 
 /.luarc.json
+
+**/*.quarto_ipynb

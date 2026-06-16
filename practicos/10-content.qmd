@@ -2,7 +2,7 @@
 title: "10: Presentaciones en Quarto"
 subtitle: "R data analisis"
 linktitle: "Presentaciones"
-date: "2025-06-17"
+date: "2026-06-16"
 lang: es
 ---
 
@@ -12,7 +12,7 @@ El objetivo de esta práctica es revisar el proceso de elaboración de una prese
 
 ::: callout-note
 
-Para presentar resultados de una investigación, podemos incluir imágenes en la presentación, por lo que anteriormente debemos haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output. O de la misma forma, si renderizamos nuestro .qmd, los gráficos se crean automáticamente en una carpeta _files.
+Para presentar resultados de una investigación, podemos incluir imágenes en la presentación, para lo que anteriormente debemos haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output. O de la misma forma, si renderizamos nuestro .qmd, los gráficos se crean automáticamente en una carpeta _files.
 
 Si recordamos de los prácticos anteriores, suponiendo que estamos trabajando en nuestro archivo de análisis, dentro de la carpeta de procesamiento, el código estándar para exportar gráficos es el siguiente:
 

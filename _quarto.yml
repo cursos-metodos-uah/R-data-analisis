@@ -125,8 +125,8 @@ website:
               file: practicos/08-content.qmd
             - text: "Práctico 9: Regresión logística"
               file: practicos/09-content.qmd
-#            - text: "Práctico 10: Presentaciones en Quarto"
-#              file: practicos/10-content.qmd
+            - text: "Práctico 10: Presentaciones en Quarto"
+              file: practicos/10-content.qmd
 
     - title: "Herramientas"
       style: "docked"
@@ -159,8 +159,8 @@ website:
               file: assignment/03-trabajo.qmd
             - text: "Trabajo 4"
               file: assignment/04-trabajo.qmd
-#            - text: "Presentaciones"
-#              file: assignment/05-presentacion.qmd
+            - text: "Presentaciones"
+              file: assignment/05-presentacion.qmd
             # - text: "Examen"
             #   file: assignment/06-examen.qmd
 

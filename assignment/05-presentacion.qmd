@@ -2,13 +2,13 @@
 title: "Presentación"
 subtitle: "R para análisis estadístico"
 linktitle: "Presentación"
-date: "2025-06-24"
+date: "2026-06-23"
 lang: es
 ---
 
 ## Instrucciones
 
-- Realizar una presentación en Quarto que resuma de manera general los tres trabajos realizados. La idea es que en una presentación de **no más de 15minutos** puedan contar qué investigaron, qué datos utilizaron y los principales resultados y conclusiones que obtuvieron.
+- Realizar una presentación en Quarto que resuma de manera general los cuatro trabajos realizados. La idea es que en una presentación de **10 a 15 minutos** puedan contar qué investigaron, qué datos utilizaron y los principales resultados y conclusiones que obtuvieron.
 
 - La presentación hecha en Quarto debe ser renderizada en su respectivo documento .html
 
