@@ -34,7 +34,7 @@ De todas formas, también es posible ejecutar los códigos que crean los gráfic
 
 ## Ejemplo:
 
-<iframe src="https://kevin-carrasco.github.io/ipo/presentacion.html#/title-slide" height="550" width="100%" allowfullscreen="true"></iframe>
+<iframe src="https://educacion-meritocracia.github.io/market-justice-panel-edumer/conferencias/demosal-2025/changes-meritocracy.html" height="550" width="100%" allowfullscreen="true"></iframe>
 
 ## Bases
 

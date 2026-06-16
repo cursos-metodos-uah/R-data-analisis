@@ -18,7 +18,7 @@ lang: es
 
 - Cualquier duda, me escriben.
 
-- Presentación de ejemplo [acá](https://kevin-carrasco.github.io/ipo/presentacion.html#/title-slide)
+- Presentación de ejemplo [acá](https://educacion-meritocracia.github.io/market-justice-panel-edumer/conferencias/demosal-2025/changes-meritocracy.html)
 
 ## Rúbrica de Evaluación Presentaciones
 
